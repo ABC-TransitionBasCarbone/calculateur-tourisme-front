@@ -1,5 +1,5 @@
 import { Participant } from '@/types/groups'
-import { Metrics } from '@incubateur-ademe/nosgestesclimat'
+import { Metrics } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export const getTopThreeAndRestMembers = (
   members: Participant[] = [],

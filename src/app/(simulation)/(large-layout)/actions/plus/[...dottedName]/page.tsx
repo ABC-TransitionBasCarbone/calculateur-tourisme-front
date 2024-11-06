@@ -5,7 +5,7 @@ import Markdown from '@/design-system/utils/Markdown'
 import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getPost } from '@/helpers/markdown/getPost'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export async function generateMetadata() {
   const { t } = await getServerTranslation()

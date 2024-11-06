@@ -3,7 +3,7 @@ import {
   CategoriesAndSubcategoriesFootprintsType,
   ValueObject,
 } from '@/types/groups'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export function getCategoriesObject({
   simulation,

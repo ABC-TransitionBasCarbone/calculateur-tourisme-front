@@ -9,7 +9,7 @@ import {
 } from '@/helpers/getCategoryColorClass'
 import { useRule } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export default function RecommendedAction({
   actionDottedName,

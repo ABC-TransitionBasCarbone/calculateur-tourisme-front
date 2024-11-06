@@ -4,7 +4,7 @@ import VerticalBarChartItem from '@/components/charts/verticalBarChart/VerticalB
 import { getBackgroundColor } from '@/helpers/getCategoryColorClass'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useRule } from '@/publicodes-state'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { formatValue } from 'publicodes'
 
 export default function CategoryChartItem({

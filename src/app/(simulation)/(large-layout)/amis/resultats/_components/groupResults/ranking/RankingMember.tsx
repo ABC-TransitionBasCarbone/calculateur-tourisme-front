@@ -11,7 +11,7 @@ import { useIsGroupOwner } from '@/hooks/groups/useIsGroupOwner'
 import { useRemoveParticipant } from '@/hooks/groups/useRemoveParticipant'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { Group, Participant } from '@/types/groups'
-import { Metrics } from '@incubateur-ademe/nosgestesclimat'
+import { Metrics } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { captureException } from '@sentry/nextjs'
 import { QueryObserverResult } from '@tanstack/react-query'
 import isMobile from 'is-mobile'
@@ -124,7 +124,7 @@ export default function RankingMember({
             )}>
             {participant.simulation.progression !== 1
               ? // Display a placeholder
-                '--'
+              '--'
               : getRank(index)}
           </span>
 

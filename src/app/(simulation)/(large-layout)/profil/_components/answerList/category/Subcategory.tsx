@@ -9,7 +9,7 @@ import {
 } from '@/helpers/getCategoryColorClass'
 import { useForm, useRule } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useState } from 'react'
 import Question from './subcategory/Question'
 

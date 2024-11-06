@@ -4,7 +4,7 @@ import {
   DottedName,
   NGCRuleNode,
   NGCRules,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import { captureException } from '@sentry/react'
 import Engine, { PublicodesExpression } from 'publicodes'
 import { useCallback, useMemo } from 'react'

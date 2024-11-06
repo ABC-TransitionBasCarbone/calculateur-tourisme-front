@@ -1,7 +1,7 @@
 'use client'
 
 import { useClientTranslation } from '@/hooks/useClientTranslation'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Image from 'next/image'
 import { useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'

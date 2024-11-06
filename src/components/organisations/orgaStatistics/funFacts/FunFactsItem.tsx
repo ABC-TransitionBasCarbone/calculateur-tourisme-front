@@ -1,6 +1,6 @@
 import Emoji from '@/design-system/utils/Emoji'
 import { useRule } from '@/publicodes-state'
-import { DottedName, FunFacts } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName, FunFacts } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { twMerge } from 'tailwind-merge'
 
 type Props = {

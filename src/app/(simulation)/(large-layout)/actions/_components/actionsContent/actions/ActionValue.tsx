@@ -3,7 +3,7 @@ import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useRule } from '@/publicodes-state'
 import { TranslationFunctionType } from '@/types/translation'
 import { getCorrectedValue } from '@/utils/getCorrectedValue'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { EvaluatedNode } from 'publicodes'
 
 const getFormattedActionValue = (
@@ -68,9 +68,8 @@ export default function ActionValue({
 
   return (
     <div
-      className={`mb-6 inline-block rounded-[0.25rem] border-2 border-solid border-primary-700 bg-primary-700 pl-2 pr-[2px] text-white ${
-        correctedValue != undefined && correctedValue < 0 ? 'bg-red-500' : ''
-      }${isBlurred ? 'blur-[2px] grayscale' : ''}`}>
+      className={`mb-6 inline-block rounded-[0.25rem] border-2 border-solid border-primary-700 bg-primary-700 pl-2 pr-[2px] text-white ${correctedValue != undefined && correctedValue < 0 ? 'bg-red-500' : ''
+        }${isBlurred ? 'blur-[2px] grayscale' : ''}`}>
       <span>
         {sign ?? ''}&nbsp;
         <strong>{stringValue}</strong>&nbsp;

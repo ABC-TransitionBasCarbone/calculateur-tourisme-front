@@ -1,4 +1,4 @@
-import { DottedName, NGCRule } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName, NGCRule } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { utils } from 'publicodes'
 
 export const getRuleTitle = (

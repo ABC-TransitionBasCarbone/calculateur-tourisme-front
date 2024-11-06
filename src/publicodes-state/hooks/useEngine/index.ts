@@ -1,6 +1,6 @@
 import getNamespace from '@/publicodes-state/helpers/getNamespace'
 import getSomme from '@/publicodes-state/helpers/getSomme'
-import { DottedName, NodeValue } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName, NodeValue } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useCallback, useContext } from 'react'
 import { SimulationContext } from '../../providers/simulationProvider/context'
 import { Metric } from '../../types'

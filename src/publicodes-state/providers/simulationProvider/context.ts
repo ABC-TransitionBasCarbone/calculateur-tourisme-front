@@ -3,7 +3,7 @@ import {
   DottedName,
   NGCRuleNode,
   NGCRules,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import { EvaluatedNode, PublicodesExpression } from 'publicodes'
 import { createContext } from 'react'
 import {

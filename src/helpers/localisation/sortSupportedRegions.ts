@@ -1,7 +1,7 @@
 import {
   SupportedRegion,
   SupportedRegions,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export const sortSupportedRegions = ({
   supportedRegions,

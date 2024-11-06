@@ -2,7 +2,7 @@
 
 import { useCurrentSimulation } from '@/publicodes-state'
 
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { PropsWithChildren, useContext } from 'react'
 import { SimulationContext } from '../simulationProvider/context'
 import FormContext from './context'

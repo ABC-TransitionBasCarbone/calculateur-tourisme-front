@@ -1,7 +1,7 @@
 'use client'
 
 import { carboneMetric } from '@/constants/metric'
-import { DottedName, NGCRuleNode } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName, NGCRuleNode } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { EvaluatedNode, utils } from 'publicodes'
 import { useContext, useMemo } from 'react'
 import { SimulationContext } from '../../providers/simulationProvider/context'

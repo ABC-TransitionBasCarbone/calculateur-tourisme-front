@@ -7,7 +7,7 @@ import {
   getBorderCategoryColor,
 } from '@/helpers/getCategoryColorClass'
 import { useForm } from '@/publicodes-state'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 type Props = {
   question: DottedName

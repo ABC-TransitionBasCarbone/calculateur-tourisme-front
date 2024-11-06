@@ -5,7 +5,7 @@ import {
   DottedName,
   NGCRuleNode,
   NodeValue,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import { EvaluatedNode, PublicodesExpression, utils } from 'publicodes'
 import { useCallback } from 'react'
 import getType from '../../helpers/getType'

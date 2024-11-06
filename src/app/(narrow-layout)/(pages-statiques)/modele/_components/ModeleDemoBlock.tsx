@@ -6,7 +6,7 @@ import { useRules } from '@/hooks/useRules'
 import { safeEvaluateHelper } from '@/publicodes-state/helpers/safeEvaluateHelper'
 import { Situation } from '@/publicodes-state/types'
 import { encodeRuleName } from '@/utils/publicodes/encodeRuleName'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Engine, { Evaluation } from 'publicodes'
 import { useEffect, useMemo, useState } from 'react'
 
@@ -29,11 +29,11 @@ export default function ModeleDemoBlock() {
     () =>
       rules
         ? new Engine<DottedName>(rules, {
-            strict: {
-              situation: false,
-              noOrphanRule: false,
-            },
-          })
+          strict: {
+            situation: false,
+            noOrphanRule: false,
+          },
+        })
         : null,
     [rules]
   )

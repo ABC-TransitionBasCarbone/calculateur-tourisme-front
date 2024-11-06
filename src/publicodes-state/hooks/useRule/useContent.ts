@@ -5,7 +5,7 @@ import {
   DottedName,
   NGCRuleNode,
   Suggestions,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useMemo } from 'react'
 import { FormattedSuggestion } from '../../types'
 

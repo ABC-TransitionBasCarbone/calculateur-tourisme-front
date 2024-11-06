@@ -2,7 +2,7 @@
 // [ 'trackEvent', 'Category', 'Action', 'Name', 'Value' ]
 
 import { NorthStarType, NorthStarValue } from '@/types/northstar'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 // Figma comment #57
 export const endClickPoll = ['trackEvent', 'Fin', 'Click Poll']

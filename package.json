@@ -1,7 +1,7 @@
 {
   "name": "@abc-transitionbascarbone/calculateur-tourisme-front",
   "license": "MIT",
-  "version": "2.2.0",
+  "version": "1.0.0",
   "description": "Le front du calcul d'empreinte climat de tourisme, fork du modèle de calcul Nos Gestes Climat",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   "dependencies": {
     "@babel/runtime": "^7.23.1",
     "@incubateur-ademe/legal-pages-react": "^0.2.0",
-    "@abc-transitionbascarbone/calculateur-tourisme": "^3.2.0",
+    "@abc-transitionbascarbone/calculateur-tourisme": "^1.0.1",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/bundle-analyzer": "^14.1.0",

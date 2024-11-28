@@ -74,7 +74,7 @@ const nextConfig = {
       '/actions/plus': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
       '/sitemap.xml': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
     },
-    optimizePackageImports: ['@incubateur-ademe/nosgestesclimat'],
+    optimizePackageImports: ['@abc-transitionbascarbone/calculateur-tourisme'],
     webpackBuildWorker: true,
     turbo: {
       rules: {

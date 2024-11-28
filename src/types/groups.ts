@@ -1,5 +1,5 @@
 import { Simulation } from '@/publicodes-state/types'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export type Participant = {
   _id: string

@@ -1,5 +1,5 @@
 import { getPersonas } from '@/helpers/modelFetching/getPersonas'
-import { Personas } from '@incubateur-ademe/nosgestesclimat'
+import { Personas } from '@abc-transitionbascarbone/calculateur-tourisme'
 import {
   UseQueryResult,
   keepPreviousData,

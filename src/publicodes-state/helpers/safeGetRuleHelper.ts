@@ -1,4 +1,4 @@
-import { DottedName, NGCRuleNode } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName, NGCRuleNode } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { captureException } from '@sentry/react'
 import { Engine } from '../types'
 

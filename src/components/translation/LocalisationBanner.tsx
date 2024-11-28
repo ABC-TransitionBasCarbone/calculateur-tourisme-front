@@ -11,7 +11,7 @@ import { useLocale } from '@/hooks/useLocale'
 import { useUser } from '@/publicodes-state'
 import { capitalizeString } from '@/utils/capitalizeString'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { SupportedRegions } from '@incubateur-ademe/nosgestesclimat'
+import { SupportedRegions } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Trans from './Trans'
 
 type Props = {
@@ -39,7 +39,7 @@ export default function LocalisationBanner({ supportedRegions }: Props) {
 
   const versionName: string = regionParams
     ? regionParams?.[currentLocale]?.['gentilé'] ??
-      regionParams?.[currentLocale]?.['nom']
+    regionParams?.[currentLocale]?.['nom']
     : countryName
 
   if (tutorials.localisationBanner) return null

@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@abc-transitionbascarbone/calculateur-tourisme@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@abc-transitionbascarbone/calculateur-tourisme/-/calculateur-tourisme-1.0.1.tgz#7efdefda887257950682cdd0c63eef4c9c1acaf7"
+  integrity sha512-1XPvidIhlOCWKL+9A8CRYBhrIb1Snro5tmcfFjVq8IviO7vXizBfU0bqof8NL+B2LEbhg2Pc99Z0VdVMBUYlvQ==
+
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
@@ -1142,11 +1147,6 @@
     isomorphic-fetch "^3.0.0"
     prompt-sync "^4.2.0"
     yargs "^17.7.2"
-
-"@incubateur-ademe/nosgestesclimat@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@incubateur-ademe/nosgestesclimat/-/nosgestesclimat-3.2.0.tgz#1e12229fabe29e189a24be99cff7121fdfba5f23"
-  integrity sha512-xIwdOElWjBow4Y6XFH3wbvhciDat2DKkoJet5LB0GAOu16bNa7m15GWcHOdcAK663+WkAmfnJQ7Y7cD9kcNnyw==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"

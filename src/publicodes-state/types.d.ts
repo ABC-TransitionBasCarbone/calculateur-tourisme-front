@@ -3,7 +3,7 @@ import {
   DottedName,
   Metrics,
   SuggestionValue,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import PublicodesEngine, {
   ParsedRules as PublicodesParsedRules,
   Situation as PublicodesSituation,

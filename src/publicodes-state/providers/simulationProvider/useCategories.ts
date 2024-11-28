@@ -5,7 +5,7 @@ import {
   DottedName,
   NGCRuleNode,
   NGCRulesNodes,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import * as Sentry from '@sentry/react'
 import { useMemo } from 'react'
 

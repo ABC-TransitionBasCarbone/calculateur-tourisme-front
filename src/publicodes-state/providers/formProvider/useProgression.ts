@@ -1,5 +1,5 @@
 import { UpdateCurrentSimulationProps } from '@/publicodes-state/types'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useEffect, useMemo } from 'react'
 
 type Props = {

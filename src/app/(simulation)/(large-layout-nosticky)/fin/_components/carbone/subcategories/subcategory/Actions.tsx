@@ -3,7 +3,7 @@ import Trans from '@/components/translation/Trans'
 import { endClickActions } from '@/constants/tracking/pages/end'
 import { useEngine, useRule } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Action from './actions/Action'
 
 type Props = {
@@ -29,20 +29,20 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
 
   const sortedActions = noNumberedFootprint
     ? filteredActions.sort((a: string) => {
-        if (a.includes('voter')) {
-          return -1
-        }
-        return 1
-      })
+      if (a.includes('voter')) {
+        return -1
+      }
+      return 1
+    })
     : filteredActions
-        .map((action) => ({
-          dottedName: action,
-          value: getValue(action) as number,
-        }))
-        .sort((a: ActionObject, b: ActionObject) =>
-          a.value > b.value ? -1 : 1
-        )
-        .map((actionObject: ActionObject) => actionObject.dottedName)
+      .map((action) => ({
+        dottedName: action,
+        value: getValue(action) as number,
+      }))
+      .sort((a: ActionObject, b: ActionObject) =>
+        a.value > b.value ? -1 : 1
+      )
+      .map((actionObject: ActionObject) => actionObject.dottedName)
 
   const firstThreeActions = sortedActions.slice(0, 3)
 

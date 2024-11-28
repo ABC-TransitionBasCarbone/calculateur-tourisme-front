@@ -11,7 +11,7 @@ import {
   DottedName,
   NGCRule,
   NGCRules,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 
 type Props = {
   actions: Post[]

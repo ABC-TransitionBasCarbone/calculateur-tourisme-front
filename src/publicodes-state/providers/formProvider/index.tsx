@@ -1,6 +1,6 @@
 'use client'
 
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { PropsWithChildren, useContext, useMemo } from 'react'
 import { SimulationContext } from '../simulationProvider/context'
 import Provider from './Provider'

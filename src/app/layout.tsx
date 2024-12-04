@@ -1,5 +1,4 @@
 import Footer from '@/components/layout/Footer'
-import { getGeolocation } from '@/helpers/getGeolocation'
 import '@/locales/initClient'
 import '@/locales/initServer'
 import { dir } from 'i18next'
@@ -57,8 +56,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     const lang = currentLocale()
     console.log(lang)
 
-    const initialRegion = await getGeolocation()
-    console.log(initialRegion)
+    const initialRegion = {"name":"France","code":"FR"}
 
     return (
       <html lang={lang ?? ''} dir={dir(lang ?? '')}>
@@ -117,6 +115,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       </html>
     )
   } catch (error) {
+    console.log(error)
     return (
       <html lang="fr">
         <body className={`${marianne.className} bg-white text-default`}>

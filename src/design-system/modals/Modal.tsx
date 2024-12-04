@@ -1,35 +1,34 @@
-'use client'
+'use client';
 
-import Trans from '@/components/translation/Trans'
-import { ReactNode, useEffect } from 'react'
-import ReactModal from 'react-modal'
-import Button from '../inputs/Button'
+import Trans from '@/components/translation/Trans';
+import { ReactNode, useEffect } from 'react';
+import ReactModal from 'react-modal';
+import Button from '../inputs/Button';
 
 type Props = {
-  closeModal: () => void
-  children: ReactNode
-  isLoading?: boolean
-  isOpen: boolean
-  hasAbortButton?: boolean
-  buttons?: ReactNode
-}
-
-ReactModal.setAppElement('#modal')
+  closeModal: () => void;
+  children: ReactNode;
+  isLoading?: boolean;
+  isOpen: boolean;
+  hasAbortButton?: boolean;
+  buttons?: ReactNode;
+};
 
 export default function Modal({
-  closeModal,
-  children,
-  isLoading,
-  isOpen,
-  hasAbortButton = true,
-  buttons,
-}: Props) {
+                                closeModal,
+                                children,
+                                isLoading,
+                                isOpen,
+                                hasAbortButton = true,
+                                buttons,
+                              }: Props) {
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
+    ReactModal.setAppElement('#modal');
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = 'auto'
-    }
-  }, [])
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   return (
     <ReactModal
@@ -52,5 +51,5 @@ export default function Modal({
         </div>
       ) : null}
     </ReactModal>
-  )
+  );
 }

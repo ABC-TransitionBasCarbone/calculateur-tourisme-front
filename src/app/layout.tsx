@@ -55,8 +55,10 @@ export const marianne = localFont({
 export default async function RootLayout({ children }: PropsWithChildren) {
   try {
     const lang = currentLocale()
+    console.log(lang)
 
     const initialRegion = await getGeolocation()
+    console.log(initialRegion)
 
     return (
       <html lang={lang ?? ''} dir={dir(lang ?? '')}>

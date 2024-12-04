@@ -29,12 +29,13 @@
     "faq:translate": "node scripts/i18n/translate-faq.js",
     "faq:check": "node scripts/i18n/check-faq.js",
     "pages:translate": "node scripts/i18n/translate-pages.cjs",
-    "nouveautes:translate": "node scripts/i18n/translate-nouveautes.cjs"
+    "nouveautes:translate": "node scripts/i18n/translate-nouveautes.cjs",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@abc-transitionbascarbone/calculateur-tourisme": "^1.0.1",
     "@babel/runtime": "^7.23.1",
     "@incubateur-ademe/legal-pages-react": "^0.2.0",
-    "@abc-transitionbascarbone/calculateur-tourisme": "^1.0.1",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/bundle-analyzer": "^14.1.0",
@@ -136,7 +137,7 @@
     "prettier-plugin-tailwindcss": "0.5.12",
     "ramda": "^0.29.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2",
+    "typescript": "^5.7.2",
     "yaml-loader": "^0.8.1"
   },
   "resolutions": {

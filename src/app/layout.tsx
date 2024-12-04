@@ -9,6 +9,7 @@ import Script from 'next/script'
 import { PropsWithChildren } from 'react'
 import MainLayoutProviders from './_components/MainLayoutProviders'
 import './globals.css'
+import { getGeolocation } from '@/helpers/getGeolocation'
 
 const ClientErrorContent = dynamic(
   () => import('@/components/error/ErrorContent'),
@@ -54,9 +55,8 @@ export const marianne = localFont({
 export default async function RootLayout({ children }: PropsWithChildren) {
   try {
     const lang = currentLocale()
-    console.log(lang)
 
-    const initialRegion = {"name":"France","code":"FR"}
+    const initialRegion = await getGeolocation()
 
     return (
       <html lang={lang ?? ''} dir={dir(lang ?? '')}>

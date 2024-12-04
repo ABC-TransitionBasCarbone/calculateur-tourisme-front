@@ -1,17 +1,13 @@
 'use server'
 
 import { RegionFromGeolocation } from '@/publicodes-state/types'
+import { SERVER_URL } from '@/constants/urls'
 import axios from 'axios'
 
 export async function getGeolocation(): Promise<RegionFromGeolocation> {
   return await axios
     .get(
-      `${
-        process.env.VERCEL_ENV === 'preview' ||
-        process.env.VERCEL_ENV === 'production'
-          ? 'https'
-          : 'http'
-      }://${process.env.VERCEL_URL || 'localhost:3000'}/api/geolocation`
+      `${SERVER_URL}/api/geolocation`
     )
     .then((res) => res.data)
 }

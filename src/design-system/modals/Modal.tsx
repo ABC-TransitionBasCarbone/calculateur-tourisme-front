@@ -15,13 +15,13 @@ type Props = {
 };
 
 export default function Modal({
-                                closeModal,
-                                children,
-                                isLoading,
-                                isOpen,
-                                hasAbortButton = true,
-                                buttons,
-                              }: Props) {
+  closeModal,
+  children,
+  isLoading,
+  isOpen,
+  hasAbortButton = true,
+  buttons,
+}: Props) {
   useEffect(() => {
     ReactModal.setAppElement('#modal');
     document.body.style.overflow = 'hidden';

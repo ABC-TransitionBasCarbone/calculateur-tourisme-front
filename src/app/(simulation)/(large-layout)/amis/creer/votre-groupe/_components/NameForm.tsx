@@ -13,7 +13,6 @@ import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useCurrentSimulation, useUser } from '@/publicodes-state'
 import { formatEmail } from '@/utils/format/formatEmail'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { captureException } from '@sentry/react'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useForm as useReactHookForm } from 'react-hook-form'
@@ -95,7 +94,7 @@ export default function NameForm() {
 
       setShouldNavigate(group._id)
     } catch (e) {
-      captureException(e)
+      console.log(e)
     }
   }
 

@@ -1,5 +1,4 @@
 import { DottedName, NGCRuleNode } from '@abc-transitionbascarbone/calculateur-tourisme'
-import { captureException } from '@sentry/react'
 import { Engine } from '../types'
 
 export const safeGetRuleHelper = (
@@ -11,7 +10,7 @@ export const safeGetRuleHelper = (
     rule = engineUsed.getRule(ruleName)
   } catch (error) {
     console.warn(error)
-    captureException(error)
+    console.log(error)
   }
   return rule
 }

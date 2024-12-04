@@ -4,7 +4,6 @@ import {
   NGCRuleNode,
   NGCRulesNodes,
 } from '@abc-transitionbascarbone/calculateur-tourisme'
-import * as Sentry from '@sentry/react'
 import { utils } from 'publicodes'
 import getSomme from './getSomme'
 
@@ -28,18 +27,12 @@ export function getSubcategories({
         console.error(
           `[useCategories:subcategories] No rule found for ${currentValue}`
         )
-        Sentry.captureMessage(
-          `[useCategories:subcategories] No rule found for ${currentValue}`
-        )
         return accumulator
       }
 
       const sum = getSomme(rule.rawNode as NGCRule)
       if (!sum) {
         console.error(
-          `[useCategories:subcategories] No [somme] found for ${currentValue}`
-        )
-        Sentry.captureMessage(
           `[useCategories:subcategories] No [somme] found for ${currentValue}`
         )
         return accumulator

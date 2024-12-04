@@ -6,7 +6,6 @@ import {
   NGCRuleNode,
   NGCRulesNodes,
 } from '@abc-transitionbascarbone/calculateur-tourisme'
-import * as Sentry from '@sentry/react'
 import { useMemo } from 'react'
 
 type Props = {
@@ -27,18 +26,12 @@ export function useCategories({
     if (!rootRule) {
       console.error(`[useCategories] No rule found for ${root}`)
 
-      Sentry.captureMessage(
-        `[useCategories:categories] No rule found for ${root}`
-      )
       return []
     }
     const sum = getSomme(rootRule.rawNode)
     if (!sum) {
       console.error(`[useCategories] No [somme] found for ${root}`)
 
-      Sentry.captureMessage(
-        `[useCategories:categories] No [somme] found for ${root}`
-      )
       return []
     }
 

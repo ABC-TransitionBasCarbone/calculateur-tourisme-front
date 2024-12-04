@@ -1,4 +1,3 @@
-import { captureException } from '@sentry/nextjs'
 import React, { ErrorInfo, ReactNode } from 'react'
 import ErrorModal from './ErrorModal'
 
@@ -26,8 +25,7 @@ class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo)
-    // Send error to Sentry
-    captureException(error)
+    console.log(error)
   }
 
   render() {

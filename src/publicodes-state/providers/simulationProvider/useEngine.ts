@@ -5,7 +5,6 @@ import {
   NGCRuleNode,
   NGCRules,
 } from '@abc-transitionbascarbone/calculateur-tourisme'
-import { captureException } from '@sentry/react'
 import Engine, { PublicodesExpression } from 'publicodes'
 import { useCallback, useMemo } from 'react'
 import { safeEvaluateHelper } from '../../helpers/safeEvaluateHelper'
@@ -35,9 +34,8 @@ export function useEngine(rules?: NGCRules) {
         error(msg: string) {
           console.error(`[publicodes:error] ${msg}`)
 
-          // If it's a situation error, we throw it to sentry
           if (msg.match(/[ Erreur lors de la mise à jour de la situation ]/)) {
-            captureException(new Error(msg))
+            new Error(msg)
           }
         },
       },

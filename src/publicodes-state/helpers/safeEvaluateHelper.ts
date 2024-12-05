@@ -10,7 +10,6 @@ export const safeEvaluateHelper = (
     evaluation = engineUsed.evaluate(expr)
   } catch (error) {
     console.warn(error)
-    console.log(error)
   }
   return evaluation
 }

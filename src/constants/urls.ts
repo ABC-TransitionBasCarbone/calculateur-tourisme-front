@@ -2,7 +2,7 @@ const secure = process.env.NODE_ENV === 'development' ? '' : 's'
 const protocol = `http${secure}://`
 
 export const SERVER_URL =
-  protocol + (process.env.NEXT_PUBLIC_SERVER_URL || 'calculateur-tourisme-front.vercel.app')
+  protocol + (process.env.NEXT_PUBLIC_SERVER_URL || 'localhost:3000')
 
 export const SIMULATION_URL = SERVER_URL + '/simulation/'
 

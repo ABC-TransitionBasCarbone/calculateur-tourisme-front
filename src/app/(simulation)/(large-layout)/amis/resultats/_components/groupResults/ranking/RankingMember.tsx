@@ -12,7 +12,6 @@ import { useRemoveParticipant } from '@/hooks/groups/useRemoveParticipant'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { Group, Participant } from '@/types/groups'
 import { Metrics } from '@abc-transitionbascarbone/calculateur-tourisme'
-import { captureException } from '@sentry/nextjs'
 import { QueryObserverResult } from '@tanstack/react-query'
 import isMobile from 'is-mobile'
 import { useState } from 'react'
@@ -108,7 +107,7 @@ export default function RankingMember({
       toast.error(t('Une erreur est survenue'), {
         autoClose: false,
       })
-      captureException(error)
+      console.log(error)
     }
   }
 

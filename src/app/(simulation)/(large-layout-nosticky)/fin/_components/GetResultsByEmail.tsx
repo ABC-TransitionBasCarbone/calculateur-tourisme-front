@@ -22,7 +22,6 @@ import { useNumberSubscribers } from '@/hooks/useNumberSubscriber'
 import { useCurrentSimulation, useUser } from '@/publicodes-state'
 import { formatEmail } from '@/utils/format/formatEmail'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { captureException } from '@sentry/react'
 import { useEffect, useRef } from 'react'
 import { SubmitHandler, useForm as useReactHookForm } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
@@ -116,11 +115,8 @@ export default function GetResultsByEmail({
     updateEmail(formattedEmail)
 
     if (currentSimulation?.computedResults[defaultMetric].bilan === 0) {
-      // Send an error to Sentry
-      captureException(
-        new Error(
-          'GetResultsByEmail: computedResults[defaultMetric].bilan === 0'
-        )
+      console.warn(
+        'GetResultsByEmail: computedResults[defaultMetric].bilan === 0'
       )
       return
     }

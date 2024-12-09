@@ -31,12 +31,10 @@ export default function useNavigation({
     () => transitionPage === getNamespace(relevantQuestions[0]),
     [relevantQuestions, transitionPage]
   )
+
   const noNextQuestion = useMemo<boolean>(
-    () =>
-      remainingQuestions.length === 0 ||
-      (remainingQuestions.length === 1 &&
-        remainingQuestions[0] === currentQuestion),
-    [currentQuestion, remainingQuestions]
+    () => !relevantQuestions[currentQuestionIndex + 1] && !transitionPage,
+    [relevantQuestions, currentQuestionIndex, transitionPage]
   )
 
   const isLastQuestionOfCategory = useMemo<boolean>(

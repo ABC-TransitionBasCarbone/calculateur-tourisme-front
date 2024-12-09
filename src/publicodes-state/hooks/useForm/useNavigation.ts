@@ -10,7 +10,6 @@ type Props = {
 }
 
 export default function useNavigation({
-  remainingQuestions,
   relevantQuestions,
   currentQuestion,
   setCurrentQuestion,

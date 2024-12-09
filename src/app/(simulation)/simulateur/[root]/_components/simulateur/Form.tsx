@@ -18,8 +18,8 @@ import { useContext, useEffect, useState } from 'react'
 import CategoriesSummary from './form/CategoriesSummary'
 import FunFact from './form/FunFact'
 import CategoryIllustration from './summary/CategoryIllustration'
-import { TransitionPage } from '@/app/(simulation)/transition/page'
 import getNamespace from '@/publicodes-state/helpers/getNamespace'
+import { TransitionPage } from '@/app/_components/transition/page'
 
 export default function Form() {
   const isDebug = useDebug()

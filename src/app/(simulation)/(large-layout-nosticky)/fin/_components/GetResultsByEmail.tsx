@@ -115,7 +115,7 @@ export default function GetResultsByEmail({
     updateEmail(formattedEmail)
 
     if (currentSimulation?.computedResults[defaultMetric].bilan === 0) {
-      new Error(
+      console.warn(
         'GetResultsByEmail: computedResults[defaultMetric].bilan === 0'
       )
       return

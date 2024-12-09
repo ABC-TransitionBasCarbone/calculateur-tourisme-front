@@ -56,7 +56,7 @@ export function useEndPage() {
         (currentSimulation.polls || currentSimulation.groups)
       ) {
         if (currentSimulation.computedResults[defaultMetric].bilan === 0) {
-          new Error('useEndPage: computedResults[defaultMetric].bilan === 0')
+          console.warn('useEndPage: computedResults[defaultMetric].bilan === 0')
         }
 
         await saveSimulation({

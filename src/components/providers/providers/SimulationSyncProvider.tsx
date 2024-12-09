@@ -58,7 +58,7 @@ export default function SimulationSyncProvider({
     if (!isInitialized) return false
 
     if (computedResults[defaultMetric].bilan === 0) {
-      new Error(
+      console.warn(
         'SimulationSyncProvider: computedResults[defaultMetric].bilan === 0'
       )
       return false

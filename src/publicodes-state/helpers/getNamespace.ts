@@ -1,4 +1,4 @@
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 /**
  * Returns the namespace of a rule. A level can be specified to get a specific
  * part of the namespace.

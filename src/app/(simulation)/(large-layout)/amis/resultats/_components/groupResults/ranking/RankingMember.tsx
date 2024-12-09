@@ -11,8 +11,7 @@ import { useIsGroupOwner } from '@/hooks/groups/useIsGroupOwner'
 import { useRemoveParticipant } from '@/hooks/groups/useRemoveParticipant'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { Group, Participant } from '@/types/groups'
-import { Metrics } from '@incubateur-ademe/nosgestesclimat'
-import { captureException } from '@sentry/nextjs'
+import { Metrics } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { QueryObserverResult } from '@tanstack/react-query'
 import isMobile from 'is-mobile'
 import { useState } from 'react'
@@ -108,7 +107,7 @@ export default function RankingMember({
       toast.error(t('Une erreur est survenue'), {
         autoClose: false,
       })
-      captureException(error)
+      console.log(error)
     }
   }
 
@@ -124,7 +123,7 @@ export default function RankingMember({
             )}>
             {participant.simulation.progression !== 1
               ? // Display a placeholder
-                '--'
+              '--'
               : getRank(index)}
           </span>
 

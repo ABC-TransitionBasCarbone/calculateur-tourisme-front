@@ -2,7 +2,7 @@ import {
   DottedName,
   NGCRuleNode,
   NGCRules,
-} from '@incubateur-ademe/nosgestesclimat'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useContext } from 'react'
 import { SimulationContext } from '../../providers/simulationProvider/context'
 import useCurrentSimulation from '../useCurrentSimulation'

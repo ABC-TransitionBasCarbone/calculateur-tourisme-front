@@ -1,7 +1,7 @@
 import Emoji from '@/design-system/utils/Emoji'
 import { useRule } from '@/publicodes-state'
 import { ValueObject } from '@/types/groups'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { formatValue } from 'publicodes'
 import ValueDiff from '../pointsFortsFaibles/pointsListItem/ValueDiff'
 

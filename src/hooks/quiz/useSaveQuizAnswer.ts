@@ -1,7 +1,7 @@
 import { SERVER_URL } from '@/constants/urls'
 import { useCurrentSimulation } from '@/publicodes-state'
 import { AnswerType } from '@/types/quiz'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 

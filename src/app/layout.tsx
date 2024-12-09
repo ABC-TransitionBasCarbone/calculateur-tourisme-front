@@ -1,5 +1,4 @@
 import Footer from '@/components/layout/Footer'
-import { getGeolocation } from '@/helpers/getGeolocation'
 import '@/locales/initClient'
 import '@/locales/initServer'
 import { dir } from 'i18next'
@@ -10,6 +9,7 @@ import Script from 'next/script'
 import { PropsWithChildren } from 'react'
 import MainLayoutProviders from './_components/MainLayoutProviders'
 import './globals.css'
+import { getGeolocation } from '@/helpers/getGeolocation'
 
 const ClientErrorContent = dynamic(
   () => import('@/components/error/ErrorContent'),
@@ -115,6 +115,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       </html>
     )
   } catch (error) {
+    console.log(error)
     return (
       <html lang="fr">
         <body className={`${marianne.className} bg-white text-default`}>

@@ -3,7 +3,6 @@ import { getLinkToGroupDashboard } from '@/helpers/navigation/groupPages'
 import { linkToQuiz } from '@/helpers/navigation/quizPages'
 import { useSaveSimulation } from '@/hooks/simulation/useSaveSimulation'
 import { useCurrentSimulation } from '@/publicodes-state'
-import { captureException } from '@sentry/react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
 
@@ -57,10 +56,7 @@ export function useEndPage() {
         (currentSimulation.polls || currentSimulation.groups)
       ) {
         if (currentSimulation.computedResults[defaultMetric].bilan === 0) {
-          // Send an error to Sentry
-          captureException(
-            new Error('useEndPage: computedResults[defaultMetric].bilan === 0')
-          )
+          console.warn('useEndPage: computedResults[defaultMetric].bilan === 0')
         }
 
         await saveSimulation({

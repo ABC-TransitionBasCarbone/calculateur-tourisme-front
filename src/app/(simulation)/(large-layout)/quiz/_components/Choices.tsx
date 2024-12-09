@@ -2,7 +2,7 @@
 
 import { quizClickAnswer } from '@/constants/tracking/pages/quiz'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useMemo } from 'react'
 import Choice from './choices/Choice'
 

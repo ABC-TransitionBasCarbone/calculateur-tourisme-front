@@ -1,5 +1,4 @@
 import { Engine } from '@/publicodes-state/types'
-import { captureException } from '@sentry/react'
 import { EvaluatedNode, PublicodesExpression } from 'publicodes'
 
 export const safeEvaluateHelper = (
@@ -11,7 +10,6 @@ export const safeEvaluateHelper = (
     evaluation = engineUsed.evaluate(expr)
   } catch (error) {
     console.warn(error)
-    captureException(error)
   }
   return evaluation
 }

@@ -28,7 +28,7 @@ import {
 } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { encodeRuleName } from '@/utils/publicodes/encodeRuleName'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useCallback } from 'react'
 import ActionValue from './ActionValue'
 
@@ -127,13 +127,11 @@ export default function ActionCard({
   return (
     <div
       id={dottedName}
-      className={`relative flex h-[18rem] w-full flex-col items-center justify-center overflow-auto rounded-xl border-2 border-solid p-4 ${
-        !hasFormula ? 'h-[13rem]' : ''
-      } ${
-        isSelected
+      className={`relative flex h-[18rem] w-full flex-col items-center justify-center overflow-auto rounded-xl border-2 border-solid p-4 ${!hasFormula ? 'h-[13rem]' : ''
+        } ${isSelected
           ? 'border-green-500 bg-green-500/[0.23]'
           : getBorderColor(category)
-      }`}>
+        }`}>
       <div
         className={`flex h-[6rem] w-full items-center rounded-xl p-2 ${getBackgroundLightColor(
           category
@@ -198,20 +196,20 @@ export default function ActionCard({
           {!Object.keys(actionChoices || {}).some((key) => {
             return key === dottedName && actionChoices?.[key]
           }) && (
-            <button
-              title={t("Rejeter l'action")}
-              onClick={(e) => {
-                if (isDisabled) return
-                rejectAction(dottedName)
-                if (!isSelected) {
-                  trackEvent(actionsClickNo(dottedName))
-                }
-                e.stopPropagation()
-                e.preventDefault()
-              }}>
-              <CloseIcon width="40" height="40" className="fill-gray-600" />
-            </button>
-          )}
+              <button
+                title={t("Rejeter l'action")}
+                onClick={(e) => {
+                  if (isDisabled) return
+                  rejectAction(dottedName)
+                  if (!isSelected) {
+                    trackEvent(actionsClickNo(dottedName))
+                  }
+                  e.stopPropagation()
+                  e.preventDefault()
+                }}>
+                <CloseIcon width="40" height="40" className="fill-gray-600" />
+              </button>
+            )}
         </div>
       </div>
     </div>

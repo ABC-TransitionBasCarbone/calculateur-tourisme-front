@@ -1,6 +1,6 @@
 import Link from '@/components/Link'
 import { encodeRuleName } from '@/utils/publicodes/encodeRuleName'
-import { NGCRules } from '@incubateur-ademe/nosgestesclimat'
+import { NGCRules } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Fuse from 'fuse.js'
 import highlightMatches from '../_helpers/highlightMatches'
 import { Matches, SearchItem } from './SearchBar'
@@ -29,11 +29,11 @@ export default function RuleListItem({
               <span key={name}>
                 {matches
                   ? highlightMatches(
-                      name,
-                      matches.filter(
-                        (m) => m.key === 'espace' && m.value === name
-                      ) as Matches
-                    )
+                    name,
+                    matches.filter(
+                      (m) => m.key === 'espace' && m.value === name
+                    ) as Matches
+                  )
                   : name}{' '}
                 ›{' '}
               </span>
@@ -45,9 +45,9 @@ export default function RuleListItem({
         </span>
         {matches
           ? highlightMatches(
-              item.title,
-              matches.filter((m) => m.key === 'title') as Matches
-            )
+            item.title,
+            matches.filter((m) => m.key === 'title') as Matches
+          )
           : item.title}
       </Link>
     </li>

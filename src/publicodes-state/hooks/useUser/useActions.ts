@@ -1,4 +1,4 @@
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { Simulation, UpdateCurrentSimulationProps } from '../../types'
 
 type Props = {

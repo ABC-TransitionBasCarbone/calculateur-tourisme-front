@@ -1,7 +1,7 @@
 import Badge from '@/design-system/layout/Badge'
 import Emoji from '@/design-system/utils/Emoji'
 import { useRule } from '@/publicodes-state'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { formatValue } from 'publicodes'
 import ValueDiff from './pointsListItem/ValueDiff'
 

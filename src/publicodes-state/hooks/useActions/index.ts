@@ -3,7 +3,7 @@
 import { carboneMetric } from '@/constants/metric'
 import getSomme from '@/publicodes-state/helpers/getSomme'
 import { Metric } from '@/publicodes-state/types'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useContext, useMemo } from 'react'
 import { useEngine } from '../..'
 import { SimulationContext } from '../../providers/simulationProvider/context'

@@ -1,6 +1,6 @@
 import getType from '@/publicodes-state/helpers/getType'
 import { Situation } from '@/publicodes-state/types'
-import { DottedName, NGCRuleNode } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName, NGCRuleNode } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { EvaluatedNode, PublicodesExpression } from 'publicodes'
 
 type Props = {

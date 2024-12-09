@@ -3,7 +3,7 @@ import {
   Simulation,
   Situation,
 } from '@/publicodes-state/types'
-import { FunFacts } from '@incubateur-ademe/nosgestesclimat'
+import { FunFacts } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export type OrganisationSimulation = Simulation & {
   bilan: number

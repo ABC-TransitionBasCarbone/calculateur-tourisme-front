@@ -11,7 +11,7 @@ import { getBackgroundColor } from '@/helpers/getCategoryColorClass'
 import { useRule, useSimulation } from '@/publicodes-state'
 import { Metric } from '@/publicodes-state/types'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import SubcategoriesList from './accordionItemWithRule/SubcategoriesList'
 
 type Props = {

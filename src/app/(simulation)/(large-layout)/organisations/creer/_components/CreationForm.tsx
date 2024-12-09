@@ -11,7 +11,6 @@ import { usePreventNavigation } from '@/hooks/navigation/usePreventNavigation'
 import { useUpdateOrganisation } from '@/hooks/organisations/useUpdateOrganisation'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useUser } from '@/publicodes-state'
-import { captureException } from '@sentry/react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { useForm as useReactHookForm } from 'react-hook-form'
@@ -79,7 +78,7 @@ export default function CreationForm() {
         setPathToNavigate(`/organisations/${organisationUpdated?.slug}`)
       }
     } catch (error: any) {
-      captureException(error)
+      console.log(error)
     }
   }
 

@@ -20,7 +20,7 @@ import { useLocale } from '@/hooks/useLocale'
 import { useRules } from '@/hooks/useRules'
 import { useUser } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { SupportedRegions } from '@incubateur-ademe/nosgestesclimat'
+import { SupportedRegions } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 type Props = {
   isOpen?: boolean
@@ -52,9 +52,8 @@ export default function RegionSelector({
     <>
       <details open={isOpen} className="rounded-xl bg-gray-100 p-2">
         <summary
-          className={`middle w-auto cursor-pointer   p-4 ${
-            isLoading ? 'pointer-events-none opacity-60' : ''
-          }`}
+          className={`middle w-auto cursor-pointer   p-4 ${isLoading ? 'pointer-events-none opacity-60' : ''
+            }`}
           onClick={() => trackEvent(profilOpenRegions)}>
           <span>
             <Trans>Choisir une autre région</Trans>{' '}

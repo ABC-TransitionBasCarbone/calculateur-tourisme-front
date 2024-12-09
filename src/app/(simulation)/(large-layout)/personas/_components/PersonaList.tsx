@@ -1,6 +1,6 @@
 'use client'
 
-import { Personas } from '@incubateur-ademe/nosgestesclimat'
+import { Personas } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Persona from './Persona'
 
 type Props = {

@@ -1,4 +1,4 @@
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { ComputedResults, ComputedResultsFootprint, Metric } from '../types'
 
 export function getComputedResults({

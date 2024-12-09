@@ -9,8 +9,8 @@ export function getUpdatedDefaultAdditionalQuestions({
   questionKey,
   value,
 }: Props) {
-  const updatedDefaultAdditionalQuestions =
-    [...defaultAdditionalQuestions] ?? ([] as string[])
+  const updatedDefaultAdditionalQuestions = [...defaultAdditionalQuestions];
+
 
   if (value && !updatedDefaultAdditionalQuestions.includes(questionKey)) {
     updatedDefaultAdditionalQuestions.push(questionKey)

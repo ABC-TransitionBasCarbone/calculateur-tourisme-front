@@ -1,4 +1,4 @@
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { Migration, migrateSituation } from '@publicodes/tools/migration'
 import { Simulation } from '../types'
 

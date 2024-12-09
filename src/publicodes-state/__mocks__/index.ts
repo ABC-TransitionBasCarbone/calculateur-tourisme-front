@@ -1,5 +1,5 @@
-import { DottedName } from '@incubateur-ademe/nosgestesclimat'
-import rules from '@incubateur-ademe/nosgestesclimat/public/co2-model.FR-lang.fr.json'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
+import rules from '@abc-transitionbascarbone/calculateur-tourisme/public/co2-model.FR-lang.fr.json'
 import Engine from 'publicodes'
 import getSomme from '../helpers/getSomme'
 import { Situation } from '../types'

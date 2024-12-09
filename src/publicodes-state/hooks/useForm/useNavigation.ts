@@ -1,6 +1,6 @@
 import getNamespace from '@/publicodes-state/helpers/getNamespace'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 type Props = {
   remainingQuestions: DottedName[]
@@ -15,7 +15,9 @@ export default function useNavigation({
   currentQuestion,
   setCurrentQuestion,
 }: Props) {
-  const currentQuestionNamespace = useMemo(
+  const [transitionPage, setTransitionPage] = useState<string | undefined>(undefined);
+
+  const currentQuestionNamespace = useMemo<string | undefined>(
     () => getNamespace(currentQuestion),
     [currentQuestion]
   )
@@ -26,8 +28,8 @@ export default function useNavigation({
   )
 
   const noPrevQuestion = useMemo<boolean>(
-    () => currentQuestionIndex === 0,
-    [currentQuestionIndex]
+    () => transitionPage === getNamespace(relevantQuestions[0]),
+    [relevantQuestions, transitionPage]
   )
   const noNextQuestion = useMemo<boolean>(
     () =>
@@ -51,25 +53,48 @@ export default function useNavigation({
     [currentQuestionNamespace, currentQuestionIndex, relevantQuestions]
   )
 
-  const gotoPrevQuestion = () => {
+  const gotoPrevQuestion = (): string | undefined => {
     if (noPrevQuestion) {
       return undefined
     }
 
     const newCurrentQuestion = relevantQuestions[currentQuestionIndex - 1]
 
+    const currentCategory = getNamespace(relevantQuestions[currentQuestionIndex]);
+    const nextCategory = getNamespace(newCurrentQuestion);
+
+    // Si la catégorie change, redirige vers une page intermédiaire
+    if (!transitionPage && currentCategory !== nextCategory) {
+      setTransitionPage(currentCategory);
+      return;
+    }
+
+    if (transitionPage) {
+      setTransitionPage(undefined)
+    }
+
     setCurrentQuestion(newCurrentQuestion)
 
     return newCurrentQuestion
   }
-
-  const gotoNextQuestion = () => {
+  const gotoNextQuestion = (): string | undefined => {
     if (noNextQuestion) {
       return undefined
     }
+    if (transitionPage) {
+      setTransitionPage(undefined);
+      return;
+    }
 
-    const newCurrentQuestion =
-      relevantQuestions[currentQuestionIndex + 1] || remainingQuestions[0]
+    const newCurrentQuestion = relevantQuestions[currentQuestionIndex + 1]
+
+    const currentCategory = getNamespace(relevantQuestions[currentQuestionIndex]);
+    const nextCategory = getNamespace(newCurrentQuestion);
+
+    // Si la catégorie change, redirige vers une page intermédiaire
+    if (!transitionPage && currentCategory !== nextCategory) {
+      setTransitionPage(nextCategory);
+    }
 
     setCurrentQuestion(newCurrentQuestion)
 
@@ -77,6 +102,8 @@ export default function useNavigation({
   }
 
   return {
+    transitionPage,
+    setTransitionPage,
     gotoPrevQuestion,
     gotoNextQuestion,
     noPrevQuestion,

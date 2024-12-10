@@ -22,6 +22,10 @@ export type UserOrganisationInfo = {
   name?: string
 }
 
+export type NGCRuleNode = RuleNode & {
+  rawNode: NGCRule
+}
+
 export type RegionFromGeolocation = { code: string; name: string }
 
 export type User = {

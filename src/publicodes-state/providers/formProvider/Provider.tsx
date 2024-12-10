@@ -21,11 +21,22 @@ export default function FormProvider({
   const {
     categories,
     subcategories,
+    safeGetRule,
     safeEvaluate,
     everyQuestions,
     everyMosaicChildrenWithParent,
     rawMissingVariables,
   } = useContext(SimulationContext)
+
+  console.log({
+    categories,
+    subcategories,
+    safeGetRule,
+    safeEvaluate,
+    everyQuestions,
+    everyMosaicChildrenWithParent,
+    rawMissingVariables,
+  })
 
   const { situation, foldedSteps, updateCurrentSimulation } =
     useCurrentSimulation()
@@ -45,6 +56,7 @@ export default function FormProvider({
   } = useQuestions({
     root,
     safeEvaluate,
+    safeGetRule,
     categories,
     subcategories,
     foldedSteps,

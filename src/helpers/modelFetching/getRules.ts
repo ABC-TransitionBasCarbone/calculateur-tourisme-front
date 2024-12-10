@@ -29,13 +29,9 @@ export async function getRules({
   // We provide the FR version of the model if the region is not supported
   const regionCodeToProvide = supportedRegions[regionCode] ? regionCode : 'FR'
 
-  let fileName = ''
-  // We provide optimized version of the model only for the FR region
-  if (regionCodeToProvide === 'FR') {
-    fileName = `co2-model.FR-lang.${locale}${isOptim ? '-opti' : ''}.json`
-  } else {
-    fileName = `co2-model.${regionCodeToProvide}-lang.${locale}.json`
-  }
+  let fileName = `co2-model.${regionCodeToProvide}-lang.${locale}.json`
+
+  console.log(fileName);
 
   if (PRNumber) {
     return importPreviewFile({ fileName, PRNumber })

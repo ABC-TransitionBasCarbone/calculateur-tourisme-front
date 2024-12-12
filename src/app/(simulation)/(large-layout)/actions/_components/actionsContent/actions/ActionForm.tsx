@@ -19,6 +19,11 @@ export default function ActionForm({ category, onComplete }: Props) {
     setCurrentQuestion,
     setCurrentCategory,
     currentCategory,
+    transitionPage,
+    noPrevQuestion,
+    noNextQuestion,
+    gotoPrevQuestion,
+    gotoNextQuestion,
   } = useForm()
 
   useEffect(() => {
@@ -51,6 +56,11 @@ export default function ActionForm({ category, onComplete }: Props) {
         question={currentQuestion}
         onComplete={onComplete}
         isEmbedded
+        transitionPage={transitionPage}
+        noPrevQuestion={noPrevQuestion}
+        noNextQuestion={noNextQuestion}
+        gotoPrevQuestion={gotoPrevQuestion}
+        gotoNextQuestion={gotoNextQuestion}
       />
     </motion.div>
   )

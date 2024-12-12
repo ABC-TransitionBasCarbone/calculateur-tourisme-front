@@ -12,7 +12,7 @@ import {
 import Button from '@/design-system/inputs/Button'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useMagicKey } from '@/hooks/useMagicKey'
-import { useCurrentSimulation, useForm, useRule } from '@/publicodes-state'
+import { useCurrentSimulation, useRule } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { MouseEvent, useCallback, useMemo } from 'react'
@@ -24,16 +24,23 @@ export default function Navigation({
   tempValue,
   onComplete = () => '',
   isEmbedded,
+  gotoPrevQuestion,
+  gotoNextQuestion,
+  noPrevQuestion,
+  noNextQuestion,
+  transitionPage,
 }: {
   question: DottedName
   tempValue?: number
   onComplete?: () => void
   isEmbedded?: boolean
+  gotoPrevQuestion: () => string | undefined
+  gotoNextQuestion: () => string | undefined
+  noPrevQuestion: boolean
+  noNextQuestion: boolean
+  transitionPage?: string
 }) {
   const { t } = useClientTranslation()
-
-  const { gotoPrevQuestion, gotoNextQuestion, noPrevQuestion, noNextQuestion } =
-    useForm()
 
   const { isMissing, plancher, value } = useRule(question)
 
@@ -154,7 +161,7 @@ export default function Navigation({
           onClick={handleGoToNextQuestion}>
           {noNextQuestion
             ? t('Terminer')
-            : isMissing
+            : isMissing && !transitionPage
               ? t('Passer la question') + ' →'
               : t('Suivant') + ' →'}
         </Button>

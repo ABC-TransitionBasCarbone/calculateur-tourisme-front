@@ -27,6 +27,8 @@ export default function useForm() {
     noNextQuestion,
     isFirstQuestionOfCategory,
     isLastQuestionOfCategory,
+    transitionPage,
+    setTransitionPage,
   } = useNavigation({
     remainingQuestions,
     relevantQuestions,
@@ -51,6 +53,8 @@ export default function useForm() {
      * The category of the current question
      */
     currentCategory,
+    transitionPage,
+    setTransitionPage,
     /**
      * Setter for the current question
      */

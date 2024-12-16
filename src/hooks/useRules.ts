@@ -6,7 +6,6 @@ import {
   keepPreviousData,
   useQuery,
 } from '@tanstack/react-query'
-import { useLocale } from './useLocale'
 
 type Props = {
   isOptim?: boolean
@@ -20,7 +19,7 @@ export function useRules(
     region: 'FR',
   }
 ): UseQueryResult<NGCRules, Error> {
-  const locale = useLocale()
+  const locale = 'fr'
   const { user } = useUser()
 
   const regionCode =

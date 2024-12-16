@@ -27,13 +27,8 @@ export default function useNavigation({
   )
 
   const noPrevQuestion = useMemo<boolean>(
-    () => transitionPage === getNamespace(relevantQuestions[0]),
-    [relevantQuestions, transitionPage]
-  )
-
-  const noNextQuestion = useMemo<boolean>(
-    () => !relevantQuestions[currentQuestionIndex + 1] && !transitionPage,
-    [relevantQuestions, currentQuestionIndex, transitionPage]
+    () => currentQuestion === relevantQuestions[0] && !transitionPage,
+    [relevantQuestions, currentQuestion, transitionPage]
   )
 
   const isLastQuestionOfCategory = useMemo<boolean>(
@@ -42,6 +37,14 @@ export default function useNavigation({
       currentQuestionNamespace,
     [currentQuestionNamespace, currentQuestionIndex, relevantQuestions]
   )
+
+  const noNextQuestion = useMemo<boolean>(
+    () =>
+      (!relevantQuestions[currentQuestionIndex + 1] && transitionPage === getNamespace(relevantQuestions[relevantQuestions.length - 1])),
+    [relevantQuestions, currentQuestionIndex, transitionPage]
+  );
+
+
 
   const isFirstQuestionOfCategory = useMemo<boolean>(
     () =>
@@ -52,51 +55,54 @@ export default function useNavigation({
 
   const gotoPrevQuestion = (): string | undefined => {
     if (noPrevQuestion) {
-      return undefined
+      return undefined;
     }
 
-    const newCurrentQuestion = relevantQuestions[currentQuestionIndex - 1]
-
-    const currentCategory = getNamespace(relevantQuestions[currentQuestionIndex]);
-    const nextCategory = getNamespace(newCurrentQuestion);
-
-    // Si la catégorie change, redirige vers une page intermédiaire
-    if (!transitionPage && currentCategory !== nextCategory) {
-      setTransitionPage(currentCategory);
-      return;
-    }
-
-    if (transitionPage) {
-      setTransitionPage(undefined)
-    }
-
-    setCurrentQuestion(newCurrentQuestion)
-
-    return newCurrentQuestion
-  }
-  const gotoNextQuestion = (): string | undefined => {
-    if (noNextQuestion) {
-      return undefined
-    }
     if (transitionPage) {
       setTransitionPage(undefined);
       return;
     }
-
-    const newCurrentQuestion = relevantQuestions[currentQuestionIndex + 1]
+    const newCurrentQuestion = relevantQuestions[currentQuestionIndex - 1];
 
     const currentCategory = getNamespace(relevantQuestions[currentQuestionIndex]);
     const nextCategory = getNamespace(newCurrentQuestion);
-
-    // Si la catégorie change, redirige vers une page intermédiaire
+    // Si on revient à une autre catégorie, afficher une page de transition
     if (!transitionPage && currentCategory !== nextCategory) {
       setTransitionPage(nextCategory);
     }
 
-    setCurrentQuestion(newCurrentQuestion)
+    setCurrentQuestion(newCurrentQuestion);
 
-    return newCurrentQuestion
-  }
+    return newCurrentQuestion;
+  };
+
+  const gotoNextQuestion = (): string | undefined => {
+    if (noNextQuestion) {
+      return undefined;
+    }
+
+    // Si on est sur une page de transition, passer à la première question de la nouvelle catégorie
+    if (transitionPage) {
+      setTransitionPage(undefined); // Réinitialiser la page de transition
+      const newCurrentQuestion = relevantQuestions[currentQuestionIndex + 1];
+      setCurrentQuestion(newCurrentQuestion); // Passer à la première question de la nouvelle catégorie
+      return newCurrentQuestion;
+    }
+
+    const newCurrentQuestion = relevantQuestions[currentQuestionIndex + 1];
+    const currentCategory = getNamespace(relevantQuestions[currentQuestionIndex]);
+
+    // Affiche une page de transition à la fin de la catégorie actuelle
+    if (isLastQuestionOfCategory) {
+      setTransitionPage(currentCategory); // Transition pour la catégorie actuelle
+      return;
+    }
+
+    setCurrentQuestion(newCurrentQuestion); // Passer à la question suivante
+
+    return newCurrentQuestion;
+  };
+
 
   return {
     transitionPage,

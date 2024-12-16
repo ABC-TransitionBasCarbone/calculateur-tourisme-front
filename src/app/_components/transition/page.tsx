@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const TransitionPage = ({ transitionPage }: { transitionPage: string }) => {
+  const [title, setTitle] = useState<string>("")
+
   useEffect(() => {
     if (transitionPage === 'transport') {
       const script = document.createElement('script');
@@ -17,17 +19,22 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
         console.error("Conteneur non trouvé");
       }
 
+      setTitle("Quelques ordres de grandeur pour comparaison :")
+
       return () => {
         if (target) {
           target.innerHTML = '';
         }
       };
+    } else {
+      setTitle(transitionPage);
     }
+
   }, [transitionPage]);
 
   return (
     <div>
-      <div>{transitionPage}</div>
+      <div>{title}</div>
       <div id="impact-co2-container"></div>
     </div>
   );

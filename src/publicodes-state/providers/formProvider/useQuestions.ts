@@ -1,4 +1,4 @@
-import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
+import { DottedName, NGCRuleNode } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { EvaluatedNode, PublicodesExpression } from 'publicodes'
 import { useMemo } from 'react'
 import getIsMissing from '../../helpers/getIsMissing'
@@ -9,6 +9,7 @@ import { Entries, MissingVariables, Situation } from '../../types'
 type Props = {
   root: DottedName
   safeEvaluate: (rule: PublicodesExpression) => EvaluatedNode | null
+  safeGetRule: (rule: DottedName) => NGCRuleNode | undefined
   categories: DottedName[]
   subcategories: DottedName[]
   situation: Situation
@@ -24,6 +25,7 @@ type Props = {
 export default function useQuestions({
   root,
   safeEvaluate,
+  safeGetRule,
   categories,
   subcategories,
   situation,
@@ -84,6 +86,7 @@ export default function useQuestions({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       safeEvaluate,
+      safeGetRule,
       root,
       everyQuestions,
       situation,
@@ -111,12 +114,12 @@ export default function useQuestions({
         )
       )
 
-    // then we sort them by category, subcategory and missing variables
     return getSortedQuestionsList({
       questions: questionsToSort,
       categories,
       subcategories,
       missingVariables,
+      safeGetRule
     })
   }, [
     everyQuestions,
@@ -124,6 +127,7 @@ export default function useQuestions({
     foldedSteps,
     missingVariables,
     categories,
+    safeGetRule,
     subcategories,
   ])
 
@@ -191,8 +195,9 @@ export default function useQuestions({
       categories,
       subcategories,
       missingVariables,
+      safeGetRule
     })
-  }, [categories, missingVariables, subcategories, tempRelevantQuestions])
+  }, [categories, missingVariables, subcategories, tempRelevantQuestions, safeGetRule])
 
   const questionsByCategories = useMemo(
     () =>

@@ -1,6 +1,6 @@
 import getNamespace from '@/publicodes-state/helpers/getNamespace'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 type Props = {
   remainingQuestions: DottedName[]
@@ -10,12 +10,13 @@ type Props = {
 }
 
 export default function useNavigation({
-  remainingQuestions,
   relevantQuestions,
   currentQuestion,
   setCurrentQuestion,
 }: Props) {
-  const currentQuestionNamespace = useMemo(
+  const [transitionPage, setTransitionPage] = useState<string | undefined>(undefined);
+
+  const currentQuestionNamespace = useMemo<string | undefined>(
     () => getNamespace(currentQuestion),
     [currentQuestion]
   )
@@ -26,15 +27,8 @@ export default function useNavigation({
   )
 
   const noPrevQuestion = useMemo<boolean>(
-    () => currentQuestionIndex === 0,
-    [currentQuestionIndex]
-  )
-  const noNextQuestion = useMemo<boolean>(
-    () =>
-      remainingQuestions.length === 0 ||
-      (remainingQuestions.length === 1 &&
-        remainingQuestions[0] === currentQuestion),
-    [currentQuestion, remainingQuestions]
+    () => currentQuestion === relevantQuestions[0] && !transitionPage,
+    [relevantQuestions, currentQuestion, transitionPage]
   )
 
   const isLastQuestionOfCategory = useMemo<boolean>(
@@ -44,6 +38,14 @@ export default function useNavigation({
     [currentQuestionNamespace, currentQuestionIndex, relevantQuestions]
   )
 
+  const noNextQuestion = useMemo<boolean>(
+    () =>
+      (!relevantQuestions[currentQuestionIndex + 1] && transitionPage === getNamespace(relevantQuestions[relevantQuestions.length - 1])),
+    [relevantQuestions, currentQuestionIndex, transitionPage]
+  );
+
+
+
   const isFirstQuestionOfCategory = useMemo<boolean>(
     () =>
       getNamespace(relevantQuestions[currentQuestionIndex - 1]) !==
@@ -51,32 +53,60 @@ export default function useNavigation({
     [currentQuestionNamespace, currentQuestionIndex, relevantQuestions]
   )
 
-  const gotoPrevQuestion = () => {
+  const gotoPrevQuestion = (): string | undefined => {
     if (noPrevQuestion) {
-      return undefined
+      return undefined;
     }
 
-    const newCurrentQuestion = relevantQuestions[currentQuestionIndex - 1]
+    if (transitionPage) {
+      setTransitionPage(undefined);
+      return;
+    }
+    const newCurrentQuestion = relevantQuestions[currentQuestionIndex - 1];
 
-    setCurrentQuestion(newCurrentQuestion)
+    const currentCategory = getNamespace(relevantQuestions[currentQuestionIndex]);
+    const nextCategory = getNamespace(newCurrentQuestion);
+    // Si on revient à une autre catégorie, afficher une page de transition
+    if (!transitionPage && currentCategory !== nextCategory) {
+      setTransitionPage(nextCategory);
+    }
 
-    return newCurrentQuestion
-  }
+    setCurrentQuestion(newCurrentQuestion);
 
-  const gotoNextQuestion = () => {
+    return newCurrentQuestion;
+  };
+
+  const gotoNextQuestion = (): string | undefined => {
     if (noNextQuestion) {
-      return undefined
+      return undefined;
     }
 
-    const newCurrentQuestion =
-      relevantQuestions[currentQuestionIndex + 1] || remainingQuestions[0]
+    // Si on est sur une page de transition, passer à la première question de la nouvelle catégorie
+    if (transitionPage) {
+      setTransitionPage(undefined); // Réinitialiser la page de transition
+      const newCurrentQuestion = relevantQuestions[currentQuestionIndex + 1];
+      setCurrentQuestion(newCurrentQuestion); // Passer à la première question de la nouvelle catégorie
+      return newCurrentQuestion;
+    }
 
-    setCurrentQuestion(newCurrentQuestion)
+    const newCurrentQuestion = relevantQuestions[currentQuestionIndex + 1];
+    const currentCategory = getNamespace(relevantQuestions[currentQuestionIndex]);
 
-    return newCurrentQuestion
-  }
+    // Affiche une page de transition à la fin de la catégorie actuelle
+    if (isLastQuestionOfCategory) {
+      setTransitionPage(currentCategory); // Transition pour la catégorie actuelle
+      return;
+    }
+
+    setCurrentQuestion(newCurrentQuestion); // Passer à la question suivante
+
+    return newCurrentQuestion;
+  };
+
 
   return {
+    transitionPage,
+    setTransitionPage,
     gotoPrevQuestion,
     gotoNextQuestion,
     noPrevQuestion,

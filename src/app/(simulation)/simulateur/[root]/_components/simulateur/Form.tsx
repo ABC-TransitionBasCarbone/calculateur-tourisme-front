@@ -18,6 +18,7 @@ import { useContext, useEffect, useState } from 'react'
 import CategoriesSummary from './form/CategoriesSummary'
 import FunFact from './form/FunFact'
 import CategoryIllustration from './summary/CategoryIllustration'
+import { TransitionPage } from '@/app/_components/transition/page'
 
 export default function Form() {
   const isDebug = useDebug()
@@ -25,11 +26,18 @@ export default function Form() {
   const { progression, id } = useCurrentSimulation()
 
   const {
+    transitionPage,
+    setTransitionPage,
     remainingQuestions,
     relevantAnsweredQuestions,
     currentQuestion,
     setCurrentQuestion,
+    relevantQuestions,
     currentCategory,
+    noPrevQuestion,
+    noNextQuestion,
+    gotoPrevQuestion,
+    gotoNextQuestion,
   } = useForm()
 
   const { questionInQueryParams, setQuestionInQueryParams } =
@@ -76,24 +84,20 @@ export default function Form() {
 
   useEffect(() => {
     if (!isInitialized) {
+      let nextCurrentQuestion;
       if (
         questionInQueryParams &&
         (relevantAnsweredQuestions.includes(questionInQueryParams) || isDebug)
       ) {
-        setCurrentQuestion(questionInQueryParams)
+        nextCurrentQuestion = questionInQueryParams
       } else {
-        setCurrentQuestion(remainingQuestions[0])
+        nextCurrentQuestion = remainingQuestions[0]
       }
+
+      setCurrentQuestion(nextCurrentQuestion);
       setIsInitialized(true)
     }
-  }, [
-    isDebug,
-    questionInQueryParams,
-    remainingQuestions,
-    relevantAnsweredQuestions,
-    setCurrentQuestion,
-    isInitialized,
-  ])
+  }, [isDebug, relevantQuestions, questionInQueryParams, remainingQuestions, relevantAnsweredQuestions, setCurrentQuestion, isInitialized, setTransitionPage])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -119,12 +123,15 @@ export default function Form() {
       <ContentLarge>
         <div className="relative flex flex-1 flex-col gap-2 md:gap-8 lg:mt-0 lg:flex-row lg:gap-24">
           <div className="relative flex flex-1 flex-col">
-            <QuestionComponent
-              question={currentQuestion}
-              key={currentQuestion}
-              tempValue={tempValue}
-              setTempValue={setTempValue}
-            />
+            {transitionPage
+              ? <TransitionPage transitionPage={transitionPage} />
+              : <QuestionComponent
+                question={currentQuestion}
+                key={currentQuestion}
+                tempValue={tempValue}
+                setTempValue={setTempValue}
+              />
+            }
           </div>
 
           <div
@@ -141,6 +148,11 @@ export default function Form() {
       </ContentLarge>
 
       <Navigation
+        transitionPage={transitionPage}
+        noPrevQuestion={noPrevQuestion}
+        noNextQuestion={noNextQuestion}
+        gotoPrevQuestion={gotoPrevQuestion}
+        gotoNextQuestion={gotoNextQuestion}
         question={currentQuestion}
         tempValue={tempValue}
         onComplete={() => {

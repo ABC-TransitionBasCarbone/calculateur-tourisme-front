@@ -58,18 +58,17 @@ export default function useNavigation({
       return undefined;
     }
 
+    if (transitionPage) {
+      setTransitionPage(undefined);
+      return;
+    }
     const newCurrentQuestion = relevantQuestions[currentQuestionIndex - 1];
 
     const currentCategory = getNamespace(relevantQuestions[currentQuestionIndex]);
     const nextCategory = getNamespace(newCurrentQuestion);
-
     // Si on revient à une autre catégorie, afficher une page de transition
     if (!transitionPage && currentCategory !== nextCategory) {
       setTransitionPage(nextCategory);
-    }
-
-    if (transitionPage) {
-      setTransitionPage(undefined);
     }
 
     setCurrentQuestion(newCurrentQuestion);

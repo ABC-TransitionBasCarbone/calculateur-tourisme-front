@@ -2,7 +2,6 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { getRules } from '@/helpers/modelFetching/getRules'
 import { getSupportedRegions } from '@/helpers/modelFetching/getSupportedRegions'
-import { currentLocale } from 'next-i18n-router'
 import DocumentationRouter from './_components/DocumentationRouter'
 import DocumentationServer from './_components/documentationRouter/DocumentationServer'
 
@@ -33,7 +32,7 @@ export default async function DocumentationPage({
 }: {
   params: { slug: string[] }
 }) {
-  const locale = currentLocale()
+  const locale = 'fr'
 
   const supportedRegions = getSupportedRegions()
 

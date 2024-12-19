@@ -1,5 +1,4 @@
 import Trans from '@/components/translation/Trans'
-import Emoji from '@/design-system/utils/Emoji'
 import { useRule } from '@/publicodes-state'
 
 export default function DishesNumberInfo() {
@@ -7,28 +6,30 @@ export default function DishesNumberInfo() {
     'ui . nombre de repas par semaine'
   )
 
+  const travelTimeRule = useRule('transport . voyageurs . duree')
+
   return (
     <>
       <div aria-live="polite" className="mb-2 text-center text-sm">
-        {totalNumberOfPlats !== 14 ? (
+        {travelTimeRule.value && (
           <span className="text-red-700">
-            <Trans>Vous avez sélectionné</Trans>{' '}
-            <strong>{totalNumberOfPlats}</strong>{' '}
+            <Trans>Vous avez dit rester </Trans>
             <strong>
-              <Trans>repas</Trans>
+              <strong>{+travelTimeRule.value}</strong>{' '}
             </strong>{' '}
-            <Trans>sur les 14 habituels</Trans> <Emoji>🍽️</Emoji>
-          </span>
-        ) : null}
-        {totalNumberOfPlats === 14 ? (
-          <span>
-            <strong>{totalNumberOfPlats}</strong>{' '}
+            <Trans>jours, êtes vous sûr de vouloir renseigner </Trans>
             <strong>
-              <Trans>repas</Trans>
+              <strong>
+                {totalNumberOfPlats < 2 * +travelTimeRule.value
+                  ? `moins de ${2 * +travelTimeRule.value}`
+                  : `plus de ${2 * +travelTimeRule.value}`}
+              </strong>{' '}
             </strong>{' '}
-            <Trans>par semaine, miam</Trans> <Emoji>😋</Emoji>
+            <Trans>
+              repas (soit {totalNumberOfPlats < 2 * +travelTimeRule.value ? 'moins' : 'plus'} de 2 repas par jour).
+            </Trans>
           </span>
-        ) : null}
+        )}
       </div>
     </>
   )

@@ -11,7 +11,7 @@ export default function DishesNumberInfo() {
   return (
     <>
       <div aria-live="polite" className="mb-2 text-center text-sm">
-        {travelTime !== 0 && (
+        {travelTime !== 0 && totalNumberOfPlats !== 2 * travelTime && (
           <span className="text-red-700">
             <Trans>Vous avez dit rester </Trans>
             <strong>

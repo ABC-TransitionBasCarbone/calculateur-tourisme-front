@@ -56,10 +56,26 @@ export default function Question({
     activeNotifications,
     plancher,
     warning,
+    questionPassee,
+    descriptionPassee,
+    questionDependante
   } = useRule(question)
 
-  // It should happen only on mount (the component remount every time the question changes)
-  const prevQuestion = useRef('')
+  //TODO: A voir pour conditionner la regle
+  const dependanteRule = useRule(questionDependante || '');
+
+  const isPast = dependanteRule?.value || false;
+
+  let questionLabel = label;
+  let questionDescription = description;
+
+  if (isPast && questionPassee && descriptionPassee) {
+    questionLabel = questionPassee;
+    questionDescription = descriptionPassee;
+  }
+
+  // Hook non conditionnel
+  const prevQuestion = useRef('');
 
   useEffect(() => {
     if (type !== 'number') {
@@ -79,7 +95,7 @@ export default function Question({
     <>
       <div className={twMerge('mb-6 flex flex-col items-start', className)}>
         <Category question={question} />
-        <Label question={question} label={label} description={description} />
+        <Label question={question} label={questionLabel} description={questionDescription} />
 
         <Suggestions
           question={question}

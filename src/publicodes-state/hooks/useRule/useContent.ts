@@ -50,6 +50,16 @@ export default function useContent({ dottedName, rule }: Props) {
     [rule]
   )
 
+  const questionPassee = useMemo<DottedName | undefined>(
+    () => rule?.rawNode['question-passee'],
+    [rule]
+  )
+
+  const descriptionPassee = useMemo<DottedName | undefined>(
+    () => rule?.rawNode['description-passee'],
+    [rule]
+  )
+
   const plancher = useMemo<number>(() => rule?.rawNode['plancher'] ?? 0, [rule])
 
   const warning = useMemo<string | undefined>(
@@ -104,5 +114,7 @@ export default function useContent({ dottedName, rule }: Props) {
     plancher,
     warning,
     actions,
+    questionPassee,
+    descriptionPassee
   }
 }

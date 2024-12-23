@@ -90,7 +90,6 @@ export default function useRule(
     actions,
     questionPassee,
     descriptionPassee,
-    questionDependante
   } = useContent({
     dottedName,
     rule,
@@ -239,9 +238,5 @@ export default function useRule(
      * A different description used in certain cases
      */
     descriptionPassee,
-    /**
-     * Question on which current question depends to display or not Pass question and past description
-     */
-    questionDependante,
   }
 }

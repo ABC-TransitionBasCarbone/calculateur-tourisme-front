@@ -60,12 +60,6 @@ export default function useContent({ dottedName, rule }: Props) {
     [rule]
   )
 
-  const questionDependante = useMemo<DottedName | undefined>(
-    () => rule?.rawNode['question-dependante'] as DottedName,
-    [rule]
-  )
-
-
   const plancher = useMemo<number>(() => rule?.rawNode['plancher'] ?? 0, [rule])
 
   const warning = useMemo<string | undefined>(
@@ -121,7 +115,6 @@ export default function useContent({ dottedName, rule }: Props) {
     warning,
     actions,
     questionPassee,
-    descriptionPassee,
-    questionDependante
+    descriptionPassee
   }
 }

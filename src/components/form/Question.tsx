@@ -58,11 +58,9 @@ export default function Question({
     warning,
     questionPassee,
     descriptionPassee,
-    questionDependante
   } = useRule(question)
 
-  //TODO: A voir pour conditionner la regle
-  const dependanteRule = useRule(questionDependante || '');
+  const dependanteRule = useRule('transport . passé');
 
   const isPast = dependanteRule?.value || false;
 

@@ -32,6 +32,32 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
                 title="Quelques ordres de grandeur pour comparaison :"
               />
             );
+          case 'logement':
+            return (
+              <div>
+                <div>Quelques ordres de grandeur pour comparaison</div>
+                <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                  <img
+                    src="/images/illustrations/logement.png"
+                    alt=""
+                    style={{ maxWidth: '100%', height: 'auto' }}
+                  />
+                </div>
+              </div>
+            )
+          case 'divers':
+            return (
+              <div>
+                <div>Quelques ordres de grandeur pour comparaison</div>
+                <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                  <img
+                    src="/images/illustrations/divers.png"
+                    alt=""
+                    style={{ maxWidth: '100%', height: 'auto' }}
+                  />
+                </div>
+              </div>
+            )
           default:
             return <div>{title}</div>;
         }

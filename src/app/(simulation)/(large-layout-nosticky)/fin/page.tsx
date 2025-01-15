@@ -42,7 +42,7 @@ export default function FinPage() {
 
   return (
     <div className="relative">
-      <ImpactCO2Module src="https://impactco2.fr/iframe.js" dataType="quiz" dataSearch="?&language=fr&theme=default" name="impact-co2" title=""/>
+      <ImpactCO2Module src="https://impactco2.fr/iframe.js" dataType="quiz" dataSearch="?&language=fr&theme=default" name="impact-co2"/>
       <IframeDataShareModal />
 
       <Poll />

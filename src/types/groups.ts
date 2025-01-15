@@ -1,5 +1,4 @@
 import { Simulation } from '@/publicodes-state/types'
-import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export type Participant = {
   _id: string
@@ -20,28 +19,4 @@ export type Group = {
     email?: string
     userId: string
   }
-}
-
-export type ValueObject = {
-  name: DottedName
-  value: number
-  mean?: number
-  difference?: number
-  isCategory?: boolean
-}
-
-export type CategoriesAndSubcategoriesFootprintsType = {
-  [key in DottedName]: ValueObject
-}
-
-export type PointsFortsFaiblesType = {
-  key: string
-  resultObject: ValueObject
-}
-
-export type Results = {
-  currentUserCategoriesAndSubcategoriesFootprints: CategoriesAndSubcategoriesFootprintsType
-  groupCategoriesAndSubcategoriesFootprints: CategoriesAndSubcategoriesFootprintsType
-  pointsForts: PointsFortsFaiblesType[]
-  pointsFaibles: PointsFortsFaiblesType[]
 }

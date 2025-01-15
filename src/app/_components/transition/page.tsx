@@ -10,6 +10,7 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
 
   return (
     <div>
+      <div>Quelques ordres de grandeur pour comparaison :</div>
       {(() => {
         switch (transitionPage) {
           case 'transport':
@@ -19,7 +20,6 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
                 dataType="transport"
                 dataSearch="?theme=default&language=fr&km=100&defaultMode=list"
                 name="impact-co2"
-                title="Quelques ordres de grandeur pour comparaison :"
               />
             );
           case 'alimentation':
@@ -29,13 +29,11 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
                 dataType="/alimentation"
                 dataSearch="?alimentationCategory=group&theme=default&language=fr"
                 name="impact-co2"
-                title="Quelques ordres de grandeur pour comparaison :"
               />
             );
           case 'logement':
             return (
               <div>
-                <div>Quelques ordres de grandeur pour comparaison</div>
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
                   <img
                     src="/images/illustrations/logement.png"
@@ -48,7 +46,6 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
           case 'divers':
             return (
               <div>
-                <div>Quelques ordres de grandeur pour comparaison</div>
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
                   <img
                     src="/images/illustrations/divers.png"

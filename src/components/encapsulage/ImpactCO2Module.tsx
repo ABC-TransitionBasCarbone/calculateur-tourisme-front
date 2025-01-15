@@ -5,15 +5,13 @@ interface ImpactCO2ModuleProps {
   dataType: string;
   dataSearch: string;
   name: string;
-  title: string;
 }
 
 export const ImpactCO2Module = ({
                                 src,
                                 dataType,
                                 dataSearch,
-                                name,
-                                title }: ImpactCO2ModuleProps) => {
+                                name }: ImpactCO2ModuleProps) => {
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -39,7 +37,6 @@ export const ImpactCO2Module = ({
 
   return (
     <div>
-      <div>{title}</div>
       <div id="impact-co2-container"></div>
     </div>
   );

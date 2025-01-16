@@ -88,6 +88,8 @@ export default function useRule(
     suggestions,
     excerpt,
     actions,
+    questionPassee,
+    descriptionPassee,
   } = useContent({
     dottedName,
     rule,
@@ -228,5 +230,13 @@ export default function useRule(
      * A list of actions linked to the rules (only used by "ui . pédagogie" rules)
      */
     actions,
+    /**
+     * A different question used in certain cases
+     */
+    questionPassee,
+    /**
+     * A different description used in certain cases
+     */
+    descriptionPassee,
   }
 }

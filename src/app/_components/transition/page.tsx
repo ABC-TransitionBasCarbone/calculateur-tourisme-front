@@ -1,41 +1,64 @@
 import React, { useEffect, useState } from 'react';
+import { ImpactCO2Module } from '@/components/encapsulage/ImpactCO2Module'
 
 export const TransitionPage = ({ transitionPage }: { transitionPage: string }) => {
   const [title, setTitle] = useState<string>("")
 
   useEffect(() => {
-    if (transitionPage === 'transport') {
-      const script = document.createElement('script');
-      script.src = "https://impactco2.fr/iframe.js";
-      script.async = true;
-      script.setAttribute('data-type', 'transport');
-      script.setAttribute('data-search', '?theme=default&language=fr&km=100&defaultMode=list');
-      script.setAttribute('name', 'impact-co2');
-
-      const target = document.getElementById('impact-co2-container');
-      if (target) {
-        target.appendChild(script);
-      } else {
-        console.error("Conteneur non trouvé");
-      }
-
-      setTitle("Quelques ordres de grandeur pour comparaison :")
-
-      return () => {
-        if (target) {
-          target.innerHTML = '';
-        }
-      };
-    } else {
-      setTitle(transitionPage);
-    }
-
+    setTitle(transitionPage);
   }, [transitionPage]);
 
   return (
     <div>
-      <div>{title}</div>
-      <div id="impact-co2-container"></div>
+      <div>Quelques ordres de grandeur pour comparaison :</div>
+      {(() => {
+        switch (transitionPage) {
+          case 'transport':
+            return (
+              <ImpactCO2Module
+                src="https://impactco2.fr/iframe.js"
+                dataType="transport"
+                dataSearch="?theme=default&language=fr&km=100&defaultMode=list"
+                name="impact-co2"
+              />
+            );
+          case 'alimentation':
+            return (
+              <ImpactCO2Module
+                src="https://impactco2.fr/iframe.js"
+                dataType="/alimentation"
+                dataSearch="?alimentationCategory=group&theme=default&language=fr"
+                name="impact-co2"
+              />
+            );
+          case 'logement':
+            return (
+              <div>
+                <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                  <img
+                    src="/images/illustrations/logement.png"
+                    alt=""
+                    style={{ maxWidth: '100%', height: 'auto' }}
+                  />
+                </div>
+              </div>
+            )
+          case 'divers':
+            return (
+              <div>
+                <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                  <img
+                    src="/images/illustrations/divers.png"
+                    alt=""
+                    style={{ maxWidth: '100%', height: 'auto' }}
+                  />
+                </div>
+              </div>
+            )
+          default:
+            return <div>{title}</div>;
+        }
+      })()}
     </div>
   );
 };

@@ -21,6 +21,7 @@ import InformationBlock from './_components/InformationBlock'
 import Poll from './_components/Poll'
 import ShareBlock from './_components/ShareBlock'
 import FinPageSkeleton from './skeleton'
+import { ImpactCO2Module } from '@/components/encapsulage/ImpactCO2Module'
 
 const titles: Record<Metric, ReactElement> = {
   [carboneMetric]: <Trans>carbone</Trans>,
@@ -41,6 +42,7 @@ export default function FinPage() {
 
   return (
     <div className="relative">
+      <ImpactCO2Module src="https://impactco2.fr/iframe.js" dataType="quiz" dataSearch="?&language=fr&theme=default" name="impact-co2"/>
       <IframeDataShareModal />
 
       <Poll />

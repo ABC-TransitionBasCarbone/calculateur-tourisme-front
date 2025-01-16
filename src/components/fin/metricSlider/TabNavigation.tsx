@@ -2,7 +2,6 @@
 
 import Trans from '@/components/translation/Trans'
 import { carboneMetric, eauMetric } from '@/constants/metric'
-import Badge from '@/design-system/layout/Badge'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useCurrentMetric } from '@/hooks/useCurrentMetric'
 import { Metric } from '@/publicodes-state/types'
@@ -17,19 +16,21 @@ const carboneTabClasses: Record<Metric, string> = {
   [carboneMetric]: tabSelectedClasses,
   [eauMetric]: tabNotSelectedClasses,
 }
+/*
 const eauTabClasses: Record<Metric, string> = {
   [carboneMetric]: tabNotSelectedClasses,
   [eauMetric]: tabSelectedClasses,
 }
+*/
 
 const carboneLabelClasses: Record<Metric, string> = {
   [carboneMetric]: 'font-black text-secondary-700',
   [eauMetric]: 'font-medium',
 }
-const eauLabelClasses: Record<Metric, string> = {
+/*const eauLabelClasses: Record<Metric, string> = {
   [carboneMetric]: 'font-medium',
   [eauMetric]: 'font-black text-secondary-700',
-}
+}*/
 
 type Props = {
   isSticky?: boolean
@@ -39,7 +40,6 @@ type Props = {
 export default function TabNavigation({
   isSticky,
   isStatic,
-  shouldShowWater,
 }: Props) {
   const { t } = useClientTranslation()
 
@@ -70,7 +70,7 @@ export default function TabNavigation({
             <Trans>carbone</Trans>
           </strong>
         </button>
-        {shouldShowWater && (
+        {/*{shouldShowWater && (
           <button
             aria-label={t('Mon empreinte eau')}
             onClick={() => setCurrentMetric(eauMetric)}
@@ -95,7 +95,7 @@ export default function TabNavigation({
               BETA
             </Badge>
           </button>
-        )}
+        )}*/}
       </div>
       {!isStatic && <HeadingButtons />}
     </div>

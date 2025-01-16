@@ -1,5 +1,4 @@
 import Trans from '@/components/translation/Trans'
-import Badge from '@/design-system/layout/Badge'
 import Buttons from './heading/Buttons'
 import Icons from './heading/Icons'
 import Partners from './heading/Partners'
@@ -26,7 +25,7 @@ export default async function Heading() {
             </strong>
             .
           </p>
-          <p className="mb-6 md:mb-8 md:text-2xl">
+          {/*<p className="mb-6 md:mb-8 md:text-2xl">
             <Badge
               tag="span"
               color="secondary"
@@ -39,7 +38,7 @@ export default async function Heading() {
               <Trans>empreinte eau</Trans>
             </strong>{' '}
             <Trans>à la fin du test !</Trans>
-          </p>
+          </p>*/}
           <Buttons />
         </div>
       </div>

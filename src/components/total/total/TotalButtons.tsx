@@ -32,7 +32,7 @@ export default function TotalButtons({
           <Trans>Liste des questions</Trans>
         </span>
       </Button>
-      {toggleSaveModal ? (
+      {/*{toggleSaveModal ? (
         <Button
           color="text"
           size="sm"
@@ -49,7 +49,7 @@ export default function TotalButtons({
             <Trans>Reprendre plus tard</Trans>
           </span>
         </Button>
-      ) : null}
+      ) : null}*/}
     </div>
   )
 }

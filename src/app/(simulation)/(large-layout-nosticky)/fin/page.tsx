@@ -19,7 +19,6 @@ import FeedbackBanner from './_components/FeedbackBanner'
 import GetResultsByEmail from './_components/GetResultsByEmail'
 import InformationBlock from './_components/InformationBlock'
 import Poll from './_components/Poll'
-import ShareBlock from './_components/ShareBlock'
 import FinPageSkeleton from './skeleton'
 import { ImpactCO2Module } from '@/components/encapsulage/ImpactCO2Module'
 
@@ -78,7 +77,7 @@ export default function FinPage() {
 
           <GetResultsByEmail />
 
-          <ShareBlock />
+          {/*<ShareBlock />*/}
 
           <div id="categories-block">
             <Title tag="h2" className="text-lg lg:text-2xl">

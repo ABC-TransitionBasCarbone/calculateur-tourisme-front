@@ -25,7 +25,6 @@ import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 import Link from '../Link'
 import Logo from '../misc/Logo'
-import LanguageSwitchButton from '../translation/LanguageSwitchButton'
 import Trans from '../translation/Trans'
 
 export default function Footer({ className = '' }) {

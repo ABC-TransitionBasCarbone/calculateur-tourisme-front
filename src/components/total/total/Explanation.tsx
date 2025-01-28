@@ -1,11 +1,9 @@
 'use client'
 
-import Link from '@/components/Link'
 import Trans from '@/components/translation/Trans'
 import Button from '@/design-system/inputs/Button'
 import Badge from '@/design-system/layout/Badge'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
-import { useCurrentSimulation } from '@/publicodes-state'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
@@ -16,7 +14,6 @@ export default function Explanation({
   toggleOpen: () => void
   isFirstToggle: boolean
 }) {
-  const { progression } = useCurrentSimulation()
 
   const { t } = useClientTranslation()
 

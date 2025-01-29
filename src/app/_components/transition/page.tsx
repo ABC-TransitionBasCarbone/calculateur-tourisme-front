@@ -20,6 +20,15 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
               <ImpactCO2Module
                 src="https://impactco2.fr/iframe.js"
                 dataType="transport"
+                dataSearch="?theme=default&language=fr&km=100&defaultMode=list"
+                name="impact-co2"
+              />
+            );
+          case 'séjour':
+            return (
+              <ImpactCO2Module
+                src="https://impactco2.fr/iframe.js"
+                dataType="transport"
                 dataSearch="?theme=default&language=fr&km=10&defaultMode=list&comparison=voiturethermique,autocar&modes=intercites,voiturethermique+1,voiturethermique,voitureelectrique+1,voitureelectrique,autocar,marche,velo,veloelectrique,busthermique,tramway,metro,scooter,moto,rer,buselectrique,trottinette,busgnv"
                 name="impact-co2"
               />

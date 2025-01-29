@@ -116,7 +116,7 @@ export default function Form() {
     return
   }
 
-  const transitionPageAuthorized = ['transport', 'alimentation', 'logement', 'divers']
+  const transitionPageAuthorized = ['transport', 'alimentation', 'logement', 'divers', 'séjour']
 
   const QuestionComponent = questions[currentQuestion] || Question
 

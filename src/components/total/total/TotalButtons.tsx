@@ -1,11 +1,8 @@
 'use client'
 
 import ListIcon from '@/components/icons/ListIcon'
-import SaveCheckIcon from '@/components/icons/SaveCheckIcon'
-import SaveIcon from '@/components/icons/SaveIcon'
 import Trans from '@/components/translation/Trans'
 import Button from '@/design-system/inputs/Button'
-import { useCurrentSimulation } from '@/publicodes-state'
 
 type Props = {
   toggleQuestionList: () => void
@@ -14,9 +11,7 @@ type Props = {
 
 export default function TotalButtons({
   toggleQuestionList,
-  toggleSaveModal,
 }: Props) {
-  const { savedViaEmail } = useCurrentSimulation()
 
   return (
     <div className="flex">
@@ -32,7 +27,7 @@ export default function TotalButtons({
           <Trans>Liste des questions</Trans>
         </span>
       </Button>
-      {toggleSaveModal ? (
+      {/*{toggleSaveModal ? (
         <Button
           color="text"
           size="sm"
@@ -49,7 +44,7 @@ export default function TotalButtons({
             <Trans>Reprendre plus tard</Trans>
           </span>
         </Button>
-      ) : null}
+      ) : null}*/}
     </div>
   )
 }

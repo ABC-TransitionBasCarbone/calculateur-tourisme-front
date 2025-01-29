@@ -25,7 +25,6 @@ import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 import Link from '../Link'
 import Logo from '../misc/Logo'
-import LanguageSwitchButton from '../translation/LanguageSwitchButton'
 import Trans from '../translation/Trans'
 
 export default function Footer({ className = '' }) {
@@ -152,11 +151,8 @@ export default function Footer({ className = '' }) {
 
           <div className="flex flex-wrap justify-between gap-8 md:flex-row md:flex-nowrap">
             <div>
-              <div className="mt-6 flex flex-wrap items-start justify-between gap-10">
-                <LanguageSwitchButton />
-              </div>
 
-              <div className="mt-4 text-xs">
+              <div className="mt-10 text-xs">
                 <InlineLink
                   href="/accessibilite"
                   className="text-default no-underline hover:underline">

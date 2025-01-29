@@ -10,7 +10,9 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
 
   return (
     <div>
-      <div>Quelques ordres de grandeur pour comparaison :</div>
+      {transitionPage !== 'divers' &&
+        <div>Quelques ordres de grandeur pour comparaison :</div>
+      }
       {(() => {
         switch (transitionPage) {
           case 'transport':
@@ -18,7 +20,7 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
               <ImpactCO2Module
                 src="https://impactco2.fr/iframe.js"
                 dataType="transport"
-                dataSearch="?theme=default&language=fr&km=100&defaultMode=list"
+                dataSearch="?theme=default&language=fr&km=10&defaultMode=list&comparison=voiturethermique,autocar&modes=intercites,voiturethermique+1,voiturethermique,voitureelectrique+1,voitureelectrique,autocar,marche,velo,veloelectrique,busthermique,tramway,metro,scooter,moto,rer,buselectrique,trottinette,busgnv"
                 name="impact-co2"
               />
             );
@@ -36,7 +38,7 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
               <div>
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
                   <img
-                    src="/images/illustrations/logement.png"
+                    src="/images/illustrations/logement-sensibilisation.png"
                     alt=""
                     style={{ maxWidth: '100%', height: 'auto' }}
                   />
@@ -46,13 +48,13 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
           case 'divers':
             return (
               <div>
-                <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                  <img
-                    src="/images/illustrations/divers.png"
-                    alt=""
-                    style={{ maxWidth: '100%', height: 'auto' }}
-                  />
-                </div>
+                <div>Avant de faire vous faire découvrir l’empreinte de votre séjour, nous vous proposons un petit quizz rapide</div>
+                <ImpactCO2Module
+                  src="https://impactco2.fr/iframe.js"
+                  dataType="quiz"
+                  dataSearch="?&language=fr&theme=default"
+                  name="impact-co2"
+                />
               </div>
             )
           default:

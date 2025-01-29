@@ -116,6 +116,8 @@ export default function Form() {
     return
   }
 
+  const transitionPageAuthorized = ['transport', 'alimentation', 'logement', 'divers']
+
   const QuestionComponent = questions[currentQuestion] || Question
 
   return (
@@ -123,7 +125,7 @@ export default function Form() {
       <ContentLarge>
         <div className="relative flex flex-1 flex-col gap-2 md:gap-8 lg:mt-0 lg:flex-row lg:gap-24">
           <div className="relative flex flex-1 flex-col">
-            {transitionPage
+            {transitionPage && transitionPageAuthorized.includes(transitionPage)
               ? <TransitionPage transitionPage={transitionPage} />
               : <QuestionComponent
                 question={currentQuestion}

@@ -38,21 +38,6 @@ export default function AutresQuestions() {
                   Les moyens de transport que nous utilisons, notre alimentation, ce que nous achetons, tout ce qui fait notre vie quotidienne nécessite de l’énergie pour être fabriqué, transporté, utilisé et même pour être traité une fois hors d’usage. Ainsi, nos modes de vie contribuent au réchauffement climatique, c’est un fait. Certains énormément d’autres très peu. C’est pourquoi pour estimer cette contribution il est d’usage de calculer ce qu’on appelle une empreinte carbone.
                 </Trans>
               </p>
-              <Image
-                src="/images/tutoriel/greenhouse-effect.svg"
-                alt="Effet de serre"
-                className="mx-auto w-1/3"
-                width={100}
-                height={100}
-              />
-              <p className="text-sm">
-                <Trans>
-                  Pour estimer sa propre contribution au réchauffement de la
-                  planète (son "impact climat"), il est d'usage de calculer ce
-                  qu'on appelle l'empreinte carbone individuelle de
-                  consommation.
-                </Trans>
-              </p>
             </div>
           </details>
         </li>
@@ -96,31 +81,6 @@ export default function AutresQuestions() {
                   Ce n’est peut-être pas une surprise pour vous mais nos déplacements sont souvent le facteur principal de l’empreinte de notre séjour, surtout s’ils sont faits en voiture. Mais comme nous allons le voir d’autres actes quotidiens pendant notre séjour contribue à notre empreinte. C’est pourquoi, en fin de test nous vous proposerons des pistes d’actions pour la réduire et pour faire en sorte que votre séjour contribue à un tourisme durable.
                 </p>
               </Trans>
-            </div>
-          </details>
-        </li>
-        <li className="mb-4" id={'eau'}>
-          <details id={'eau'} className="text-sm">
-            <summary
-              className="cursor-pointer text-sm font-bold text-primary-700 md:text-lg"
-              onClick={() =>
-                trackEvent(tutorielClickQuestion('D’où vient mon empreinte ?'))
-              }>
-              <Trans>Pourquoi avons-nous ajouté l’empreinte eau ?</Trans>
-            </summary>
-            <div className="my-2 ml-3.5">
-              <p>
-                <Trans>
-                  L’eau est une ressource planétaire précieuse. Comme le climat,{' '}
-                  <strong className="text-secondary-700">
-                    le cycle de l’eau est fortement impacté par les activités
-                    humaines.
-                  </strong>{' '}
-                  Nous avons fait le choix d’ajouter l'empreinte eau à notre
-                  modèle de calcul afin de vous apporter des éléments de
-                  compréhension de cet impact.
-                </Trans>
-              </p>
             </div>
           </details>
         </li>

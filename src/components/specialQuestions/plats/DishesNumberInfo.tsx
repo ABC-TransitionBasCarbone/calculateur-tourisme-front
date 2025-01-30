@@ -6,7 +6,7 @@ export default function DishesNumberInfo() {
     'ui . nombre de repas par semaine'
   )
 
-  const { numericValue: travelTime = 0 } = useRule('transport . voyageurs . duree') ?? {};
+  const { numericValue: travelTime = 0 } = useRule('transport . durée vacances') ?? {};
 
   return (
     <>

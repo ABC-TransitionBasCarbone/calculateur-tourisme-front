@@ -56,7 +56,7 @@ export default function Form() {
 
   useEffect(() => {
     // We show the quiz for 10% of our users
-    const shouldShowQuiz = uuidToNumber(id ?? '') === 0
+    const shouldShowQuiz = false
 
     if (shouldGoToEndPage && progression === 1) {
       trackTimeOnSimulation()

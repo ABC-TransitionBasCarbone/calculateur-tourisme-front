@@ -118,7 +118,7 @@ export default function Question({
         ) : null}
         {isOpen && (
           <>
-            {type === 'number'  && !excludedQuestionsInput.includes(question) && (
+            {type === 'number' && !excludedQuestionsInput.includes(question) && (
               <NumberInput
                 unit={unit}
                 value={setTempValue ? tempValue : numericValue}

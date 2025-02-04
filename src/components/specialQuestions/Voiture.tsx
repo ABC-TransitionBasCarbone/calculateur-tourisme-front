@@ -1,20 +1,15 @@
 import Question from '@/components/form/Question'
-import Trans from '@/components/translation/Trans'
-import Button from '@/design-system/inputs/Button'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
-import { useState } from 'react'
-import PencilIcon from '../icons/PencilIcon'
-import JourneysInput from './voiture/JourneysInput'
 
 type Props = {
   question: DottedName
 }
 export default function Voiture({ question, ...props }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
+  /*const [isOpen, setIsOpen] = useState(false)*/
   return (
     <>
       <Question question={question} className="mb-4" {...props} />
-      <div className="mb-4 flex flex-col items-start">
+      {/*<div className="mb-4 flex flex-col items-start">
         <Button
           color="link"
           size="xs"
@@ -35,7 +30,7 @@ export default function Voiture({ question, ...props }: Props) {
           )}
         </Button>
         {isOpen ? <JourneysInput question={question} {...props} /> : null}
-      </div>
+      </div>*/}
     </>
   )
 }

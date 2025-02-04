@@ -7,7 +7,7 @@ import ContentLarge from '@/components/layout/ContentLarge'
 import questions from '@/components/specialQuestions'
 import { simulationSimulationCompleted } from '@/constants/tracking/simulation'
 import { getBgCategoryColor } from '@/helpers/getCategoryColorClass'
-import { uuidToNumber } from '@/helpers/uuidToNumber'
+// import { uuidToNumber } from '@/helpers/uuidToNumber'
 import { useEndPage } from '@/hooks/navigation/useEndPage'
 import { useTrackTimeOnSimulation } from '@/hooks/tracking/useTrackTimeOnSimulation'
 import { useDebug } from '@/hooks/useDebug'
@@ -56,7 +56,7 @@ export default function Form() {
 
   useEffect(() => {
     // We show the quiz for 10% of our users
-    const shouldShowQuiz = uuidToNumber(id ?? '') === 0
+    const shouldShowQuiz = false
 
     if (shouldGoToEndPage && progression === 1) {
       trackTimeOnSimulation()
@@ -116,6 +116,8 @@ export default function Form() {
     return
   }
 
+  const transitionPageAuthorized = ['transport', 'alimentation', 'logement', 'divers', 'séjour']
+
   const QuestionComponent = questions[currentQuestion] || Question
 
   return (
@@ -123,7 +125,7 @@ export default function Form() {
       <ContentLarge>
         <div className="relative flex flex-1 flex-col gap-2 md:gap-8 lg:mt-0 lg:flex-row lg:gap-24">
           <div className="relative flex flex-1 flex-col">
-            {transitionPage
+            {transitionPage && transitionPageAuthorized.includes(transitionPage)
               ? <TransitionPage transitionPage={transitionPage} />
               : <QuestionComponent
                 question={currentQuestion}

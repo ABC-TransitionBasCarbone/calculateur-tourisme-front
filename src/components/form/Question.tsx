@@ -89,6 +89,9 @@ export default function Question({
 
   const [isOpen, setIsOpen] = useState(showInputsLabel ? false : true)
 
+  const excludedQuestionsInput = ['transport . localisation séjour'];
+
+
   return (
     <>
       <div className={twMerge('mb-6 flex flex-col items-start', className)}>
@@ -115,7 +118,7 @@ export default function Question({
         ) : null}
         {isOpen && (
           <>
-            {type === 'number' && (
+            {type === 'number' && !excludedQuestionsInput.includes(question) && (
               <NumberInput
                 unit={unit}
                 value={setTempValue ? tempValue : numericValue}

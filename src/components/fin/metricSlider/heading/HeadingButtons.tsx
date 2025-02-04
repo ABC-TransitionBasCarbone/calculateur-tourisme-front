@@ -1,20 +1,14 @@
 import SaveIcon from '@/components/icons/SaveIcon'
-import ShareIcon from '@/components/icons/ShareIcon'
 import ToastDisplay from '@/components/messages/ToastDisplay'
 import Trans from '@/components/translation/Trans'
 import {
   endClickSaveShortcut,
-  endClickShareShortcut,
 } from '@/constants/tracking/pages/end'
 import { simulationClickSaveShortcut } from '@/constants/tracking/pages/simulateur'
 import Button from '@/design-system/inputs/Button'
-import { displayErrorToast } from '@/helpers/toasts/displayErrorToast'
-import { displaySuccessToast } from '@/helpers/toasts/displaySuccessToast'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
-import { useEndPageSharedUrl } from '@/hooks/useEndPageSharedUrl'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import isMobile from 'is-mobile'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const sizeClassNames = {
@@ -25,10 +19,10 @@ const saveClassNames = {
   sm: 'h-6 w-6',
   md: 'h-6 w-6',
 }
-const shareClassNames = {
+/*const shareClassNames = {
   sm: 'h-[22px] w-[22px]',
   md: 'h-[22px] w-[22px]',
-}
+}*/
 
 type Props = {
   size?: 'sm' | 'md'
@@ -36,15 +30,15 @@ type Props = {
 }
 
 export default function HeadingButtons({ size = 'md', endPage }: Props) {
-  const { sharedUrl } = useEndPageSharedUrl()
+  /*const { sharedUrl } = useEndPageSharedUrl()
   const [shouldDisplayConfirmMessage, setShouldDisplayConfirmMessage] =
-    useState(false)
+    useState(false)*/
 
   const { t } = useClientTranslation()
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  const handleShare = async () => {
+  /*const handleShare = async () => {
     // Desktop : only copy the url
     if (!navigator?.share || !isMobile()) {
       try {
@@ -99,15 +93,16 @@ export default function HeadingButtons({ size = 'md', endPage }: Props) {
         )
       }
     }
-  }
+  }*/
 
   useEffect(() => {
+    const timeout = timeoutRef.current;
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
+      if (timeout) {
+        clearTimeout(timeout);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   const handleScroll = (id: string, block: ScrollLogicalPosition) => {
     const emailBlock = document.getElementById(id)
@@ -141,7 +136,7 @@ export default function HeadingButtons({ size = 'md', endPage }: Props) {
         </span>
       </Button>
 
-      <Button
+      {/*<Button
         color="text"
         size="sm"
         className={twMerge(
@@ -168,7 +163,7 @@ export default function HeadingButtons({ size = 'md', endPage }: Props) {
             <Trans>Partager</Trans>
           </span>
         )}
-      </Button>
+      </Button>*/}
 
       <ToastDisplay />
     </div>

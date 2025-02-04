@@ -39,9 +39,9 @@ export default async function Tutoriel() {
           title={
             <>
               <span className="inline text-secondary-700">
-                <Trans>10 minutes</Trans>
+                <Trans>5 minutes</Trans>
               </span>{' '}
-              <Trans>chrono pour calculer votre empreinte carbone et eau</Trans>
+              <Trans>chrono pour estimer l’empreinte carbone de votre séjour</Trans>
             </>
           }
         />

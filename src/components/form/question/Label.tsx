@@ -43,7 +43,7 @@ export default function Label({
   className,
   titleClassName,
 }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(question === 'transport . localisation séjour')
 
   const { t } = useClientTranslation()
 

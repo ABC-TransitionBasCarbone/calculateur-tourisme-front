@@ -5,15 +5,12 @@ import Navigation from '@/components/form/Navigation'
 import Question from '@/components/form/Question'
 import ContentLarge from '@/components/layout/ContentLarge'
 import questions from '@/components/specialQuestions'
-import { simulationSimulationCompleted } from '@/constants/tracking/simulation'
 import { getBgCategoryColor } from '@/helpers/getCategoryColorClass'
-// import { uuidToNumber } from '@/helpers/uuidToNumber'
 import { useEndPage } from '@/hooks/navigation/useEndPage'
 import { useTrackTimeOnSimulation } from '@/hooks/tracking/useTrackTimeOnSimulation'
 import { useDebug } from '@/hooks/useDebug'
 import { useQuestionInQueryParams } from '@/hooks/useQuestionInQueryParams'
 import { useCurrentSimulation, useEngine, useForm } from '@/publicodes-state'
-import { trackEvent } from '@/utils/matomo/trackEvent'
 import { useContext, useEffect, useState } from 'react'
 import CategoriesSummary from './form/CategoriesSummary'
 import FunFact from './form/FunFact'
@@ -55,19 +52,11 @@ export default function Form() {
   const [shouldGoToEndPage, setShouldGoToEndPage] = useState(false)
 
   useEffect(() => {
-    // We show the quiz for 10% of our users
-    const shouldShowQuiz = false
 
     if (shouldGoToEndPage && progression === 1) {
       trackTimeOnSimulation()
 
-      if (!shouldShowQuiz) {
-        trackEvent(
-          simulationSimulationCompleted({ bilan: getNumericValue('bilan') })
-        )
-      }
       goToEndPage({
-        shouldShowQuiz,
         allowedToGoToGroupDashboard: true,
       })
     }

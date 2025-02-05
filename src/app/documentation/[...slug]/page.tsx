@@ -5,13 +5,16 @@ import { getSupportedRegions } from '@/helpers/modelFetching/getSupportedRegions
 import { currentLocale } from 'next-i18n-router'
 import DocumentationRouter from './_components/DocumentationRouter'
 import DocumentationServer from './_components/documentationRouter/DocumentationServer'
+import { use } from 'react'
+import { headers } from 'next/headers'
 
-export async function generateMetadata({
-  params: { slug },
-}: {
-  params: { slug: string[] }
-}) {
-  const { t } = await getServerTranslation()
+type Params = Promise<{ slug: string[] }>
+
+export async function generateMetadata({ params }: { params: Params }) {
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
+  const { slug } = await use(params)
 
   return getMetadataObject({
     title: t(
@@ -29,13 +32,14 @@ export async function generateMetadata({
 // The page content is in layout.tsx in order to persist the state
 // between the server and the client
 export default async function DocumentationPage({
-  params: { slug },
-}: {
-  params: { slug: string[] }
+                                                  params,
+                                                }: {
+  params: Params
 }) {
-  const locale = currentLocale()
+  const { slug } = await use(params)
+  const locale = 'fr'
 
-  const supportedRegions = getSupportedRegions()
+  const supportedRegions = await getSupportedRegions()
 
   const rules = await getRules({
     isOptim: false,

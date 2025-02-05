@@ -3,11 +3,18 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { FormProvider } from '@/publicodes-state'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { PropsWithChildren } from 'react'
+import { use } from 'react'
+import { headers } from 'next/headers'
 
-type Props = { params: { root: DottedName } }
-
-export async function generateMetadata({ params }: Props) {
-  const { t } = await getServerTranslation()
+type Params = Promise<{ root: DottedName }>
+type Props = {
+  params: Promise<{ root: DottedName }>
+}
+export async function generateMetadata({ params }: { params: Params }) {
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
+  const { root } = use(params)
 
   return getMetadataObject({
     title: t('Simulateur d’empreinte climat - Nos Gestes Climat'),
@@ -15,11 +22,13 @@ export async function generateMetadata({ params }: Props) {
       'Calculez votre empreinte sur le climat en 10 minutes chrono. Découvrez les gestes qui comptent vraiment pour le climat.'
     ),
     alternates: {
-      canonical: `/simulateur/${params.root}`,
+      canonical: `/simulateur/${root}`,
     },
   })
 }
 
 export default function Layout({ params, children }: PropsWithChildren<Props>) {
-  return <FormProvider root={params.root}>{children}</FormProvider>
+  const { root } = use(params)
+
+  return <FormProvider root={root}>{children}</FormProvider>
 }

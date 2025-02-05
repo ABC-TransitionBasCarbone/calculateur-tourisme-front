@@ -4,9 +4,12 @@ import { getPosts } from '@/helpers/markdown/getPosts'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import Image from 'next/image'
 import ActionPlusList from './_components/ActionPlusList'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
     title: t('Actions, la liste - Nos Gestes Climat'),

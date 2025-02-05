@@ -2,9 +2,12 @@ import Route404 from '@/components/layout/404'
 import Footer from '@/components/layout/Footer'
 import Main from '@/design-system/layout/Main'
 import { getServerTranslation } from '@/helpers/getServerTranslation'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return {
     title: t('404 - Nos Gestes Climat'),

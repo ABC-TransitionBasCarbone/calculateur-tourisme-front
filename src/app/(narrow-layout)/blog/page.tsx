@@ -5,9 +5,12 @@ import Title from '@/design-system/layout/Title'
 import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getPosts } from '@/helpers/markdown/getPosts'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
     title: t('Blog - Nos Gestes Climat'),

@@ -7,9 +7,12 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import Image from 'next/image'
 import Script from 'next/script'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
   return getMetadataObject({
     title: t('Contact - Nos Gestes Climat'),
     description: t("Contactez l'équipe de Nos Gestes Climat."),
@@ -20,7 +23,9 @@ export async function generateMetadata() {
 }
 
 export default async function Contact() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+const { t } = await getServerTranslation(locale)
 
   return (
     <div className="pb-4">

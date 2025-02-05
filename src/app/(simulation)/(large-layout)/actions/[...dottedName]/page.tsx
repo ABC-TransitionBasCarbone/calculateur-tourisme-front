@@ -4,13 +4,17 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import ActionDetail from './_components/ActionDetail'
+import { use } from 'react'
+import { headers } from 'next/headers'
 
-export async function generateMetadata({
-  params: { dottedName },
-}: {
-  params: { dottedName: DottedName[] }
-}) {
-  const { t } = await getServerTranslation()
+type Params = Promise<{ dottedName: DottedName[] }>
+
+export async function generateMetadata({ params }: { params: Params }) {
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+const { t } = await getServerTranslation(locale)
+  const { dottedName } = use(params)
+  const canonicalUrl = `/actions/${dottedName.join('/')}`
 
   return getMetadataObject({
     title: t(
@@ -20,16 +24,13 @@ export async function generateMetadata({
       'Découvrez les actions que vous pouvez mettre en place pour réduire votre empreinte carbone.'
     ),
     alternates: {
-      canonical: `/actions/${dottedName.join('/')}`,
+      canonical: canonicalUrl,
     },
   })
 }
 
-export default function ActionDetailPage({
-  params,
-}: {
-  params: { dottedName: DottedName[] }
-}) {
+export default function ActionDetailPage({ params }: { params: Params }) {
+  const { dottedName } = use(params)
   return (
     <div className="mx-auto max-w-[600px]">
       <ButtonLink
@@ -46,7 +47,7 @@ export default function ActionDetailPage({
         <Trans> Retour à la liste</Trans>
       </ButtonLink>
 
-      <ActionDetail params={params} />
+      <ActionDetail params={{ dottedName }} /> {/* Passage des params à ActionDetail */}
     </div>
   )
 }

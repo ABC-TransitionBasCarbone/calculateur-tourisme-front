@@ -6,9 +6,12 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import ambassadeursYaml from '@/locales/ambassadeurs/fr/ambassadeurs.yaml'
 import Image from 'next/image'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
   return getMetadataObject({
     title: t('Nos relais - Nos Gestes Climat'),
     description: t(
@@ -24,7 +27,9 @@ const ambassadeurs = ambassadeursYaml as any
 const categories = Object.keys(ambassadeurs)
 
 export default async function NosRelais() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+const { t } = await getServerTranslation(locale)
 
   return (
     <div>

@@ -4,9 +4,12 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import ContentEn from '@/locales/pages/en/CGU.mdx'
 import ContentEs from '@/locales/pages/es/CGU.mdx'
 import ContentFr from '@/locales/pages/fr/CGU.mdx'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
   return getMetadataObject({
     title: t('CGU - Nos Gestes Climat'),
     description: t("Conditions générales d'utilisation du site."),

@@ -666,5 +666,7 @@ module.exports = {
     'focus:ring-servicessocietaux-800',
     'focus:ring-offset-2',
   ],
-  plugins: [],
+  plugins: [
+    require('tailwindcss/nesting'),
+  ],
 }

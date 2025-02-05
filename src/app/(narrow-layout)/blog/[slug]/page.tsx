@@ -9,13 +9,21 @@ import { getPost } from '@/helpers/markdown/getPost'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { capitalizeString } from '@/utils/capitalizeString'
 import { notFound } from 'next/navigation'
+import { use } from 'react';
+import { headers } from 'next/headers'
 
 type Props = {
   params: { slug: string }
 }
 
-export async function generateMetadata({ params: { slug } }: Props) {
-  const { t } = await getServerTranslation()
+type Params = Promise<{ slug: string }>
+
+export async function generateMetadata(props: {params: Params}) {
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
+  const params = use(props.params);
+  const slug = params.slug
 
   const post = await getPost('src/locales/blog/fr/', slug)
 
@@ -33,9 +41,13 @@ export async function generateMetadata({ params: { slug } }: Props) {
   })
 }
 
-export default async function BlogPost({ params: { slug } }: Props) {
+// Composant pour afficher l'article du blog
+export default async function BlogPost(props: {params: Params}) {
+  const params = use(props.params);
+  const slug = params.slug
   const post = await getPost('src/locales/blog/fr/', slug)
 
+  // Récupération de la dernière date de modification depuis GitHub
   const lastEditDate = await fetch(
     `https://api.github.com/repos/incubateur-ademe/nosgestesclimat-site-nextjs/commits?path=src%2Flocales%2Fblog%2Ffr%2F${slug}.mdx&page=1&per_page=1`
   )
@@ -44,6 +56,7 @@ export default async function BlogPost({ params: { slug } }: Props) {
       return json[0]?.commit?.committer?.date
     })
 
+  // Si l'article n'existe pas, afficher une page 404
   if (!post) {
     return notFound()
   }

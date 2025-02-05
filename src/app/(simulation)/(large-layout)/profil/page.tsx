@@ -13,9 +13,12 @@ import Localisation from './_components/Localisation'
 import PersonaWarning from './_components/PersonaWarning'
 import SimulationBanner from './_components/SimulationBanner'
 import SimulationList from './_components/SimulationList'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
     title: t('Mon profil, voir mon empreinte carbone - Nos Gestes Climat'),
@@ -30,7 +33,9 @@ export async function generateMetadata() {
 
 export default async function Profil() {
   const supportedRegions = getSupportedRegions()
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+const { t } = await getServerTranslation(locale)
 
   return (
     <FormProvider>

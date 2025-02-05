@@ -5,9 +5,12 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import ModeleDemoBlock from './_components/ModeleDemoBlock'
 import ModeleIssuePreviews from './_components/ModeleIssuePreviews'
 import ModeleStatsBlock from './_components/ModeleStatsBlock'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return {
     title: t('Notre modèle de données - Nos Gestes Climat'),

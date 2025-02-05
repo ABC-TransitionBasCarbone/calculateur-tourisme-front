@@ -7,13 +7,17 @@ import { getPost } from '@/helpers/markdown/getPost'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { capitalizeString } from '@/utils/capitalizeString'
 import { currentLocale } from 'next-i18n-router'
+import { use } from 'react'
+import { headers } from 'next/headers'
 
-type Props = {
-  params: { slug: string }
-}
+type Params = Promise<{ slug: string }>
 
-export async function generateMetadata({ params: { slug } }: Props) {
-  const { t } = await getServerTranslation()
+export async function generateMetadata(props: {params: Params}) {
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
+  const params = use(props.params);
+  const slug = params.slug
 
   return getMetadataObject({
     title: `${capitalizeString(decodeURI(slug))?.replaceAll(
@@ -25,8 +29,10 @@ export async function generateMetadata({ params: { slug } }: Props) {
   })
 }
 
-export default async function Release({ params: { slug } }: Props) {
-  const locale = currentLocale()
+export default async function Release(props: {params: Params}) {
+  const locale = await currentLocale()
+  const params = use(props.params);
+  const slug = params.slug
   const nouveaute = await getPost(`src/locales/nouveautes/${locale}/`, slug)
 
   return (

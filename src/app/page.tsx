@@ -8,9 +8,12 @@ import Contributions from './_components/Contributions'
 import Explanations from './_components/Explanations'
 import Heading from './_components/Heading'
 import Organisations from './_components/Organisations'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
   return getMetadataObject({
     title: t(
       "Votre calculateur d'empreinte carbone personnelle - Nos Gestes Climat"

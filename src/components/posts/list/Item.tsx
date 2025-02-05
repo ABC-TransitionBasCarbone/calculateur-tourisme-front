@@ -1,9 +1,11 @@
+'use client'
 import Link from '@/components/Link'
 import Card from '@/design-system/layout/Card'
 import { getFormattedDate } from '@/helpers/date/getFormattedDate'
 import { Post } from '@/types/posts'
 import { currentLocale } from 'next-i18n-router'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 type Props = {
   item: Post
@@ -11,7 +13,16 @@ type Props = {
 }
 
 export default function Item({ item, path }: Props) {
-  const locale = currentLocale()
+  const [locale, setLocale] = useState<string>('fr')
+  useEffect(() => {
+    const fetchLocale = async () => {
+      const currentLoc = await currentLocale()
+      setLocale(currentLoc ?? 'fr')
+    }
+
+    fetchLocale()
+  }, [])
+
 
   return (
     <Card

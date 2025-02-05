@@ -4,9 +4,12 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import AboutEn from '@/locales/pages/en/empreinte-climat.mdx'
 import AboutEs from '@/locales/pages/es/empreinte-climat.mdx'
 import AboutFr from '@/locales/pages/fr/empreinte-climat.mdx'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
     title: t('Empreinte Climat - Nos Gestes Climat'),

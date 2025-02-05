@@ -1,19 +1,17 @@
+'use client';
+
 import Footer from '@/components/layout/Footer'
 import '@/locales/initClient'
 import '@/locales/initServer'
 import { dir } from 'i18next'
 import { currentLocale } from 'next-i18n-router'
-import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 import Script from 'next/script'
 import { PropsWithChildren } from 'react'
 import MainLayoutProviders from './_components/MainLayoutProviders'
 import './globals.css'
+import ClientErrorContent from './_components/ClientErrorWrapper';
 
-const ClientErrorContent = dynamic(
-  () => import('@/components/error/ErrorContent'),
-  { ssr: false }
-)
 
 export const marianne = localFont({
   src: [
@@ -53,7 +51,7 @@ export const marianne = localFont({
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   try {
-    const lang = currentLocale()
+    const lang = await currentLocale()
 
     const initialRegion = {"name":"France","code":"FR"}
 

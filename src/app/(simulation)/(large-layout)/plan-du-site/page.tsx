@@ -4,9 +4,12 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import Actions from './_components/Actions'
 import LinkList from './_components/LinkList'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
     title: t('Plan du site - Nos Gestes Climat'),
@@ -20,7 +23,9 @@ export async function generateMetadata() {
 }
 
 export default async function PlanDuSitePage() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+const { t } = await getServerTranslation(locale)
 
   const links = {
     'Nos outils': {

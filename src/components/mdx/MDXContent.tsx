@@ -1,7 +1,9 @@
+'use client'
+
 import { getLocalisedMDX } from '@/helpers/getLocalisedMDX'
 import { MDXProps } from 'mdx/types'
 import { currentLocale } from 'next-i18n-router'
-import { JSX } from 'react'
+import { JSX, useEffect, useState } from 'react'
 
 type Props = {
   contentFr: (props: MDXProps) => JSX.Element
@@ -10,7 +12,16 @@ type Props = {
 }
 
 export default function MDXContent({ contentFr, contentEn, contentEs }: Props) {
-  const locale = currentLocale()
+  const [locale, setLocale] = useState<string>('fr')
+
+  useEffect(() => {
+    const fetchLocale = async () => {
+      const currentLoc = await currentLocale()
+      setLocale(currentLoc ?? 'fr')
+    }
+
+    fetchLocale()
+  }, [])
 
   const Content = getLocalisedMDX({
     dictionnaries: {

@@ -3,9 +3,12 @@ import Ademe from '@/components/images/partners/Ademe'
 import Marianne from '@/components/images/partners/Marianne'
 import { getServerTranslation } from '@/helpers/getServerTranslation'
 import Image from 'next/image'
+import { headers } from 'next/headers'
 
 export default async function Partners() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+const { t } = await getServerTranslation(locale)
 
   return (
     <div className=" mb-4 flex justify-center md:-mt-10">

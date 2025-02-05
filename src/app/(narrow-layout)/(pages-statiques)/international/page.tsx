@@ -10,9 +10,12 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { getSupportedRegions } from '@/helpers/modelFetching/getSupportedRegions'
 import { getLinkToSimulateur } from '@/helpers/navigation/simulateurPages'
 import Image from 'next/image'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
     title: t('Le calculateur d’empreinte climat international'),
@@ -26,7 +29,9 @@ export async function generateMetadata() {
 }
 
 export default async function International() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+const { t } = await getServerTranslation(locale)
 
   const supportedRegions = getSupportedRegions()
 

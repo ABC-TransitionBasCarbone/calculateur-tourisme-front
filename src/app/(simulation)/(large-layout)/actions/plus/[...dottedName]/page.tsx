@@ -6,9 +6,16 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getPost } from '@/helpers/markdown/getPost'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
+import { use } from 'react'
+import { headers } from 'next/headers'
 
-export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+type Params = Promise<{ dottedName: DottedName[] }>
+
+export async function generateMetadata({ params }: { params: Params }) {
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
+  const dottedName = use(params)
 
   return getMetadataObject({
     title: t(
@@ -20,18 +27,12 @@ export async function generateMetadata() {
   })
 }
 
-type Props = {
-  params: {
-    dottedName: DottedName[]
-  }
-}
+export default async function ActionPlus({ params }: { params: Params }) {
+  const { dottedName } = use(params)
 
-export default async function ActionPlus({
-  params: { dottedName: dottedNameArray },
-}: Props) {
   const action = await getPost(
     `src/locales/actions-plus/fr/`,
-    decodeURI(dottedNameArray.join(' . ').replaceAll('-', ' '))
+    decodeURI(dottedName.join(' . ').replaceAll('-', ' '))
   )
 
   return (
@@ -41,7 +42,7 @@ export default async function ActionPlus({
           <Trans>◀ Retour à la liste des fiches</Trans>
         </ButtonLink>
         {action ? (
-          <ButtonLink size="sm" href={'/actions/' + dottedNameArray.join('/')}>
+          <ButtonLink size="sm" href={'/actions/' + dottedName.join('/')}>
             <Trans>🧮 Voir le geste climat correspondant</Trans>
           </ButtonLink>
         ) : null}

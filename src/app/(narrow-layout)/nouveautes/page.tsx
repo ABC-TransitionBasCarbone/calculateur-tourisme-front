@@ -9,9 +9,12 @@ import { getPosts } from '@/helpers/markdown/getPosts'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { currentLocale } from 'next-i18n-router'
 import Image from 'next/image'
+import { headers } from 'next/headers'
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
     title: t('Les nouveautés - Nos Gestes Climat'),
@@ -25,12 +28,10 @@ export async function generateMetadata() {
 }
 
 export default async function Releases() {
-  const locale = currentLocale()
-
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
   const releases = await getPosts(`src/locales/nouveautes/${locale}/`)
-
-  const { t } = await getServerTranslation()
-
   return (
     <>
       <PasserTestBanner />

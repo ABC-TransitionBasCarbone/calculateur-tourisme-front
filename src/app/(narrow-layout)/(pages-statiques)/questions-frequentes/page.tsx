@@ -10,6 +10,7 @@ import Image from 'next/image'
 import DoTheTest from './_components/DoTheTest'
 import FAQListItem from './_components/FAQListItem'
 import Scroller from './_components/Scroller'
+import { headers } from 'next/headers'
 
 type FAQType = {
   question: string
@@ -19,7 +20,9 @@ type FAQType = {
 }
 
 export async function generateMetadata() {
-  const { t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
     title: t(
@@ -35,7 +38,9 @@ export async function generateMetadata() {
 }
 
 export default async function FAQPage() {
-  const { i18n, t } = await getServerTranslation()
+  const headersList = await headers()
+  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+  const { i18n, t } = await getServerTranslation(locale)
 
   const FAQContent = getCurrentLangInfos(i18n)
     .faqContent as unknown as FAQType[]

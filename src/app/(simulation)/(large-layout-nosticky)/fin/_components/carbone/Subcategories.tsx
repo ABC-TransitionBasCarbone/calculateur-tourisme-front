@@ -1,6 +1,5 @@
 import { useSortedSubcategoriesByFootprint } from '@/hooks/useSortedSubcategoriesByFootprint'
 import { useSortedUiCategoriesByFootprint } from '@/hooks/useSortedUiCategoriesByFootprint'
-import OtherWays from './OtherWays'
 import Subcategory from './subcategories/Subcategory'
 
 export default function Subcategories() {
@@ -21,7 +20,6 @@ export default function Subcategories() {
           index={index}
         />
       ))}
-      <OtherWays />
     </>
   )
 }

@@ -13,13 +13,8 @@ import { Metric } from '@/publicodes-state/types'
 import { ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
 import Carbone from './_components/Carbone'
-import DocumentationBlock from './_components/DocumentationBlock'
-import Eau from './_components/Eau'
-import FeedbackBanner from './_components/FeedbackBanner'
-import GetResultsByEmail from './_components/GetResultsByEmail'
-import InformationBlock from './_components/InformationBlock'
-import Poll from './_components/Poll'
 import FinPageSkeleton from './skeleton'
+import ShareBlock from './_components/ShareBlock'
 
 const titles: Record<Metric, ReactElement> = {
   [carboneMetric]: <Trans>carbone</Trans>,
@@ -42,11 +37,11 @@ export default function FinPage() {
     <div className="relative">
       <IframeDataShareModal />
 
-      <Poll />
+      {/* <Poll /> */}
 
-      <div className="lg:hidden">
+      <div>
         <Title tag="h1">
-          <Trans>Mes empreintes</Trans>
+          <Trans>L'empreinte de mon séjour</Trans>
         </Title>
       </div>
 
@@ -63,19 +58,6 @@ export default function FinPage() {
             )}>
             <Carbone />
           </div>
-          <div
-            className={twMerge(
-              'transition-opacity duration-500',
-              currentMetric === eauMetric
-                ? 'relative opacity-100'
-                : 'pointer-events-none absolute top-0 opacity-0'
-            )}>
-            <Eau />
-          </div>
-
-          <GetResultsByEmail />
-
-          {/*<ShareBlock />*/}
 
           <div id="categories-block">
             <Title tag="h2" className="text-lg lg:text-2xl">
@@ -87,21 +69,7 @@ export default function FinPage() {
             <CategoriesAccordion metric={currentMetric} />
           </div>
 
-          <FeedbackBanner
-            className="mb-8 mt-12"
-            text={
-              <Trans i18nKey="publicodes.northstar.learned">
-                Est-ce que "Nos Gestes Climat" vous a permis d'apprendre quelque
-                chose ?
-              </Trans>
-            }
-            type="learned"
-          />
-
-          <DocumentationBlock />
-        </div>
-        <div className="top-40 mb-8 flex w-full flex-col gap-4 self-start lg:sticky lg:z-30 lg:w-[22rem] short:gap-2">
-          <InformationBlock />
+          <ShareBlock />
         </div>
       </div>
     </div>

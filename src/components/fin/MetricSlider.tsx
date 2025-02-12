@@ -1,10 +1,8 @@
-import { carboneMetric, eauMetric } from '@/constants/metric'
+import { carboneMetric } from '@/constants/metric'
 import { useCurrentMetric } from '@/hooks/useCurrentMetric'
 import { useEffect, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import CarboneTotalChart from './metricSlider/CarboneTotalChart'
-import TabNavigation from './metricSlider/TabNavigation'
-import WaterTotalChart from './metricSlider/WaterTotalChart'
 
 type Props = {
   carboneTotal?: number
@@ -13,7 +11,6 @@ type Props = {
 }
 export default function MetricSlider({
   carboneTotal,
-  waterTotal,
   isStatic,
 }: Props) {
   const { currentMetric } = useCurrentMetric()
@@ -53,11 +50,6 @@ export default function MetricSlider({
         isSticky && 'pointer-events-none'
       )}
       ref={myElementRef}>
-      <TabNavigation
-        isSticky={isSticky}
-        isStatic={isStatic}
-        shouldShowWater={!(isStatic && !waterTotal)}
-      />
       <div
         className={twMerge(
           'relative mx-auto -mt-0.5 w-full overflow-hidden rounded-b-xl rounded-tr-xl border-2 border-primary-50 bg-gray-100 px-0 transition-all duration-300',
@@ -70,7 +62,7 @@ export default function MetricSlider({
             </div>
           </div>
         )}
-        {currentMetric === eauMetric && (
+        {/* {currentMetric === eauMetric && (
           <div className={twMerge('relative !flex h-full flex-col')}>
             <WaterTotalChart
               isSmall={isSticky}
@@ -78,7 +70,7 @@ export default function MetricSlider({
               isStatic={isStatic}
             />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   )

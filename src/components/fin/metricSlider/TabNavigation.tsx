@@ -1,8 +1,6 @@
 'use client'
 
-import Trans from '@/components/translation/Trans'
 import { carboneMetric, eauMetric } from '@/constants/metric'
-import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useCurrentMetric } from '@/hooks/useCurrentMetric'
 import { Metric } from '@/publicodes-state/types'
 import { twMerge } from 'tailwind-merge'
@@ -23,10 +21,10 @@ const eauTabClasses: Record<Metric, string> = {
 }
 */
 
-const carboneLabelClasses: Record<Metric, string> = {
-  [carboneMetric]: 'font-black text-secondary-700',
-  [eauMetric]: 'font-medium',
-}
+// const carboneLabelClasses: Record<Metric, string> = {
+//   [carboneMetric]: 'font-black text-secondary-700',
+//   [eauMetric]: 'font-medium',
+// }
 /*const eauLabelClasses: Record<Metric, string> = {
   [carboneMetric]: 'font-medium',
   [eauMetric]: 'font-black text-secondary-700',
@@ -41,8 +39,6 @@ export default function TabNavigation({
   isSticky,
   isStatic,
 }: Props) {
-  const { t } = useClientTranslation()
-
   const { currentMetric, setCurrentMetric } = useCurrentMetric()
 
   return (
@@ -53,22 +49,15 @@ export default function TabNavigation({
       )}>
       <div className="flex">
         <button
-          aria-label={t('Mon empreinte carbone')}
+          aria-label="L'empreinte de mon séjour"
           onClick={() => setCurrentMetric(carboneMetric)}
           className={twMerge(
-            'z-40 mb-0 rounded-t-xl border-2 px-4 pb-1 pt-2 text-lg font-medium transition-all duration-300',
+            // 'z-40 mb-0 rounded-t-xl border-2 px-4 pb-1 pt-2 text-lg font-medium transition-all duration-300',
             carboneTabClasses[currentMetric]
           )}>
           <span className="hidden lg:inline">
-            <Trans>Mon empreinte</Trans>{' '}
+            L'empreinte de mon séjour
           </span>
-          <strong
-            className={twMerge(
-              'capitalize lg:normal-case',
-              carboneLabelClasses[currentMetric]
-            )}>
-            <Trans>carbone</Trans>
-          </strong>
         </button>
         {/*{shouldShowWater && (
           <button

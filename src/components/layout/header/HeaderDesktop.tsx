@@ -1,20 +1,17 @@
 'use client'
 
 import ActionsIcon from '@/components/icons/ActionsIcon'
-import AmisIcon from '@/components/icons/AmisIcon'
 import BilanIcon from '@/components/icons/BilanIcon'
 import PRIndicator from '@/components/layout/header/headerDesktop/PRIndicator'
 import Logo from '@/components/misc/Logo'
 import Trans from '@/components/translation/Trans'
 import {
   headerClickActions,
-  headerClickClassements,
   headerClickLogo,
   headerClickProfil,
   headerClickTest,
 } from '@/constants/tracking/layout'
 import { HIDE_CTA_PATHS } from '@/constants/urls'
-import { linkToClassement } from '@/helpers/navigation/classementPages'
 import { useSimulateurPage } from '@/hooks/navigation/useSimulateurPage'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useUser } from '@/publicodes-state'
@@ -72,18 +69,6 @@ export default function HeaderDesktop({ isSticky }: Props) {
                     icon={ActionsIcon}
                     title={t('Mes gestes')}>
                     <Trans>Mes gestes</Trans>
-                  </NavLink>
-                </li>
-
-                <li>
-                  <NavLink
-                    href={linkToClassement}
-                    onClick={() => trackEvent(headerClickClassements)}
-                    icon={AmisIcon}
-                    activeMatches={['/classement', '/amis']}
-                    title={t('Mes classements')}
-                    data-cypress-id="amis-link">
-                    <Trans>Mes classements</Trans>
                   </NavLink>
                 </li>
               </ul>

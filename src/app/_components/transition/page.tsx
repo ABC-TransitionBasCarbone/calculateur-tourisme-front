@@ -20,7 +20,7 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
               <ImpactCO2Module
                 src="https://impactco2.fr/iframe.js"
                 dataType="transport"
-                dataSearch="?theme=default&language=fr&km=100&defaultMode=list"
+                dataSearch="?theme=default&language=fr&km=100&defaultMode=list&modes=tgv,voiturethermique+1,voiturethermique,voitureelectrique+1,voitureelectrique,autocar,moto,ter,avion,intercites"
                 name="impact-co2"
               />
             );

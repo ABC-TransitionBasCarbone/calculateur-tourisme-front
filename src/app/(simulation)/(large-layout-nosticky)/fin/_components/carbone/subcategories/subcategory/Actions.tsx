@@ -5,6 +5,8 @@ import { useEngine, useRule } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Action from './actions/Action'
+import Carousel
+  from '@/app/(simulation)/(large-layout-nosticky)/fin/_components/carbone/subcategories/subcategory/actions/Carousel'
 
 type Props = {
   subcategory: DottedName
@@ -15,6 +17,18 @@ type ActionObject = {
   dottedName: DottedName
   value: number
 }
+
+const slides = [
+  "Bienvenue sur notre site !",
+  "Découvrez nos services incroyables.",
+  "Contactez-nous pour en savoir plus.",
+  "Bienvenue sur notre site !",
+  "Découvrez nos services incroyables.",
+  "Contactez-nous pour en savoir plus.",
+  "Bienvenue sur notre site !",
+  "Découvrez nos services incroyables.",
+  "Contactez-nous pour en savoir plus.",
+]
 
 export default function Actions({ subcategory, noNumberedFootprint }: Props) {
   const { getValue } = useEngine()
@@ -60,6 +74,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
           <Action key={action} action={action} index={index} />
         ))}
       </div>
+      <Carousel slides={slides} />
       {!noNumberedFootprint && (
         <div className="flex justify-center">
           <Link

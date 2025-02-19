@@ -16,7 +16,7 @@ export default function MDXContent({ contentFr, contentEn, contentEs }: Props) {
 
   useEffect(() => {
     const fetchLocale = async () => {
-      const currentLoc = await currentLocale()
+      const currentLoc = 'fr'
       setLocale(currentLoc ?? 'fr')
     }
 

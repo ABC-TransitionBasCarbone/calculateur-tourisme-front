@@ -10,7 +10,7 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { capitalizeString } from '@/utils/capitalizeString'
 import { notFound } from 'next/navigation'
 import { use } from 'react';
-import { headers } from 'next/headers'
+
 
 type Props = {
   params: { slug: string }
@@ -19,8 +19,7 @@ type Props = {
 type Params = Promise<{ slug: string }>
 
 export async function generateMetadata(props: {params: Params}) {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
   const params = use(props.params);
   const slug = params.slug
@@ -101,3 +100,4 @@ export default async function BlogPost(props: {params: Params}) {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

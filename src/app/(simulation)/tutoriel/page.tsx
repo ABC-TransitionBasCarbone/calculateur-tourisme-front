@@ -11,11 +11,10 @@ import AutresQuestions from './_components/AutresQuestions'
 import AvantDeCommencer from './_components/AvantDeCommencer'
 import ButtonBack from './_components/ButtonBack'
 import OrganisationMessage from './_components/OrganisationMessage'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -72,3 +71,4 @@ export default async function Tutoriel() {
     </ContentLarge>
   )
 }
+export const dynamic = "force-dynamic"

@@ -8,13 +8,12 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { capitalizeString } from '@/utils/capitalizeString'
 import { currentLocale } from 'next-i18n-router'
 import { use } from 'react'
-import { headers } from 'next/headers'
+
 
 type Params = Promise<{ slug: string }>
 
 export async function generateMetadata(props: {params: Params}) {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
   const params = use(props.params);
   const slug = params.slug
@@ -30,7 +29,7 @@ export async function generateMetadata(props: {params: Params}) {
 }
 
 export default async function Release(props: {params: Params}) {
-  const locale = await currentLocale()
+  const locale = 'fr'
   const params = use(props.params);
   const slug = params.slug
   const nouveaute = await getPost(`src/locales/nouveautes/${locale}/`, slug)

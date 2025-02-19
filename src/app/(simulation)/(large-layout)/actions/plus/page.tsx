@@ -4,11 +4,10 @@ import { getPosts } from '@/helpers/markdown/getPosts'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import Image from 'next/image'
 import ActionPlusList from './_components/ActionPlusList'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -47,3 +46,4 @@ export default async function ActionList() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

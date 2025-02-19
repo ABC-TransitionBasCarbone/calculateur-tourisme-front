@@ -2,11 +2,10 @@ import Title from '@/design-system/layout/Title'
 import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import NorthStarIframe from './_components/NorthStarIframe'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -21,8 +20,7 @@ export async function generateMetadata() {
 }
 
 export default async function NorthStarPage() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   const title = t('Statistiques Northstar')
@@ -41,3 +39,4 @@ export default async function NorthStarPage() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

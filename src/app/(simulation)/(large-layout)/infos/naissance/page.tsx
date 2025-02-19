@@ -60,3 +60,4 @@ export default function Birthdate() {
     </form>
   )
 }
+export const dynamic = "force-dynamic"

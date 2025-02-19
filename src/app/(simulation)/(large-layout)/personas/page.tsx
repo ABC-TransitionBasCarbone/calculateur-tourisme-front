@@ -33,3 +33,4 @@ export default function Personas() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

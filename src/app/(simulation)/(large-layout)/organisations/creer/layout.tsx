@@ -1,11 +1,10 @@
 import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { PropsWithChildren } from 'react'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -22,3 +21,4 @@ export async function generateMetadata() {
 export default function Layout({ children }: PropsWithChildren) {
   return <>{children}</>
 }
+export const dynamic = "force-dynamic"

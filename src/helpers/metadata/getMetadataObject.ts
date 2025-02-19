@@ -64,7 +64,7 @@ export function getMetadataObject({
   alternates,
   ...props
 }: Props) {
-  const locale = currentLocale()
+  const locale = 'fr'
 
   const url = buildURL({
     params,

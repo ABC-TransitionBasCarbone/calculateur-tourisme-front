@@ -5,13 +5,12 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import ActionDetail from './_components/ActionDetail'
 import { use } from 'react'
-import { headers } from 'next/headers'
+
 
 type Params = Promise<{ dottedName: DottedName[] }>
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
 const { t } = await getServerTranslation(locale)
   const { dottedName } = use(params)
   const canonicalUrl = `/actions/${dottedName.join('/')}`

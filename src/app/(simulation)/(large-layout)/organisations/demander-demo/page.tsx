@@ -32,3 +32,4 @@ export default function DemanderDemoPage() {
     </section>
   )
 }
+export const dynamic = "force-dynamic"

@@ -16,7 +16,7 @@ export default function Item({ item, path }: Props) {
   const [locale, setLocale] = useState<string>('fr')
   useEffect(() => {
     const fetchLocale = async () => {
-      const currentLoc = await currentLocale()
+      const currentLoc = 'fr'
       setLocale(currentLoc ?? 'fr')
     }
 

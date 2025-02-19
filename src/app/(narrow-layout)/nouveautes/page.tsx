@@ -9,11 +9,10 @@ import { getPosts } from '@/helpers/markdown/getPosts'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { currentLocale } from 'next-i18n-router'
 import Image from 'next/image'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -28,8 +27,7 @@ export async function generateMetadata() {
 }
 
 export default async function Releases() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
   const releases = await getPosts(`src/locales/nouveautes/${locale}/`)
   return (
@@ -69,3 +67,4 @@ export default async function Releases() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

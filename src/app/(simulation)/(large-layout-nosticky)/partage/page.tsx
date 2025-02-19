@@ -49,3 +49,4 @@ export default function PartagePage() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

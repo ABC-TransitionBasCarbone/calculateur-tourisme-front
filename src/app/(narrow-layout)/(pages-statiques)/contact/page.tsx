@@ -7,11 +7,10 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import Image from 'next/image'
 import Script from 'next/script'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
   return getMetadataObject({
     title: t('Contact - Nos Gestes Climat'),
@@ -23,8 +22,7 @@ export async function generateMetadata() {
 }
 
 export default async function Contact() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
 const { t } = await getServerTranslation(locale)
 
   return (
@@ -80,3 +78,4 @@ const { t } = await getServerTranslation(locale)
     </div>
   )
 }
+export const dynamic = "force-dynamic"

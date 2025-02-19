@@ -34,3 +34,4 @@ export default function CreationPage() {
     </section>
   )
 }
+export const dynamic = "force-dynamic"

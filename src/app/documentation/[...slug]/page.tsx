@@ -6,13 +6,12 @@ import { currentLocale } from 'next-i18n-router'
 import DocumentationRouter from './_components/DocumentationRouter'
 import DocumentationServer from './_components/documentationRouter/DocumentationServer'
 import { use } from 'react'
-import { headers } from 'next/headers'
+
 
 type Params = Promise<{ slug: string[] }>
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
   const { slug } = await use(params)
 

@@ -5,11 +5,10 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import AboutEn from '@/locales/pages/en/about.mdx'
 import AboutEs from '@/locales/pages/es/about.mdx'
 import AboutFr from '@/locales/pages/fr/about.mdx'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -30,3 +29,4 @@ export default async function AProposPage() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

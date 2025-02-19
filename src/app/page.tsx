@@ -8,11 +8,10 @@ import Contributions from './_components/Contributions'
 import Explanations from './_components/Explanations'
 import Heading from './_components/Heading'
 import Organisations from './_components/Organisations'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
   return getMetadataObject({
     title: t(
@@ -44,3 +43,4 @@ export default async function Homepage() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

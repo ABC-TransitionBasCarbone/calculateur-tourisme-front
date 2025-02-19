@@ -4,11 +4,10 @@ import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import DiffuserEn from '@/locales/pages/en/diffuser.mdx'
 import DiffuserEs from '@/locales/pages/es/diffuser.mdx'
 import DiffuserFr from '@/locales/pages/fr/diffuser.mdx'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -31,3 +30,4 @@ export default function DiffuserPage() {
     />
   )
 }
+export const dynamic = "force-dynamic"

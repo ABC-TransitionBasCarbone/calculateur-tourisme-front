@@ -140,3 +140,4 @@ export default function Email() {
     </form>
   )
 }
+export const dynamic = "force-dynamic"

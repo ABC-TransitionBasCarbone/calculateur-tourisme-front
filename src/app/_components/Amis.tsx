@@ -4,11 +4,10 @@ import ButtonLink from '@/design-system/inputs/ButtonLink'
 import Kicker from '@/design-system/layout/Kicker'
 import { getServerTranslation } from '@/helpers/getServerTranslation'
 import Image from 'next/image'
-import { headers } from 'next/headers'
+
 
 export default async function Amis() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
 const { t } = await getServerTranslation(locale)
   return (
     <div className="flex-1">

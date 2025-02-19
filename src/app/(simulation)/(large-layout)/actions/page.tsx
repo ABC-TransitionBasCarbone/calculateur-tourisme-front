@@ -24,3 +24,4 @@ export default function ActionsPage() {
     </div>
   )
 }
+export const dynamic = "force-dynamic"

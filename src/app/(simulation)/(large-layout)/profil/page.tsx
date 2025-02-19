@@ -13,11 +13,10 @@ import Localisation from './_components/Localisation'
 import PersonaWarning from './_components/PersonaWarning'
 import SimulationBanner from './_components/SimulationBanner'
 import SimulationList from './_components/SimulationList'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -33,8 +32,7 @@ export async function generateMetadata() {
 
 export default async function Profil() {
   const supportedRegions = getSupportedRegions()
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
 const { t } = await getServerTranslation(locale)
 
   return (
@@ -83,3 +81,4 @@ const { t } = await getServerTranslation(locale)
     </FormProvider>
   )
 }
+export const dynamic = "force-dynamic"

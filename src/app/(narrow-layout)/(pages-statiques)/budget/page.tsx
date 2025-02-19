@@ -8,11 +8,10 @@ import contentEsTop from '@/locales/pages/es/budgetTop.mdx'
 import contentFrBottom from '@/locales/pages/fr/budgetBottom.mdx'
 import contentFrTop from '@/locales/pages/fr/budgetTop.mdx'
 import SelectYear from './_components/SelectYear'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
   return getMetadataObject({
     title: t('Budget - Nos Gestes Climat'),
@@ -40,3 +39,4 @@ export default function BudgetPage() {
     </>
   )
 }
+export const dynamic = "force-dynamic"

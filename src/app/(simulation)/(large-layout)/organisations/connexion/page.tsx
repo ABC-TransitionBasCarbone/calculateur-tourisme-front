@@ -58,3 +58,4 @@ export default function Page() {
     </section>
   )
 }
+export const dynamic = "force-dynamic"

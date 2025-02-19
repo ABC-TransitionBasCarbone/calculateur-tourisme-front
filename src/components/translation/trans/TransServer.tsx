@@ -12,7 +12,7 @@ export default async function TransServer({
   const [locale, setLocale] = useState<string>('fr')
   useEffect(() => {
     const fetchLocale = async () => {
-      const currentLoc = await currentLocale()
+      const currentLoc = 'fr'
       setLocale(currentLoc ?? 'fr')
     }
 

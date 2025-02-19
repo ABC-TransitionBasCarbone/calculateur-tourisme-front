@@ -3,11 +3,10 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { getSupportedRegions } from '@/helpers/modelFetching/getSupportedRegions'
 import { PropsWithChildren } from 'react'
-import { headers } from 'next/headers'
+
 
 export async function generateMetadata() {
-  const headersList = await headers()
-  const locale = headersList.get('x-next-i18n-router-locale') || 'fr'
+    const locale = 'fr'
   const { t } = await getServerTranslation(locale)
 
   return getMetadataObject({
@@ -26,3 +25,4 @@ export default function PersonasLayout({ children }: PropsWithChildren) {
 
   return <Providers supportedRegions={supportedRegions}>{children}</Providers>
 }
+export const dynamic = "force-dynamic"

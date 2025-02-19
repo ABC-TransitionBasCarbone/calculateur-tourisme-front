@@ -172,3 +172,4 @@ export default function Commencer() {
     </Card>
   )
 }
+export const dynamic = "force-dynamic"

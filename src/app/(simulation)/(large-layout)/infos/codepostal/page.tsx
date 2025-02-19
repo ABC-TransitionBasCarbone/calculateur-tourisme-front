@@ -52,3 +52,4 @@ export default function PostalCode() {
     </form>
   )
 }
+export const dynamic = "force-dynamic"

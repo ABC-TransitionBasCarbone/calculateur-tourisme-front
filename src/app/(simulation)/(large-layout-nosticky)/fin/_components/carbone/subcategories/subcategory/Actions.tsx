@@ -19,15 +19,11 @@ type ActionObject = {
 }
 
 const slides = [
-  "Bienvenue sur notre site !",
-  "Découvrez nos services incroyables.",
-  "Contactez-nous pour en savoir plus.",
-  "Bienvenue sur notre site !",
-  "Découvrez nos services incroyables.",
-  "Contactez-nous pour en savoir plus.",
-  "Bienvenue sur notre site !",
-  "Découvrez nos services incroyables.",
-  "Contactez-nous pour en savoir plus.",
+  { text: 'Slide transport', className: 'bg-servicessocietaux-200 border-categories-servicessocietaux' },
+  { text: 'Slide alimentation', className: 'bg-divers-200 border-categories-divers' },
+  { text: 'Slide logement', className: 'bg-logement-200 border-categories-logement' },
+  { text: 'Slide divers', className: 'bg-alimentation-200 border-categories-alimentation' },
+  { text: 'Slide services sociétaux', className: 'bg-transport-200 border-categories-transport' },
 ]
 
 export default function Actions({ subcategory, noNumberedFootprint }: Props) {

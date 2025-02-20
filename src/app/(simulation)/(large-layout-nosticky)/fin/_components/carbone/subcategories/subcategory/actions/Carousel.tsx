@@ -3,9 +3,11 @@
 import useEmblaCarousel from 'embla-carousel-react'
 import { useEffect, useCallback, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
+import Slide
+  from '@/app/(simulation)/(large-layout-nosticky)/fin/_components/carbone/subcategories/subcategory/actions/Slide'
 
 type Props = {
-  slides: string[]
+  slides: { text: string; className?: string }[]
 }
 
 export default function Carousel({ slides }: Props) {
@@ -31,28 +33,18 @@ export default function Carousel({ slides }: Props) {
     setScrollSnaps(emblaApi.scrollSnapList())
     emblaApi.on('select', onSelect)
     onSelect()
-  }, [emblaApi, onSelect])
+
+    return () => {
+      emblaApi.off('select', onSelect)
+    }
+  }, [emblaApi, onSelect, slides.length])
 
   return (
     <div>
       <div className="relative overflow-hidden w-full p-4" ref={emblaRef}>
         <div className="flex flew-nowrap">
-          {slides.map((text, index) => (
-            <div
-              key={index}
-              className={twMerge(
-                'min-h-[150px] min-w-[30%]',
-                'flex flex-col justify-between rounded-xl border-2 px-3 pb-4 pt-6',
-                'border-categories-divers bg-divers-200',
-                'ml-4'
-              )}
-            >
-              <div className="mb-4">
-                <div className="text-center text-sm font-bold leading-tight">
-                  {text}
-                </div>
-              </div>
-            </div>
+          {slides.map((slide, index) => (
+            <Slide key={index} text={slide.text} className={slide.className} />
           ))}
         </div>
         <button

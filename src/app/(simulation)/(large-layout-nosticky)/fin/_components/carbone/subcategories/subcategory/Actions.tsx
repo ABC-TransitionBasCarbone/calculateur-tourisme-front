@@ -11,6 +11,8 @@ import Carousel
 type Props = {
   subcategory: DottedName
   noNumberedFootprint?: boolean
+  informationsRegionales?: DottedName[]
+  category: string
 }
 
 type ActionObject = {
@@ -18,15 +20,7 @@ type ActionObject = {
   value: number
 }
 
-const slides = [
-  { text: 'Slide transport', className: 'bg-servicessocietaux-200 border-categories-servicessocietaux' },
-  { text: 'Slide alimentation', className: 'bg-divers-200 border-categories-divers' },
-  { text: 'Slide logement', className: 'bg-logement-200 border-categories-logement' },
-  { text: 'Slide divers', className: 'bg-alimentation-200 border-categories-alimentation' },
-  { text: 'Slide services sociétaux', className: 'bg-transport-200 border-categories-transport' },
-]
-
-export default function Actions({ subcategory, noNumberedFootprint }: Props) {
+export default function Actions({ subcategory, noNumberedFootprint, informationsRegionales, category }: Props) {
   const { getValue } = useEngine()
 
   const { title, actions } = useRule(subcategory)
@@ -70,7 +64,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
           <Action key={action} action={action} index={index} />
         ))}
       </div>
-      <Carousel slides={slides} />
+      <Carousel informations={informationsRegionales} category={category} />
       {!noNumberedFootprint && (
         <div className="flex justify-center">
           <Link

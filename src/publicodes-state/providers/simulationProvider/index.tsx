@@ -30,6 +30,7 @@ export default function SimulationProvider({
     everyNotifications,
     everyUiCategories,
     everyMosaicChildrenWithParent,
+    everyInformationsRegionales,
     rawMissingVariables,
   } = useRules({ engine: pristineEngine ?? undefined, root })
 
@@ -67,6 +68,7 @@ export default function SimulationProvider({
         everyInactiveRules,
         everyQuestions,
         everyNotifications,
+        everyInformationsRegionales,
         everyUiCategories,
         everyMosaicChildrenWithParent,
         rawMissingVariables,

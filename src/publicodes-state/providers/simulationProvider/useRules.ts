@@ -55,6 +55,14 @@ export function useRules({ engine, root }: Props) {
     [parsedRulesEntries]
   )
 
+  const everyInformationsRegionales = useMemo(
+    () =>
+      parsedRulesEntries
+        .filter((rule) => rule[0].includes('informations regionales'))
+        .map((rule) => rule[0]),
+    [parsedRulesEntries]
+  )
+
   const everyMosaic = useMemo<DottedName[]>(
     () =>
       parsedRulesEntries
@@ -122,6 +130,7 @@ export function useRules({ engine, root }: Props) {
     everyNotifications,
     everyUiCategories,
     everyMosaicChildrenWithParent,
+    everyInformationsRegionales,
     rawMissingVariables,
   }
 }

@@ -4,7 +4,7 @@ import {
   getBorderLightColor,
   getTextDarkColor,
 } from '@/helpers/getCategoryColorClass'
-import { useRule } from '@/publicodes-state'
+import { useRule, useSimulation } from '@/publicodes-state'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { twMerge } from 'tailwind-merge'
 import Actions from './subcategory/Actions'
@@ -16,7 +16,14 @@ type Props = {
 export default function Subcategory({ subcategory, index }: Props) {
   const { numericValue: total } = useRule('bilan')
 
+  const { everyInformationsRegionales } = useSimulation()
+
   const { title, icons, numericValue, category } = useRule(subcategory)
+
+  const filteredInformations = everyInformationsRegionales.filter(info => {
+    const parts = info.split(" . ");
+    return parts[1] === category;
+  });
 
   const percent = Math.round((numericValue / total) * 100)
   return (
@@ -39,7 +46,7 @@ export default function Subcategory({ subcategory, index }: Props) {
         </div>
         <Emoji className="text-4xl lg:text-6xl">{icons?.slice(0, 2)}</Emoji>
       </div>
-      <Actions subcategory={subcategory} />
+      <Actions subcategory={subcategory} informationsRegionales={filteredInformations} category={category} />
     </div>
   )
 }

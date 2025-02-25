@@ -29,6 +29,7 @@ type SimulationContextType = {
   everyQuestions: DottedName[]
   everyNotifications: DottedName[]
   everyUiCategories: DottedName[]
+  everyInformationsRegionales: DottedName[]
   everyMosaicChildrenWithParent: Record<DottedName, DottedName[]>
   rawMissingVariables: MissingVariables
   categories: DottedName[]
@@ -48,6 +49,7 @@ export const SimulationContext = createContext<SimulationContextType>({
   everyQuestions: [],
   everyNotifications: [],
   everyUiCategories: [],
+  everyInformationsRegionales: [],
   everyMosaicChildrenWithParent: {} as Record<DottedName, DottedName[]>,
   rawMissingVariables: {} as MissingVariables,
   categories: [],

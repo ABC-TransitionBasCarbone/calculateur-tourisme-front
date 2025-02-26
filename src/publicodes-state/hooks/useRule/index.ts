@@ -91,6 +91,7 @@ export default function useRule(
     informations,
     questionPassee,
     descriptionPassee,
+    intensiteCouleur
   } = useContent({
     dottedName,
     rule,
@@ -243,5 +244,9 @@ export default function useRule(
      * A different description used in certain cases
      */
     descriptionPassee,
+    /**
+     * A intensity color of information (only used by "ui . pédagogie" rules)
+     */
+    intensiteCouleur,
   }
 }

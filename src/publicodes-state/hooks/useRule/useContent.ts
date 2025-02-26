@@ -103,6 +103,8 @@ export default function useContent({ dottedName, rule }: Props) {
     () => (rule as any)?.rawNode['informations'],
     [rule]
   )
+  const intensiteCouleur = useMemo<string | undefined>(() => (rule as any)?.rawNode['intensiteCouleur'], [rule])
+
 
   return {
     category,
@@ -121,6 +123,7 @@ export default function useContent({ dottedName, rule }: Props) {
     actions,
     informations,
     questionPassee,
-    descriptionPassee
+    descriptionPassee,
+    intensiteCouleur
   }
 }

@@ -10,6 +10,7 @@ type SlideProps = {
 
 export default function Slide({ ruleName, className, category }: SlideProps) {
   const rule = useRule(ruleName)
+  const intensiteCouleur = rule.intensiteCouleur ?? 200
 
   return (
     <Card
@@ -17,7 +18,7 @@ export default function Slide({ ruleName, className, category }: SlideProps) {
       className={twMerge(
         "min-h-[150px] min-w-[30%] ml-4",
         `border-categories-${category}`,
-        `bg-${category}-200`,
+        `bg-${category}-${intensiteCouleur}`,
         className
       )}
     />

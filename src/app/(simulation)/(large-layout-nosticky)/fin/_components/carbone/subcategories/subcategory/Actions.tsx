@@ -11,7 +11,6 @@ import Carousel
 type Props = {
   subcategory: DottedName
   noNumberedFootprint?: boolean
-  informationsRegionales?: DottedName[]
   category: string
 }
 
@@ -20,10 +19,10 @@ type ActionObject = {
   value: number
 }
 
-export default function Actions({ subcategory, noNumberedFootprint, informationsRegionales, category }: Props) {
+export default function Actions({ subcategory, noNumberedFootprint, category }: Props) {
   const { getValue } = useEngine()
 
-  const { title, actions } = useRule(subcategory)
+  const { title, actions, informations } = useRule(subcategory)
 
   const filteredActions = noNumberedFootprint
     ? actions
@@ -64,7 +63,7 @@ export default function Actions({ subcategory, noNumberedFootprint, informations
           <Action key={action} action={action} index={index} />
         ))}
       </div>
-      <Carousel informations={informationsRegionales} category={category} />
+      <Carousel informations={informations} category={category} />
       {!noNumberedFootprint && (
         <div className="flex justify-center">
           <Link

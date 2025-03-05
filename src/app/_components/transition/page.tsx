@@ -57,7 +57,7 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
           case 'divers':
             return (
               <div>
-                <div>Avant de faire vous faire découvrir l’empreinte de votre séjour, nous vous proposons un petit quizz rapide</div>
+                <div>Avant de faire vous faire découvrir l’empreinte de votre séjour, nous vous proposons un petit quizz rapide. Si vous souhaitez le passer, cliquez sur "Terminer"</div>
                 <ImpactCO2Module
                   src="https://impactco2.fr/iframe.js"
                   dataType="quiz"

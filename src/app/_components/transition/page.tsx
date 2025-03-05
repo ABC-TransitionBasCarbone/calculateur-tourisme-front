@@ -56,20 +56,17 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
             )
           case 'divers':
             return (
-              <div>
-                <div>Avant de faire vous faire découvrir l’empreinte de votre séjour, nous vous proposons un petit quizz rapide. Si vous souhaitez le passer, cliquez sur "Terminer"</div>
-                <ImpactCO2Module
-                  src="https://impactco2.fr/iframe.js"
-                  dataType="quiz"
-                  dataSearch="?&language=fr&theme=default"
-                  name="impact-co2"
-                />
-              </div>
+              <ImpactCO2Module
+                src="https://impactco2.fr/iframe.js"
+                dataType="quiz"
+                dataSearch="?&language=fr&theme=default"
+                name="impact-co2"
+              />
             )
           default:
             return <div>{title}</div>;
         }
       })()}
-    </div>
+    </div >
   );
 };

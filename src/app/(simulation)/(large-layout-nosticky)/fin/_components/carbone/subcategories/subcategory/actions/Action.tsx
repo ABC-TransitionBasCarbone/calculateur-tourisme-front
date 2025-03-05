@@ -39,7 +39,6 @@ export default function Action({
       percent={!hasNoValue ? percent : undefined}
       category={category}
       isSelected={isActionChoosen}
-      hide={index === 2}
       className={twMerge(
         colorClassName[index],
         isActionChoosen

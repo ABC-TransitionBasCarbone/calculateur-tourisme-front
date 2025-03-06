@@ -144,6 +144,7 @@ export default function Form() {
         noNextQuestion={noNextQuestion}
         gotoPrevQuestion={gotoPrevQuestion}
         gotoNextQuestion={gotoNextQuestion}
+        remainingQuestions={remainingQuestions}
         question={currentQuestion}
         tempValue={tempValue}
         onComplete={() => {

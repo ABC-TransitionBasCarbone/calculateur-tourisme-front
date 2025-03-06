@@ -10,6 +10,7 @@ type Props = {
 }
 
 export default function useNavigation({
+  remainingQuestions,
   relevantQuestions,
   currentQuestion,
   setCurrentQuestion,
@@ -76,8 +77,10 @@ export default function useNavigation({
     return newCurrentQuestion;
   };
 
-  const gotoNextQuestion = (): string | undefined => {
-    if (noNextQuestion) {
+  const gotoNextQuestion = (onComplete?: () => void): string | undefined => {
+    // Gestion du retour aux questionnaire après l'avoir finalisé une fois.
+    if ((!relevantQuestions[currentQuestionIndex + 1] && transitionPage) || (!!relevantQuestions[currentQuestionIndex + 1] && remainingQuestions.length === 0 )) {
+      if (onComplete) onComplete()
       return undefined;
     }
 

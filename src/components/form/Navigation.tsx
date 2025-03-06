@@ -35,10 +35,11 @@ export default function Navigation({
   onComplete?: () => void
   isEmbedded?: boolean
   gotoPrevQuestion: () => string | undefined
-  gotoNextQuestion: () => string | undefined
+  gotoNextQuestion: (onComplete?: () => void) => string | undefined
   noPrevQuestion: boolean
   noNextQuestion: boolean
   transitionPage?: string
+  remainingQuestions?: DottedName[]
 }) {
   const { t } = useClientTranslation()
 
@@ -79,23 +80,9 @@ export default function Navigation({
 
       handleMoveFocus()
 
-      if (noNextQuestion) {
-        onComplete()
-        return
-      }
-
-      gotoNextQuestion()
+      gotoNextQuestion(onComplete)
     },
-    [
-      question,
-      gotoNextQuestion,
-      noNextQuestion,
-      isMissing,
-      value,
-      onComplete,
-      updateCurrentSimulation,
-      startTime,
-    ]
+    [startTime, isMissing, gotoNextQuestion, onComplete, question, value, updateCurrentSimulation]
   )
 
   useMagicKey({

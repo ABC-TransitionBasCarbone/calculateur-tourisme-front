@@ -15,9 +15,7 @@ type Props = {
 }
 export default function Subcategory({ subcategory, index }: Props) {
   const { numericValue: total } = useRule('bilan')
-
   const { title, icons, numericValue, category } = useRule(subcategory)
-
   const percent = Math.round((numericValue / total) * 100)
   return (
     <div

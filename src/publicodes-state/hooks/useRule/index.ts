@@ -88,8 +88,10 @@ export default function useRule(
     suggestions,
     excerpt,
     actions,
+    informations,
     questionPassee,
     descriptionPassee,
+    intensiteCouleur
   } = useContent({
     dottedName,
     rule,
@@ -231,6 +233,10 @@ export default function useRule(
      */
     actions,
     /**
+     * A list of informations linked to the rules (only used by "ui . pédagogie" rules)
+     */
+    informations,
+    /**
      * A different question used in certain cases
      */
     questionPassee,
@@ -238,5 +244,9 @@ export default function useRule(
      * A different description used in certain cases
      */
     descriptionPassee,
+    /**
+     * A intensity color of information (only used by "ui . pédagogie" rules)
+     */
+    intensiteCouleur,
   }
 }

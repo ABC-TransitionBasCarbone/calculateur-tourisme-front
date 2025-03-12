@@ -10,11 +10,12 @@ import { useEndGuard } from '@/hooks/navigation/useEndGuard'
 import { useSimulationIdInQueryParams } from '@/hooks/simulation/useSimulationIdInQueryParams'
 import { useCurrentMetric } from '@/hooks/useCurrentMetric'
 import { Metric } from '@/publicodes-state/types'
-import { ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
 import Carbone from './_components/Carbone'
 import FinPageSkeleton from './skeleton'
 import ShareBlock from './_components/ShareBlock'
+import { ImpactCO2Module } from '@/components/encapsulage/ImpactCO2Module'
 
 const titles: Record<Metric, ReactElement> = {
   [carboneMetric]: <Trans>carbone</Trans>,
@@ -46,6 +47,13 @@ export default function FinPage() {
       </div>
 
       <MetricSlider />
+
+      <ImpactCO2Module
+        src="https://impactco2.fr/iframe.js"
+        dataType="comparateur"
+        dataSearch="?value=100"
+        name="impact-co2"
+      />
 
       <div className="relative flex flex-col-reverse gap-16 lg:flex-row lg:gap-10">
         <div className="relative flex flex-1 flex-col gap-16 lg:mt-7">

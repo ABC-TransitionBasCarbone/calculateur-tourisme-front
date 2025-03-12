@@ -11,7 +11,6 @@ import Carousel
 type Props = {
   subcategory: DottedName
   noNumberedFootprint?: boolean
-  category: string
 }
 
 type ActionObject = {
@@ -19,10 +18,10 @@ type ActionObject = {
   value: number
 }
 
-export default function Actions({ subcategory, noNumberedFootprint, category }: Props) {
+export default function Actions({ subcategory, noNumberedFootprint }: Props) {
   const { getValue } = useEngine()
 
-  const { title, actions, informations } = useRule(subcategory)
+  const { title, actions, informations, category } = useRule(subcategory)
 
   const filteredActions = noNumberedFootprint
     ? actions

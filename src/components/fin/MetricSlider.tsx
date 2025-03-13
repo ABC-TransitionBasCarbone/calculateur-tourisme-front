@@ -5,6 +5,7 @@ import CarboneTotalChart from './metricSlider/CarboneTotalChart'
 import { ImpactCO2Module } from '@/components/encapsulage/ImpactCO2Module'
 import TabNavigation from '@/components/fin/metricSlider/TabNavigation'
 import { carboneTab, comparateurTab } from '@/constants/tabs'
+import { useRule } from '@/publicodes-state'
 
 type Props = {
   carboneTotal?: number
@@ -47,6 +48,8 @@ export default function MetricSlider({
     }
   }, [isStatic])
 
+  const { numericValue } = useRule('bilan')
+  const usedValue = carboneTotal ?? numericValue
 
   return (
     <div
@@ -82,7 +85,7 @@ export default function MetricSlider({
             <ImpactCO2Module
               src="https://impactco2.fr/iframe.js"
               dataType="comparateur"
-              dataSearch="?value=100"
+              dataSearch={`?value=${Math.round(Number(usedValue || 0))}`}
               name="impact-co2"
             />
           </div>

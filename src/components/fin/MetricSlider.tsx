@@ -13,9 +13,11 @@ type Props = {
 }
 export default function MetricSlider({
   carboneTotal,
-  isStatic,
+  isStatic: initialIsStatic,
 }: Props) {
   const { currentTab } = useCurrentTab()
+
+  const isStatic = currentTab === comparateurTab || initialIsStatic
 
   const [isSticky, setIsSticky] = useState(false)
 
@@ -44,6 +46,7 @@ export default function MetricSlider({
       window.removeEventListener('scroll', handleScroll)
     }
   }, [isStatic])
+
 
   return (
     <div

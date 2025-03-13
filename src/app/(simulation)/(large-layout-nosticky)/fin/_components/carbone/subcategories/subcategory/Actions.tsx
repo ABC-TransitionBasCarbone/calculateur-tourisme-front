@@ -7,6 +7,12 @@ import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Action from './actions/Action'
 import Carousel
   from '@/app/(simulation)/(large-layout-nosticky)/fin/_components/carbone/subcategories/subcategory/actions/Carousel'
+import Button from '@/design-system/inputs/Button'
+import { questionCloseInfo, questionOpenInfo } from '@/constants/tracking/question'
+import { motion } from 'framer-motion'
+import Markdown from '@/design-system/utils/Markdown'
+import { useState } from 'react';
+import { useClientTranslation } from '@/hooks/useClientTranslation'
 
 type Props = {
   subcategory: DottedName
@@ -20,8 +26,13 @@ type ActionObject = {
 
 export default function Actions({ subcategory, noNumberedFootprint }: Props) {
   const { getValue } = useEngine()
+  const [isOpen, setIsOpen] = useState(false);
 
-  const { title, actions, informations, category } = useRule(subcategory)
+  const { title, actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
+
+  console.log(titreInformations)
+  console.log(descriptionInformations)
+  console.log(useRule(subcategory))
 
   const filteredActions = noNumberedFootprint
     ? actions
@@ -29,6 +40,8 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
 
   if (!filteredActions?.length) return null
 
+  const { t } = useClientTranslation()
+  
   const sortedActions = noNumberedFootprint
     ? filteredActions.sort((a: string) => {
       if (a.includes('voter')) {
@@ -62,6 +75,44 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
           <Action key={action} action={action} index={index} />
         ))}
       </div>
+      <p className="mb-6">
+        <Trans>
+          {titreInformations}
+        </Trans>
+        {informations && informations?.length > 0 && descriptionInformations ? (
+          <Button
+            type="button"
+            onClick={() => {
+              setIsOpen((previsOpen) => !previsOpen)
+            }}
+            color="secondary"
+            size="xs"
+            className={`inline-flex h-6 w-6 items-center justify-center rounded-full p-0 align-text-bottom font-mono`}
+            title={t("Voir plus d'informations")}>
+            i
+          </Button>
+        ) : null}
+      </p>
+      {isOpen && descriptionInformations ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+          className="mb-3 origin-top rounded-xl border-2 border-primary-50 bg-gray-100 p-3 text-sm">
+          <Markdown className="[&>blockquote]:mb-2 [&>blockquote]:mt-0 [&>blockquote]:p-0 [&>blockquote]:text-default [&>p]:mb-2">
+            {descriptionInformations}
+          </Markdown>{' '}
+          <Button
+            size="xs"
+            color={'secondary'}
+            onClick={() => {
+              setIsOpen(false)
+            }}
+            title={t('Fermer')}>
+            <Trans>Fermer</Trans>
+          </Button>
+        </motion.div>
+      ) : null}
       <Carousel informations={informations} category={category} />
       {!noNumberedFootprint && (
         <div className="flex justify-center">

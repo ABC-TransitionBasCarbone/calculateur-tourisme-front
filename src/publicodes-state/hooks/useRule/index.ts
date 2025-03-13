@@ -89,6 +89,8 @@ export default function useRule(
     excerpt,
     actions,
     informations,
+    titreInformations,
+    descriptionInformations,
     questionPassee,
     descriptionPassee,
     intensiteCouleur
@@ -248,5 +250,13 @@ export default function useRule(
      * A intensity color of information (only used by "ui . pédagogie" rules)
      */
     intensiteCouleur,
+    /**
+     * A titre of informations
+     */
+    titreInformations,
+    /**
+     * A description of informations
+     */
+    descriptionInformations,
   }
 }

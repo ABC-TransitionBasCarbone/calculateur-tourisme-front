@@ -16,6 +16,7 @@ import Carbone from './_components/Carbone'
 import FinPageSkeleton from './skeleton'
 import ShareBlock from './_components/ShareBlock'
 import { ImpactCO2Module } from '@/components/encapsulage/ImpactCO2Module'
+import { useRule } from '@/publicodes-state'
 
 const titles: Record<Metric, ReactElement> = {
   [carboneMetric]: <Trans>carbone</Trans>,
@@ -29,6 +30,8 @@ export default function FinPage() {
   const { simulationIdInQueryParams } = useSimulationIdInQueryParams()
 
   const { currentMetric } = useCurrentMetric()
+
+  const { numericValue } = useRule('bilan')
 
   // If the simulationIdInQueryParams is set, it means that the simulation is not loaded yet
   if (!isGuardInit || isGuardRedirecting || !!simulationIdInQueryParams)
@@ -51,7 +54,7 @@ export default function FinPage() {
       <ImpactCO2Module
         src="https://impactco2.fr/iframe.js"
         dataType="comparateur"
-        dataSearch="?value=100"
+        dataSearch={`?value=${Math.round(Number(numericValue || 0))}`}
         name="impact-co2"
       />
 

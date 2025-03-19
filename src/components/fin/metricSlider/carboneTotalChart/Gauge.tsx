@@ -6,7 +6,7 @@ type Props = {
   isSmall?: boolean
 }
 export default function Gauge({ isSmall }: Props) {
-  const { numericValue } = useRule('bilan')
+  let { numericValue } = useRule('bilan')
 
   const isOutOfRange = numericValue > 12000
 
@@ -39,7 +39,7 @@ export default function Gauge({ isSmall }: Props) {
             'absolute bottom-full right-0 text-xs',
             isSmall && 'opacity-0'
           )}>
-          12
+          1000
         </div>
       ) : null}
     </div>

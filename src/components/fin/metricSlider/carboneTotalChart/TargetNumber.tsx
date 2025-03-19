@@ -1,14 +1,16 @@
-import Trans from '@/components/translation/Trans'
 import { motion } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
 import Arrow from './Arrow'
-
-const position = (2 / 12) * 100
+import { useRule } from '@/publicodes-state'
 
 type Props = {
   isSmall?: boolean
 }
 export default function TargetNumber({ isSmall }: Props) {
+
+  const { numericValue: travelTime = 0 } = useRule('transport . durée séjour') ?? {};
+  const value = Math.round((9200/365)*travelTime);
+  const position = (value * 100) / 1000
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -20,10 +22,10 @@ export default function TargetNumber({ isSmall }: Props) {
       )}
       style={{ left: `${position}%` }}>
       <div className="absolute top-full mt-1 whitespace-nowrap">
-        <strong className="font-black text-secondary-700">2 tonnes,</strong>
+        <strong className="font-black text-secondary-700">{value} kgCO2e,</strong>
         <br />
         <span>
-          <Trans>l’objectif pour 2050</Trans>
+          l'empreinte moyenne d'un français pour {travelTime} jour
         </span>
       </div>
       <Arrow className="h-4 w-4 rotate-180" />

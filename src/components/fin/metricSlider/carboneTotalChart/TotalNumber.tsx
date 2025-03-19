@@ -7,23 +7,6 @@ import { motion } from 'framer-motion'
 import { useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { CountUp } from 'use-count-up'
-import Arrow from './Arrow'
-
-function getContentAlignement(position: number, isSmall?: boolean) {
-  if (isSmall) {
-    return 'left-1/2 -translate-x-1/2'
-  }
-  if (position < 40) {
-    return 'left-16'
-  }
-  if (position < 50) {
-    return '-left-6'
-  }
-  if (position < 80) {
-    return 'left-1/2 -translate-x-1/2'
-  }
-  return 'right-0'
-}
 
 type Props = {
   total?: number
@@ -63,16 +46,15 @@ export default function TotalNumber({ total, isSmall }: Props) {
       animate={{ opacity: 1, x: isSmall ? '1rem' : '-50%' }}
       transition={{ duration: 1.5 }}
       className="absolute bottom-10 z-10 transition-transform duration-300"
-      style={{ left: isSmall ? '50%' : `${position}%`, color: cssColor }}>
+      style={{ left: '50%', color: cssColor }}>
       <div
         className={twMerge(
-          'absolute bottom-full mb-1 origin-top whitespace-nowrap text-right font-medium transition-all duration-300',
-          getContentAlignement(position, isSmall),
+          'absolute bottom-full mb-1 origin-top whitespace-nowrap text-right font-medium transition-all duration-300 left-1/2 -translate-x-1/2',
           isSmall
             ? 'translate-y-2 scale-75 lg:translate-y-3 lg:scale-50'
             : 'scale-100'
         )}>
-        <strong className="absolute bottom-7 right-full -translate-x-4 text-6xl font-black leading-none lg:bottom-7 lg:text-8xl">
+        <strong className="bottom-7 right-full -translate-x-4 text-6xl font-black leading-none lg:bottom-7 lg:text-8xl">
           <CountUp
             isCounting
             end={Number(formattedValue)}
@@ -88,13 +70,9 @@ export default function TotalNumber({ total, isSmall }: Props) {
         </span>
         <br />
         <span className="text-lg lg:text-xl">
-          <Trans>de</Trans> CO₂e <Trans>par an</Trans>
+          <Trans>de</Trans> CO₂e
         </span>
       </div>
-      <Arrow
-        style={{ fill: cssColor }}
-        className={isSmall ? 'pointer-events-none !opacity-0 duration-300' : ''}
-      />
     </motion.div>
   )
 }

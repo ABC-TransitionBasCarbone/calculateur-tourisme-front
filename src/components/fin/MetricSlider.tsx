@@ -53,7 +53,7 @@ export default function MetricSlider({
       <div
         className={twMerge(
           'relative mx-auto -mt-0.5 w-full overflow-hidden rounded-b-xl rounded-tr-xl border-2 border-primary-50 bg-gray-100 px-0 transition-all duration-300',
-          isSticky ? 'h-20 lg:h-[5.5rem]' : 'h-72 lg:h-80'
+          isSticky ? 'h-20 lg:h-[5.5rem]' : 'h-48 lg:h-48'
         )}>
         {currentMetric === carboneMetric && (
           <div className={twMerge('relative !flex h-full flex-col')}>

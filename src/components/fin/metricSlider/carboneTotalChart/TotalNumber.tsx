@@ -37,12 +37,16 @@ export default function TotalNumber({ total, isSmall }: Props) {
 
   const usedValue = total ?? numericValue
 
+  const { numericValue: travelTime = 0 } = useRule('transport . durée séjour') ?? {};
+  console.log(usedValue)
+  const percentage = Math.round((usedValue/2000)*100);
+
   const { formattedValue, unit } = formatCarbonFootprint(usedValue, {
     t,
     localize: false,
   })
 
-  const originPosition = (usedValue / 1000 / 12) * 100
+  const originPosition = (usedValue / 2000) * 100
 
   const position = useMemo(() => {
     if (originPosition <= 0) {
@@ -66,7 +70,7 @@ export default function TotalNumber({ total, isSmall }: Props) {
       style={{ left: isSmall ? '50%' : `${position}%`, color: cssColor }}>
       <div
         className={twMerge(
-          'absolute bottom-full mb-1 origin-top whitespace-nowrap text-right font-medium transition-all duration-300',
+          'absolute bottom-full mb-1 origin-top whitespace-nowrap text-left font-medium transition-all duration-300',
           getContentAlignement(position, isSmall),
           isSmall
             ? 'translate-y-2 scale-75 lg:translate-y-3 lg:scale-50'
@@ -88,7 +92,9 @@ export default function TotalNumber({ total, isSmall }: Props) {
         </span>
         <br />
         <span className="text-lg lg:text-xl">
-          <Trans>de</Trans> CO₂e <Trans>par an</Trans>
+          <Trans>de</Trans> CO₂e pour {travelTime} jours,
+          <br/>
+          soit {percentage} % de l'objectif annuel 2050
         </span>
       </div>
       <Arrow

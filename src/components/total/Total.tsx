@@ -11,7 +11,6 @@ import { useCurrentSimulation, useForm, useUser } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
-import ValueChangeDisplay from '../misc/ValueChangeDisplay'
 import ButtonBack from './total/ButtonBack'
 import Explanation from './total/Explanation'
 import Progress from './total/Progress'
@@ -100,13 +99,13 @@ export default function Total({
           ) : null}
         </div>
 
-        <div
+        {/*<div
           className="absolute -bottom-7 left-10 w-full lg:left-4"
           aria-live="polite">
           <div className="w-full max-w-6xl md:mx-auto">
             <ValueChangeDisplay />
           </div>
-        </div>
+        </div>*/}
       </div>
       {!tutorials.scoreExplanation && simulationMode ? (
         <div className="relative mx-auto max-w-6xl">

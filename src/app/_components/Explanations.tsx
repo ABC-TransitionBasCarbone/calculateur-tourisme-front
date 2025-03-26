@@ -21,7 +21,7 @@ export default async function Explanations() {
           <Trans>A propos du développement de l’outil ?</Trans>
         </Title>
 
-        <p className="md:text-lg">
+        <div className="md:text-lg">
           <Trans>
             <p>
               Cet outil disponible gratuitement a été développé par l’Association pour la transition Bas Carbone avec le soutien de Haut de France Tourisme.
@@ -31,7 +31,7 @@ export default async function Explanations() {
               Si vous avez des suggestions d’amélioration ou des questions, faites-en nous part  !
             </p>
           </Trans>
-        </p>
+        </div>
         <ButtonLink
           color="secondary"
           href="/">
@@ -43,7 +43,7 @@ export default async function Explanations() {
           <Trans>Mon séjour durable</Trans>
         </Title>
 
-        <p className="md:text-lg">
+        <div className="md:text-lg">
           <Trans>
             <p>
               Développé par l’ABC et Haut de France Tourisme
@@ -57,7 +57,7 @@ export default async function Explanations() {
               Haut de France Tourisme, promeut le tourisme durable dans la région Haut de France
             </p>
           </Trans>
-        </p>
+        </div>
         <ButtonLink
           color="secondary"
           href="/">

@@ -16,7 +16,7 @@ const carboneTabClasses: Record<Tab, string> = {
   [carboneTab]: tabSelectedClasses,
   [comparateurTab]: tabNotSelectedClasses,
 }
-const eauTabClasses: Record<Tab, string> = {
+const comparateurTabClasses: Record<Tab, string> = {
   [carboneTab]: tabNotSelectedClasses,
   [comparateurTab]: tabSelectedClasses,
 }
@@ -57,7 +57,7 @@ export default function TabNavigation({
             onClick={() => setCurrentTab(comparateurTab)}
             className={twMerge(
               'relative z-40 mb-0 rounded-t-xl border-2 px-4 pb-1 pt-2 text-lg font-medium transition-all duration-300',
-              eauTabClasses[currentTab]
+              comparateurTabClasses[currentTab]
             )}>
             <span className="hidden lg:inline">
               <Trans>A quoi cela équivaut ?</Trans>{' '}

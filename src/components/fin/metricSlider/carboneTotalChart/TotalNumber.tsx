@@ -42,7 +42,7 @@ export default function TotalNumber({ total, isSmall }: Props) {
     localize: false,
   })
 
-  const originPosition = (usedValue / 1000 / 12) * 100
+  const originPosition = (usedValue / 1000) * 100
 
   const position = useMemo(() => {
     if (originPosition <= 0) {
@@ -88,7 +88,7 @@ export default function TotalNumber({ total, isSmall }: Props) {
         </span>
         <br />
         <span className="text-lg lg:text-xl">
-          <Trans>de</Trans> CO₂e <Trans>par an</Trans>
+          <Trans>de</Trans> CO₂e
         </span>
       </div>
       <Arrow

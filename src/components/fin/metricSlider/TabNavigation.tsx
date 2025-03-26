@@ -51,17 +51,19 @@ export default function TabNavigation({
             <Trans>L'empreinte de mon séjour</Trans>{' '}
           </span>
         </button>
-        <button
-          aria-label={t('A quoi cela équivaut ?')}
-          onClick={() => setCurrentTab(comparateurTab)}
-          className={twMerge(
-            'relative z-40 mb-0 rounded-t-xl border-2 px-4 pb-1 pt-2 text-lg font-medium transition-all duration-300',
-            eauTabClasses[currentTab]
-          )}>
-          <span className="hidden lg:inline">
-            <Trans>A quoi cela équivaut ?</Trans>{' '}
-          </span>
-        </button>
+        {!isSticky && (
+          <button
+            aria-label={t('A quoi cela équivaut ?')}
+            onClick={() => setCurrentTab(comparateurTab)}
+            className={twMerge(
+              'relative z-40 mb-0 rounded-t-xl border-2 px-4 pb-1 pt-2 text-lg font-medium transition-all duration-300',
+              eauTabClasses[currentTab]
+            )}>
+            <span className="hidden lg:inline">
+              <Trans>A quoi cela équivaut ?</Trans>{' '}
+            </span>
+          </button>
+        )}
       </div>
       {!isStatic && <HeadingButtons />}
     </div>

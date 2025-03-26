@@ -52,14 +52,14 @@ export default function TabNavigation({
           </span>
         </button>
         <button
-          aria-label={t('Comparateur Carbone')}
+          aria-label={t('A quoi cela équivaut ?')}
           onClick={() => setCurrentTab(comparateurTab)}
           className={twMerge(
             'relative z-40 mb-0 rounded-t-xl border-2 px-4 pb-1 pt-2 text-lg font-medium transition-all duration-300',
             eauTabClasses[currentTab]
           )}>
           <span className="hidden lg:inline">
-            <Trans>Comparateur Carbone</Trans>{' '}
+            <Trans>A quoi cela équivaut ?</Trans>{' '}
           </span>
         </button>
       </div>

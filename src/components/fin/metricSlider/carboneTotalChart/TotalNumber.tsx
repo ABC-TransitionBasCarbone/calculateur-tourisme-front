@@ -33,7 +33,7 @@ type Props = {
 export default function TotalNumber({ total, isSmall }: Props) {
   const { t } = useClientTranslation()
 
-  let { numericValue } = useRule('bilan')
+  const { numericValue } = useRule('bilan')
 
   const usedValue = total ?? numericValue
 

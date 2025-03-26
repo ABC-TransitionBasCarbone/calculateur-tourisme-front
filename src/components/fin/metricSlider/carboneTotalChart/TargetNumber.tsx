@@ -25,7 +25,7 @@ export default function TargetNumber({ isSmall }: Props) {
         <strong className="font-black text-secondary-700">{value} kgCO2e,</strong>
         <br />
         <span>
-          l'empreinte moyenne d'un français pour {travelTime} jour
+          l'empreinte moyenne d'un français <br/>dans sa vie quotidienne pour {travelTime} jours
         </span>
       </div>
       <Arrow className="h-4 w-4 rotate-180" />

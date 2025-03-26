@@ -1,59 +1,69 @@
 import Trans from '@/components/translation/Trans'
-import { homeClickEnSavoirPlus } from '@/constants/tracking/pages/home'
 import ButtonLink from '@/design-system/inputs/ButtonLink'
 import Title from '@/design-system/layout/Title'
 
 export default async function Explanations() {
   return (
-    <div className="mx-auto mb-12 w-full max-w-3xl px-4 md:mb-24">
-      <Title tag="h2" className="font-medium md:text-3xl">
-        <Trans>L'empreinte climat, qu'est-ce que c'est ?</Trans>
-      </Title>
+    <>
+      <div className="mx-auto mb-12 w-full max-w-3xl px-4 md:mb-24">
+        <Title tag="h2" className="font-medium md:text-3xl">
+          <Trans>Pourquoi cet outil ?</Trans>
+        </Title>
 
-      <p className="md:text-lg">
-        <Trans>
-          Depuis le siècle dernier,{' '}
-          <strong className="text-primary-700">
-            la concentration du carbone dans l’atmosphère augmente
-          </strong>{' '}
-          tant et si bien que le climat de la planète subit des bouleversements
-          aux lourdes conséquences : montée des eaux, destruction du vivant,
-          explosion des catastrophes climatiques.
-        </Trans>
-      </p>
+        <p className="md:text-lg">
+          <Trans>
+            Est-ce possible de concilier plaisir et séjour réussi ? Nous le pensons ! C’est pourquoi, l’Association pour la transition Bas Carbone et Haut de France Tourisme ont conçu Mon séjour durable, afin de s’appuyer sur la notion d’empreinte carbone pour sensibiliser et orienter les comportements et choix d’activités futures vers des alternatives plus durables et plus écologiques. Pensé comme un guide local, Mon séjour durable vous aidera à faire le bon choix pour que votre séjour en Haut de France soit réussi et écologique.
+          </Trans>
+        </p>
+      </div>
+      <div className="mx-auto mb-12 w-full max-w-3xl px-4 md:mb-24">
+        <Title tag="h2" className="font-medium md:text-3xl">
+          <Trans>A propos du développement de l’outil ?</Trans>
+        </Title>
 
-      <p className="md:text-lg">
-        <Trans>
-          Le consensus scientifique est formel, cette augmentation est{' '}
-          <strong className="text-primary-700">
-            directement liée aux activités humaines :
-          </strong>{' '}
-          l’extraction, la consommation et la combustion de ressources dépassent
-          les capacités d’absorption de notre planète.{' '}
-          <strong className="text-primary-700">
-            Il est grand temps de réduire ou remplacer
-          </strong>{' '}
-          ces activités émettrices de gaz à effet de serre, à toutes les
-          échelles !
-        </Trans>
-      </p>
+        <p className="md:text-lg">
+          <Trans>
+            <p>
+              Cet outil disponible gratuitement a été développé par l’Association pour la transition Bas Carbone avec le soutien de Haut de France Tourisme.
+              Cette déclinaison s'appuie librement sur la version officielle de Nos Gestes Climat développée par l'ADEME (Agence de la transition écologique) en partenariat avec l'ABC (Association pour la Transition Bas Carbone).
+            </p>
+            <p>
+              Si vous avez des suggestions d’amélioration ou des questions, faites-en nous part  !
+            </p>
+          </Trans>
+        </p>
+        <ButtonLink
+          color="secondary"
+          href="/">
+          <Trans>Contactez-nous</Trans>
+        </ButtonLink>
+      </div>
+      <div className="mx-auto mb-12 w-full max-w-3xl px-4 md:mb-24">
+        <Title tag="h2" className="font-medium md:text-3xl">
+          <Trans>Mon séjour durable</Trans>
+        </Title>
 
-      <p className="md:mb-8 md:text-lg">
-        <Trans>
-          Le simulateur d’empreinte carbone individuelle permet de comprendre
-          quels sont nos usages qui contribuent le plus au changement
-          climatique, et de saisir les actions qui auraient le plus d’impact
-          pour le réduire.
-        </Trans>
-      </p>
+        <p className="md:text-lg">
+          <Trans>
+            <p>
+              Développé par l’ABC et Haut de France Tourisme
+            </p>
 
-      <ButtonLink
-        color="secondary"
-        href="/empreinte-climat"
-        data-cypress-id="budget-link"
-        trackingEvent={homeClickEnSavoirPlus}>
-        <Trans>En savoir plus</Trans>
-      </ButtonLink>
-    </div>
+            <p>
+              L’ABC, au cœur de la lutte contre le changement climatique depuis 2011, sensibilise, forme, fédère et donne des moyens d’action concrets aux organisations et aux citoyens pour réussir leur transition bas carbone.
+            </p>
+
+            <p>
+              Haut de France Tourisme, promeut le tourisme durable dans la région Haut de France
+            </p>
+          </Trans>
+        </p>
+        <ButtonLink
+          color="secondary"
+          href="/">
+          <Trans>Contact</Trans>
+        </ButtonLink>
+      </div>
+    </>
   )
 }

@@ -46,7 +46,7 @@ export default async function Explanations() {
         <div className="md:text-lg">
           <Trans>
             <p>
-              Développé par <a href="https://abc-transitionbascarbone.fr/">l’ABC</a> et <a href="https://www.tourisme-en-hautsdefrance.com/">Haut de France Tourisme</a>
+              Développé par l’ABC et Haut de France Tourisme
             </p>
 
             <p>

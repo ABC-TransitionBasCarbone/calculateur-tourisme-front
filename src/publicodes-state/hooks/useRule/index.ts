@@ -93,7 +93,8 @@ export default function useRule(
     descriptionInformations,
     questionPassee,
     descriptionPassee,
-    intensiteCouleur
+    intensiteCouleur,
+    unite
   } = useContent({
     dottedName,
     rule,
@@ -258,5 +259,6 @@ export default function useRule(
      * A description of informations
      */
     descriptionInformations,
+    unite
   }
 }

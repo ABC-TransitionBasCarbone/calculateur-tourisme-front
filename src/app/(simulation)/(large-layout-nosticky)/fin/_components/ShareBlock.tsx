@@ -9,7 +9,7 @@ export default function ShareBlock() {
   const { sharedUrl } = useEndPageSharedUrl()
 
   return (
-    <div id="share-block" className="">
+    <div id="share-block" className="" style={{ marginBottom: '2rem' }}>
       <Title tag="h2">
         <Trans>Partager mon résultat</Trans>
       </Title>

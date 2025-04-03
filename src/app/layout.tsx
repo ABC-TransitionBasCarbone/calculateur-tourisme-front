@@ -1,4 +1,3 @@
-import Footer from '@/components/layout/Footer'
 import '@/locales/initClient'
 import '@/locales/initServer'
 import { dir } from 'i18next'
@@ -55,7 +54,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   try {
     const lang = currentLocale()
 
-    const initialRegion = {"name":"France","code":"FR"}
+    const initialRegion = { "name": "France", "code": "FR" }
 
     return (
       <html lang={lang ?? ''} dir={dir(lang ?? '')}>
@@ -106,7 +105,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
           <MainLayoutProviders initialRegion={initialRegion}>
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </MainLayoutProviders>
 
           <div id="modal" />

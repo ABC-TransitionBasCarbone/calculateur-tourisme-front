@@ -95,6 +95,8 @@ export type LocalStorage = {
 
 export type Metric = Metrics
 
+export type Tab = 'carbone' | 'comparateur'
+
 export type Situation = PublicodesSituation<DottedName>
 
 export type ParsedRules = PublicodesParsedRules<DottedName>

@@ -99,6 +99,26 @@ export default function useContent({ dottedName, rule }: Props) {
     [rule]
   )
 
+  const informations = useMemo<DottedName[] | undefined>(
+    () => (rule as any)?.rawNode['informations'],
+    [rule]
+  )
+
+  const intensiteCouleur = useMemo<string | undefined>(() => (rule as any)?.rawNode['intensiteCouleur'], [rule])
+
+  const unite = useMemo<string | undefined>(() => (rule as any)?.rawNode['unité'], [rule])
+
+  const titreInformations = useMemo<string | undefined>(
+    () => (rule as any)?.rawNode['titre-informations'],
+    [rule]
+  )
+
+  const descriptionInformations = useMemo<string | undefined>(
+    () => (rule as any)?.rawNode['description-informations'],
+    [rule]
+  )
+
+
   return {
     category,
     title,
@@ -114,7 +134,12 @@ export default function useContent({ dottedName, rule }: Props) {
     plancher,
     warning,
     actions,
+    informations,
     questionPassee,
-    descriptionPassee
+    descriptionPassee,
+    intensiteCouleur,
+    unite,
+    titreInformations,
+    descriptionInformations
   }
 }

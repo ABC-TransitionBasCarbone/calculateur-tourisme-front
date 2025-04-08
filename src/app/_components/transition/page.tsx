@@ -44,15 +44,12 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
             );
           case 'logement':
             return (
-              <div>
-                <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                  <img
-                    src="/images/illustrations/logement-sensibilisation.png"
-                    alt=""
-                    style={{ maxWidth: '100%', height: 'auto' }}
-                  />
-                </div>
-              </div>
+              <ImpactCO2Module
+                src="https://impactco2.fr/iframe.js"
+                dataType="comparateur"
+                dataSearch="?value=1&comparisons=camping,location,residencesecondaire&equivalent=hotel&language=fr&theme=default"
+                name="impact-co2"
+              />
             )
           case 'divers':
             return (

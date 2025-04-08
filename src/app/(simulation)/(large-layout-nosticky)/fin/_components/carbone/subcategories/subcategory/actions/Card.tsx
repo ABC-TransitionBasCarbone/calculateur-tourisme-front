@@ -11,6 +11,8 @@ type CardProps = {
   category?: string
   isSelected?: boolean
   hide?: boolean
+  description?: string
+  mesure?: string
 }
 
 export default function Card({
@@ -21,6 +23,8 @@ export default function Card({
                                category,
                                isSelected = false,
                                hide = false,
+                               description,
+                                mesure
                              }: CardProps) {
   if (hide) return null
 
@@ -50,6 +54,18 @@ export default function Card({
             {percent || 1} %
           </span>
           <Trans> de votre empreinte</Trans>
+        </div>
+      )}
+      {description !== undefined && (
+        <div className="text-center text-base leading-tight">
+          {description}
+        </div>
+      )}
+      {mesure !== undefined && (
+        <div className="text-center text-base leading-tight">
+          <span className="block text-2xl font-black text-secondary-700">
+            {mesure}
+          </span>
         </div>
       )}
     </div>

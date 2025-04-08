@@ -29,6 +29,11 @@ const remoteImagesPatterns = [
     port: '',
     pathname: '/**',
   },
+  {
+    protocol: 'https',
+    hostname: 'www.cartograf.fr',
+    pathname: '/regions/hauts-de-france/**',
+  },
 ]
 
 module.exports = remoteImagesPatterns

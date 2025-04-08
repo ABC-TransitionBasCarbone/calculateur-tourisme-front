@@ -8,7 +8,6 @@ import { carboneMetric, eauMetric } from '@/constants/metric'
 import Title from '@/design-system/layout/Title'
 import { useEndGuard } from '@/hooks/navigation/useEndGuard'
 import { useSimulationIdInQueryParams } from '@/hooks/simulation/useSimulationIdInQueryParams'
-import { useCurrentMetric } from '@/hooks/useCurrentMetric'
 import { Metric } from '@/publicodes-state/types'
 import { ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -27,7 +26,7 @@ export default function FinPage() {
 
   const { simulationIdInQueryParams } = useSimulationIdInQueryParams()
 
-  const { currentMetric } = useCurrentMetric()
+  const currentMetric = "carbone"
 
   // If the simulationIdInQueryParams is set, it means that the simulation is not loaded yet
   if (!isGuardInit || isGuardRedirecting || !!simulationIdInQueryParams)
@@ -66,7 +65,7 @@ export default function FinPage() {
                 {titles[currentMetric]}
               </strong>
             </Title>
-            <CategoriesAccordion metric={currentMetric} />
+            <CategoriesAccordion metric="carbone" />
           </div>
 
           <ShareBlock />

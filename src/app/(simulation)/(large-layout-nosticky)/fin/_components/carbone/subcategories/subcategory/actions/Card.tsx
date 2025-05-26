@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
-import Trans from '@/components/translation/Trans'
 import Emoji from '@/design-system/utils/Emoji'
 import { getBorderColor, getTextDarkColor } from '@/helpers/getCategoryColorClass'
+import Markdown from '@/design-system/utils/Markdown'
 
 type CardProps = {
   title?: string
@@ -16,16 +16,16 @@ type CardProps = {
 }
 
 export default function Card({
-                               title,
-                               className,
-                               icon,
-                               percent,
-                               category,
-                               isSelected = false,
-                               hide = false,
-                               description,
-                                mesure
-                             }: CardProps) {
+  title,
+  className,
+  icon,
+  percent,
+  category,
+  isSelected = false,
+  hide = false,
+  description,
+  mesure
+}: CardProps) {
   if (hide) return null
 
   return (
@@ -45,27 +45,27 @@ export default function Card({
           </div>
         )}
         <div className="text-center text-sm font-bold leading-tight lg:text-base">
-          {title}
+          <Markdown>{title ?? ''}</Markdown>
         </div>
       </div>
       {percent !== undefined && (
         <div className="text-center text-base leading-tight">
-          <span className="block text-2xl font-black text-secondary-700">
-            {percent || 1} %
-          </span>
-          <Trans> de votre empreinte</Trans>
+          <Markdown className="block text-2xl font-black text-secondary-700">
+            {percent.toString()}
+          </Markdown>
+          <Markdown> % de votre empreinte</Markdown>
         </div>
       )}
       {description !== undefined && (
-        <div className="text-center text-base leading-tight">
-          {description}
-        </div>
+        <Markdown className="text-center text-base leading-tight">
+          {description ?? ''}
+        </Markdown>
       )}
       {mesure !== undefined && (
         <div className="text-center text-base leading-tight">
-          <span className="block text-2xl font-black text-secondary-700">
-            {mesure}
-          </span>
+          <Markdown className="block text-2xl font-black text-secondary-700">
+            {mesure ?? ''}
+          </Markdown>
         </div>
       )}
     </div>

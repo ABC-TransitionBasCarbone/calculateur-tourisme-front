@@ -47,7 +47,7 @@ export default function FinPage() {
       <MetricSlider />
 
       <div className="relative flex flex-col-reverse gap-16 lg:flex-row lg:gap-10">
-        <div className="relative flex flex-1 flex-col gap-16 lg:mt-7">
+        <div className="relative flex flex-1 flex-col gap-16 lg:mt-7" style={{ width: '100%' }}>
           <div
             className={twMerge(
               'transition-opacity duration-500',

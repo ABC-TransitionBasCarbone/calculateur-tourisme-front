@@ -37,7 +37,7 @@ export default function Subcategory({ subcategory, index }: Props) {
         </div>
         <Emoji className="text-4xl lg:text-6xl">{icons?.slice(0, 2)}</Emoji>
       </div>
-      <Actions subcategory={subcategory} />
+      <Actions subcategory={subcategory}  noNumberedFootprint/>
     </div>
   )
 }

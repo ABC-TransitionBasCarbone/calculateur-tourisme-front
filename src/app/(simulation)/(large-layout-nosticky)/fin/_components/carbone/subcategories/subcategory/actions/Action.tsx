@@ -39,6 +39,7 @@ export default function Action({
       percent={!hasNoValue ? percent : undefined}
       category={category}
       isSelected={isActionChoosen}
+      showPercentFallback
       className={twMerge(
         colorClassName[index],
         isActionChoosen

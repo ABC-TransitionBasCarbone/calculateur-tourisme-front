@@ -19,7 +19,7 @@ export default function Markdown({
   ...otherProps
 }: MarkdownProps) {
   return (
-    <div className="markdown">
+    <div className="markdown w-full">
       <MarkdownToJsx
         {...otherProps}
         options={{

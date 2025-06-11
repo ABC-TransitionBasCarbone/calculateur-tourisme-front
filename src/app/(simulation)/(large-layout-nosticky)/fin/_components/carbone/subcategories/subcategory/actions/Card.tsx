@@ -13,6 +13,7 @@ type CardProps = {
   hide?: boolean
   description?: string
   mesure?: string
+  showPercentFallback?: boolean
 }
 
 export default function Card({
@@ -24,7 +25,8 @@ export default function Card({
   isSelected = false,
   hide = false,
   description,
-  mesure
+  mesure,
+  showPercentFallback = false
 }: CardProps) {
   if (hide) return null
 
@@ -48,14 +50,22 @@ export default function Card({
           <Markdown>{title ?? ''}</Markdown>
         </div>
       </div>
-      {percent !== undefined && (
-        <div className="text-center text-base leading-tight">
-          <Markdown className="block text-2xl font-black text-secondary-700">
-            {percent.toString()}
-          </Markdown>
-          <Markdown> % de votre empreinte</Markdown>
-        </div>
-      )}
+      <div className="text-center text-base leading-tight">
+        {percent !== undefined ? (
+          <div className="text-center text-base leading-tight">
+            <Markdown className="block text-2xl font-black text-secondary-700">
+              {percent.toString()}
+            </Markdown>
+            <Markdown> % de votre empreinte</Markdown>
+          </div>
+        ) : showPercentFallback ? (
+          <div className="text-center text-base leading-tight">
+            <Markdown className="block text-2xl font-black text-secondary-700">
+              👏👏👏
+            </Markdown>
+          </div>
+        ) : null}
+      </div>
       {description !== undefined && (
         <Markdown className="text-center text-base leading-tight">
           {description ?? ''}

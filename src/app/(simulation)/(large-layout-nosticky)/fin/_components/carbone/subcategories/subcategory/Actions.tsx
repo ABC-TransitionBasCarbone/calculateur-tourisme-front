@@ -54,6 +54,30 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
 
   const firstThreeActions = sortedActions.slice(0, 3)
 
+  console.log(category)
+  let customTitle = ''
+
+  switch (category) {
+    case 'transport':
+      customTitle = '🚗 Transport'
+      break
+    case 'séjour':
+      customTitle = '🚗 Transport'
+      break
+    case 'alimentation':
+      customTitle = '🍽️ Alimentation'
+      break
+    case 'logement':
+      customTitle = '🏠 Hébergement'
+      break
+    case 'divers':
+      customTitle = '💻 Activités et loisirs'
+      break
+    default:
+      customTitle = '📦 Autre catégorie'
+      break
+  }
+
   return (
     <>
       {!noNumberedFootprint && (
@@ -107,16 +131,14 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
         </motion.div>
       ) : null}
       <Carousel informations={informations} category={category} />
-      {!noNumberedFootprint && (
-        <div className="flex justify-center">
-          <Link
-            onClick={() => trackEvent(endClickActions)}
-            href="/actions"
-            className="text-center text-xs">
-            <Trans>Voir tous les gestes</Trans> : {title}
-          </Link>
-        </div>
-      )}
+      <div className="flex justify-center">
+        <Link
+          onClick={() => trackEvent(endClickActions)}
+          href="/actions"
+          className="text-center text-xs">
+          <Trans>Voir tous les gestes</Trans> : {customTitle}
+        </Link>
+      </div>
     </>
   )
 }

@@ -54,7 +54,6 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
 
   const firstThreeActions = sortedActions.slice(0, 3)
 
-  console.log(category)
   let customTitle = ''
 
   switch (category) {

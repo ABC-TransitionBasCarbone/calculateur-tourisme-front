@@ -28,7 +28,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useClientTranslation()
 
-  const { title, actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
+  const { actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
   const filteredActions = noNumberedFootprint
     ? actions
     : actions?.filter((action) => getValue(action))

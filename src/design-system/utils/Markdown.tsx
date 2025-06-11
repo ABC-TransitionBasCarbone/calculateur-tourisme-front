@@ -26,7 +26,18 @@ export default function Markdown({
           ...otherProps.options,
           forceBlock: true,
           overrides: {
-            a: Link,
+            a: {
+              component: ({ href, children, ...props }) => (
+                <Link
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...props}
+                >
+                  {children}
+                </Link>
+              ),
+            },
             img: {
               component: ({ ...props }) => (
                 <Image

@@ -134,7 +134,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
       <div className="flex justify-center">
         <Link
           onClick={() => trackEvent(endClickActions)}
-          href="/actions"
+          href={`/actions?catégorie=${category}`}
           className="text-center text-xs">
           <Trans>Voir tous les gestes</Trans> : {customTitle}
         </Link>

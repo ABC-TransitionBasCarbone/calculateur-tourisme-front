@@ -24,17 +24,25 @@ type ActionObject = {
 }
 
 export default function Actions({ subcategory, noNumberedFootprint }: Props) {
-  const { getValue } = useEngine()
+  const { getValue, safeGetRule } = useEngine()
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useClientTranslation()
 
   const { actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
-  const filteredActions = noNumberedFootprint
+
+  const actionsWithNumber = noNumberedFootprint
     ? actions
     : actions?.filter((action) => getValue(action))
 
-  if (!filteredActions?.length) return null
-  
+  const filteredActions = actionsWithNumber?.filter((action) => {
+    const rule = safeGetRule(action)
+    return !!rule?.title
+  })
+
+  if (!filteredActions) {
+    return null
+  }
+
   const sortedActions = noNumberedFootprint
     ? filteredActions.sort((a: string) => {
       if (a.includes('voter')) {

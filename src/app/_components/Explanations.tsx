@@ -54,7 +54,7 @@ export default async function Explanations() {
             </p>
 
             <p>
-              <span style={{ fontWeight: 'bold' }}><a href="https://www.tourisme-en-hautsdefrance.com/">HAUTS-DE-FRANCE TOURISME</a>, est vecteur d’image et de notoriété de la région
+              <a href="https://www.tourisme-en-hautsdefrance.com/">Hauts-de-France Tourisme</a>, <span style={{ fontWeight: 'bold' }}>est vecteur d’image et de notoriété de la région
                 Hauts-de-France au travers du tourisme, en France et à l’international.</span> Il intervient au cœur d’un écosystème qui associe les différents territoires de la région,
               les filières et les acteurs du tourisme dans une relation de proximité et de terrain et en adéquation avec la politique Rev3 du conseil régional des Hauts-de-France.
             </p>

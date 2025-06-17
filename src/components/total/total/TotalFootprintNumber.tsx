@@ -12,7 +12,7 @@ type Props = {
 }
 
 const duration = {
-  carbone: <Trans>de CO₂e par séjour</Trans>,
+  carbone: <Trans>de CO₂e par séjour et par personne</Trans>,
   eau: <Trans>d'eau par jour</Trans>,
 }
 export default function TotalFootprintNumber({

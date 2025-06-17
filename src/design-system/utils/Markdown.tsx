@@ -19,14 +19,25 @@ export default function Markdown({
   ...otherProps
 }: MarkdownProps) {
   return (
-    <div className="markdown">
+    <div className="markdown w-full">
       <MarkdownToJsx
         {...otherProps}
         options={{
           ...otherProps.options,
           forceBlock: true,
           overrides: {
-            a: Link,
+            a: {
+              component: ({ href, children, ...props }) => (
+                <Link
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...props}
+                >
+                  {children}
+                </Link>
+              ),
+            },
             img: {
               component: ({ ...props }) => (
                 <Image

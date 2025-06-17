@@ -259,6 +259,6 @@ export default function useRule(
      * A description of informations
      */
     descriptionInformations,
-    unite
+    unite,
   }
 }

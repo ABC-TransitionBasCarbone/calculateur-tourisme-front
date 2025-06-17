@@ -24,17 +24,25 @@ type ActionObject = {
 }
 
 export default function Actions({ subcategory, noNumberedFootprint }: Props) {
-  const { getValue } = useEngine()
+  const { getValue, safeGetRule } = useEngine()
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useClientTranslation()
 
-  const { title, actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
-  const filteredActions = noNumberedFootprint
+  const { actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
+
+  const actionsWithNumber = noNumberedFootprint
     ? actions
     : actions?.filter((action) => getValue(action))
 
-  if (!filteredActions?.length) return null
-  
+  const filteredActions = actionsWithNumber?.filter((action) => {
+    const rule = safeGetRule(action)
+    return !!rule?.title
+  })
+
+  if (!filteredActions) {
+    return null
+  }
+
   const sortedActions = noNumberedFootprint
     ? filteredActions.sort((a: string) => {
       if (a.includes('voter')) {
@@ -53,6 +61,29 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
       .map((actionObject: ActionObject) => actionObject.dottedName)
 
   const firstThreeActions = sortedActions.slice(0, 3)
+
+  let customTitle = ''
+
+  switch (category) {
+    case 'transport':
+      customTitle = '🚗 Transport'
+      break
+    case 'séjour':
+      customTitle = '🚗 Transport'
+      break
+    case 'alimentation':
+      customTitle = '🍽️ Alimentation'
+      break
+    case 'logement':
+      customTitle = '🏠 Hébergement'
+      break
+    case 'divers':
+      customTitle = '💻 Activités et loisirs'
+      break
+    default:
+      customTitle = '📦 Autre catégorie'
+      break
+  }
 
   return (
     <>
@@ -107,16 +138,14 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
         </motion.div>
       ) : null}
       <Carousel informations={informations} category={category} />
-      {!noNumberedFootprint && (
-        <div className="flex justify-center">
-          <Link
-            onClick={() => trackEvent(endClickActions)}
-            href="/actions"
-            className="text-center text-xs">
-            <Trans>Voir tous les gestes</Trans> : {title}
-          </Link>
-        </div>
-      )}
+      <div className="flex justify-center">
+        <Link
+          onClick={() => trackEvent(endClickActions)}
+          href={`/actions?catégorie=${category}`}
+          className="text-center text-xs">
+          <Trans>Voir tous les gestes</Trans> : {customTitle}
+        </Link>
+      </div>
     </>
   )
 }

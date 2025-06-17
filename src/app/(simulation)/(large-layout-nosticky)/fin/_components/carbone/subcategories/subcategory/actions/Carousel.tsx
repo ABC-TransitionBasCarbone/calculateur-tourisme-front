@@ -46,7 +46,10 @@ export default function Carousel({ informations, category }: Props) {
       {informations && informations.length > 0 && (
         <div>
           <div className="relative overflow-hidden w-full p-4" ref={emblaRef}>
-            <div className="flex flew-nowrap">
+            <div className={twMerge(
+              "flex flex-nowrap",
+              informations.length < 3 ? "justify-center" : ""
+            )}>
               {informations.map((ruleName) => (
                 <Slide key={ruleName} ruleName={ruleName} category={category} />
               ))}

@@ -60,9 +60,7 @@ export default function Question({
     descriptionPassee,
   } = useRule(question)
 
-  const dependanteRule = useRule('transport . passé');
-
-  const isPast = dependanteRule?.value || false;
+  const isPast = false
 
   let questionLabel = label;
   let questionDescription = description;

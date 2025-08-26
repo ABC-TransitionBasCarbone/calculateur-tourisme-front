@@ -30,9 +30,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
 
   const { actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
 
-  const actionsWithNumber = noNumberedFootprint
-    ? actions
-    : actions?.filter((action) => getValue(action))
+  const actionsWithNumber = actions?.filter((action) => getValue(action))
 
   const filteredActions = actionsWithNumber?.filter((action) => {
     const rule = safeGetRule(action)
@@ -43,22 +41,15 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
     return null
   }
 
-  const sortedActions = noNumberedFootprint
-    ? filteredActions.sort((a: string) => {
-      if (a.includes('voter')) {
-        return -1
-      }
-      return 1
-    })
-    : filteredActions
-      .map((action) => ({
-        dottedName: action,
-        value: getValue(action) as number,
-      }))
-      .sort((a: ActionObject, b: ActionObject) =>
-        a.value > b.value ? -1 : 1
-      )
-      .map((actionObject: ActionObject) => actionObject.dottedName)
+  const sortedActions = filteredActions
+    .map((action) => ({
+      dottedName: action,
+      value: getValue(action) as number,
+    }))
+    .sort((a: ActionObject, b: ActionObject) =>
+      a.value > b.value ? 1 : -1
+    )
+    .map((actionObject: ActionObject) => actionObject.dottedName)
 
   const firstThreeActions = sortedActions.slice(0, 3)
 

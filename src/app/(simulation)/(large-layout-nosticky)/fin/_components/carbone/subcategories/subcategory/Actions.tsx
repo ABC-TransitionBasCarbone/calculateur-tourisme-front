@@ -47,7 +47,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
       value: getValue(action) as number,
     }))
     .sort((a: ActionObject, b: ActionObject) =>
-      a.value > b.value ? 1 : -1
+      a.value > b.value ? -1 : 1
     )
     .map((actionObject: ActionObject) => actionObject.dottedName)
 
@@ -85,7 +85,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
           </Trans>
         </p>
       )}
-      <div className="mb-4 flex flex-row-reverse justify-center gap-4">
+      <div className="mb-4 flex flex-row justify-center gap-4">
         {firstThreeActions.map((action, index) => (
           <Action key={action} action={action} index={index} />
         ))}

@@ -32,6 +32,7 @@ export default function Action({
   const hasNoValue = numericValue === 0
 
   const percent = Math.round((numericValue / total) * 100)
+
   return (
     <Card
       title={title}

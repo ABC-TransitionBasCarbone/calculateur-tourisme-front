@@ -47,7 +47,6 @@ export default function useNotifications({
         (notification) =>  {
           if (!regionSelected) return false
           if (notification.match(new RegExp(`.*${regionSelected}`, 'i'))) {
-            console.log(notification, safeEvaluate(notification))
             return safeEvaluate(notification)?.nodeValue
           }
           return false

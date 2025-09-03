@@ -30,11 +30,11 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
 
   const { actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
 
-  const actionsWithNumber = actions?.filter((action) => getValue(action))
-
-  const filteredActions = actionsWithNumber?.filter((action) => {
+  const filteredActions = actions?.filter((action) => {
     const rule = safeGetRule(action)
-    return !!rule?.title
+    const actionValue = getValue(action)
+
+    return !!rule?.title && (!rule.rawNode.valeur || (actionValue && actionValue > 0))
   })
 
   if (!filteredActions) {
@@ -46,8 +46,12 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
       dottedName: action,
       value: getValue(action) as number,
     }))
-    .sort((a: ActionObject, b: ActionObject) =>
-      a.value > b.value ? -1 : 1
+    .sort((a: ActionObject, b: ActionObject) => {
+      if (!a.value) return -1
+      if (!b.value) return 1
+
+      return a.value > b.value ? -1 : 1
+    }
     )
     .map((actionObject: ActionObject) => actionObject.dottedName)
 

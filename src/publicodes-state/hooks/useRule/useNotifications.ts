@@ -39,15 +39,20 @@ export default function useNotifications({
   )
 
   const activeNotifications = useMemo(
-    () =>
-      notifications.filter(
+    () => {
+      if (notifications.length < 5) {
+        return notifications.filter((notif) => safeEvaluate(notif)?.nodeValue)
+      }
+      return notifications.filter(
         (notification) =>  {
-          if (notification.match(new RegExp(`^${dottedName}.*${regionSelected}`, 'i'))) {
+          if (!regionSelected) return false
+          if (notification.match(new RegExp(`.*${regionSelected}`, 'i'))) {
+            console.log(notification, safeEvaluate(notification))
             return safeEvaluate(notification)?.nodeValue
           }
           return false
-        }
-      ),
+        })
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [notifications, safeEvaluate, situation, dottedName]
   )

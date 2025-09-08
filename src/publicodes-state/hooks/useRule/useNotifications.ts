@@ -41,7 +41,11 @@ export default function useNotifications({
   const activeNotifications = useMemo(
     () => {
       if (notifications.length < 5) {
-        return notifications.filter((notif) => safeEvaluate(notif)?.nodeValue)
+        return notifications.filter((notif) => {
+          if (notif.match(new RegExp(`^${dottedName} . `, 'i'))) {
+            return safeEvaluate(notif)?.nodeValue
+          }
+        })
       }
       return notifications.filter(
         (notification) =>  {

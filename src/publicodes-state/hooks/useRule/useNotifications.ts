@@ -42,15 +42,16 @@ export default function useNotifications({
     () => {
       if (notifications.length < 5) {
         return notifications.filter((notif) => {
-          if (notif.match(new RegExp(`^${dottedName} . `, 'i'))) {
+          if (notif.match(new RegExp(`^${dottedName}`, 'i'))) {
             return safeEvaluate(notif)?.nodeValue
           }
         })
       }
       return notifications.filter(
         (notification) =>  {
-          if (!regionSelected) return false
-          if (notification.match(new RegExp(`.*${regionSelected}`, 'i'))) {
+          const notifForNonSelectedRegion = !regionSelected && notification.match(new RegExp(`.*région générale`, 'i'))
+          const notifForSelectedRegion = regionSelected && notification.match(new RegExp(`.*(${regionSelected}|région générale)`, 'i'))
+          if (notifForNonSelectedRegion || notifForSelectedRegion) {
             return safeEvaluate(notification)?.nodeValue
           }
           return false
@@ -59,6 +60,5 @@ export default function useNotifications({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [notifications, safeEvaluate, situation, dottedName]
   )
-
   return { notifications, activeNotifications }
 }

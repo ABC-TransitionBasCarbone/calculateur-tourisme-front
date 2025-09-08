@@ -6,13 +6,15 @@ import { twMerge } from 'tailwind-merge'
 import Slide
   from '@/app/(simulation)/(large-layout-nosticky)/fin/_components/carbone/subcategories/subcategory/actions/Slide'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
+import Action from './Action'
 
 type Props = {
   informations: DottedName[] | undefined
   category: string
+  regionalInfo?: boolean
 }
 
-export default function Carousel({ informations, category }: Props) {
+export default function Carousel({ informations, category, regionalInfo }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel()
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
@@ -50,51 +52,53 @@ export default function Carousel({ informations, category }: Props) {
               "flex flex-nowrap",
               informations.length < 3 ? "justify-center" : ""
             )}>
-              {informations.map((ruleName) => (
-                <Slide key={ruleName} ruleName={ruleName} category={category} />
+              {informations.map((ruleName, index) => (
+                regionalInfo ? <Slide key={ruleName} ruleName={ruleName} category={category} /> : <Action key={ruleName} action={ruleName} index={index} />
               ))}
             </div>
-            <button
-              onClick={scrollPrev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-primary-700 bg-opacity-70 p-3 text-white border-2 border-primary-700 shadow-sm hover:bg-primary-900 transition-all duration-300"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 rotate-180"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+            {
+              informations.length > 3 && <>
+                <button
+                  onClick={scrollPrev}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-primary-700 bg-opacity-70 p-3 text-white border-2 border-primary-700 shadow-sm hover:bg-primary-900 transition-all duration-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 rotate-180"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
 
-            <button
-              onClick={scrollNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-primary-700 bg-opacity-70 p-3 text-white border-2 border-primary-700 shadow-sm hover:bg-primary-900 transition-all duration-300"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+                <button
+                  onClick={scrollNext}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-primary-700 bg-opacity-70 p-3 text-white border-2 border-primary-700 shadow-sm hover:bg-primary-900 transition-all duration-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button></>}
           </div>
-          <div className="flex">
+          {informations.length > 3 && <div className="flex">
             <div className="ml-auto flex justify-center gap-2">
               {scrollSnaps.map((_, index) => (
                 <button
@@ -107,7 +111,7 @@ export default function Carousel({ informations, category }: Props) {
                 />
               ))}
             </div>
-          </div>
+          </div>}
         </div>
       )}
     </>

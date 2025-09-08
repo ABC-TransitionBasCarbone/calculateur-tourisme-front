@@ -42,6 +42,7 @@ export default function Action({
       isSelected={isActionChoosen}
       showPercentFallback
       className={twMerge(
+        'min-h-[150px] min-w-[30%] ml-4',
         colorClassName[index],
         isActionChoosen
           ? 'bg-green-100'

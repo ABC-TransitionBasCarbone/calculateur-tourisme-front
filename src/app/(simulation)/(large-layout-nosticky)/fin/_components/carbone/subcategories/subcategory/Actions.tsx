@@ -4,7 +4,6 @@ import { endClickActions } from '@/constants/tracking/pages/end'
 import { useEngine, useRule } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
-import Action from './actions/Action'
 import Carousel
   from '@/app/(simulation)/(large-layout-nosticky)/fin/_components/carbone/subcategories/subcategory/actions/Carousel'
 import Button from '@/design-system/inputs/Button'
@@ -33,7 +32,6 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
   const filteredActions = actions?.filter((action) => {
     const rule = safeGetRule(action)
     const actionValue = getValue(action)
-
     return !!rule?.title && (!rule.rawNode.valeur || (actionValue && typeof actionValue === 'number' && actionValue > 0))
   })
 
@@ -55,7 +53,6 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
     )
     .map((actionObject: ActionObject) => actionObject.dottedName)
 
-  const firstThreeActions = sortedActions.slice(0, 3)
 
   let customTitle = ''
 
@@ -90,9 +87,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
         </p>
       )}
       <div className="mb-4 flex flex-row justify-center gap-4">
-        {firstThreeActions.map((action, index) => (
-          <Action key={action} action={action} index={index} />
-        ))}
+        <Carousel informations={sortedActions} category={category} />
       </div>
       <p className="mb-6">
         <Trans>

@@ -24,7 +24,7 @@ export default async function Explanations() {
         <div className="md:text-lg">
           <Trans>
             <p>
-              Cet outil disponible gratuitement a été développé par l’Association pour la transition Bas Carbone avec le soutien de Hauts-de-France Tourisme.
+              Cet outil disponible gratuitement a été développé par l’Association pour la transition Bas Carbone en partenariat avec Hauts-de-France Tourisme et le soutien financier de l'ADEME régionale des Hauts-de-France.
               Cette déclinaison s'appuie librement sur la version officielle de Nos Gestes Climat développée par l'ADEME (<a href="https://www.ademe.fr/">Agence de la transition écologique</a>) en partenariat avec l'ABC (<a href="https://abc-transitionbascarbone.fr/">Association pour la Transition Bas Carbone</a>).
             </p>
             <p>

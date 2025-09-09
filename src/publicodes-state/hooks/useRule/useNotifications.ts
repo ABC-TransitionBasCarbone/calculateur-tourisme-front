@@ -49,8 +49,8 @@ export default function useNotifications({
       }
       return notifications.filter(
         (notification) =>  {
-          const notifForNonSelectedRegion = !regionSelected && notification.match(new RegExp(`.*région générale`, 'i'))
-          const notifForSelectedRegion = regionSelected && notification.match(new RegExp(`.*(${regionSelected}|région générale)`, 'i'))
+          const notifForNonSelectedRegion = !regionSelected && notification.match(new RegExp(`^${dottedName}.*région générale`, 'i'))
+          const notifForSelectedRegion = regionSelected && notification.match(new RegExp(`^${dottedName}.*(${regionSelected}|région générale)`, 'i'))
           if (notifForNonSelectedRegion || notifForSelectedRegion) {
             return safeEvaluate(notification)?.nodeValue
           }

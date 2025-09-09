@@ -127,7 +127,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
           </Button>
         </motion.div>
       ) : null}
-      <Carousel informations={informations} category={category} />
+      <Carousel informations={informations} category={category} regionalInfo />
       <div className="flex justify-center">
         <Link
           onClick={() => trackEvent(endClickActions)}

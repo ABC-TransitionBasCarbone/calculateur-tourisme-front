@@ -19,6 +19,14 @@ export default function AvantDeCommencer() {
           <Emoji className="absolute -left-8 top-0">👤</Emoji>
           <Trans>Le test est individuel !</Trans>
         </h4>
+        <p className="text-sm md:text-base">
+          <span className="hidden md:inline">
+            {' '}
+            <Trans>
+              Même si vous ne voyageait probablement pas seul, répondez aux questions en votre nom. Bien sûr, pendant un séjour, de nombreuses choses sont souvent partagées (voiture, hébergement) et cela est bien pris en compte dans le calcul de l’empreinte carbone de votre séjour
+            </Trans>
+          </span>
+        </p>
         <h4 className="relative overflow-visible font-bold mt-2">
           <Emoji className="absolute -left-8 top-0">❓</Emoji>
           <Trans>Vous commencez avec des réponses par défaut !</Trans>
@@ -27,14 +35,6 @@ export default function AvantDeCommencer() {
           <span className="hidden md:inline">
             {' '}
             <Trans>Ne vous formalisez donc pas si vous ne partez pas de 0.</Trans>
-          </span>
-        </p>
-        <p className="text-sm md:text-base">
-          <span className="hidden md:inline">
-            {' '}
-            <Trans>
-              Même si vous ne voyageait probablement pas seul, répondez aux questions en votre nom. Bien sûr, pendant un séjour, de nombreuses choses sont souvent partagées (voiture, hébergement) et cela est bien pris en compte dans le calcul de l’empreinte carbone de votre séjour
-            </Trans>
           </span>
         </p>
       </div>

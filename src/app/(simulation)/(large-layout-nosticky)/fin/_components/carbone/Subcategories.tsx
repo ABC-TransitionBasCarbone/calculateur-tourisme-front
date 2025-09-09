@@ -11,8 +11,6 @@ export default function Subcategories() {
     sortedUiCategories.length > 0 ? sortedUiCategories : sortedSubcategories
   ).slice(0, 3)
 
-  console.log(sortedSubcategories, sortedUiCategories)
-
   return (
     <>
       {firstThreeSubcategories.map((subcategory, index) => (

@@ -53,7 +53,7 @@ export default function Carousel({ informations, category, regionalInfo }: Props
               informations.length < 3 ? "justify-center" : ""
             )}>
               {informations.map((ruleName, index) => (
-                regionalInfo ? <Slide key={ruleName} ruleName={ruleName} category={category} /> : <Action key={ruleName} action={ruleName} index={index} />
+                regionalInfo ? <Slide key={ruleName} ruleName={ruleName} category={category} index={index} /> : <Action key={ruleName} action={ruleName} index={index} />
               ))}
             </div>
             {

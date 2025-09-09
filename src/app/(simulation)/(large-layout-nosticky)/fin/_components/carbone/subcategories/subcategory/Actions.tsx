@@ -32,7 +32,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
   const filteredActions = actions?.filter((action) => {
     const rule = safeGetRule(action)
     const actionValue = getValue(action)
-    return !!rule?.title && (!rule.rawNode.valeur || (actionValue && typeof actionValue === 'number' && actionValue > 0))
+    return !!rule?.title && (actionValue && typeof actionValue === 'number' && actionValue > 0)
   })
 
   if (!filteredActions) {

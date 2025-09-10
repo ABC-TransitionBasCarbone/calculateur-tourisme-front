@@ -22,7 +22,6 @@ export default function NotFound() {
       <Main>
         <Route404 />
       </Main>
-      {/* <Footer className="bg-white" /> */}
     </>
   )
 }

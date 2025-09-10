@@ -1,19 +1,21 @@
 import Card from './Card'
 import { twMerge } from 'tailwind-merge'
 import { useRule } from '@/publicodes-state'
+import { getBackgroundLightColor } from '@/helpers/getCategoryColorClass'
 
 type SlideProps = {
   ruleName: string,
   className?: string
   category: string
+  index: number
 }
+const colorClassName = ['200', '100', '50']
 
-export default function Slide({ ruleName, className, category }: SlideProps) {
+export default function Slide({ ruleName, className, category, index }: SlideProps) {
   const rule = useRule(ruleName)
-  const intensiteCouleur = rule.intensiteCouleur ?? 200
   let mesure = undefined
 
-  if (rule.value && rule.unite){
+  if (rule.value && rule.unite) {
     mesure = rule.value + ' ' + rule.unite
   }
 
@@ -24,7 +26,7 @@ export default function Slide({ ruleName, className, category }: SlideProps) {
       className={twMerge(
         "min-h-[150px] min-w-[30%] ml-4",
         `border-categories-${category}`,
-        `bg-${category}-${intensiteCouleur}`,
+        getBackgroundLightColor(category).replace('100', colorClassName[index]),
         className
       )}
       description={rule.description}

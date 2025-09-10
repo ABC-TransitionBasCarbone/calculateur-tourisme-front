@@ -8,6 +8,7 @@ import Script from 'next/script'
 import { PropsWithChildren } from 'react'
 import MainLayoutProviders from './_components/MainLayoutProviders'
 import './globals.css'
+import Footer from '@/components/layout/Footer'
 
 const ClientErrorContent = dynamic(
   () => import('@/components/error/ErrorContent'),
@@ -59,8 +60,6 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     return (
       <html lang={lang ?? ''} dir={dir(lang ?? '')}>
         <head>
-          <link rel="icon" href="/favicon.png" />
-
           <meta
             name="google-site-verification"
             content="oQ9gPKS4kocrCJP6CoguSkdIKKZ6ilZz0aQw_ZIgtVc"
@@ -105,7 +104,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
           <MainLayoutProviders initialRegion={initialRegion}>
             {children}
-            {/* <Footer /> */}
+            <Footer />
           </MainLayoutProviders>
 
           <div id="modal" />

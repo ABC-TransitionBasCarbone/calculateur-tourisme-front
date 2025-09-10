@@ -27,6 +27,16 @@ export default function AvantDeCommencer() {
             </Trans>
           </span>
         </p>
+        <h4 className="relative overflow-visible font-bold mt-2">
+          <Emoji className="absolute -left-8 top-0">❓</Emoji>
+          <Trans>Vous commencez avec des réponses par défaut !</Trans>
+        </h4>
+        <p className="text-sm md:text-base">
+          <span className="hidden md:inline">
+            {' '}
+            <Trans>Ne vous formalisez donc pas si vous ne partez pas de 0.</Trans>
+          </span>
+        </p>
       </div>
     </div>
   )

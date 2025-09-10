@@ -4,7 +4,6 @@ import { endClickActions } from '@/constants/tracking/pages/end'
 import { useEngine, useRule } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
-import Action from './actions/Action'
 import Carousel
   from '@/app/(simulation)/(large-layout-nosticky)/fin/_components/carbone/subcategories/subcategory/actions/Carousel'
 import Button from '@/design-system/inputs/Button'
@@ -30,37 +29,31 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
 
   const { actions, informations, category, titreInformations, descriptionInformations } = useRule(subcategory)
 
-  const actionsWithNumber = noNumberedFootprint
-    ? actions
-    : actions?.filter((action) => getValue(action))
-
-  const filteredActions = actionsWithNumber?.filter((action) => {
+  const filteredActions = actions?.filter((action) => {
     const rule = safeGetRule(action)
-    return !!rule?.title
+    const actionValue = getValue(action)
+
+    return !!rule?.title && ((actionValue && typeof actionValue === 'number' && actionValue > 0) || (!rule.rawNode.formule && !rule.rawNode.variations && !rule.rawNode.valeur))
   })
 
   if (!filteredActions) {
     return null
   }
 
-  const sortedActions = noNumberedFootprint
-    ? filteredActions.sort((a: string) => {
-      if (a.includes('voter')) {
-        return -1
-      }
-      return 1
-    })
-    : filteredActions
-      .map((action) => ({
-        dottedName: action,
-        value: getValue(action) as number,
-      }))
-      .sort((a: ActionObject, b: ActionObject) =>
-        a.value > b.value ? -1 : 1
-      )
-      .map((actionObject: ActionObject) => actionObject.dottedName)
+  const sortedActions = filteredActions
+    .map((action) => ({
+      dottedName: action,
+      value: getValue(action) as number,
+    }))
+    .sort((a: ActionObject, b: ActionObject) => {
+      if (!a.value) return -1
+      if (!b.value) return 1
 
-  const firstThreeActions = sortedActions.slice(0, 3)
+      return a.value > b.value ? -1 : 1
+    }
+    )
+    .map((actionObject: ActionObject) => actionObject.dottedName)
+
 
   let customTitle = ''
 
@@ -94,10 +87,8 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
           </Trans>
         </p>
       )}
-      <div className="mb-4 flex flex-row-reverse justify-center gap-4">
-        {firstThreeActions.map((action, index) => (
-          <Action key={action} action={action} index={index} />
-        ))}
+      <div className="mb-4 flex flex-row justify-center gap-4">
+        <Carousel informations={sortedActions} category={category} />
       </div>
       <p className="mb-6">
         <Trans>
@@ -137,7 +128,7 @@ export default function Actions({ subcategory, noNumberedFootprint }: Props) {
           </Button>
         </motion.div>
       ) : null}
-      <Carousel informations={informations} category={category} />
+      <Carousel informations={informations} category={category} regionalInfo />
       <div className="flex justify-center">
         <Link
           onClick={() => trackEvent(endClickActions)}

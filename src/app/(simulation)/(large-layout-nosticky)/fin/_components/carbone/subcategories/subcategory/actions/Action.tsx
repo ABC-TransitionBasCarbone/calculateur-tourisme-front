@@ -32,6 +32,7 @@ export default function Action({
   const hasNoValue = numericValue === 0
 
   const percent = Math.round((numericValue / total) * 100)
+
   return (
     <Card
       title={title}
@@ -41,6 +42,7 @@ export default function Action({
       isSelected={isActionChoosen}
       showPercentFallback
       className={twMerge(
+        'min-h-[150px] min-w-[30%] ml-4',
         colorClassName[index],
         isActionChoosen
           ? 'bg-green-100'

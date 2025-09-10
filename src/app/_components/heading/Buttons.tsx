@@ -32,9 +32,8 @@ export default function Buttons() {
     <div className="relative">
       <ButtonLink
         size="xl"
-        className={`hover:bg-primary-900 transition-all duration-300 ${
-          isClient ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`hover:bg-primary-900 transition-all duration-300 ${isClient ? 'opacity-100' : 'opacity-0'
+          }`}
         href={getLinkToSimulateurPage()}
         data-cypress-id="do-the-test-link"
         onMouseEnter={() => setIsHover(true)}
@@ -65,9 +64,8 @@ export default function Buttons() {
 
       {progression ? (
         <Link
-          className={`absolute left-1/2 top-full -translate-x-1/2 translate-y-6 whitespace-nowrap transition-all delay-200 duration-300 md:text-lg ${
-            isClient ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`absolute left-1/2 top-full -translate-x-1/2 translate-y-6 whitespace-nowrap transition-all delay-200 duration-300 md:text-lg text-white ${isClient ? 'opacity-100' : 'opacity-0'
+            }`}
           onClick={() => {
             trackEvent(homeClickNewTest)
             goToSimulateurPage({ noNavigation: true, newSimulation: {} })

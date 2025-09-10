@@ -2,7 +2,6 @@
 
 import Trans from '@/components/translation/Trans'
 import Button from '@/design-system/inputs/Button'
-import Badge from '@/design-system/layout/Badge'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
@@ -69,11 +68,6 @@ export default function Explanation({
         <Trans i18nKey={'components.ScoreExplanation.text.p3'}>
           🤔 Si vous passez une question, l’empreinte ne changera pas : une empreinte par défaut sera attribuée.
         </Trans>
-      </p>
-      <p className="mb-2 md:mb-4">
-        <Badge tag="span" color="secondary" size="xs">
-          BETA
-        </Badge>{' '}
       </p>
       <div className="flex justify-end">
         <Button

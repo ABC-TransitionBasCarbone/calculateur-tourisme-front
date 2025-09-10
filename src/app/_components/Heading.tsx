@@ -1,32 +1,21 @@
 import Trans from '@/components/translation/Trans'
 import Buttons from './heading/Buttons'
 import Partners from './heading/Partners'
+import Image from 'next/image'
 
 export default async function Heading() {
   return (
     <>
-      <div className="relative flex min-h-[588px] items-center justify-center overflow-hidden bg-gray-100 p-4 md:min-h-[36rem]">
-        <div className="relative mb-2 max-w-sm text-center md:mb-0 md:max-w-2xl">
-          <h1 className="md:text-5xl">
+      <Image src="/images/illustrations/home-background.jpg" alt="background" width={3992} height={2992}
+        className="self-center absolute w-full flex h-[588px] items-center justify-center overflow-hidden md:h-[36rem]" />
+      <div className="relative flex h-[588px] items-center justify-center overflow-hidden p-4 md:h-[36rem]">
+        <div className="relative mb-2 max-w-sm text-center md:mb-0 md:max-w-2xl text-white">
+          <h1 className="md:text-5xl" style={{ textShadow: '1px 4px 10px black' }}>
             <Trans>Connaissez vous l’empreinte carbone de votre séjour ?</Trans>
           </h1>
-          <p className="md:text-2xl">
+          <p className="md:text-2xl" style={{ textShadow: '1px 4px 10px black' }}>
             Obtenez une estimation en seulement 5 minutes !
           </p>
-          {/*<p className="mb-6 md:mb-8 md:text-2xl">
-            <Badge
-              tag="span"
-              color="secondary"
-              size="sm"
-              className="align-text-bottom">
-              BETA
-            </Badge>
-            <Trans>Découvrez votre</Trans>{' '}
-            <strong>
-              <Trans>empreinte eau</Trans>
-            </strong>{' '}
-            <Trans>à la fin du test !</Trans>
-          </p>*/}
           <Buttons />
         </div>
       </div>

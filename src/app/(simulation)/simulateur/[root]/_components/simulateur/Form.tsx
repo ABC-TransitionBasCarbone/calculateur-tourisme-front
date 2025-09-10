@@ -14,7 +14,6 @@ import { useCurrentSimulation, useEngine, useForm } from '@/publicodes-state'
 import { useContext, useEffect, useState } from 'react'
 import CategoriesSummary from './form/CategoriesSummary'
 import FunFact from './form/FunFact'
-import CategoryIllustration from './summary/CategoryIllustration'
 import { TransitionPage } from '@/app/_components/transition/page'
 
 export default function Form() {
@@ -130,10 +129,6 @@ export default function Form() {
             <CategoriesSummary />
 
             <FunFact question={currentQuestion} />
-
-            <div className="mb-8 mt-auto pb-16 md:pb-0">
-              <CategoryIllustration category={currentCategory ?? 'transport'} />
-            </div>
           </div>
         </div>
       </ContentLarge>

@@ -114,7 +114,7 @@ export default function HeadingButtons({ size = 'md', endPage }: Props) {
 
   return (
     <div className="mb-1 flex gap-0.5">
-      <Button
+      {/* <Button
         color="text"
         size="sm"
         aria-label={t('Sauvegarder')}
@@ -134,7 +134,7 @@ export default function HeadingButtons({ size = 'md', endPage }: Props) {
         <span className="hidden lg:inline">
           <Trans>Sauvegarder</Trans>
         </span>
-      </Button>
+      </Button> */}
 
       {/*<Button
         color="text"

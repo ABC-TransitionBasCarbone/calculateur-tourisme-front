@@ -44,7 +44,7 @@ export default function UserProvider({
     setSimulations,
     currentSimulationId,
     setCurrentSimulationId,
-  } = usePersistentSimulations({ storageKey, migrationInstructions })
+  } = usePersistentSimulations({ storageKey, migrationInstructions, territory })
 
   const isInitialized = useMemo(
     () => user && simulations.length > 0,

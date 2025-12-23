@@ -1,26 +1,26 @@
 import { generateSimulation } from '@/helpers/simulation/generateSimulation'
 import { getIsLocalStorageAvailable } from '@/utils/getIsLocalStorageAvailable'
 import { Migration } from '@publicodes/tools/migration'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Simulation } from '../../types'
-import { isCorrectTerritory, territories } from '@/utils/territories'
+import { isCorrectTerritory, territories, TerritoriesType } from '@/utils/territories'
 import { Situation } from '@/publicodes-state/types'
-import UserContext from '@/publicodes-state/providers/userProvider/context';
 
 const isLocalStorageAvailable = getIsLocalStorageAvailable()
 
 type Props = {
   storageKey: string
   migrationInstructions: Migration
+  territory: TerritoriesType
 }
 export default function usePersistentSimulations({
   storageKey,
   migrationInstructions,
+  territory
 }: Props) {
   const [initialized, setInitialized] = useState<boolean>(false)
   const [simulations, setSimulations] = useState<Simulation[]>([])
   const [currentSimulationId, setCurrentSimulationId] = useState<string>('')
-  const { territory } = useContext(UserContext)
 
   useEffect(() => {
     let localSimulations: Simulation[] | undefined
@@ -35,8 +35,15 @@ export default function usePersistentSimulations({
 
     if (localSimulations && localCurrentSimulationId) {
       const migratedLocalSimulations = localSimulations.map((simulation) => {
+        const situation = { ...simulation.situation };
+
+        if (territory &&  isCorrectTerritory(territory) && territory !== 'default') {
+          situation['transport . localisation séjour'] = territories[territory]
+        }
+
+
         return generateSimulation({
-          ...simulation,
+          ...{ ...simulation, situation },
           migrationInstructions,
         })
       })

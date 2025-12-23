@@ -18,7 +18,7 @@ export default function MainLayoutProviders({
   children,
   initialRegion,
 }: PropsWithChildren<Props>) {
-  const [territory, setTerritory] = useState<TerritoriesType>('default');
+  const [territory, setTerritory] = useState<TerritoriesType | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

@@ -1,7 +1,8 @@
 import ButtonLink from "@/design-system/inputs/ButtonLink";
 import Trans from '@/components/translation/Trans'
+import { TerritoriesType } from "../../utils/territories";
 
-export const homePageTexts: Record<string, Record<string, { title: string | React.ReactElement; description: string | React.ReactElement; button?: React.ReactElement }[]>> = {
+export const homePageTexts: Record<TerritoriesType, Record<string, { title: string | React.ReactElement; description: string | React.ReactElement; button?: React.ReactElement }[]>> = {
   'arras-pays-d-artois': {
     explanations: [
       {

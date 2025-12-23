@@ -4,6 +4,7 @@ import { generateSimulation } from '@/helpers/simulation/generateSimulation'
 import { Migration } from '@publicodes/tools/migration'
 import { Dispatch, SetStateAction, useCallback, useMemo } from 'react'
 import { Simulation, UpdateCurrentSimulationProps } from '../../types'
+import { isCorrectTerritory, territories } from '@/utils/territories'
 
 type Props = {
   simulations: Simulation[]
@@ -37,10 +38,11 @@ export default function useSimulations({
     }: Partial<Simulation> = {}) => {
       resetAideSaisie()
 
-      const migratedSimulation = generateSimulation({
+
+      const generateSimulationPayload = {
         id,
-        date,
         situation,
+        date,
         foldedSteps,
         actionChoices,
         persona,
@@ -51,7 +53,10 @@ export default function useSimulations({
         groups,
         savedViaEmail,
         migrationInstructions,
-      })
+      }
+
+
+      const migratedSimulation = generateSimulation(generateSimulationPayload)
 
       setSimulations((prevSimulations: Simulation[]) => {
         if (id && prevSimulations.find((simulation) => simulation.id === id)) {

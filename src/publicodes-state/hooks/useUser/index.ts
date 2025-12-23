@@ -24,6 +24,7 @@ export default function useUser() {
     setCurrentSimulationId,
     migrationInstructions,
     isInitialized,
+    territory,
   } = useContext(userContext)
 
   const {
@@ -143,5 +144,6 @@ export default function useUser() {
      * Reject the action choice of the current simulation
      */
     rejectAction,
+    territory,
   }
 }

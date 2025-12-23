@@ -33,6 +33,7 @@ export default function MainLayoutProviders({
       setTerritory(territoryParams);
       localStorage.setItem('territory', territoryParams);
     } else {
+      setTerritory('default');
       localStorage.setItem('territory', 'default');
     }
   }, []);

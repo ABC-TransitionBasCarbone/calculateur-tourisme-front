@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 export const useInitSimulationParam = () => {
   const searchParams = useSearchParams()
 
-  const { simulations, initSimulation } = useUser()
+  const { simulations, initSimulation, territory } = useUser()
 
   const [isInit, setIsInit] = useState(false)
   useEffect(() => {
@@ -24,7 +24,7 @@ export const useInitSimulationParam = () => {
       : false
 
     if (shouldInitSimulation) {
-      initSimulation()
+      initSimulation({ territory })
     }
-  }, [searchParams, initSimulation, isInit, simulations])
+  }, [searchParams, initSimulation, isInit, simulations, territory])
 }

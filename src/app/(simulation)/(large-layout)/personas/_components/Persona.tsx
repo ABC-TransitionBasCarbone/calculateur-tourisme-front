@@ -20,7 +20,7 @@ type Props = {
 export default function Persona({ persona, personaDottedName }: Props) {
   const router = useRouter()
 
-  const { initSimulation, hideTutorial, currentSimulation } = useUser()
+  const { initSimulation, hideTutorial, currentSimulation, territory } = useUser()
 
   const { engine } = useDisposableEngine({ situation: {} })
 
@@ -38,8 +38,8 @@ export default function Persona({ persona, personaDottedName }: Props) {
   return (
     <Card
       className={`${isCurrentPersonaSelected
-          ? '!border-2 border-green-500 bg-green-200'
-          : 'border-none bg-primary-50'
+        ? '!border-2 border-green-500 bg-green-200'
+        : 'border-none bg-primary-50'
         } items-center`}>
       <div className="text-lg">{persona['icônes']}</div>
 
@@ -74,6 +74,7 @@ export default function Persona({ persona, personaDottedName }: Props) {
                 safeEvaluate,
               }) as DottedName[],
               progression: 1,
+              territory
             })
             hideTutorial('testIntro')
             router.refresh()

@@ -25,7 +25,7 @@ export function useSimulateurPage() {
 
   const { t } = useClientTranslation()
 
-  const { tutorials, initSimulation } = useUser()
+  const { tutorials, initSimulation, territory } = useUser()
 
   const { goToEndPage, getLinkToEndPage } = useEndPage()
 
@@ -40,7 +40,7 @@ export function useSimulateurPage() {
     }: GoToSimulateurPageProps = goToSimulateurPagePropsDefault) => {
       // If there is no current simulation (or we want to force a new one), we init a new simulation
       if (newSimulation) {
-        initSimulation(newSimulation)
+        initSimulation({ ...newSimulation, territory })
       }
 
       // If we don't want to navigate, we do nothing
@@ -63,7 +63,7 @@ export function useSimulateurPage() {
       // else we redirect him to the tutoriel page
       router.replace('/tutoriel')
     },
-    [tutorielSeen, router, initSimulation, progression, goToEndPage]
+    [tutorielSeen, router, initSimulation, progression, goToEndPage, territory]
   )
 
   const getLinkToSimulateurPage = useCallback(

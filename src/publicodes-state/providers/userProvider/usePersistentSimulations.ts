@@ -51,10 +51,10 @@ export default function usePersistentSimulations({
       setSimulations(migratedLocalSimulations)
       setCurrentSimulationId(localCurrentSimulationId)
     } else {
-      let initialSituation: Situation = {} as Situation;
+      const initialSituation: Situation = {} as Situation;
 
       if (territory &&  isCorrectTerritory(territory) && territory !== 'default') {
-        initialSituation = { 'transport . localisation séjour': territories[territory] }
+        initialSituation['transport . localisation séjour'] = territories[territory]
       }
 
       const newSimulation = generateSimulation({ situation: initialSituation })

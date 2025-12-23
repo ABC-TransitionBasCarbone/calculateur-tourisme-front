@@ -1,9 +1,11 @@
+'use client'
+
 import Trans from '@/components/translation/Trans'
 import Buttons from './heading/Buttons'
 import Partners from './heading/Partners'
 import Image from 'next/image'
 
-export default async function Heading() {
+export default function Heading() {
   return (
     <>
       <Image src="/images/illustrations/home-background.jpg" alt="background" width={3992} height={2992}

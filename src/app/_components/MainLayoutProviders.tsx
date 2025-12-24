@@ -10,6 +10,7 @@ import MainHooks from './mainLayoutProviders/MainHooks'
 import { PreventNavigationProvider } from './mainLayoutProviders/PreventNavigationProvider'
 import QueryClientProviderWrapper from './mainLayoutProviders/QueryClientProviderWrapper'
 import { isCorrectTerritory, TerritoriesType } from '@/utils/territories'
+import { initMatomo } from '@/utils/matomo/trackEvent'
 
 type Props = {
   initialRegion: RegionFromGeolocation
@@ -23,6 +24,7 @@ export default function MainLayoutProviders({
 
   useEffect(() => {
     setMounted(true);
+    initMatomo()
   }, []);
 
   useEffect(() => {

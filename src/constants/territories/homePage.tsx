@@ -2,8 +2,28 @@ import ButtonLink from "@/design-system/inputs/ButtonLink";
 import Trans from '@/components/translation/Trans'
 import { TerritoriesType } from "../../utils/territories";
 
-export const homePageTexts: Record<TerritoriesType, Record<string, { title: string | React.ReactElement; description: string | React.ReactElement; button?: React.ReactElement }[]>> = {
+type HomePageText = {
+  backgroundImage?: string;
+  additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number }[];
+  explanations: {
+    title: string | React.ReactElement;
+    description: string | React.ReactElement;
+    button?: React.ReactElement;
+  }[]
+}
+
+export const homePageTexts: Record<TerritoriesType, HomePageText> = {
   'arras-pays-d-artois': {
+    backgroundImage: '/images/illustrations/logement.png',
+    additionnalPartners: [
+      {
+        href: 'https://www.academieduclimat.paris/',
+        src: '/images/ambassadeurs/academieduclimat.png',
+        alt: 'Logo de l\'Académie du Climat',
+        width: 600,
+        height: 253,
+      }
+    ],
     explanations: [
       {
         title: 'Je peux changer le titre',
@@ -289,6 +309,7 @@ export const homePageTexts: Record<TerritoriesType, Record<string, { title: stri
     ]
   },
   default: {
+    backgroundImage: '/images/illustrations/home-background.jpg',
     explanations: [
       {
         title: 'Pourquoi cet outil ?',

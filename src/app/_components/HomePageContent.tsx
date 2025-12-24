@@ -22,7 +22,7 @@ export default function HomepageContent() {
   return (
     <>
       <Main className="lg:-mt-8">
-        <Heading />
+        <Heading territory={territory} />
         <Explanations territory={territory} />
       </Main>
     </>

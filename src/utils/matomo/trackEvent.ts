@@ -3,7 +3,6 @@
 
 declare global {
   interface Window {
-    _paq: any[]
     _mtm: any[]
   }
 }
@@ -20,20 +19,18 @@ export const trackEvent = (args: (string | null)[]) => {
 }
 
 export const trackPageView = (url: string) => {
-  // if (shouldUseDevTracker || !window?._paq) {
-  //   console.debug('trackPageView => ' + url)
-  //   return
-  // }
+  if (!window?._mtm) {
+    return
+  }
 
-  // window?._paq?.push(['setCustomUrl', url])
-  // window?._paq?.push(['setDocumentTitle', document?.title])
+  window?._mtm?.push(['setCustomUrl', url])
+  window?._mtm?.push(['setDocumentTitle', document?.title])
 
-  // // remove all previously assigned custom variables, requires Matomo (formerly Piwik) 3.0.2
-  // window?._paq?.push(['deleteCustomVariables', 'page'])
-  // window?._paq?.push(['setPagePerformanceTiming', 0])
+  // remove all previously assigned custom variables, requires Matomo (formerly Piwik) 3.0.2
+  // window?._mtm?.push(['deleteCustomVariables', 'page'])
+  // window?._mtm?.push(['setPagePerformanceTiming', 0])
 
-  // window?._paq?.push(['trackPageView'])
-  return;
+  window?._mtm?.push(['trackPageView'])
 }
 
 export const initMatomo = () => {

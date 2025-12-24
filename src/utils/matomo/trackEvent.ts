@@ -41,7 +41,7 @@ export const initMatomo = () => {
   _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
   const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
   g.async = true;
-  g.src = process.env.MATOMO_URL ?? '';
+  g.src = process.env.NEXT_PUBLIC_MATOMO_URL ?? '';
 
   if (!s || !s.parentNode) {
     return;

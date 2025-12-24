@@ -1,12 +1,17 @@
+'use client'
+
 import Ademe from '@/components/images/partners/Ademe'
 import Marianne from '@/components/images/partners/Marianne'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
 import Link from '../Link'
-import { getServerTranslation } from '@/helpers/getServerTranslation'
+import UserContext from '@/publicodes-state/providers/userProvider/context';
+import { useContext } from 'react'
+import { homePageTexts } from '@/constants/territories/homePage'
 
-export default async function Footer({ className = '' }) {
-  const { t } = await getServerTranslation()
+export default function Footer({ className = '' }) {
+  const { territory } = useContext(UserContext)
+  const additionnalPartners = homePageTexts[territory].additionnalPartners
 
   return (
     <footer
@@ -19,7 +24,7 @@ export default async function Footer({ className = '' }) {
           <Link href="https://abc-transitionbascarbone.fr" target="_blank">
             <Image
               src="/images/misc/logo-abc-web.webp"
-              alt={t("Logo de l'Association pour la transition Bas Carbone")}
+              alt={"Logo de l'Association pour la transition Bas Carbone"}
               width="90"
               height="30"
               className="h-auto w-20"
@@ -28,12 +33,21 @@ export default async function Footer({ className = '' }) {
           <Link href="https://www.tourisme-en-hautsdefrance.com/" target="_blank">
             <Image
               src="/images/misc/logo-hdf.png"
-              alt={t("Logo de Haut de France tourisme")}
+              alt={"Logo de Haut de France tourisme"}
               width="600"
               height="253"
               className="h-auto w-32"
             />
           </Link>
+          {additionnalPartners?.map((partner, idx) => <Link href={partner.href} target="_blank" key={`partner-${idx}`}>
+            <Image
+              src={partner.src}
+              alt={partner.alt}
+              width={partner.width}
+              height={partner.height}
+              className="h-auto w-32"
+            />
+          </Link>)}
         </div>
         <div className="flex flex-row items-center gap-4">
           <Marianne className="h-auto w-12 md:w-auto" />

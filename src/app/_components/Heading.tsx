@@ -1,13 +1,19 @@
+'use client'
+
 import Trans from '@/components/translation/Trans'
 import Buttons from './heading/Buttons'
 import Partners from './heading/Partners'
 import Image from 'next/image'
+import { TerritoriesType } from '@/utils/territories'
+import { homePageTexts } from '@/constants/territories/homePage'
 
-export default async function Heading() {
+export default function Heading({ territory }: { territory: TerritoriesType }) {
+  const image = homePageTexts[territory].backgroundImage ?? homePageTexts['default'].backgroundImage;
+
   return (
     <>
-      <Image src="/images/illustrations/home-background.jpg" alt="background" width={3992} height={2992}
-        className="self-center absolute w-full flex h-[588px] items-center justify-center overflow-hidden md:h-[36rem]" />
+      {image ? <Image src={image} alt="background" width={3992} height={2992}
+        className="self-center absolute w-full flex h-[588px] items-center justify-center overflow-hidden md:h-[36rem]" /> : null}
       <div className="relative flex h-[588px] items-center justify-center overflow-hidden p-4 md:h-[36rem]">
         <div className="relative mb-2 max-w-sm text-center md:mb-0 md:max-w-2xl text-white">
           <h1 className="md:text-5xl" style={{ textShadow: '1px 4px 10px black' }}>
@@ -19,7 +25,7 @@ export default async function Heading() {
           <Buttons />
         </div>
       </div>
-      <Partners />
+      <Partners territory={territory} />
     </>
   )
 }

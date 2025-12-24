@@ -1,8 +1,8 @@
-import Main from '@/design-system/layout/Main'
+'use server'
+
 import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
-import Explanations from './_components/Explanations'
-import Heading from './_components/Heading'
+import HomepageContent from './_components/HomePageContent'
 
 export async function generateMetadata() {
   const { t } = await getServerTranslation()
@@ -18,14 +18,6 @@ export async function generateMetadata() {
     },
   })
 }
-
 export default async function Homepage() {
-  return (
-    <>
-      <Main className="lg:-mt-8">
-        <Heading />
-        <Explanations />
-      </Main>
-    </>
-  )
+  return <HomepageContent />;
 }

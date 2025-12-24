@@ -4,6 +4,7 @@ import { Migration } from '@publicodes/tools/migration'
 import { Dispatch, SetStateAction, createContext } from 'react'
 import { v4 as uuid } from 'uuid'
 import { Simulation, Tutorials, User } from '../../types'
+import { TerritoriesType } from '@/utils/territories'
 
 type UserContextType = {
   user: User
@@ -16,6 +17,7 @@ type UserContextType = {
   setCurrentSimulationId: Dispatch<SetStateAction<string>>
   migrationInstructions: Migration
   isInitialized: boolean
+  territory: TerritoriesType
 }
 
 export default createContext<UserContextType>({
@@ -45,4 +47,5 @@ export default createContext<UserContextType>({
     valuesToMigrate: {},
   },
   isInitialized: false,
+  territory: 'default'
 })

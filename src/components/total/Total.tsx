@@ -9,7 +9,7 @@ import { getBgCategoryColor } from '@/helpers/getCategoryColorClass'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useCurrentSimulation, useForm, useUser } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import ButtonBack from './total/ButtonBack'
 import Explanation from './total/Explanation'
@@ -17,6 +17,8 @@ import Progress from './total/Progress'
 import TotalButtons from './total/TotalButtons'
 import TotalFootprintNumber from './total/TotalFootprintNumber'
 import { useRouter } from 'next/navigation'
+import UserContext from '@/publicodes-state/providers/userProvider/context';
+
 
 export default function Total({
   toggleQuestionList,
@@ -36,6 +38,8 @@ export default function Total({
   const { currentCategory } = useForm()
 
   const router = useRouter()
+
+  const { territory } = useContext(UserContext)
 
   const [hasManuallyOpenedTutorial, setHasManuallyOpenedTutorial] =
     useState(false)
@@ -82,7 +86,7 @@ export default function Total({
 
         <div className="mb-0 flex w-full max-w-6xl justify-between overflow-visible pl-1 pr-4 lg:mx-auto lg:px-4">
           <div className="relative flex items-center gap-1 lg:gap-4">
-            {simulationMode && <ButtonBack onClick={() => router.push('/')} />}
+            {simulationMode && <ButtonBack onClick={() => router.push(`/?territoire=${territory}`)} />}
 
             <TotalFootprintNumber />
 

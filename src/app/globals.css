@@ -45,6 +45,7 @@
 }
 
 @layer base {
+
   input[type='number']::-webkit-outer-spin-button,
   input[type='number']::-webkit-inner-spin-button,
   input[type='number'] {
@@ -183,7 +184,7 @@ html[data-useragent*='Trident'] #js {
 /*
 	Animated illustration
 */
-.landing-animated-illustration > svg {
+.landing-animated-illustration>svg {
   max-width: 32rem;
   height: auto;
   margin: 1rem auto;
@@ -191,7 +192,7 @@ html[data-useragent*='Trident'] #js {
   width: 95%;
 }
 
-.landing-animated-illustration--small > svg {
+.landing-animated-illustration--small>svg {
   max-width: 15rem;
 }
 
@@ -204,6 +205,7 @@ html[data-useragent*='Trident'] #js {
   from {
     transform: translateX(0%);
   }
+
   to {
     transform: translateX(100%);
   }
@@ -231,41 +233,52 @@ html[data-useragent*='Trident'] #js {
   0% {
     opacity: 0;
   }
+
   20% {
     opacity: 1;
   }
+
   40% {
     opacity: 0;
   }
+
   60% {
     opacity: 1;
   }
+
   80% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
 .landing-animated-illustration--cycling .prefix__cycliste {
-  animation: traversée-inversée 45s infinite; /*, saute linear 1s infinite; Pas possible de combiner les deux, à cause du transform:*/
+  animation: traversée-inversée 45s infinite;
+  /*, saute linear 1s infinite; Pas possible de combiner les deux, à cause du transform:*/
 }
+
 .landing-animated-illustration--cycling .prefix__velo {
   animation: traversée-inversée 45s infinite;
 }
+
 @keyframes saute {
   from {
     transform: translateY(0%);
   }
+
   to {
     transform: translateY(5%);
   }
 }
+
 @keyframes traversée-inversée {
   from {
     transform: translateX(0%);
   }
+
   to {
     transform: translateX(-100%);
   }
@@ -277,6 +290,7 @@ html[data-useragent*='Trident'] #js {
 .region-grid {
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
 }
+
 @media (max-width: 400px) {
   .region-grid {
     grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
@@ -359,6 +373,7 @@ html[data-useragent*='Trident'] #js {
   border-collapse: collapse;
   overflow: hidden;
 }
+
 .statistics-iframe-table tr:nth-child(2n + 1) {
   background-color: #f9f8f6;
 }
@@ -369,17 +384,20 @@ html[data-useragent*='Trident'] #js {
   text-align: left;
   border-bottom: 2px solid #1e1e1e;
 }
+
 .statistics-iframe-table td {
   font-size: 0.8125rem;
   width: 60%;
   padding: 0.5rem;
 }
-.statistics-iframe-table td + td,
-.statistics-iframe-table th + th {
+
+.statistics-iframe-table td+td,
+.statistics-iframe-table th+th {
   width: 20%;
   font-weight: 700;
   text-align: right;
 }
+
 .statistics-figure-wrapper {
   width: 100%;
   text-align: center;
@@ -388,6 +406,7 @@ html[data-useragent*='Trident'] #js {
   flex-direction: row;
   justify-content: center;
 }
+
 .statistics-table {
   table-layout: fixed;
   width: 100%;
@@ -397,6 +416,7 @@ html[data-useragent*='Trident'] #js {
   border-collapse: collapse;
   overflow: hidden;
 }
+
 .statistics-table tr:nth-child(2n + 1) {
   background-color: #f9f8f6;
 }
@@ -407,13 +427,15 @@ html[data-useragent*='Trident'] #js {
   text-align: left;
   border-bottom: 2px solid #1e1e1e;
 }
+
 .statistics-table .statistics-table td {
   font-size: 0.8125rem;
   width: 60%;
   padding: 0.5rem;
 }
-.statistics-table td + td,
-.statistics-table th + th {
+
+.statistics-table td+td,
+.statistics-table th+th {
   width: 20%;
   font-weight: 700;
   text-align: right;
@@ -449,7 +471,7 @@ html[data-useragent*='Trident'] #js {
   @apply mb-6;
 }
 
-.markdown ul > li {
+.markdown ul>li {
   @apply mb-2;
 }
 
@@ -517,29 +539,29 @@ html[data-useragent*='Trident'] #js {
   0% {
     background-position: 100% 50%;
   }
+
   50% {
     background-position: 50% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
 
 .bg-rainbow {
-  background: linear-gradient(
-    270deg,
-    #a2d2fd,
-    #cef1d5,
-    #ffefbc,
-    #ffdbbc,
-    #fd69d0,
-    #a2d2fd,
-    #cef1d5,
-    #ffefbc,
-    #ffdbbc,
-    #fd69d0,
-    #a2d2fd
-  );
+  background: linear-gradient(270deg,
+      #a2d2fd,
+      #cef1d5,
+      #ffefbc,
+      #ffdbbc,
+      #fd69d0,
+      #a2d2fd,
+      #cef1d5,
+      #ffefbc,
+      #ffdbbc,
+      #fd69d0,
+      #a2d2fd);
   background-size: 200% 200%;
 }
 
@@ -548,20 +570,18 @@ html[data-useragent*='Trident'] #js {
 }
 
 .bg-rainbow-rotation {
-  background: linear-gradient(
-    200deg,
-    #f96f81,
-    #ffdbbc,
-    #ffefbc,
-    #cef1d5,
-    #f96f81,
-    #ffdbbc,
-    #ffefbc,
-    #cef1d5,
-    #f96f81,
-    #ffdbbc,
-    #ffefbc
-  );
+  background: linear-gradient(200deg,
+      #f96f81,
+      #ffdbbc,
+      #ffefbc,
+      #cef1d5,
+      #f96f81,
+      #ffdbbc,
+      #ffefbc,
+      #cef1d5,
+      #f96f81,
+      #ffdbbc,
+      #ffefbc);
   background-size: 300% 300%;
   animation: rainbow-glow 15s ease infinite;
   position: relative;
@@ -591,19 +611,22 @@ html[data-useragent*='Trident'] #js {
   z-index: 1;
 }
 
-.bg-rainbow-rotation > * {
+.bg-rainbow-rotation>* {
   position: relative;
   z-index: 2;
-  color: #333; /* Adjust this color for better text visibility */
+  color: #333;
+  /* Adjust this color for better text visibility */
 }
 
 @keyframes rainbow-glow {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -615,8 +638,7 @@ html[data-useragent*='Trident'] #js {
 .rainbow-border {
   background:
     linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(145deg, #a2d2fd, #cef1d5, #ffefbc, #ffdbbc, #fd69d0)
-      border-box;
+    linear-gradient(145deg, #a2d2fd, #cef1d5, #ffefbc, #ffdbbc, #fd69d0) border-box;
   border: 6px solid transparent;
 }
 
@@ -627,7 +649,7 @@ html[data-useragent*='Trident'] #js {
   margin: 0;
 }
 
-.notification blockquote > p {
+.notification blockquote>p {
   @apply mb-2;
 }
 
@@ -670,25 +692,25 @@ html[data-useragent*='Trident'] #js {
 .Toastify__toast--error {
   @apply bg-red-50 text-red-700 !important;
 }
+
 .Toastify__close-button--light {
   opacity: 1 !important;
   @apply text-gray-700 !important;
 }
+
 .Toastify__progress-bar {
-  background: linear-gradient(
-    270deg,
-    #a2d2fd,
-    #cef1d5,
-    #ffefbc,
-    #ffdbbc,
-    #fd69d0,
-    #a2d2fd,
-    #cef1d5,
-    #ffefbc,
-    #ffdbbc,
-    #fd69d0,
-    #a2d2fd
-  ) !important;
+  background: linear-gradient(270deg,
+      #a2d2fd,
+      #cef1d5,
+      #ffefbc,
+      #ffdbbc,
+      #fd69d0,
+      #a2d2fd,
+      #cef1d5,
+      #ffefbc,
+      #ffdbbc,
+      #fd69d0,
+      #a2d2fd) !important;
   background-size: 200% 200% !important;
 }
 
@@ -704,4 +726,9 @@ html[data-useragent*='Trident'] #js {
 .animation-once {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+
+.grow {
+  display: flex;
+  flex-grow: 1;
 }

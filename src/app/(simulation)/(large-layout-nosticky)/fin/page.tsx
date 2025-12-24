@@ -9,11 +9,15 @@ import Title from '@/design-system/layout/Title'
 import { useEndGuard } from '@/hooks/navigation/useEndGuard'
 import { useSimulationIdInQueryParams } from '@/hooks/simulation/useSimulationIdInQueryParams'
 import { Metric } from '@/publicodes-state/types'
-import { ReactElement } from 'react'
+import { ReactElement, useContext } from 'react'
 import { twMerge } from 'tailwind-merge'
 import Carbone from './_components/Carbone'
 import FinPageSkeleton from './skeleton'
 import ShareBlock from './_components/ShareBlock'
+import Button from '@/design-system/inputs/Button'
+import UserContext from '@/publicodes-state/providers/userProvider/context';
+import { useRouter } from 'next/navigation'
+
 
 const titles: Record<Metric, ReactElement> = {
   [carboneMetric]: <Trans>carbone</Trans>,
@@ -23,6 +27,9 @@ const titles: Record<Metric, ReactElement> = {
 export default function FinPage() {
   // Guarding the route and redirecting if necessary
   const { isGuardInit, isGuardRedirecting } = useEndGuard()
+  const { territory } = useContext(UserContext)
+  const router = useRouter()
+
 
   const { simulationIdInQueryParams } = useSimulationIdInQueryParams()
 
@@ -36,11 +43,12 @@ export default function FinPage() {
     <div className="relative">
       <IframeDataShareModal />
 
-      {/* <Poll /> */}
-
       <div>
-        <Title tag="h1">
-          <Trans>L'empreinte de mon séjour</Trans>
+        <Title tag="h1" className="flex flex-row">
+          <div className="grow">
+            <Trans>L'empreinte de mon séjour</Trans>
+          </div>
+          <Button onClick={() => router.push(`/?territoire=${territory}`)}>Retour à l'accueil</Button>
         </Title>
       </div>
 

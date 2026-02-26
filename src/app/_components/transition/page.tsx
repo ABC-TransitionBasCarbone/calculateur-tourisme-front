@@ -10,7 +10,7 @@ export const TransitionPage = ({ transitionPage }: { transitionPage: string }) =
 
   return (
     <div>
-      {transitionPage !== 'divers' &&
+      {transitionPage !== 'bureaux' &&
         <div>Quelques ordres de grandeur pour comparaison :</div>
       }
       {(() => {

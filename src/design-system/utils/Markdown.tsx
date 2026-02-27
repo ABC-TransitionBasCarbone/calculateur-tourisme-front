@@ -6,6 +6,7 @@ import MarkdownToJsx, { MarkdownToJSX } from 'markdown-to-jsx'
 import Image from 'next/image'
 import { ComponentProps } from 'react'
 import ButtonLink from '../inputs/ButtonLink'
+import { trackEvent } from '@/utils/matomo/trackEvent'
 
 type MarkdownProps = ComponentProps<typeof MarkdownToJsx> & {
   className?: string
@@ -29,6 +30,7 @@ export default function Markdown({
             a: {
               component: ({ href, children, ...props }) => (
                 <Link
+                  onClick={trackEvent(['trackEvent', 'click link', `${href}`])}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"

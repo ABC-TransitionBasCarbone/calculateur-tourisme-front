@@ -25,6 +25,7 @@ export default function useUser() {
     migrationInstructions,
     isInitialized,
     territory,
+    region,
   } = useContext(userContext)
 
   const {
@@ -145,5 +146,6 @@ export default function useUser() {
      */
     rejectAction,
     territory,
+    region,
   }
 }

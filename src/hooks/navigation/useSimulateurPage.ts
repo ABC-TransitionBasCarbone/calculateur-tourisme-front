@@ -25,7 +25,7 @@ export function useSimulateurPage() {
 
   const { t } = useClientTranslation()
 
-  const { tutorials, initSimulation, territory } = useUser()
+  const { tutorials, initSimulation, territory, region } = useUser()
 
   const { goToEndPage, getLinkToEndPage } = useEndPage()
 
@@ -56,14 +56,14 @@ export function useSimulateurPage() {
 
       // If the user has seen the tutoriel we redirect him to the test
       if (tutorielSeen) {
-        router.replace(getLinkToSimulateur())
+        router.replace(getLinkToSimulateur({ region, territory }))
         return
       }
 
       // else we redirect him to the tutoriel page
-      router.replace('/tutoriel')
+      router.replace(`/region/${region}/territoire/${territory}/tutoriel`)
     },
-    [tutorielSeen, router, initSimulation, progression, goToEndPage, territory]
+    [tutorielSeen, router, initSimulation, progression, goToEndPage, region, territory]
   )
 
   const getLinkToSimulateurPage = useCallback(
@@ -77,13 +77,13 @@ export function useSimulateurPage() {
 
       // If the user has seen the tutoriel we return the test page link
       if (tutorielSeen) {
-        return getLinkToSimulateur()
+        return getLinkToSimulateur(({ region, territory }))
       }
 
       // else we return the tutoriel page link
-      return '/tutoriel'
+      return `/region/${region}/territoire/${territory}/tutoriel`
     },
-    [tutorielSeen, progression, getLinkToEndPage]
+    [tutorielSeen, progression, getLinkToEndPage, region, territory]
   )
 
   const linkToSimulateurPageLabel = useMemo(() => {

@@ -5,6 +5,7 @@ import Trans from '@/components/translation/Trans'
 import { organisationsParametersLogout } from '@/constants/tracking/pages/organisationsParameters'
 import Button from '@/design-system/inputs/Button'
 import { useLogoutOrganisation } from '@/hooks/organisations/useLogout'
+import { useUser } from '@/publicodes-state'
 import { Organisation } from '@/types/organisations'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { useQueryClient } from '@tanstack/react-query'
@@ -21,6 +22,7 @@ export default function DeconnexionButton({
 
   const router = useRouter()
   const queryClient = useQueryClient()
+  const { region, territory } = useUser()
 
   async function handleDisconnect() {
     trackEvent(organisationsParametersLogout)
@@ -28,7 +30,7 @@ export default function DeconnexionButton({
 
     queryClient.clear()
 
-    router.push('/organisations')
+    router.push(`/region/${region}/territoire/${territory}/organisations`)
   }
 
   return (

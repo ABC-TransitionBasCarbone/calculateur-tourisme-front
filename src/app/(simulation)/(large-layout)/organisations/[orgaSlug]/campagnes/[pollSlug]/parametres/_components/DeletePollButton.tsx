@@ -14,7 +14,7 @@ export default function DeletePollButton() {
 
   const { pollSlug, orgaSlug } = useParams()
 
-  const { user } = useUser()
+  const { user, region, territory } = useUser()
 
   const router = useRouter()
 
@@ -28,7 +28,7 @@ export default function DeletePollButton() {
     try {
       await deletePoll()
 
-      router.push(`/organisations/${orgaSlug}`)
+      router.push(`/region/${region}/territoire/${territory}/organisations/${orgaSlug}`)
     } catch (error) {
       console.error(error)
     }

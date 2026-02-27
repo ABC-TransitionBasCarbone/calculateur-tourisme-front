@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import EmailSection from './_components/EmailSection'
 
 export default function Page() {
-  const { user } = useUser()
+  const { user, region, territory } = useUser()
 
   const router = useRouter()
 
@@ -27,9 +27,9 @@ export default function Page() {
   // is already logged in (has a valid cookie stored)
   useEffect(() => {
     if (isSuccess && organisation) {
-      router.push(`/organisations/${organisation?.slug}`)
+      router.push(`/region/${region}/territoire/${territory}/organisations/${organisation?.slug}`)
     }
-  }, [isSuccess, organisation, router])
+  }, [isSuccess, organisation, region, router, territory])
 
   // Cookie is inexistent or invalid, we delete it
   useEffect(() => {

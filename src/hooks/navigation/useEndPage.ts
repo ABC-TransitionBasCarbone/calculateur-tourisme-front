@@ -1,7 +1,7 @@
 import { defaultMetric } from '@/constants/metric'
 import { getLinkToGroupDashboard } from '@/helpers/navigation/groupPages'
 import { useSaveSimulation } from '@/hooks/simulation/useSaveSimulation'
-import { useCurrentSimulation } from '@/publicodes-state'
+import { useCurrentSimulation, useUser } from '@/publicodes-state'
 import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
 
@@ -31,6 +31,7 @@ export function useEndPage() {
   const { saveSimulation } = useSaveSimulation()
 
   const [isNavigating, setIsNavigating] = useState(false)
+  const { region, territory } = useUser()
 
   const goToEndPage = useCallback(
     async ({
@@ -68,9 +69,9 @@ export function useEndPage() {
       }
 
       // else we redirect to the results page
-      router.push('/fin')
+      router.push(`/region/${region}/territoire/${territory}/fin`)
     },
-    [isNavigating, progression, currentSimulation, router, saveSimulation]
+    [isNavigating, progression, currentSimulation, router, region, territory, saveSimulation]
   )
 
   const getLinkToEndPage = useCallback(
@@ -86,9 +87,9 @@ export function useEndPage() {
       }
 
       // else we return the results page
-      return '/fin'
+      return `/region/${region}/territoire/${territory}/fin`
     },
-    [currentSimulation]
+    [currentSimulation.groups, region, territory]
   )
 
   return { goToEndPage, getLinkToEndPage, isNavigating }

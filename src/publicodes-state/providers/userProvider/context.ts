@@ -48,6 +48,6 @@ export default createContext<UserContextType>({
     valuesToMigrate: {},
   },
   isInitialized: false,
-  territory: 'default',
+  territory: 'general',
   region: RegionType.HdF
 })

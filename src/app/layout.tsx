@@ -53,7 +53,6 @@ export const marianne = localFont({
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   try {
-
     const lang = currentLocale()
 
     const initialRegion = { "name": "France", "code": "FR" }

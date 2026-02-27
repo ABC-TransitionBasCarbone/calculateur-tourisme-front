@@ -27,13 +27,13 @@ export default function NotReceived({
 }: Props) {
   const router = useRouter()
 
-  const { updateLoginExpirationDate } = useUser()
+  const { updateLoginExpirationDate, region, territory } = useUser()
 
   function handleGoBackToForm() {
     // Reset the login expiration date
     updateLoginExpirationDate(undefined)
 
-    router.push('/organisations/connexion')
+    router.push(`/region/${region}/territoire/${territory}/organisations/connexion`)
   }
 
   return (

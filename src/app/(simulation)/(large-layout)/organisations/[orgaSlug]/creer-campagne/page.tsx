@@ -10,7 +10,7 @@ import { useEffect } from 'react'
 import PollForm from './_components/PollForm'
 
 export default function CreerCampagnePage() {
-  const { user } = useUser()
+  const { user, region, territory } = useUser()
 
   const router = useRouter()
 
@@ -24,9 +24,9 @@ export default function CreerCampagnePage() {
 
   useEffect(() => {
     if (organisation && !organisation.slug) {
-      router.push('/organisations/creer')
+      router.push(`/region/${region}/territoire/${territory}/organisations/creer`)
     }
-  }, [organisation, router])
+  }, [organisation, region, router, territory])
 
   if (isError && !isLoading && !organisation) {
     return (

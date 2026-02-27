@@ -4,6 +4,7 @@ import Button from '@/design-system/inputs/Button'
 import TextInputGroup from '@/design-system/inputs/TextInputGroup'
 import { useCreatePoll } from '@/hooks/polls/useCreatePoll'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
+import { useUser } from '@/publicodes-state'
 import { Organisation } from '@/types/organisations'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -27,6 +28,7 @@ export default function PollForm({ organisation }: Props) {
   const router = useRouter()
 
   const { t } = useClientTranslation()
+  const { region, territory } = useUser()
 
   const {
     register,
@@ -51,7 +53,7 @@ export default function PollForm({ organisation }: Props) {
 
       if (pollCreated) {
         router.push(
-          `/organisations/${organisation?.slug}/campagnes/${pollCreated.slug}`
+          `/region/${region}/territoire/${territory}/organisations/${organisation?.slug}/campagnes/${pollCreated.slug}`
         )
       }
     } catch (error) {

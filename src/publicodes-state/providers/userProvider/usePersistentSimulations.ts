@@ -37,7 +37,7 @@ export default function usePersistentSimulations({
       const migratedLocalSimulations = localSimulations.map((simulation) => {
         const situation = { ...simulation.situation };
 
-        if (territory &&  isCorrectTerritory(territory) && territory !== 'default') {
+        if (territory &&  isCorrectTerritory(territory) && territory !== 'general') {
           situation['transport . localisation séjour'] = territories[territory]
         }
 
@@ -53,7 +53,7 @@ export default function usePersistentSimulations({
     } else {
       const initialSituation: Situation = {} as Situation;
 
-      if (territory &&  isCorrectTerritory(territory) && territory !== 'default') {
+      if (territory &&  isCorrectTerritory(territory) && territory !== 'general') {
         initialSituation['transport . localisation séjour'] = territories[territory]
       }
 

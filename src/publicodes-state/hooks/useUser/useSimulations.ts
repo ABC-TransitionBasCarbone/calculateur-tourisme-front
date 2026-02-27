@@ -40,7 +40,7 @@ export default function useSimulations({
       resetAideSaisie()
 
       const initialSituation = { ...situation };
-      if (territory &&  isCorrectTerritory(territory) && territory !== 'default') {
+      if (territory &&  isCorrectTerritory(territory) && territory !== 'general') {
         initialSituation['transport . localisation séjour'] = territories[territory]
       }
 

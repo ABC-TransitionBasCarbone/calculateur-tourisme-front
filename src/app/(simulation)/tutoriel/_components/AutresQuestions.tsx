@@ -53,7 +53,7 @@ export default function AutresQuestions() {
             <div className="my-2 ml-3.5 text-sm">
               <p>
                 <Trans>
-                  Avec une unité au nom barbare : l’équivalent CO2, écrit CO2e. C’est-à-dire qu’on ramène la contribution de réchauffement de tous les gaz à effet de serre à celle du gaz que tout le monde connait : le dioxyde de carbone (laisser l’émoji molécule), oui celui que l’on expire mais heureusement sans influence sur le climat. A titre d’exemple, un kg de méthane (CH4) qui a un pouvoir réchauffant 30 fois supérieur à celui du CO2 équivaut à 30 kgCO2e
+                  Avec une unité au nom barbare : l’équivalent CO2, écrit CO2e. C’est-à-dire qu’on ramène la contribution de réchauffement de tous les gaz à effet de serre à celle du gaz que tout le monde connait : le dioxyde de carbone, oui celui que l’on expire mais heureusement sans influence sur le climat. A titre d’exemple, un kg de méthane (CH4) qui a un pouvoir réchauffant 30 fois supérieur à celui du CO2 équivaut à 30 kgCO2e
                 </Trans>
               </p>
               <Image

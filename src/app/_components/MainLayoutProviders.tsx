@@ -9,8 +9,9 @@ import { IframeOptionsProvider } from './mainLayoutProviders/IframeOptionsContex
 import MainHooks from './mainLayoutProviders/MainHooks'
 import { PreventNavigationProvider } from './mainLayoutProviders/PreventNavigationProvider'
 import QueryClientProviderWrapper from './mainLayoutProviders/QueryClientProviderWrapper'
-import { isCorrectTerritory, TerritoriesType } from '@/utils/territories'
+import { isCorrectRegion, isCorrectTerritory, isTerritoryFromRegion, RegionType, TerritoriesType } from '@/utils/territories'
 import { initMatomo } from '@/utils/matomo/trackEvent'
+import { usePathname } from 'next/navigation'
 
 type Props = {
   initialRegion: RegionFromGeolocation
@@ -20,7 +21,9 @@ export default function MainLayoutProviders({
   initialRegion,
 }: PropsWithChildren<Props>) {
   const [territory, setTerritory] = useState<TerritoriesType | null>(null);
+  const [region, setRegion] = useState<RegionType>(RegionType.HdF);
   const [mounted, setMounted] = useState(false);
+  const pathName = usePathname()
 
   useEffect(() => {
     setMounted(true);
@@ -28,17 +31,37 @@ export default function MainLayoutProviders({
   }, []);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const territoryParams = urlParams.get('territoire');
+    const regionFromPath = pathName.match('/region/*') ? pathName.split('/')[2] : null;
+    const territoryFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4] : null;
 
-    if (territoryParams && isCorrectTerritory(territoryParams) && territoryParams !== 'default') {
-      setTerritory(territoryParams);
-      localStorage.setItem('territory', territoryParams);
+    const regionFromLocalStorage = localStorage.getItem('region');
+    const territoryFromLocalStorage = localStorage.getItem('territory');
+
+    const region = pathName === '/' || regionFromPath ? regionFromPath : regionFromLocalStorage;
+    const territory = pathName === '/' || regionFromPath ? territoryFromPath : territoryFromLocalStorage;
+
+    if (isTerritoryFromRegion(territory ?? '', region ?? '')) {
+      if (region && isCorrectRegion(region)) {
+        setRegion(region);
+        localStorage.setItem('region', region);
+      } else {
+        setRegion(RegionType.HdF);
+        localStorage.setItem('region', RegionType.HdF);
+      }
+      if (territory && isCorrectTerritory(territory) && territory !== 'general') {
+        setTerritory(territory);
+        localStorage.setItem('territory', territory);
+      } else {
+        setTerritory('general');
+        localStorage.setItem('territory', 'general');
+      }
     } else {
-      setTerritory('default');
-      localStorage.setItem('territory', 'default');
+      setTerritory('general');
+      localStorage.setItem('territory', 'general');
+      setRegion(RegionType.HdF);
+      localStorage.setItem('region', RegionType.HdF);
     }
-  }, []);
+  }, [pathName]);
 
   if (!mounted || !territory) {
     return null;
@@ -53,6 +76,7 @@ export default function MainLayoutProviders({
             migrationInstructions={migrationInstructions}
             initialRegion={initialRegion}
             territory={territory}
+            region={region}
           >
             <PreventNavigationProvider>
               <MainHooks>{children}</MainHooks>

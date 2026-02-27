@@ -9,7 +9,7 @@ import useUpdateOldLocalStorage from './useOldLocalStorage'
 import usePersistentSimulations from './usePersistentSimulations'
 import usePersistentTutorials from './usePersistentTutorials'
 import usePersistentUser from './usePersistentUser'
-import { TerritoriesType } from '@/utils/territories'
+import { RegionType, TerritoriesType } from '@/utils/territories'
 
 type Props = {
   /**
@@ -25,6 +25,7 @@ type Props = {
    */
   initialRegion: RegionFromGeolocation
   territory: TerritoriesType
+  region: RegionType
 }
 export default function UserProvider({
   children,
@@ -32,6 +33,7 @@ export default function UserProvider({
   territory,
   migrationInstructions,
   initialRegion,
+  region,
 }: PropsWithChildren<Props>) {
   useUpdateOldLocalStorage({ storageKey })
 
@@ -64,7 +66,8 @@ export default function UserProvider({
         setCurrentSimulationId,
         migrationInstructions,
         isInitialized,
-        territory
+        territory,
+        region
       }}>
       {children}
     </UserContext.Provider>

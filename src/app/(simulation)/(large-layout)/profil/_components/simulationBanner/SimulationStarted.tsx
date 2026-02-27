@@ -13,7 +13,7 @@ import { getLinkToSimulateur } from '@/helpers/navigation/simulateurPages'
 import { useEndPage } from '@/hooks/navigation/useEndPage'
 import { useSimulateurPage } from '@/hooks/navigation/useSimulateurPage'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
-import { useActions, useCurrentSimulation, useForm } from '@/publicodes-state'
+import { useActions, useCurrentSimulation, useForm, useUser } from '@/publicodes-state'
 import TutorialLink from './_components/TutorialLink'
 
 export default function SimulationStarted() {
@@ -28,6 +28,8 @@ export default function SimulationStarted() {
   const { chosenActions, declinedActions } = useActions()
 
   const { goToSimulateurPage, getLinkToSimulateurPage } = useSimulateurPage()
+
+  const { region, territory } = useUser()
 
   const isFinished = progression === 1
 
@@ -76,7 +78,7 @@ export default function SimulationStarted() {
           <ButtonLink
             color="primary"
             className="w-full !justify-center"
-            href={getLinkToSimulateur()}
+            href={getLinkToSimulateur({ region, territory })}
             trackingEvent={profilClickCtaReprendre}>
             <PlaySignIcon className="mr-2 fill-white" />
 

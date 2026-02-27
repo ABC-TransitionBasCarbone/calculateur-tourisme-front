@@ -1,7 +1,21 @@
-export type TerritoriesType = keyof typeof territories | 'default'
+export type TerritoriesType = keyof typeof territories | 'general'
+export enum RegionType {
+    HdF = 'hauts-de-france',
+} 
 
 export const isCorrectTerritory = (territory: string): territory is TerritoriesType => {
-    return territory === 'default' || Object.keys(territories).includes(territory);
+    return territory === 'general' || Object.keys(territories).includes(territory);
+}
+
+export const isCorrectRegion = (region: string): region is RegionType => {
+    return Object.values(RegionType).includes(region as RegionType);
+}
+
+export const isTerritoryFromRegion = (territory: string, region: string) => {
+    if (region === 'hauts-de-france' && Object.keys(territories).includes(territory)) {
+        return true
+    }
+    return false
 }
 
 export const territories = {

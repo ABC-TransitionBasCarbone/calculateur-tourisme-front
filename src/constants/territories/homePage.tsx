@@ -308,7 +308,7 @@ export const homePageTexts: Record<TerritoriesType, HomePageText> = {
       },
     ]
   },
-  default: {
+  general: {
     backgroundImage: '/images/illustrations/home-background.jpg',
     explanations: [
       {

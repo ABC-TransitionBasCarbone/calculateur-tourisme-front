@@ -5,7 +5,7 @@ import { homePageTexts } from '@/constants/territories/homePage'
 import { territories } from '@/utils/territories';
 import Title from '@/design-system/layout/Title'
 
-export default function Explanations({ territory }: { territory: keyof typeof territories | 'default' }) {
+export default function Explanations({ territory }: { territory: keyof typeof territories | 'general' }) {
   const explanationsText = homePageTexts[territory].explanations;
 
   return (

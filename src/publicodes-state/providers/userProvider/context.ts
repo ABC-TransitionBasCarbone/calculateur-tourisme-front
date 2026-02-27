@@ -49,5 +49,5 @@ export default createContext<UserContextType>({
   },
   isInitialized: false,
   territory: 'default',
-  region: RegionType.default
+  region: RegionType.HdF
 })

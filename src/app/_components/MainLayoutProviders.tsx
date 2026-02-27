@@ -21,7 +21,7 @@ export default function MainLayoutProviders({
   initialRegion,
 }: PropsWithChildren<Props>) {
   const [territory, setTerritory] = useState<TerritoriesType | null>(null);
-  const [region, setRegion] = useState<RegionType>(RegionType.default);
+  const [region, setRegion] = useState<RegionType>(RegionType.HdF);
   const [mounted, setMounted] = useState(false);
   const pathName = usePathname()
 
@@ -31,30 +31,29 @@ export default function MainLayoutProviders({
   }, []);
 
   useEffect(() => {
-    console.log(pathName)
     const regionFromPath = pathName.match('/region/*') ? pathName.split('/')[2] : null;
     const territoireFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4] : null;
 
     if (isTerritoryFromRegion(territoireFromPath ?? '', regionFromPath ?? '')) {
-      if (regionFromPath && isCorrectRegion(regionFromPath) && regionFromPath !== 'default') {
+      if (regionFromPath && isCorrectRegion(regionFromPath)) {
         setRegion(regionFromPath);
         localStorage.setItem('region', regionFromPath);
       } else {
-        setRegion(RegionType.default);
-        localStorage.setItem('region', RegionType.default);
+        setRegion(RegionType.HdF);
+        localStorage.setItem('region', RegionType.HdF);
       }
-      if (territoireFromPath && isCorrectTerritory(territoireFromPath) && territoireFromPath !== 'default') {
+      if (territoireFromPath && isCorrectTerritory(territoireFromPath) && territoireFromPath !== 'general') {
         setTerritory(territoireFromPath);
         localStorage.setItem('territory', territoireFromPath);
       } else {
-        setTerritory('default');
-        localStorage.setItem('territory', 'default');
+        setTerritory('general');
+        localStorage.setItem('territory', 'general');
       }
     } else {
-      setTerritory('default');
-      localStorage.setItem('territory', 'default');
-      setRegion(RegionType.default);
-      localStorage.setItem('region', RegionType.default);
+      setTerritory('general');
+      localStorage.setItem('territory', 'general');
+      setRegion(RegionType.HdF);
+      localStorage.setItem('region', RegionType.HdF);
     }
   }, [pathName]);
 

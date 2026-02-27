@@ -8,7 +8,7 @@ import { TerritoriesType } from '@/utils/territories'
 import { homePageTexts } from '@/constants/territories/homePage'
 
 export default function Heading({ territory }: { territory: TerritoriesType }) {
-  const image = homePageTexts[territory].backgroundImage ?? homePageTexts['default'].backgroundImage;
+  const image = homePageTexts[territory].backgroundImage ?? homePageTexts['general'].backgroundImage;
 
   return (
     <>

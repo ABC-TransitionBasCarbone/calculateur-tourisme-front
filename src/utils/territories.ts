@@ -8,7 +8,6 @@ export const isCorrectTerritory = (territory: string): territory is TerritoriesT
 }
 
 export const isCorrectRegion = (region: string): region is RegionType => {
-    // checking if region is in Region Type dynamically to avoid hardcoding
     return Object.values(RegionType).includes(region as RegionType);
 }
 

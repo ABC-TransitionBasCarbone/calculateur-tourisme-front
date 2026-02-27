@@ -31,7 +31,6 @@ export default function MainLayoutProviders({
   }, []);
 
   useEffect(() => {
-    console.log(pathName)
     const regionFromPath = pathName.match('/region/*') ? pathName.split('/')[2] : null;
     const territoryFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4] : null;
 

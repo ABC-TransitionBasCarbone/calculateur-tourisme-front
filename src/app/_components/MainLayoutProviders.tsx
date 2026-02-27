@@ -31,20 +31,27 @@ export default function MainLayoutProviders({
   }, []);
 
   useEffect(() => {
+    console.log(pathName)
     const regionFromPath = pathName.match('/region/*') ? pathName.split('/')[2] : null;
-    const territoireFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4] : null;
+    const territoryFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4] : null;
 
-    if (isTerritoryFromRegion(territoireFromPath ?? '', regionFromPath ?? '')) {
-      if (regionFromPath && isCorrectRegion(regionFromPath)) {
-        setRegion(regionFromPath);
-        localStorage.setItem('region', regionFromPath);
+    const regionFromLocalStorage = localStorage.getItem('region');
+    const territoryFromLocalStorage = localStorage.getItem('territory');
+
+    const region = pathName === '/' || regionFromPath ? regionFromPath : regionFromLocalStorage;
+    const territory = pathName === '/' || regionFromPath ? territoryFromPath : territoryFromLocalStorage;
+
+    if (isTerritoryFromRegion(territory ?? '', region ?? '')) {
+      if (region && isCorrectRegion(region)) {
+        setRegion(region);
+        localStorage.setItem('region', region);
       } else {
         setRegion(RegionType.HdF);
         localStorage.setItem('region', RegionType.HdF);
       }
-      if (territoireFromPath && isCorrectTerritory(territoireFromPath) && territoireFromPath !== 'general') {
-        setTerritory(territoireFromPath);
-        localStorage.setItem('territory', territoireFromPath);
+      if (territory && isCorrectTerritory(territory) && territory !== 'general') {
+        setTerritory(territory);
+        localStorage.setItem('territory', territory);
       } else {
         setTerritory('general');
         localStorage.setItem('territory', 'general');

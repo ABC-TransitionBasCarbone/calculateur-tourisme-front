@@ -5,309 +5,86 @@ import { TerritoriesType } from "../../utils/territories";
 type HomePageText = {
   backgroundImage?: string;
   additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number }[];
-  explanations: {
+  explanations?: {
     title: string | React.ReactElement;
     description: string | React.ReactElement;
     button?: React.ReactElement;
   }[]
 }
 
-export const homePageTexts: Record<TerritoriesType, HomePageText> = {
+export const homePageTexts: Record<TerritoriesType, HomePageText> & Record<'general', Required<Omit<HomePageText, 'additionnalPartners'>>> = {
   'arras-pays-d-artois': {
-    backgroundImage: '/images/illustrations/logement.png',
-    additionnalPartners: [
-      {
-        href: 'https://www.academieduclimat.paris/',
-        src: '/images/ambassadeurs/academieduclimat.png',
-        alt: 'Logo de l\'Académie du Climat',
-        width: 600,
-        height: 253,
-      }
-    ],
-    explanations: [
-      {
-        title: 'Je peux changer le titre',
-        description: 'Et toute la description aussi - ici c\'est spécifique pour Arras !',
-      },
-      {
-        title: 'On peut mettre des liens tout ca pas de soucis.',
-        description: <>
-          <p>
-            Développé par l’ABC et Hauts-de-France Tourisme
-          </p>
-          <p>
-            <a href="https://abc-transitionbascarbone.fr/">L’ABC</a>, au cœur de la lutte contre le changement climatique depuis 2011, sensibilise, forme, fédère et donne des moyens d’action concrets aux organisations et aux citoyens pour réussir leur transition bas carbone.
-          </p>
-          <p>
-            <a href="https://www.tourisme-en-hautsdefrance.com/">Hauts-de-France Tourisme</a>, <span style={{ fontWeight: 'bold' }}>est vecteur d’image et de notoriété de la région
-              Hauts-de-France au travers du tourisme, en France et à l’international.</span> Il intervient au cœur d’un écosystème qui associe les différents territoires de la région,
-            les filières et les acteurs du tourisme dans une relation de proximité et de terrain et en adéquation avec la politique Rev3 du conseil régional des Hauts-de-France.
-          </p>
-        </>,
-        button: <ButtonLink
-          color="secondary"
-          href="/">
-          <Trans>Et même config un bouton 🤩</Trans>
-        </ButtonLink>
-      },
-    ]
+    // Exemple d'utilisation
+    // backgroundImage: '/images/illustrations/logement.png',
+    // additionnalPartners: [
+    //   {
+    //     href: 'https://www.academieduclimat.paris/',
+    //     src: '/images/ambassadeurs/academieduclimat.png',
+    //     alt: 'Logo de l\'Académie du Climat',
+    //     width: 600,
+    //     height: 253,
+    //   }
+    // ],
+    // explanations: [
+    //   {
+    //     title: 'Je peux changer le titre',
+    //     description: 'Et toute la description aussi - ici c\'est spécifique pour Arras !',
+    //   },
+    //   {
+    //     title: 'On peut mettre des liens tout ca pas de soucis.',
+    //     description: <>
+    //       <p>
+    //         Développé par l’ABC et Hauts-de-France Tourisme
+    //       </p>
+    //       <p>
+    //         <a href="https://abc-transitionbascarbone.fr/">L’ABC</a>, au cœur de la lutte contre le changement climatique depuis 2011, sensibilise, forme, fédère et donne des moyens d’action concrets aux organisations et aux citoyens pour réussir leur transition bas carbone.
+    //       </p>
+    //       <p>
+    //         <a href="https://www.tourisme-en-hautsdefrance.com/">Hauts-de-France Tourisme</a>, <span style={{ fontWeight: 'bold' }}>est vecteur d’image et de notoriété de la région
+    //           Hauts-de-France au travers du tourisme, en France et à l’international.</span> Il intervient au cœur d’un écosystème qui associe les différents territoires de la région,
+    //         les filières et les acteurs du tourisme dans une relation de proximité et de terrain et en adéquation avec la politique Rev3 du conseil régional des Hauts-de-France.
+    //       </p>
+    //     </>,
+    //     button: <ButtonLink
+    //       color="secondary"
+    //       href="/">
+    //       <Trans>Et même config un bouton 🤩</Trans>
+    //     </ButtonLink>
+    //   },
+    // ]
   },
-  'artois-lys': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  audomarois: {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'aumale-blangy': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'avesnois-thiérache': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'baie-de-somme': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  boulonnais: {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  calaisis: {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  cambresis: {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  chaunois: {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'coeur-des-hauts-de-france': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'compiègne-pierrefonds': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'cote-d-opale': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'creil-halatte': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  dunkerquois: {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'flandre-rurale': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'grand-Amiénois': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'grand-Beauvaisis': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'grand-Laonnois': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  hainaut: {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'lens-hénin': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  liancourtois: {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'métropole-européenne-de-lille': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'noyonnais-deux-vallées': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'pays-de-valois': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'pévélois-douaisis': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'plateau-picard': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'portes-de-la-champagne': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'saint-quentinois': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'senlis-chantilly': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'soissonnais-valois': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'vexin-sablons': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
-  'villes-soeurs': {
-    explanations: [
-      {
-        title: '',
-        description: '',
-      },
-    ]
-  },
+  'artois-lys': {},
+  audomarois: {},
+  'aumale-blangy': {},
+  'avesnois-thiérache': {},
+  'baie-de-somme': {},
+  boulonnais: {},
+  calaisis: {},
+  cambresis: {},
+  chaunois: {},
+  'coeur-des-hauts-de-france': {},
+  'compiègne-pierrefonds': {},
+  'cote-d-opale': {},
+  'creil-halatte': {},
+  dunkerquois: {},
+  'flandre-rurale': {},
+  'grand-Amiénois': {},
+  'grand-Beauvaisis': {},
+  'grand-Laonnois': {},
+  hainaut: {},
+  'lens-hénin': {},
+  liancourtois: {},
+  'métropole-européenne-de-lille': {},
+  'noyonnais-deux-vallées': {},
+  'pays-de-valois': {},
+  'pévélois-douaisis': {},
+  'plateau-picard': {},
+  'portes-de-la-champagne': {},
+  'saint-quentinois': {},
+  'senlis-chantilly': {},
+  'soissonnais-valois': {},
+  'vexin-sablons': {},
+  'villes-soeurs': {},
   general: {
     backgroundImage: '/images/illustrations/home-background.jpg',
     explanations: [

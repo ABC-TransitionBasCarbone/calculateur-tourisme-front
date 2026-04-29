@@ -6,7 +6,8 @@ import { territories } from '@/utils/territories';
 import Title from '@/design-system/layout/Title'
 
 export default function Explanations({ territory }: { territory: keyof typeof territories | 'general' }) {
-  const explanationsText = homePageTexts[territory].explanations;
+  const explanationsText = homePageTexts[territory].explanations ?? homePageTexts['general'].explanations;
+
 
   return (
     <> {explanationsText.map((text, index) => <div className="mx-auto mb-12 w-full max-w-3xl px-4 md:mb-24" key={`explanations-${index}`}>

@@ -7,9 +7,12 @@ import { useState } from 'react'
 import Wave from 'react-wavify'
 import Trans from '../translation/Trans'
 import Fish from './404/Fish'
+import { useUser } from '@/publicodes-state'
 
 export default function Route404() {
   const { t } = useClientTranslation()
+  const { region, territory } = useUser()
+
 
   const [numberOfFish, setNumberOfFish] = useState(0)
   return (
@@ -54,7 +57,7 @@ export default function Route404() {
         </p>
         <ButtonLink
           color="primary"
-          href="/"
+          href={`/region/${region}/territoire/${territory}`}
           className="relative mt-8 justify-self-center border-2 border-white bg-white !text-primary-700 shadow-sm hover:bg-white hover:text-primary-700">
           <Trans>Revenir à l'accueil</Trans>
         </ButtonLink>

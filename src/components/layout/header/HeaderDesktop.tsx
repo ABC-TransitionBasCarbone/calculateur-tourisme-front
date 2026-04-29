@@ -34,6 +34,8 @@ export default function HeaderDesktop({ isSticky }: Props) {
 
   const { getLinkToSimulateurPage } = useSimulateurPage()
 
+  const { region, territory } = useUser()
+
   return (
     <header
       className={twMerge(
@@ -59,7 +61,7 @@ export default function HeaderDesktop({ isSticky }: Props) {
 
                 <li>
                   <NavLink
-                    href="/actions"
+                    href={`/region/${region}/territoire/${territory}/actions`}
                     onClick={() => trackEvent(headerClickActions)}
                     icon={ActionsIcon}
                     title={t('Mes gestes')}>
@@ -96,6 +98,6 @@ export default function HeaderDesktop({ isSticky }: Props) {
           </div>
         </div>
       </div>
-    </header>
+    </header >
   )
 }

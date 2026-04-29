@@ -6,10 +6,11 @@ import {
   getBackgroundLightColor,
   getTextDarkColor,
 } from '@/helpers/getCategoryColorClass'
-import { useRule, useUser } from '@/publicodes-state'
+import { useQueryParams } from '@/hooks/useQueryParams'
+import { useRule } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 type Props = {
   dottedName: DottedName
@@ -18,9 +19,7 @@ type Props = {
 
 export default function Filter({ dottedName, countByCategory }: Props) {
   const { title } = useRule(dottedName)
-  const { region, territory } = useUser()
-
-  const router = useRouter()
+  const { setQueryParams } = useQueryParams()
 
   const metric = useSearchParams().get('métrique') || ''
   const categorySelected = useSearchParams().get('catégorie') || ''
@@ -28,16 +27,13 @@ export default function Filter({ dottedName, countByCategory }: Props) {
   const isSelected = categorySelected === dottedName
 
   const buildURL = () => {
-    const siteURL = `${window.location.origin}/region/${region}/territoire/${territory}${window.location.pathname}`
-
     const searchParamsStart = metric || !isSelected ? '?' : ''
 
     const metricSearchParam = metric ? `métrique=${metric}&` : ''
 
-    const searchParamsPart = `${searchParamsStart}${metricSearchParam}${isSelected ? '' : `catégorie=${dottedName}`
-      }`
-
-    return `${siteURL}${searchParamsPart}`
+    setQueryParams({
+      searchParamsPart: `${searchParamsStart}${metricSearchParam}${isSelected ? '' : `catégorie=${dottedName}`}`,
+    })
   }
 
   return (
@@ -53,9 +49,7 @@ export default function Filter({ dottedName, countByCategory }: Props) {
         className={`p-2 text-xs font-bold ${getTextDarkColor(dottedName)}`}
         onClick={() => {
           trackEvent(actionsClickFilter(dottedName))
-          router.replace(buildURL(), {
-            scroll: false,
-          })
+          buildURL()
         }}>
         {title}{' '}
         <span

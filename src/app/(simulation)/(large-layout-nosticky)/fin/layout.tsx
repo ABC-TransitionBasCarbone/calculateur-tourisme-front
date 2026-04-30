@@ -7,9 +7,7 @@ export async function generateMetadata() {
   const { t } = await getServerTranslation()
 
   return getMetadataObject({
-    title: t(
-      "Vos résultats, simulateur d'empreinte climat - Nos Gestes Climat"
-    ),
+    title: "Mon séjour durable - Résultats",
     description: t(
       "Vos résultats de tests de notre simulateur d'empreinte carbone."
     ),

@@ -14,6 +14,10 @@ import { twMerge } from 'tailwind-merge'
 import Carbone from './_components/Carbone'
 import FinPageSkeleton from './skeleton'
 import ShareBlock from './_components/ShareBlock'
+import Button from '@/design-system/inputs/Button'
+import { useRouter } from 'next/navigation'
+import { useUser } from '@/publicodes-state'
+
 
 const titles: Record<Metric, ReactElement> = {
   [carboneMetric]: <Trans>carbone</Trans>,
@@ -23,6 +27,9 @@ const titles: Record<Metric, ReactElement> = {
 export default function FinPage() {
   // Guarding the route and redirecting if necessary
   const { isGuardInit, isGuardRedirecting } = useEndGuard()
+  const router = useRouter()
+  const { region, territory } = useUser()
+
 
   const { simulationIdInQueryParams } = useSimulationIdInQueryParams()
 
@@ -36,11 +43,12 @@ export default function FinPage() {
     <div className="relative">
       <IframeDataShareModal />
 
-      {/* <Poll /> */}
-
       <div>
-        <Title tag="h1">
-          <Trans>L'empreinte de mon séjour</Trans>
+        <Title tag="h1" className="flex flex-row">
+          <div className="grow">
+            <Trans>L'empreinte de mon séjour</Trans>
+          </div>
+          <Button onClick={() => router.push(`/region/${region}/territoire/${territory}`)}>Retour à l'accueil</Button>
         </Title>
       </div>
 

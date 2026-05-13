@@ -26,7 +26,7 @@ type Inputs = {
 export default function CreationForm() {
   const [pathToNavigateTo, setPathToNavigate] = useState('')
 
-  const { user, updateUserOrganisation } = useUser()
+  const { user, updateUserOrganisation, region, territory } = useUser()
 
   const { handleUpdateShouldPreventNavigation } = usePreventNavigation()
 
@@ -72,10 +72,10 @@ export default function CreationForm() {
 
       if (shouldNavigateToPollForm) {
         setPathToNavigate(
-          `/organisations/${organisationUpdated?.slug}/creer-campagne`
+          `/region/${region}/territoire/${territory}/organisations/${organisationUpdated?.slug}/creer-campagne`
         )
       } else {
-        setPathToNavigate(`/organisations/${organisationUpdated?.slug}`)
+        setPathToNavigate(`/region/${region}/territoire/${territory}/organisations/${organisationUpdated?.slug}`)
       }
     } catch (error: any) {
       console.log(error)
@@ -87,9 +87,9 @@ export default function CreationForm() {
   // Redirect to organisation page if user has already an organisation
   useEffect(() => {
     if (user?.organisation?.slug) {
-      router.push(`/organisations/${user?.organisation?.slug}`)
+      router.push(`/region/${region}/territoire/${territory}/organisations/${user?.organisation?.slug}`)
     }
-  }, [router, user?.organisation?.slug])
+  }, [region, router, territory, user?.organisation?.slug])
 
   // Handle redirection after submitting the form
   useEffect(() => {

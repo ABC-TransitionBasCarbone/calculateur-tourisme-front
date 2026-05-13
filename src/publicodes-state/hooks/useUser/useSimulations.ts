@@ -4,6 +4,7 @@ import { generateSimulation } from '@/helpers/simulation/generateSimulation'
 import { Migration } from '@publicodes/tools/migration'
 import { Dispatch, SetStateAction, useCallback, useMemo } from 'react'
 import { Simulation, UpdateCurrentSimulationProps } from '../../types'
+import { isCorrectTerritory, territories, TerritoriesType } from '@/utils/territories'
 
 type Props = {
   simulations: Simulation[]
@@ -34,13 +35,19 @@ export default function useSimulations({
       polls,
       groups,
       savedViaEmail,
-    }: Partial<Simulation> = {}) => {
+      territory
+    }: Partial<Simulation> & { territory?: TerritoriesType } = {}) => {
       resetAideSaisie()
 
-      const migratedSimulation = generateSimulation({
+      const initialSituation = { ...situation };
+      if (territory &&  isCorrectTerritory(territory) && territory !== 'general') {
+        initialSituation['transport . localisation séjour'] = territories[territory]
+      }
+
+      const generateSimulationPayload = {
         id,
+        situation: initialSituation,
         date,
-        situation,
         foldedSteps,
         actionChoices,
         persona,
@@ -51,7 +58,10 @@ export default function useSimulations({
         groups,
         savedViaEmail,
         migrationInstructions,
-      })
+      }
+
+
+      const migratedSimulation = generateSimulation(generateSimulationPayload)
 
       setSimulations((prevSimulations: Simulation[]) => {
         if (id && prevSimulations.find((simulation) => simulation.id === id)) {

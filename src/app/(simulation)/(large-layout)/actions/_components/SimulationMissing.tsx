@@ -5,10 +5,11 @@ import Trans from '@/components/translation/Trans'
 import ButtonLink from '@/design-system/inputs/ButtonLink'
 import Card from '@/design-system/layout/Card'
 import { getLinkToSimulateur } from '@/helpers/navigation/simulateurPages'
-import { useCurrentSimulation } from '@/publicodes-state'
+import { useCurrentSimulation, useUser } from '@/publicodes-state'
 
 export default function SimulationMissing() {
   const { progression } = useCurrentSimulation()
+  const { region, territory } = useUser()
 
   // TODO this is quite a bad design
   // we'd better check if the test is finished
@@ -33,7 +34,7 @@ export default function SimulationMissing() {
         </p>
 
         <div>
-          <ButtonLink href={getLinkToSimulateur()}>
+          <ButtonLink href={getLinkToSimulateur({ region, territory })}>
             <Trans>
               {progression > 0 ? 'Reprendre mon test' : 'Faire le test'}
             </Trans>

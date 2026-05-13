@@ -20,7 +20,7 @@ export default function VerificationForm() {
 
   const timeoutRef = useRef<NodeJS.Timeout>()
 
-  const { updateLoginExpirationDate, user, updateUserOrganisation } = useUser()
+  const { updateLoginExpirationDate, user, updateUserOrganisation, region, territory } = useUser()
 
   // Reset the login expiration date if the user is logged in
   // and the login expiration date is in the past
@@ -67,7 +67,7 @@ export default function VerificationForm() {
         if (!organisation.name) {
           // Reset the login expiration date
           updateLoginExpirationDate(undefined)
-          router.push('/organisations/creer')
+          router.push(`/region/${region}/territoire/${territory}/organisations/creer`)
           return
         }
 
@@ -76,7 +76,7 @@ export default function VerificationForm() {
           slug: organisation.slug,
         })
 
-        router.push(`/organisations/${organisation?.slug}`)
+        router.push(`/region/${region}/territoire/${territory}/organisations/${organisation?.slug}`)
 
         // Reset the login expiration date
         updateLoginExpirationDate(undefined)

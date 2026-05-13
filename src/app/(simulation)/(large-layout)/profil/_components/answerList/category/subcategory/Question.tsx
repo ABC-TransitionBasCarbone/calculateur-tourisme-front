@@ -6,7 +6,7 @@ import NumberValue from '@/components/misc/NumberValue'
 import { profilClickQuestion } from '@/constants/tracking/pages/profil'
 import { getLinkToSimulateur } from '@/helpers/navigation/simulateurPages'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
-import { useRule } from '@/publicodes-state'
+import { useRule, useUser } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import MosaicQuestion from './question/MosaicQuestion'
@@ -26,10 +26,11 @@ export default function Question({ question }: Props) {
     questionsOfMosaicFromParent,
     isMissing,
   } = useRule(question)
+  const { region, territory } = useUser()
 
   return (
     <Link
-      href={getLinkToSimulateur({ question })}
+      href={getLinkToSimulateur({ question, region, territory })}
       onClick={() => trackEvent(profilClickQuestion(question))}
       className={`mb-2 block rounded-xl bg-white p-4 no-underline hover:underline`}>
       <span

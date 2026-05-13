@@ -9,7 +9,7 @@ export function useSetCurrentSimulationFromParams() {
 
   const router = useRouter()
 
-  const { simulations, initSimulation, setCurrentSimulationId, hideTutorial } =
+  const { simulations, initSimulation, territory, setCurrentSimulationId, hideTutorial } =
     useUser()
 
   const { simulationIdInQueryParams } = useSimulationIdInQueryParams()
@@ -55,7 +55,7 @@ export function useSetCurrentSimulationFromParams() {
     }
 
     // if the simulation is not in the localStorage, we add it
-    initSimulation(simulation)
+    initSimulation({ ...simulation, territory})
     setIsCorrectSimulationSet(true)
 
     // We delete the query params and reload the page
@@ -71,6 +71,7 @@ export function useSetCurrentSimulationFromParams() {
     pathname,
     router,
     hideTutorial,
+    territory,
   ])
 
   return { isCorrectSimulationSet }

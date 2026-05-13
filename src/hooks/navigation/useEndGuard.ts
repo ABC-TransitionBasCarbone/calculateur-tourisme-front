@@ -7,7 +7,7 @@ import { useSimulationIdInQueryParams } from '../simulation/useSimulationIdInQue
 export function useEndGuard() {
   const router = useRouter()
 
-  const { tutorials } = useUser()
+  const { tutorials, region, territory } = useUser()
   const { progression } = useCurrentSimulation()
 
   const { simulationIdInQueryParams } = useSimulationIdInQueryParams()
@@ -35,15 +35,15 @@ export function useEndGuard() {
     // if the user didn't see the tutoriel we redirect him to the tutorial page
     if (!tutorials.testIntro) {
       console.log('redirecting to tutorial')
-      router.replace('/tutoriel')
+      router.replace(`/region/${region}/territoire/${territory}/tutoriel`)
       setIsGuardRedirecting(true)
       return
     }
 
     // we redirect the user to the test page
-    router.replace(getLinkToSimulateur())
+    router.replace(getLinkToSimulateur({ region, territory }))
     setIsGuardRedirecting(true)
-  }, [isGuardInit, simulationIdInQueryParams, progression, router, tutorials])
+  }, [isGuardInit, simulationIdInQueryParams, progression, router, tutorials, region, territory])
 
   return { isGuardInit, isGuardRedirecting }
 }

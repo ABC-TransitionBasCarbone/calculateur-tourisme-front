@@ -15,7 +15,7 @@ import NousContacter from './_components/NousContacter'
 import OurTools from './_components/OurTools'
 
 export default function OrganisationPage() {
-  const { user } = useUser()
+  const { user, region, territory } = useUser()
 
   const router = useRouter()
 
@@ -29,9 +29,9 @@ export default function OrganisationPage() {
 
   useEffect(() => {
     if (organisation && !organisation.slug) {
-      router.push('/organisations/creer')
+      router.push(`/region/${region}/territoire/${territory}/organisations/creer`)
     }
-  }, [organisation, router])
+  }, [organisation, region, router, territory])
 
   if (isError && !isLoading && !organisation) {
     return (

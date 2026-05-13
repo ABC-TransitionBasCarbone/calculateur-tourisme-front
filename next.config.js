@@ -17,6 +17,26 @@ const nextConfig = {
     // @ts-expect-error remotePatterns is not typed
     remotePatterns: remoteImagesPatterns,
   },
+  async rewrites() {
+    return [
+      { 
+        source: '/region/:region/territoire/:territoire',
+        destination: '/',
+      },
+      { 
+        source: '/region/:region',
+        destination: '/'
+      },
+      { 
+        source: '/region/:region/territoire/:territoire/:path*',
+        destination: '/:path*'
+      },
+      { 
+        source: '/region/:region/:path*',
+        destination: '/:path*'
+      }
+    ]
+  },
   async redirects() {
     return redirects
   },

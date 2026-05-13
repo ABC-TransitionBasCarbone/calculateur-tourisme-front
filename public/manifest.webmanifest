@@ -1,6 +1,6 @@
 {
-  "name": "Nos Gestes Climat",
-  "description": "Calcule ton empreinte sur le climat",
+  "name": "Mon séjour durable",
+  "description": "Calcule ton empreinte carbone lié à ton séjour et découvre des conseils pour la réduire.",
   "display": "standalone",
   "lang": "fr",
   "orientation": "portrait",

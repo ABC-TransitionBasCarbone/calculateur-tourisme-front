@@ -3,16 +3,20 @@ import { getIsLocalStorageAvailable } from '@/utils/getIsLocalStorageAvailable'
 import { Migration } from '@publicodes/tools/migration'
 import { useEffect, useState } from 'react'
 import { Simulation } from '../../types'
+import { isCorrectTerritory, territories, TerritoriesType } from '@/utils/territories'
+import { Situation } from '@/publicodes-state/types'
 
 const isLocalStorageAvailable = getIsLocalStorageAvailable()
 
 type Props = {
   storageKey: string
   migrationInstructions: Migration
+  territory: TerritoriesType
 }
 export default function usePersistentSimulations({
   storageKey,
   migrationInstructions,
+  territory
 }: Props) {
   const [initialized, setInitialized] = useState<boolean>(false)
   const [simulations, setSimulations] = useState<Simulation[]>([])
@@ -30,22 +34,37 @@ export default function usePersistentSimulations({
     }
 
     if (localSimulations && localCurrentSimulationId) {
-      const migratedLocalSimulations = localSimulations.map((simulation) =>
-        generateSimulation({
-          ...simulation,
+      const migratedLocalSimulations = localSimulations.map((simulation) => {
+        const situation = { ...simulation.situation };
+
+        if (territory &&  isCorrectTerritory(territory) && territory !== 'general') {
+          situation['transport . localisation séjour'] = territories[territory]
+        }
+
+
+        return generateSimulation({
+          ...{ ...simulation, situation },
           migrationInstructions,
         })
-      )
+      })
+ 
       setSimulations(migratedLocalSimulations)
       setCurrentSimulationId(localCurrentSimulationId)
     } else {
-      const newSimulation = generateSimulation()
+      const initialSituation: Situation = {} as Situation;
+
+      if (territory &&  isCorrectTerritory(territory) && territory !== 'general') {
+        initialSituation['transport . localisation séjour'] = territories[territory]
+      }
+
+      const newSimulation = generateSimulation({ situation: initialSituation })
+
       setSimulations([newSimulation])
       setCurrentSimulationId(newSimulation.id)
     }
 
     setInitialized(true)
-  }, [migrationInstructions, storageKey])
+  }, [migrationInstructions, storageKey, territory])
 
   useEffect(() => {
     if (initialized) {

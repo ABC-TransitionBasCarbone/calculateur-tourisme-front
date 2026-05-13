@@ -9,12 +9,13 @@ import useUpdateOldLocalStorage from './useOldLocalStorage'
 import usePersistentSimulations from './usePersistentSimulations'
 import usePersistentTutorials from './usePersistentTutorials'
 import usePersistentUser from './usePersistentUser'
+import { RegionType, TerritoriesType } from '@/utils/territories'
 
 type Props = {
   /**
    * The localstorage key in use
    */
-  storageKey?: string
+  storageKey: string
   /**
    * The migration instructions for old localstorage
    */
@@ -23,12 +24,16 @@ type Props = {
    * The region of the user (via server side geolocation)
    */
   initialRegion: RegionFromGeolocation
+  territory: TerritoriesType
+  region: RegionType
 }
 export default function UserProvider({
   children,
-  storageKey = 'ngc',
+  storageKey,
+  territory,
   migrationInstructions,
   initialRegion,
+  region,
 }: PropsWithChildren<Props>) {
   useUpdateOldLocalStorage({ storageKey })
 
@@ -41,7 +46,7 @@ export default function UserProvider({
     setSimulations,
     currentSimulationId,
     setCurrentSimulationId,
-  } = usePersistentSimulations({ storageKey, migrationInstructions })
+  } = usePersistentSimulations({ storageKey, migrationInstructions, territory })
 
   const isInitialized = useMemo(
     () => user && simulations.length > 0,
@@ -61,6 +66,8 @@ export default function UserProvider({
         setCurrentSimulationId,
         migrationInstructions,
         isInitialized,
+        territory,
+        region
       }}>
       {children}
     </UserContext.Provider>

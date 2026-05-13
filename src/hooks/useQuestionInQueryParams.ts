@@ -1,10 +1,12 @@
 import { getLinkToSimulateur } from '@/helpers/navigation/simulateurPages'
+import { useUser } from '@/publicodes-state'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 
 export const useQuestionInQueryParams = () => {
   const router = useRouter()
+  const { region, territory } = useUser()
 
   const searchParams = useSearchParams()
 
@@ -15,11 +17,11 @@ export const useQuestionInQueryParams = () => {
   const setQuestionInQueryParams = useCallback(
     (question: DottedName) =>
       router.replace(
-        getLinkToSimulateur({ question }),
+        getLinkToSimulateur({ question, region, territory }),
 
         { scroll: false }
       ),
-    [router]
+    [region, router, territory]
   )
 
   return { questionInQueryParams, setQuestionInQueryParams }

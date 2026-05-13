@@ -6,9 +6,9 @@ export async function generateMetadata() {
   const { t } = await getServerTranslation()
 
   return {
-    title: t('404 - Nos Gestes Climat'),
+    title: t('404 - Mon séjour durable'),
     description: t(
-      "Oups, vous êtes bien sur Nos Gestes Climat, mais cette page n'existe pas."
+      "Oups, vous êtes bien sur mon séjour durable, mais cette page n'existe pas."
     ),
     alternates: {
       canonical: '/404',

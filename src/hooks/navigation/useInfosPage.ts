@@ -10,6 +10,7 @@ import { useOrganisationQueryParams } from '@/hooks/organisations/useOrganisatio
 import { useSearchParams } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
 import { usePollPublicInfo } from '../organisations/usePollPublicInfo'
+import { useUser } from '@/publicodes-state'
 
 /**
  * @returns {getLinkToNextInfosPage} - A function that returns the link to the next infos page
@@ -28,6 +29,7 @@ type Props = {
 export function useInfosPage() {
   const searchParams = useSearchParams()
   const queryParamsString = searchParams.toString()
+  const {region, territory} = useUser()
 
   const { pollSlug } = useOrganisationQueryParams()
 
@@ -39,10 +41,10 @@ export function useInfosPage() {
 
   const urlsInfosPages = useMemo(() => {
     const pagePaths: Record<string, string> = {
-      [TUTORIEL_PAGE]: `/tutoriel?${queryParamsString}`,
-      [EMAIL_PAGE]: `/infos/email?${queryParamsString}`,
-      [POSTAL_CODE_PAGE]: `/infos/codepostal?${queryParamsString}`,
-      [BIRTHDATE_PAGE]: `/infos/naissance?${queryParamsString}`,
+      [TUTORIEL_PAGE]: `/region/${region}/territoire/${territory}/tutoriel?${queryParamsString}`,
+      [EMAIL_PAGE]: `/region/${region}/territoire/${territory}/infos/email?${queryParamsString}`,
+      [POSTAL_CODE_PAGE]: `/region/${region}/territoire/${territory}/infos/codepostal?${queryParamsString}`,
+      [BIRTHDATE_PAGE]: `/region/${region}/territoire/${territory}/infos/naissance?${queryParamsString}`,
     }
 
     // Add the custom additionnal questions
@@ -50,25 +52,25 @@ export function useInfosPage() {
       if (!isEnabled) return
 
       pagePaths[`question-personnalisee-${index + 1}`] =
-        `/infos/question-personnalisee-${index + 1}?${queryParamsString}`
+        `/region/${region}/territoire/${territory}/infos/question-personnalisee-${index + 1}?${queryParamsString}`
     })
 
     // Add the last path
     pagePaths[START_PAGE] = `/infos/commencer?${queryParamsString}`
 
     return pagePaths
-  }, [queryParamsString, customAdditionalQuestions])
+  }, [region, territory, queryParamsString, customAdditionalQuestions])
 
   const getLinkToNextInfosPage = useCallback(
     ({ curPage }: Props): string => {
       // if there is no pollSlug in query param, we return the test link
       if (!pollSlug) {
-        return getLinkToSimulateur()
+        return getLinkToSimulateur({region, territory})
       }
 
       // if there in no poll and it is not loading, we return the test link
       if (!poll && !isLoading) {
-        return getLinkToSimulateur()
+        return getLinkToSimulateur({region, territory})
       }
 
       // if there is no poll yet, we return an empty string (it should be handled by the caller component)
@@ -127,24 +129,24 @@ export function useInfosPage() {
       }
       // if we are on the start page, we return the test link
       if (curPage === START_PAGE) {
-        return getLinkToSimulateur()
+        return getLinkToSimulateur({region, territory})
       }
       // if there is no additional question, we return the start page link
       return urlsInfosPages.start
     },
-    [pollSlug, poll, isLoading, customAdditionalQuestions, urlsInfosPages]
+    [pollSlug, poll, isLoading, customAdditionalQuestions, urlsInfosPages, region, territory]
   )
 
   const getLinkToPrevInfosPage = useCallback(
     ({ curPage }: Props): string => {
       // if there is no pollSlug in query param, we return the homepage link
       if (!pollSlug) {
-        return '/'
+        return '/region/${region}/territoire/${territory}'
       }
 
       // if there in no poll and it is not loading, we return the homepage link
       if (!poll && !isLoading) {
-        return '/'
+        return '/region/${region}/territoire/${territory}'
       }
 
       // if there is no poll yet, we return an empty string (it should be handled by the caller component)
@@ -154,7 +156,7 @@ export function useInfosPage() {
 
       // if we are on the tutoriel, we return the homepage link
       if (curPage === TUTORIEL_PAGE) {
-        return '/'
+        return '/region/${region}/territoire/${territory}'
       }
 
       // if we are on the email page, we return the tutoriel page link

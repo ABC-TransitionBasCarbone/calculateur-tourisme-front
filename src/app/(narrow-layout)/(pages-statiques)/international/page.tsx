@@ -9,6 +9,7 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { getSupportedRegions } from '@/helpers/modelFetching/getSupportedRegions'
 import { getLinkToSimulateur } from '@/helpers/navigation/simulateurPages'
+import { useUser } from '@/publicodes-state'
 import Image from 'next/image'
 
 export async function generateMetadata() {
@@ -27,6 +28,7 @@ export async function generateMetadata() {
 
 export default async function International() {
   const { t } = await getServerTranslation()
+  const { region, territory } = await useUser()
 
   const supportedRegions = getSupportedRegions()
 
@@ -55,7 +57,7 @@ export default async function International() {
             </p>
             <div>
               <ButtonLink
-                href={getLinkToSimulateur()}
+                href={getLinkToSimulateur({ region, territory })}
                 size="lg"
                 className="px-20">
                 <span>
@@ -103,7 +105,7 @@ export default async function International() {
               Nous utilisons, quand disponible, l'empreinte du mix électrique
               fournie par :
             </Trans>
-             
+
             <Link
               className="inline"
               href="https://app.electricitymaps.com/map"

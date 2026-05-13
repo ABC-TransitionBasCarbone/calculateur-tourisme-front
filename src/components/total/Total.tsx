@@ -18,6 +18,7 @@ import TotalButtons from './total/TotalButtons'
 import TotalFootprintNumber from './total/TotalFootprintNumber'
 import { useRouter } from 'next/navigation'
 
+
 export default function Total({
   toggleQuestionList,
   toggleSaveModal,
@@ -29,7 +30,7 @@ export default function Total({
 }) {
   const { t } = useClientTranslation()
 
-  const { tutorials, hideTutorial, showTutorial } = useUser()
+  const { tutorials, hideTutorial, showTutorial, region, territory } = useUser()
 
   const { progression } = useCurrentSimulation()
 
@@ -82,7 +83,7 @@ export default function Total({
 
         <div className="mb-0 flex w-full max-w-6xl justify-between overflow-visible pl-1 pr-4 lg:mx-auto lg:px-4">
           <div className="relative flex items-center gap-1 lg:gap-4">
-            {simulationMode && <ButtonBack onClick={() => router.push('/')} />}
+            {simulationMode && <ButtonBack onClick={() => router.push(`/region/${region}/territoire/${territory}`)} />}
 
             <TotalFootprintNumber />
 

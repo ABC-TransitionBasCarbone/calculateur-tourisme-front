@@ -16,6 +16,7 @@ import { useCurrentSimulation } from '@/publicodes-state'
 import { trackEvent } from '@/utils/matomo/trackEvent'
 import { useContext, useEffect, useState } from 'react'
 import { InfosContext } from '../_components/InfosProvider'
+import UserContext from '@/publicodes-state/providers/userProvider/context';
 
 const titles = {
   notStarted: (
@@ -66,6 +67,7 @@ const buttonLabels = {
 
 export default function Commencer() {
   const { postalCode, birthdate, customAnswers } = useContext(InfosContext)
+  const { territory } = useContext(UserContext)
 
   const { pollSlug } = useOrganisationQueryParams()
 
@@ -156,13 +158,7 @@ export default function Commencer() {
               trackEvent(infosCommencerClickNewTest)
 
               goToSimulateurPage({
-                newSimulation: {
-                  defaultAdditionalQuestionsAnswers: {
-                    postalCode,
-                    birthdate,
-                  },
-                  polls: [pollSlug || ''],
-                },
+                newSimulation: { situation: { 'transport . localisation séjour': territory } },
               })
             }}>
             <Trans>Commencer un nouveau test</Trans>

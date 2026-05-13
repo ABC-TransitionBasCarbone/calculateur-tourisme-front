@@ -11,7 +11,7 @@ export function useSimulateurGuard() {
 
   const { goToEndPage } = useEndPage()
 
-  const { tutorials } = useUser()
+  const { tutorials, region, territory } = useUser()
   const { progression } = useCurrentSimulation()
 
   const isDebug = useDebug()
@@ -47,19 +47,10 @@ export function useSimulateurGuard() {
 
     // if the user has not seen the test intro, we redirect him to the tutorial page
     if (!tutorials.testIntro) {
-      router.replace('/tutoriel')
+      router.replace(`/region/${region}/territoire/${territory}/tutoriel`)
       setIsGuardRedirecting(true)
     }
-  }, [
-    isGuardInit,
-    tutorials,
-    router,
-    progression,
-    goToEndPage,
-    isDebug,
-    questionInQueryParams,
-    simulationIdInQueryParams,
-  ])
+  }, [isGuardInit, tutorials, router, progression, goToEndPage, isDebug, questionInQueryParams, simulationIdInQueryParams, region, territory])
 
   return { isGuardInit, isGuardRedirecting }
 }

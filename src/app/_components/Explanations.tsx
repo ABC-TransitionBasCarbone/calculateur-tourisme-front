@@ -9,7 +9,7 @@ const getExplanationsText = (territory: TerritoriesType) => {
   const territoryInfos = homePageTexts[territory];
   const generalInfos = homePageTexts['general'];
 
-  if (!territory) {
+  if (territory === 'general') {
     return generalInfos.explanations;
   }
 

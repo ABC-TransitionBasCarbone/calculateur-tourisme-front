@@ -5,6 +5,7 @@ import { TerritoriesType } from "../../utils/territories";
 type HomePageText = {
   backgroundImage?: string;
   additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number }[];
+  overrideExplanations?: boolean;
   explanations?: {
     title: string | React.ReactElement;
     description: string | React.ReactElement;
@@ -56,7 +57,41 @@ export const homePageTexts: Record<TerritoriesType, HomePageText> & Record<'gene
   'artois-lys': {},
   audomarois: {},
   'aumale-blangy': {},
-  'avesnois-thiérache': {},
+  'avesnois-thierache': {
+    backgroundImage: '/images/territoires/avesnois-thierache/fond-ecran.jpg',
+    additionnalPartners: [
+      {
+        href: 'https://www.tourisme-avesnois.com/',
+        src: '/images/territoires/avesnois-thierache/logo-avesnois.png',
+        alt: 'Logo de l\'Avesnois',
+        width: 600,
+        height: 253,
+      }
+    ],
+    overrideExplanations: false,
+    explanations: [
+      {
+        title: 'Pour un séjour durable en Avesnois-Thiérache',
+        description: <>
+          <p>
+            Au cœur d'un territoire préservé, entre bocages, forêts, vallées verdoyantes, villages de caractère et patrimoine remarquable, l'Avesnois et la Thiérache vous invitent à profiter d’un séjour éco-responsable. De la forêt de Mormal aux célèbres églises fortifiées de Thiérache, en passant par les paysages vallonnés et les savoir-faire locaux, cette destination offre un cadre idéal pour se ressourcer au plus près de la nature.
+          </p>
+          <p>
+            Terres de bocage et de patrimoine vivant, l'Avesnois et la Thiérache se découvrent au rythme de la marche, du vélo avec l’EuroVelo3 et le Réseau Points Nœuds.
+          </p>
+          <p>
+            Chaque geste compte pour préserver la richesse de ces territoires, leurs paysages, leur biodiversité et leurs produits dont le maroilles AOP est l’emblème.
+          </p>
+          <p>
+            Le Parc naturel régional de l’Avesnois, véritable poumon vert, invite à la découverte d’une biodiversité exceptionnelle et de paysages parmi les plus préservés de la région.
+          </p>
+          <p>
+            L’Avesnois et la Thiérache constituent une destination idéale pour se ressourcer, explorer et vivre une expérience authentique et durable !
+          </p>
+        </>
+      },
+    ]
+  },
   'baie-de-somme': {},
   boulonnais: {},
   calaisis: {},
@@ -87,6 +122,7 @@ export const homePageTexts: Record<TerritoriesType, HomePageText> & Record<'gene
   'villes-soeurs': {},
   general: {
     backgroundImage: '/images/illustrations/home-background.jpg',
+    overrideExplanations: false,
     explanations: [
       {
         title: 'Pourquoi cet outil ?',

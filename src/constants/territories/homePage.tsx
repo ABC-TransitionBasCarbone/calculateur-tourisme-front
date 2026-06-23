@@ -4,7 +4,7 @@ import { TerritoriesType } from "../../utils/territories";
 
 type HomePageText = {
   backgroundImage?: string;
-  additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number, smallWidth?: boolean }[];
+  additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number; smallWidth?: boolean }[];
   overrideExplanations?: boolean;
   explanations?: {
     title: string | React.ReactElement;

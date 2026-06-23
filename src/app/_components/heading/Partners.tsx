@@ -33,7 +33,7 @@ export default function Partners({ territory }: { territory: TerritoriesType }) 
             alt={partner.alt}
             width={partner.width}
             height={partner.height}
-            className={`h-auto', ${partner.smallWidth ? 'w-24' : 'w-32'}`}
+            className={`h-auto, ${partner.smallWidth ? 'w-24' : 'w-32'}`}
           />
         </Link>)}
       </div>

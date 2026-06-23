@@ -4,7 +4,7 @@ import { TerritoriesType } from "../../utils/territories";
 
 type HomePageText = {
   backgroundImage?: string;
-  additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number }[];
+  additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number, smallWidth?: boolean }[];
   overrideExplanations?: boolean;
   explanations?: {
     title: string | React.ReactElement;
@@ -66,6 +66,14 @@ export const homePageTexts: Record<TerritoriesType, HomePageText> & Record<'gene
         alt: 'Logo de l\'Avesnois',
         width: 600,
         height: 253,
+      },
+      {
+        href: 'https://www.tourisme-thierache.fr/',
+        src: '/images/territoires/avesnois-thierache/logo-thierache.png',
+        alt: 'Logo de la Thiérache',
+        width: 600,
+        height: 253,
+        smallWidth: true,
       }
     ],
     overrideExplanations: false,

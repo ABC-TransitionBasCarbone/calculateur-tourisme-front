@@ -10,7 +10,7 @@ export const replacePlaceHolders = (text: string | undefined, territory: Territo
   const placeholdersToReplace = { ...questionTexts['general'], ...questionTexts[territory] }
 
   for (const key in placeholdersToReplace) {
-    text.replaceAll(`{${key.toUpperCase()}_PLACEHOLDER}`, placeholdersToReplace[key as PossiblePlaceholders] ?? '')
+    text = text.replaceAll(`${key.toUpperCase()}_PLACEHOLDER`, placeholdersToReplace[key as PossiblePlaceholders] ?? '')
   }
 
   return text
@@ -54,6 +54,6 @@ export const questionTexts: Record<TerritoriesType, QuestionText> = {
   'vexin-sablons': {},
   'villes-soeurs': {},
   general: {
-    localisation: 'test'
+    localisation: 'sur votre lieu de séjour'
   }
 }

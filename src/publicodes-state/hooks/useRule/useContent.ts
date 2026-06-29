@@ -29,8 +29,6 @@ export default function useContent({ dottedName, rule }: Props) {
 
   const title = useMemo<string | undefined>(() => rule?.title, [rule])
 
-  console.log(rule)
-
   const abbreviatedTitle = useMemo<string | undefined>(
     () => replacePlaceHolders(rule?.rawNode.abréviation, territory),
     [rule, territory]

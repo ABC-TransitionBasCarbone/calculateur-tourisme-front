@@ -27,7 +27,7 @@ export default function useContent({ dottedName, rule }: Props) {
     return namespace as DottedName
   }, [dottedName])
 
-  const title = useMemo<string | undefined>(() => rule?.title, [rule])
+  const title = useMemo<string | undefined>(() => replacePlaceHolders(rule?.title, territory), [rule, territory])
 
   const abbreviatedTitle = useMemo<string | undefined>(
     () => replacePlaceHolders(rule?.rawNode.abréviation, territory),

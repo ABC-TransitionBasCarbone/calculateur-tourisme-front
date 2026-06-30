@@ -1,5 +1,6 @@
 import Link from '@/components/Link'
 import { getRuleTitle } from '@/helpers/publicodes/getRuleTitle'
+import { useUser } from '@/publicodes-state'
 import { DottedName, NGCRules } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { utils } from 'publicodes'
 
@@ -13,6 +14,7 @@ export default function PagesProches({
   const namespaceRules = Object.keys(rules).filter(
     (key) => key.includes(ruleName) && key !== ruleName
   ) as DottedName[]
+  const { territory } = useUser()
 
   if (!namespaceRules.length) return null
   return (
@@ -44,7 +46,7 @@ export default function PagesProches({
 
                 <span className="mr-2">{rules[item.dottedName]?.icônes}</span>
 
-                {getRuleTitle(item)}
+                {getRuleTitle(item, territory)}
               </Link>
             </li>
           )

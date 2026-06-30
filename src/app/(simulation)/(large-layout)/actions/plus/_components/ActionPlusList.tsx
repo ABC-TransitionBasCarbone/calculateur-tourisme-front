@@ -3,7 +3,7 @@
 import Link from '@/components/Link'
 import Card from '@/design-system/layout/Card'
 import { getRuleTitle } from '@/helpers/publicodes/getRuleTitle'
-import { useTempEngine } from '@/publicodes-state'
+import { useTempEngine, useUser } from '@/publicodes-state'
 
 import { Post } from '@/types/posts'
 import { encodeRuleName } from '@/utils/publicodes/encodeRuleName'
@@ -18,6 +18,7 @@ type Props = {
 }
 export default function ActionPlusList({ actions }: Props) {
   const { rules } = useTempEngine()
+  const { territory } = useUser()
 
   if (!rules) return null
 
@@ -42,7 +43,8 @@ export default function ActionPlusList({ actions }: Props) {
             <div className="mb-8 text-2xl">{rule.icônes || '🎯'}</div>
             <div className="text-center">
               {getRuleTitle(
-                rule as NGCRule & { dottedName: DottedName; titre: string }
+                rule as NGCRule & { dottedName: DottedName; titre: string },
+                territory
               )}
             </div>
           </Card>

@@ -3,7 +3,7 @@ import Trans from '@/components/translation/Trans'
 import { TerritoriesType } from "../../utils/territories";
 
 type HomePageText = {
-  backgroundImage?: string;
+  backgroundImage?: { src: string, width: number, height: number };
   additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number; smallWidth?: boolean }[];
   overrideExplanations?: boolean;
   explanations?: {
@@ -58,7 +58,11 @@ export const homePageTexts: Record<TerritoriesType, HomePageText> & Record<'gene
   audomarois: {},
   'aumale-blangy': {},
   'avesnois-thierache': {
-    backgroundImage: '/images/territoires/avesnois-thierache/fond-ecran.jpg',
+    backgroundImage: {
+      src: '/images/territoires/avesnois-thierache/fond-ecran.jpg',
+      width: 5472,
+      height: 3648,
+    },
     additionnalPartners: [
       {
         href: 'https://www.tourisme-avesnois.com/',
@@ -129,7 +133,11 @@ export const homePageTexts: Record<TerritoriesType, HomePageText> & Record<'gene
   'vexin-sablons': {},
   'villes-soeurs': {},
   general: {
-    backgroundImage: '/images/illustrations/home-background.jpg',
+    backgroundImage: {
+      src: '/images/illustrations/home-background.jpg',
+      width: 3992,
+      height: 2992,
+    },
     overrideExplanations: false,
     explanations: [
       {

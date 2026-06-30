@@ -8,6 +8,7 @@ import Fuse from 'fuse.js'
 import { utils } from 'publicodes'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import RuleListItem from './RuleListIem'
+import { useUser } from '@/publicodes-state'
 
 export type SearchItem = {
   title: string
@@ -35,6 +36,7 @@ const searchWeights = [
 export default function SearchBar({ rules }: { rules: NGCRules }) {
   const [input, setInput] = useState('')
   const [results, setResults] = useState<Fuse.FuseResult<SearchItem>[]>([])
+  const { territory } = useUser()
 
   const rulesList: any[] = Object.entries(rules).map(([dottedName, rule]) => ({
     ...rule,
@@ -47,7 +49,7 @@ export default function SearchBar({ rules }: { rules: NGCRules }) {
         .filter(utils.ruleWithDedicatedDocumentationPage)
         .map((rule) => ({
           title:
-            getRuleTitle(rule as any) +
+            getRuleTitle(rule as any, territory) +
             (rule.acronyme ? ` (${rule.acronyme})` : ''),
           dottedName: rule.dottedName,
           espace: rule.dottedName.split(' . ').reverse(),

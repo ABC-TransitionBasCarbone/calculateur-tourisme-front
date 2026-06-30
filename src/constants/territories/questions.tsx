@@ -1,6 +1,6 @@
 import { TerritoriesType } from "../../utils/territories";
 
-type PossiblePlaceholders = 'localisation'
+type PossiblePlaceholders = 'localisation' | 'territoire'
 
 type QuestionText = Partial<Record<PossiblePlaceholders, string>>
 
@@ -23,7 +23,8 @@ export const questionTexts: Record<TerritoriesType, QuestionText> = {
   audomarois: {},
   'aumale-blangy': {},
   'avesnois-thierache': {
-    localisation: 'dans l\'Avesnois-Thiérache'
+    localisation: 'dans l\'Avesnois-Thiérache',
+    territoire: 'Avesnois-Thiérache'
   },
   'baie-de-somme': {},
   boulonnais: {},
@@ -54,6 +55,7 @@ export const questionTexts: Record<TerritoriesType, QuestionText> = {
   'vexin-sablons': {},
   'villes-soeurs': {},
   general: {
-    localisation: 'sur votre lieu de séjour'
+    localisation: 'sur votre lieu de séjour',
+    territoire: 'Hauts-de-France'
   }
 }

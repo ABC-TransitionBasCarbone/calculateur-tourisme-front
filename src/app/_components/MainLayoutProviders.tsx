@@ -67,10 +67,6 @@ export default function MainLayoutProviders({
     return null;
   }
 
-  const settingTerritory = (newTerritory: TerritoriesType) => {
-    setTerritory(newTerritory)
-  }
-
   return (
     <ErrorBoundary>
       <IframeOptionsProvider>
@@ -81,7 +77,6 @@ export default function MainLayoutProviders({
             initialRegion={initialRegion}
             territory={territory}
             region={region}
-            setTerritory={settingTerritory}
           >
             <PreventNavigationProvider>
               <MainHooks>{children}</MainHooks>

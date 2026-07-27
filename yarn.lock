@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@abc-transitionbascarbone/calculateur-tourisme@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@abc-transitionbascarbone/calculateur-tourisme/-/calculateur-tourisme-1.0.22.tgz#2be0a93718e312c79056d528e95f01bb1dad18cd"
-  integrity sha512-SQulbWAN1ygxf6GQ4S/SpGkSMjXRGPMBJrCyU/kCbPeCxSpLxAaTPPyHAcNLxSWYcY7XzH3RB/STbJNHZI9dAw==
+"@abc-transitionbascarbone/calculateur-tourisme@^1.0.24":
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/@abc-transitionbascarbone/calculateur-tourisme/-/calculateur-tourisme-1.0.24.tgz#6e0e72973e27ddb70218639658f6157471805765"
+  integrity sha512-uKePZ+1yd28+89kWhC5q/UJ2Tmrw4vS/u/cRNdrLhAYEDhbAwWlGioYEVwBILtJbxbJVFZdmOPJTB8o1dczmmQ==
 
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"

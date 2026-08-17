@@ -26,13 +26,17 @@ const filteredDottedNames: DottedName[] = [
 export const filterRelevantMissingVariables = ({
   missingVariables,
   extendedFoldedSteps,
+  selfDottedName
 }: {
   missingVariables: DottedName[]
   extendedFoldedSteps: DottedName[]
+  selfDottedName?: DottedName
 }) => {
   return missingVariables.filter((dottedName: DottedName) => {
     const isFolded = extendedFoldedSteps.indexOf(dottedName) >= 0
     const isManuallyExcluded = !filteredDottedNames?.includes(dottedName)
-    return isManuallyExcluded && !isFolded
+
+    const ignoreSelf = !selfDottedName || selfDottedName === dottedName
+    return isManuallyExcluded && !isFolded && !ignoreSelf
   })
 }

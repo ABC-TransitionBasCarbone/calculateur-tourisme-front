@@ -60,6 +60,7 @@ export default function ActionCard({
   const remainingQuestions = filterRelevantMissingVariables({
     missingVariables: Object.keys(missingVariables || {}) as DottedName[],
     extendedFoldedSteps,
+    selfDottedName: dottedName
   })
 
   const nbRemainingQuestions = remainingQuestions?.length

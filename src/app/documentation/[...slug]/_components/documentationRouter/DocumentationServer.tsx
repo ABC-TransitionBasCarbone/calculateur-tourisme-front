@@ -12,6 +12,7 @@ import ButtonLaunch from './documentationServer/ButtonLaunch'
 import CalculDetail from './documentationServer/CalculDetail'
 import PagesProches from './documentationServer/PagesProches'
 import QuestionSection from './documentationServer/QuestionSection'
+import { useUser } from '@/publicodes-state'
 
 type Props = {
   slugs: string[]
@@ -20,6 +21,7 @@ type Props = {
 }
 export default async function DocumentationServer({ slugs, rules }: Props) {
   const ruleName = decodeRuleNameFromPath(slugs.join('/')) as DottedName
+  const { territory } = useUser()
 
   if (!ruleName) {
     redirect('/404')
@@ -37,7 +39,7 @@ export default async function DocumentationServer({ slugs, rules }: Props) {
 
       <Title
         title={`${rule.icônes ?? ''} ${capitalizeString(
-          getRuleTitle({ ...rule, dottedName: ruleName })
+          getRuleTitle({ ...rule, dottedName: ruleName }, territory)
         )}`}
         data-cypress-id="documentation-title"
       />

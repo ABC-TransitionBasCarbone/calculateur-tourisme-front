@@ -23,7 +23,7 @@ export const territories = {
     'artois-lys': 2,
     audomarois: 3,
     'aumale-blangy': 4, 
-    'avesnois-thiérache': 5, 
+    'avesnois-thierache': 5,
     'baie-de-somme': 6,
     boulonnais: 7,
     calaisis: 8,

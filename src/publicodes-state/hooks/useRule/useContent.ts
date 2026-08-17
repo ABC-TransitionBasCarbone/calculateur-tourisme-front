@@ -8,6 +8,8 @@ import {
 } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useMemo } from 'react'
 import { FormattedSuggestion } from '../../types'
+import { useUser } from '@/publicodes-state'
+import { replacePlaceHolders } from '@/constants/territories/questions'
 
 type Props = {
   dottedName: DottedName
@@ -15,6 +17,7 @@ type Props = {
 }
 
 export default function useContent({ dottedName, rule }: Props) {
+  const { territory } = useUser()
   const category = useMemo(() => {
     const namespace = getNamespace(dottedName) ?? ''
     // This is only used by "ui . pédagogie" rules. For them, we need to extract the category from the dottedName (ui . pedagogie . [category])
@@ -24,20 +27,20 @@ export default function useContent({ dottedName, rule }: Props) {
     return namespace as DottedName
   }, [dottedName])
 
-  const title = useMemo<string | undefined>(() => rule?.title, [rule])
+  const title = useMemo<string | undefined>(() => replacePlaceHolders(rule?.title, territory), [rule, territory])
 
   const abbreviatedTitle = useMemo<string | undefined>(
-    () => rule?.rawNode.abréviation,
-    [rule]
+    () => replacePlaceHolders(rule?.rawNode.abréviation, territory),
+    [rule, territory]
   )
 
   const label = useMemo<string | undefined>(
-    () => rule?.rawNode.question,
-    [rule]
+    () => replacePlaceHolders(rule?.rawNode.question, territory),
+    [rule, territory]
   )
   const description = useMemo<string | undefined>(
-    () => rule?.rawNode.description,
-    [rule]
+    () => replacePlaceHolders(rule?.rawNode.description, territory),
+    [rule, territory]
   )
   const icons = useMemo<string | undefined>(
     () => rule?.rawNode['icônes'],
@@ -63,8 +66,8 @@ export default function useContent({ dottedName, rule }: Props) {
   const plancher = useMemo<number>(() => rule?.rawNode['plancher'] ?? 0, [rule])
 
   const warning = useMemo<string | undefined>(
-    () => rule?.rawNode['avertissement'],
-    [rule]
+    () => replacePlaceHolders(rule?.rawNode['avertissement'], territory),
+    [rule, territory]
   )
 
   const isInactive = useMemo<boolean>(
@@ -89,8 +92,8 @@ export default function useContent({ dottedName, rule }: Props) {
   }, [rule])
 
   const excerpt = useMemo<string | undefined>(
-    () => rule?.rawNode['résumé'],
-    [rule]
+    () => replacePlaceHolders(rule?.rawNode['résumé'], territory),
+    [rule, territory]
   )
 
   // This is only used by "ui . pédagogie" rules
@@ -109,13 +112,13 @@ export default function useContent({ dottedName, rule }: Props) {
   const unite = useMemo<string | undefined>(() => (rule as any)?.rawNode['unité'], [rule])
 
   const titreInformations = useMemo<string | undefined>(
-    () => (rule as any)?.rawNode['titre-informations'],
-    [rule]
+    () => replacePlaceHolders((rule as any)?.rawNode['titre-informations'], territory),
+    [rule, territory]
   )
 
   const descriptionInformations = useMemo<string | undefined>(
-    () => (rule as any)?.rawNode['description-informations'],
-    [rule]
+    () => replacePlaceHolders((rule as any)?.rawNode['description-informations'], territory),
+    [rule, territory]
   )
 
 

@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@publicodes/tools/migration": [
+        "./node_modules/@publicodes/tools/dist/migration/index.d.mts"
       ]
     },
     "forceConsistentCasingInFileNames": true

@@ -18,7 +18,7 @@ export default function VerificationForm() {
 
   const router = useRouter()
 
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const { updateLoginExpirationDate, user, updateUserOrganisation, region, territory } = useUser()
 

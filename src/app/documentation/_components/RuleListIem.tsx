@@ -1,7 +1,7 @@
 import Link from '@/components/Link'
 import { encodeRuleName } from '@/utils/publicodes/encodeRuleName'
 import { NGCRules } from '@abc-transitionbascarbone/calculateur-tourisme'
-import Fuse from 'fuse.js'
+import { FuseResultMatch } from 'fuse.js'
 import highlightMatches from '../_helpers/highlightMatches'
 import { Matches, SearchItem } from './SearchBar'
 
@@ -12,7 +12,7 @@ export default function RuleListItem({
 }: {
   rules: NGCRules
   item: SearchItem
-  matches: Fuse.FuseResultMatch[] | undefined
+  matches: FuseResultMatch[] | undefined
 }) {
   return (
     <li

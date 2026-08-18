@@ -48,14 +48,14 @@ export default function ConfirmationModal({
       {children}
 
       <div className="mt-12 flex flex-wrap justify-center gap-4 md:justify-normal ">
-        <Button color="secondary" onClick={!isLoading ? closeModal : () => {}}>
+        <Button color="secondary" onClick={!isLoading ? closeModal : () => { }}>
           <Trans>Annuler</Trans>
         </Button>
 
         <Button
           color="primary"
           className="-order-1 w-[140px] xs:order-2"
-          onClick={!isLoading ? onConfirm : () => {}}>
+          onClick={!isLoading ? onConfirm : () => { }}>
           {isLoading ? <Loader /> : <Trans>Confirmer</Trans>}
         </Button>
       </div>

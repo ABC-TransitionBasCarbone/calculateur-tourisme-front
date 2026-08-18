@@ -18,7 +18,6 @@ import { useGetNewsletterSubscriptions } from '@/hooks/settings/useGetNewsletter
 import { useSaveSimulation } from '@/hooks/simulation/useSaveSimulation'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { useLocale } from '@/hooks/useLocale'
-import { useNumberSubscribers } from '@/hooks/useNumberSubscriber'
 import { useCurrentSimulation, useUser } from '@/publicodes-state'
 import { formatEmail } from '@/utils/format/formatEmail'
 import { trackEvent } from '@/utils/matomo/trackEvent'
@@ -98,8 +97,6 @@ export default function GetResultsByEmail({
   const { saveSimulation, isPending, isSuccess, isError, error } =
     useSaveSimulation()
 
-  const { data: numberSubscribers } = useNumberSubscribers()
-
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     // If the mutation is pending, we do nothing
     if (isPending) {
@@ -168,12 +165,6 @@ export default function GetResultsByEmail({
             <strong className="text-primary-700">
               <Trans>laissez-nous votre email,</Trans>{' '}
             </strong>
-            {t('comme {{numberSubscribers}} personnes.', {
-              numberSubscribers:
-                numberSubscribers?.toLocaleString(locale, {
-                  maximumFractionDigits: 0,
-                }) ?? '---',
-            })}
           </p>
 
           <div className="mb-4 flex w-full flex-col gap-2">
@@ -194,12 +185,12 @@ export default function GetResultsByEmail({
 
             {(!isSubscribedMainNewsletter ||
               !isSubscribedTransportNewsletter) && (
-              <p className="mb-0">
-                <Trans>
-                  Recevez des conseils pour réduire votre empreinte :
-                </Trans>
-              </p>
-            )}
+                <p className="mb-0">
+                  <Trans>
+                    Recevez des conseils pour réduire votre empreinte :
+                  </Trans>
+                </p>
+              )}
 
             {!isSubscribedMainNewsletter && (
               <CheckboxInputGroup
@@ -221,7 +212,7 @@ export default function GetResultsByEmail({
                   <span>
                     <Emoji>🚗</Emoji> <strong>Nos Gestes Transports</strong>
                     <Trans>
-                       : maîtrisez l'impact carbone de vos transports avec nos 4
+                      : maîtrisez l'impact carbone de vos transports avec nos 4
                       infolettres
                     </Trans>
                   </span>

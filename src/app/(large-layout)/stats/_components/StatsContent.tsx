@@ -12,12 +12,11 @@ import {
   useCurrentMonthWebsites,
   useGetSharedSimulationEvents,
 } from '@/helpers/matomo'
-import { useNumberSubscribers } from '@/hooks/useNumberSubscriber'
-import { UseQueryResult } from '@tanstack/react-query'
 import AcquisitionBlock from './content/AcquisitionBlock'
 import MetabaseIframe from './content/MetabaseIframe'
 import SimulationsBlock from './content/SimulationsBlock'
 import VisitsBlock from './content/VisitsBlock'
+import { UseQueryResult } from '@tanstack/react-query'
 
 // Do not try [toRenderWithRequestData] until all [requestResults] are successful.
 // Otherwise, an informative message in rendered.
@@ -70,7 +69,6 @@ export default function StatsContent() {
   const currentMonthWebsites = useCurrentMonthWebsites()
   const currentMonthSocials = useCurrentMonthSocials()
   const allSharedSimulationEvents = useGetSharedSimulationEvents()
-  const allSubscribers = useNumberSubscribers()
 
   return (
     <div>
@@ -127,7 +125,6 @@ export default function StatsContent() {
             currentMonthIframeVisitsData,
           ]) => (
             <AcquisitionBlock
-              allSubscribers={allSubscribers}
               allSharedSimulationEventsData={allSharedSimulationEventsData}
               currentMonthWebsitesData={currentMonthWebsitesData}
               currentMonthSocialsData={currentMonthSocialsData}

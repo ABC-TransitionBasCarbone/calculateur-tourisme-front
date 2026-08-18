@@ -88,7 +88,6 @@
     "tailwindcss": "^4.3.3",
     "use-count-up": "^3.0.1",
     "uuid": "^14.0.1",
-    "xlsx": "^0.18.5",
     "yargs": "^18.1.0",
     "yarn": "^1.22.21"
   },
@@ -142,6 +141,32 @@
     "typescript": "^7.0.2",
     "yaml-loader": "^0.9.0"
   },
-  "resolutions": {},
+  "resolutions": {
+    "follow-redirects": "1.16.0",
+    "braces": "3.0.3",
+    "brace-expansion": "1.1.18",
+    "diff": "4.0.4",
+    "qs": "6.15.2",
+    "socket.io-parser": "4.2.7",
+    "picomatch": "4.0.4",
+    "yaml": "2.8.3",
+    "lodash": "4.18.0",
+    "ws": "8.21.0",
+    "minimatch": "10.2.5",
+    "micromatch": "4.0.8",
+    "webpack": "5.104.1",
+    "serialize-javascript": "7.0.5",
+    "@babel/runtime": "7.28.6",
+    "cross-spawn": "7.0.6",
+    "nanoid": "3.3.18",
+    "js-yaml": "4.3.1",
+    "mdast-util-to-hast": "13.2.1",
+    "ajv": "8.18.0",
+    "flatted": "3.4.2",
+    "postcss": "8.5.23",
+    "@babel/core": "7.29.6",
+    "vite": "6.4.3",
+    "d3-color": "3.1.0"
+  },
   "packageManager": "yarn@1.22.19"
 }

@@ -1,9 +1,7 @@
 import EyeIcon from '@/components/icons/EyeIcon'
 import SettingsIcon from '@/components/icons/SettingsIcon'
 import InformationIconWithTooltip from '@/components/messages/InformationIconWithTooltip'
-import ExportDataButton from '@/components/organisations/ExportDataButton'
 import Trans from '@/components/translation/Trans'
-import { organisationsDashboardExportData } from '@/constants/tracking/pages/organisationsDashboard'
 import {
   pollDashboardClickParameters,
   pollDashboardCopyLink,
@@ -52,15 +50,6 @@ export default function AdminSection({ pollData }: Props) {
         </div>
 
         <div className="flex flex-1 flex-col justify-center gap-4 sm:flex-row md:flex-col">
-          <ExportDataButton
-            simulationRecaps={pollData?.simulationRecaps ?? []}
-            poll={pollData}
-            color="secondary"
-            onClick={() => {
-              trackEvent(organisationsDashboardExportData)
-            }}
-            className="h-14"
-          />
 
           <ButtonLink
             href={`/organisations/${orgaSlug}/campagnes/${pollSlug}/parametres`}

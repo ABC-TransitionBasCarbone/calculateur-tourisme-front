@@ -1,7 +1,6 @@
 import '@/locales/initClient'
 import '@/locales/initServer'
 import { dir } from 'i18next'
-import dynamic from 'next/dynamic'
 import { getServerLocale } from '@/helpers/getServerLocale'
 import localFont from 'next/font/local'
 import Script from 'next/script'
@@ -10,6 +9,8 @@ import MainLayoutProviders from './_components/MainLayoutProviders'
 import './globals.css'
 import Footer from '@/components/layout/Footer'
 import ErrorModal from '@/components/error/ErrorModal'
+
+export const dynamic = 'force-dynamic'
 
 export const marianne = localFont({
   src: [

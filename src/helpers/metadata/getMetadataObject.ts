@@ -64,12 +64,12 @@ export async function getMetadataObject({
   alternates,
   ...props
 }: Props) {
-  const locale = await getServerLocale()
+  const locale = await getServerLocale() ?? defaultLocale
 
   const url = buildURL({
     params,
     searchParams,
-    locale: locale ?? defaultLocale,
+    locale: locale,
   })
 
   let alternatesWithLanguages = null

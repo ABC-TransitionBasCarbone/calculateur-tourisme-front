@@ -138,7 +138,7 @@ export default function ActionCard({
           category
         )}`}>
         <Link
-          className="z-10 w-full no-underline"
+          className="z-10 w-full no-underline!"
           onClick={() => trackEvent(actionsOpenAction(dottedName))}
           href={'/actions/' + encodeRuleName(dottedName)}>
           {icons && (

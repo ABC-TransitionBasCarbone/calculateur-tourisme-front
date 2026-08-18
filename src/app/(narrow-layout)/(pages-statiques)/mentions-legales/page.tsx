@@ -14,19 +14,6 @@ export async function generateMetadata() {
 export default function MentionsLegalesPage() {
   return (
     <div className="markdown">
-      <LegalNotice
-        includeBetaGouv
-        siteName="Nos Gestes Climat"
-        siteUrl={process.env.NEXT_PUBLIC_SITE_URL!}
-        licenceUrl="https://github.com/incubateur-ademe/nosgestesclimat-site-nextjs/blob/main/LICENSE"
-        privacyPolicyUrl="/politique-de-confidentialite"
-        siteHost={{
-          name: 'Vercel Inc.',
-          address: '440 N Barranca Ave #4133<br/>Covina, CA 91723',
-          country: 'États-Unis',
-          email: 'privacy@vercel.com',
-        }}
-      />
     </div>
   )
 }

@@ -4,7 +4,7 @@ import Card from '@/design-system/layout/Card'
 import { getRuleTitle } from '@/helpers/publicodes/getRuleTitle'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
 import { DottedName, NGCRules } from '@abc-transitionbascarbone/calculateur-tourisme'
-import Fuse from 'fuse.js'
+import Fuse, { FuseResult } from 'fuse.js'
 import { utils } from 'publicodes'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import RuleListItem from './RuleListIem'
@@ -35,7 +35,7 @@ const searchWeights = [
 
 export default function SearchBar({ rules }: { rules: NGCRules }) {
   const [input, setInput] = useState('')
-  const [results, setResults] = useState<Fuse.FuseResult<SearchItem>[]>([])
+  const [results, setResults] = useState<FuseResult<SearchItem>[]>([])
   const { territory } = useUser()
 
   const rulesList: any[] = Object.entries(rules).map(([dottedName, rule]) => ({

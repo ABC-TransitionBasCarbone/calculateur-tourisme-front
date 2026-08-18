@@ -43,7 +43,7 @@ export default function Modal({
             <Button
               color="secondary"
               disabled={isLoading}
-              onClick={!isLoading ? closeModal : () => {}}>
+              onClick={!isLoading ? closeModal : () => { }}>
               <Trans>Annuler</Trans>
             </Button>
           )}

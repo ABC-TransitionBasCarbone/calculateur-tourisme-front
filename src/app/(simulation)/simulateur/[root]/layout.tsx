@@ -3,19 +3,21 @@ import { FormProvider } from '@/publicodes-state'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { PropsWithChildren } from 'react'
 
-type Props = { params: { root: DottedName } }
+type Props = { params: Promise<{ root: DottedName }> }
 
 export async function generateMetadata({ params }: Props) {
+  const { root } = await params
 
   return getMetadataObject({
     title: 'Mon séjour durable',
     description: "Calculez l'empreinte de votre séjour en 5 minutes !",
     alternates: {
-      canonical: `/simulateur/${params.root}`,
+      canonical: `/simulateur/${root}`,
     },
   })
 }
 
-export default function Layout({ params, children }: PropsWithChildren<Props>) {
-  return <FormProvider root={params.root}>{children}</FormProvider>
+export default async function Layout({ params, children }: PropsWithChildren<Props>) {
+  const { root } = await params
+  return <FormProvider root={root}>{children}</FormProvider>
 }

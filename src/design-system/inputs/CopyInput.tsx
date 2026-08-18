@@ -21,7 +21,7 @@ export default function CopyInput({
 }: Props) {
   const [isCopied, setIsCopied] = useState(false)
 
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {

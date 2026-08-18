@@ -37,7 +37,7 @@ export default function ActionPlusList({ actions }: Props) {
       {plusListe.map((rule) => (
         <li key={rule.dottedName}>
           <Card
-            className="h-[12rem] flex-col items-center justify-center no-underline"
+            className="h-[12rem] flex-col items-center justify-center no-underline!"
             tag={Link}
             href={'/actions/plus/' + encodeRuleName(rule.dottedName)}>
             <div className="mb-8 text-2xl">{rule.icônes || '🎯'}</div>

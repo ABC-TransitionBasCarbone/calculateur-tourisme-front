@@ -26,7 +26,7 @@ export default function NumberInput({
 }: HTMLAttributes<HTMLInputElement> & Props) {
   const locale = useLocale()
 
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const handleValueChange = (
     values: NumberFormatValues,
@@ -50,7 +50,11 @@ export default function NumberInput({
     setCorrectValue(values.value)
   }
 
-  useEffect(() => clearTimeout(timeoutRef.current), [])
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+  }, [])
 
   const setCorrectValue = (value: number | string) => {
     if (value === '') {

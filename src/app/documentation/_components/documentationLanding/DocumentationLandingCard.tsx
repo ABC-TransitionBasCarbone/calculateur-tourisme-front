@@ -31,7 +31,7 @@ export default function DocumentationLandingCard({
     <Card
       tag={Link}
       href={'/documentation/' + utils.encodeRuleName(dottedName)}
-      className={`relative h-[12rem] flex-auto justify-center rounded-xl border-2 text-center text-base shadow-none ${getBorderColor(category)} ${getTextDarkColor(category)} no-underline ${getBackgroundLightColor(
+      className={`relative h-[12rem] flex-auto justify-center rounded-xl border-2 text-center text-base shadow-none ${getBorderColor(category)} ${getTextDarkColor(category)} no-underline! ${getBackgroundLightColor(
         category
       )}`}>
       <div>

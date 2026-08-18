@@ -49,7 +49,7 @@ export default function MainSubcategory({
       disabled={!isLink}
       onClick={() => handleScroll(`category-${index}-block`)}
       className={twMerge(
-        'flex items-center justify-between gap-4 rounded-xl border-2 px-4 py-3 no-underline',
+        'flex items-center justify-between gap-4 rounded-xl border-2 px-4 py-3 no-underline!',
         widthClassName[index],
         getBackgroundLightColor(category),
         getBorderColor(category),

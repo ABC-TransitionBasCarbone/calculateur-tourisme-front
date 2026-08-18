@@ -1,6 +1,4 @@
 // i18next-parser.config.js
-//
-const utils = require('@incubateur-ademe/nosgestesclimat-scripts/utils')
 
 module.exports = {
   contextSeparator: '_',

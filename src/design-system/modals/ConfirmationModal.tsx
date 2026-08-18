@@ -1,8 +1,10 @@
 import Trans from '@/components/translation/Trans'
 import { ReactNode, useEffect } from 'react'
-import Modal from 'react-modal'
+import ReactModal from 'react-modal'
 import Button from '../inputs/Button'
 import Loader from '../layout/Loader'
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ModalComponent = ReactModal as any
 
 type Props = {
   onConfirm: () => void
@@ -11,7 +13,7 @@ type Props = {
   isLoading?: boolean
 }
 
-Modal.setAppElement('#modal')
+ModalComponent.setAppElement('#modal')
 
 export default function ConfirmationModal({
   onConfirm,
@@ -39,7 +41,7 @@ export default function ConfirmationModal({
   }, [])
 
   return (
-    <Modal
+    <ModalComponent
       isOpen
       onRequestClose={closeModal}
       style={customStyles}
@@ -48,17 +50,17 @@ export default function ConfirmationModal({
       {children}
 
       <div className="mt-12 flex flex-wrap justify-center gap-4 md:justify-normal ">
-        <Button color="secondary" onClick={!isLoading ? closeModal : () => {}}>
+        <Button color="secondary" onClick={!isLoading ? closeModal : () => { }}>
           <Trans>Annuler</Trans>
         </Button>
 
         <Button
           color="primary"
           className="-order-1 w-[140px] xs:order-2"
-          onClick={!isLoading ? onConfirm : () => {}}>
+          onClick={!isLoading ? onConfirm : () => { }}>
           {isLoading ? <Loader /> : <Trans>Confirmer</Trans>}
         </Button>
       </div>
-    </Modal>
+    </ModalComponent>
   )
 }

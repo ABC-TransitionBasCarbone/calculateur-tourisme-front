@@ -30,9 +30,8 @@ export default function Breadcrumbs({
                 }
                 trackEvent(breadcrumbClickLink)
               }}
-              className={`text-default ${
-                isActive ? '' : 'no-underline'
-              } max-w-full text-ellipsis whitespace-nowrap text-sm capitalize hover:text-default hover:underline ${isDisabled ? 'cursor-none' : ''}`}
+              className={`text-default ${isActive ? '' : 'no-underline!'
+                } max-w-full text-ellipsis whitespace-nowrap text-sm capitalize hover:text-default hover:underline ${isDisabled ? 'cursor-none' : ''}`}
               href={href}>
               {label}
             </Link>

@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config '../../tailwind.config.js';
+@import 'tailwindcss';
+@custom-variant short (@media (max-height: 600px));
 
 @font-face {
   font-family: 'Marianne';
@@ -690,12 +690,12 @@ html[data-useragent*='Trident'] #js {
 }
 
 .Toastify__toast--error {
-  @apply bg-red-50 text-red-700 !important;
+  @apply bg-red-50! text-red-700!;
 }
 
 .Toastify__close-button--light {
   opacity: 1 !important;
-  @apply text-gray-700 !important;
+  @apply text-gray-700!;
 }
 
 .Toastify__progress-bar {
@@ -719,7 +719,7 @@ html[data-useragent*='Trident'] #js {
 }
 
 .Toastify__progress-bar--bg {
-  @apply bg-gray-100 !important;
+  @apply bg-gray-100!;
   opacity: 1 !important;
 }
 

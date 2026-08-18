@@ -35,7 +35,7 @@ export default function Contributions() {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
             onClick={() => trackEvent(homeClickCodeSource)}
-            className="min-h-48 flex-1 flex-col items-center gap-4 rounded-xl border-2 border-alimentation-400 py-8 text-inherit no-underline transition-colors hover:border-alimentation-600 hover:text-default"
+            className="min-h-48 flex-1 flex-col items-center gap-4 rounded-xl border-2 border-alimentation-400 py-8 text-inherit no-underline! transition-colors hover:border-alimentation-600 hover:text-default"
             data-cypress-id="nouveautes-link">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-alimentation-100">
               <SearchIcon
@@ -60,7 +60,7 @@ export default function Contributions() {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
             onClick={() => trackEvent(homeClickDocumentation)}
-            className="min-h-48 flex-1 flex-col items-center gap-4 rounded-xl border-2 border-divers-300 py-8 text-inherit no-underline transition-colors hover:border-divers-500 hover:text-default"
+            className="min-h-48 flex-1 flex-col items-center gap-4 rounded-xl border-2 border-divers-300 py-8 text-inherit no-underline! transition-colors hover:border-divers-500 hover:text-default"
             data-cypress-id="documentation-link">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-divers-100">
               <GlassesIcon
@@ -85,7 +85,7 @@ export default function Contributions() {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
             onClick={() => trackEvent(homeClickContribution)}
-            className="min-h-48 flex-1 flex-col items-center gap-4 rounded-xl border-2 border-logement-400 py-8 text-inherit no-underline transition-colors hover:border-logement-600 hover:text-default"
+            className="min-h-48 flex-1 flex-col items-center gap-4 rounded-xl border-2 border-logement-400 py-8 text-inherit no-underline! transition-colors hover:border-logement-600 hover:text-default"
             data-cypress-id="contact-link">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-logement-100">
               <PencilIcon

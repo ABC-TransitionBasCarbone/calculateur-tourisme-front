@@ -1,4 +1,5 @@
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
+import { jest } from '@jest/globals'
 import rules from '@abc-transitionbascarbone/calculateur-tourisme/public/co2-model.FR-lang.fr.json'
 import Engine from 'publicodes'
 import getSomme from '../helpers/getSomme'

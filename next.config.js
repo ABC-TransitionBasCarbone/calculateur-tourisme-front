@@ -3,6 +3,7 @@
 const withMDX = require('@next/mdx')({
   extension: /\.mdx$/,
 })
+const path = require('path')
 
 const redirects = require('./config/redirects.js')
 
@@ -62,6 +63,11 @@ const nextConfig = {
       use: 'yaml-loader',
     })
 
+    config.resolve.alias['@publicodes/tools/migration'] = path.resolve(
+      __dirname,
+      'node_modules/@publicodes/tools/dist/migration/index.mjs'
+    )
+
     // Enable source maps
     if (!dev && !isServer) {
       config.devtool = 'source-map'
@@ -73,24 +79,31 @@ const nextConfig = {
     return config
   },
   productionBrowserSourceMaps: true,
-  experimental: {
-    outputFileTracingExcludes: {
-      '*': ['.next/cache/webpack', '.git/**/*', 'cypress/**/*'],
-      '/blog': ['public/NGC_Kit.diffusion.zip'],
-      '/nouveautes': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
-      '/actions/plus': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
-      '/sitemap.xml': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
-    },
-    optimizePackageImports: ['@abc-transitionbascarbone/calculateur-tourisme'],
-    webpackBuildWorker: true,
-    turbo: {
-      rules: {
-        '*.yaml': {
-          loaders: ['yaml-loader'],
-        },
-      },
-    },
+  outputFileTracingExcludes: {
+    '*': ['.next/cache/webpack', '.git/**/*', 'cypress/**/*'],
+    '/blog': ['public/NGC_Kit.diffusion.zip'],
+    '/nouveautes': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
+    '/actions/plus': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
+    '/sitemap.xml': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
   },
+  experimental: {
+    webpackBuildWorker: true,
+  },
+  turbopack: {
+    resolveAlias: {
+      '@publicodes/tools/migration': './node_modules/@publicodes/tools/dist/migration/index.mjs',
+    },
+    rules: {
+      '*.yaml': {
+        loaders: ['yaml-loader'],
+        as: '*.js'
+      },
+      '*.yml': {
+        loaders: ['yaml-loader'],
+        as: '*.js'
+      }
+    }
+  }
 }
 
 module.exports =

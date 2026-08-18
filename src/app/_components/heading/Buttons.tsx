@@ -55,7 +55,7 @@ export default function Buttons() {
           className={twMerge(
             isHover
               ? 'bg-rainbow animate-rainbow-fast !bg-clip-text !text-transparent duration-1000'
-              : '',
+              : 'text-white',
             'leading-none'
           )}>
           <Trans>{linkToSimulateurPageLabel}</Trans>

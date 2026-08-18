@@ -1,11 +1,10 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import i18nMiddleware from './middlewares/i18nMiddleware'
-import splitTestingMiddleware from './middlewares/splitTestingMiddleware'
 
-export const middlewares = [splitTestingMiddleware, i18nMiddleware]
+export const middlewares = [i18nMiddleware]
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const response = NextResponse.next()
 
   for await (const middlewareFunction of middlewares) {

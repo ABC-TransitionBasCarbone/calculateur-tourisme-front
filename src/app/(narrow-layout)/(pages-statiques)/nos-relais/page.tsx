@@ -40,7 +40,7 @@ export default async function NosRelais() {
           <p>
             <Trans>
               Plus de 40 acteurs relaient ou ont relayé Nos Gestes Climat à
-              travers 
+              travers
               <a
                 href="https://accelerateur-transition-ecologique-ademe.notion.site/Int-grer-Nos-Gestes-Climat-en-iframe-abdeb175baf84143922006964d80348c"
                 target="_blank"
@@ -92,7 +92,7 @@ export default async function NosRelais() {
                 key={ambassadeur.title}
                 href={ambassadeur.link}
                 tag="a"
-                className="border-none bg-primary-50 no-underline"
+                className="border-none bg-primary-50 no-underline!"
                 target="_blank">
                 <Image
                   src={'/images/ambassadeurs/' + ambassadeur.image}

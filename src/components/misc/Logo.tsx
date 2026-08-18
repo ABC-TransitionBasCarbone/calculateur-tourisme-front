@@ -31,11 +31,11 @@ export default function Logo({
         href="/"
         onClick={onClick}
         data-cypress-id="home-logo-link"
-        className={`flex items-center justify-center no-underline ${
+        className={`flex items-center justify-center no-underline! ${
           // @bjlaa : this is a hack to prevent the logo from being clickable in the iframe
           // not a recommended method a11y-wise, but in this case it's a good fit
           isIframeOnlySimulation ? 'pointer-events-none' : ''
-        }`}>
+          }`}>
         <Image
           src="/images/misc/petit-logo@3x.png"
           alt="Logo Nos Gestes Climat"

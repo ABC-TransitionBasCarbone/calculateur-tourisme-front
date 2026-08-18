@@ -29,7 +29,7 @@ export default function WaterActions() {
         <Link
           href={'/blog/reflexes-textile-econome-empreinte-eau'}
           target="_blank"
-          className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-xl border-2 border-primary-50 bg-gray-100 pb-4 no-underline hover:bg-primary-100 lg:p-4">
+          className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-xl border-2 border-primary-50 bg-gray-100 pb-4 no-underline! hover:bg-primary-100 lg:p-4">
           <div>
             <Image
               src="/images/blog/priscilla-du-preez-garde-robe.jpg"
@@ -52,7 +52,7 @@ export default function WaterActions() {
         <Link
           href={'/blog/huit-facons-reduire-empreinte-eau-alimentation'}
           target="_blank"
-          className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-xl border-2 border-primary-50 bg-gray-100 pb-4 no-underline hover:bg-primary-100 lg:p-4">
+          className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-xl border-2 border-primary-50 bg-gray-100 pb-4 no-underline! hover:bg-primary-100 lg:p-4">
           <div>
             <Image
               src="/images/blog/lumin-osity-arrosage-champ.jpg"

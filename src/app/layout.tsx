@@ -1,7 +1,10 @@
+'use client'
+
 import '@/locales/initClient'
 import '@/locales/initServer'
+import i18nConfig from '@/i18nConfig'
 import { dir } from 'i18next'
-import { currentLocale } from 'next-i18n-router'
+import { useCurrentLocale } from 'next-i18n-router/client'
 import dynamic from 'next/dynamic'
 import localFont from 'next/font/local'
 import Script from 'next/script'
@@ -51,9 +54,9 @@ export const marianne = localFont({
   variable: '--font-marianne',
 })
 
-export default async function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   try {
-    const lang = currentLocale()
+    const lang = useCurrentLocale(i18nConfig) ?? i18nConfig.defaultLocale
 
     const initialRegion = { "name": "France", "code": "FR" }
 

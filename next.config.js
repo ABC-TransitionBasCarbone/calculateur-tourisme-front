@@ -3,6 +3,7 @@
 const withMDX = require('@next/mdx')({
   extension: /\.mdx$/,
 })
+const path = require('path')
 
 const redirects = require('./config/redirects.js')
 
@@ -62,6 +63,11 @@ const nextConfig = {
       use: 'yaml-loader',
     })
 
+    config.resolve.alias['@publicodes/tools/migration'] = path.resolve(
+      __dirname,
+      'node_modules/@publicodes/tools/dist/migration/index.mjs'
+    )
+
     // Enable source maps
     if (!dev && !isServer) {
       config.devtool = 'source-map'
@@ -81,10 +87,12 @@ const nextConfig = {
     '/sitemap.xml': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
   },
   experimental: {
-    optimizePackageImports: ['@abc-transitionbascarbone/calculateur-tourisme'],
     webpackBuildWorker: true,
   },
   turbopack: {
+    resolveAlias: {
+      '@publicodes/tools/migration': './node_modules/@publicodes/tools/dist/migration/index.mjs',
+    },
     rules: {
       '*.yaml': {
         loaders: ['yaml-loader'],

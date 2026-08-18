@@ -1,6 +1,6 @@
 import { getLocalisedMDX } from '@/helpers/getLocalisedMDX'
+import { getServerLocale } from '@/helpers/getServerLocale'
 import { MDXProps } from 'mdx/types'
-import { currentLocale } from 'next-i18n-router'
 import { JSX } from 'react'
 
 type Props = {
@@ -9,8 +9,8 @@ type Props = {
   contentEs?: (props: MDXProps) => JSX.Element
 }
 
-export default function MDXContent({ contentFr, contentEn, contentEs }: Props) {
-  const locale = currentLocale()
+export default async function MDXContent({ contentFr, contentEn, contentEs }: Props) {
+  const locale = await getServerLocale()
 
   const Content = getLocalisedMDX({
     dictionnaries: {

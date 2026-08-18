@@ -1,5 +1,5 @@
 import { defaultLocale, locales } from '@/i18nConfig'
-import { currentLocale } from 'next-i18n-router'
+import { getServerLocale } from '@/helpers/getServerLocale'
 
 type Props = {
   title: string
@@ -55,7 +55,7 @@ const buildURL = ({
   return `${BASE_URL}${localePart}${paramsPart}${searchParamsPart}`
 }
 
-export function getMetadataObject({
+export async function getMetadataObject({
   title,
   description,
   params,
@@ -64,7 +64,7 @@ export function getMetadataObject({
   alternates,
   ...props
 }: Props) {
-  const locale = currentLocale()
+  const locale = await getServerLocale()
 
   const url = buildURL({
     params,

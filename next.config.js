@@ -73,24 +73,29 @@ const nextConfig = {
     return config
   },
   productionBrowserSourceMaps: true,
+  outputFileTracingExcludes: {
+    '*': ['.next/cache/webpack', '.git/**/*', 'cypress/**/*'],
+    '/blog': ['public/NGC_Kit.diffusion.zip'],
+    '/nouveautes': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
+    '/actions/plus': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
+    '/sitemap.xml': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
+  },
   experimental: {
-    outputFileTracingExcludes: {
-      '*': ['.next/cache/webpack', '.git/**/*', 'cypress/**/*'],
-      '/blog': ['public/NGC_Kit.diffusion.zip'],
-      '/nouveautes': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
-      '/actions/plus': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
-      '/sitemap.xml': ['public/images/blog', 'public/NGC_Kit.diffusion.zip'],
-    },
     optimizePackageImports: ['@abc-transitionbascarbone/calculateur-tourisme'],
     webpackBuildWorker: true,
-    turbo: {
-      rules: {
-        '*.yaml': {
-          loaders: ['yaml-loader'],
-        },
-      },
-    },
   },
+  turbopack: {
+    rules: {
+      '*.yaml': {
+        loaders: ['yaml-loader'],
+        as: '*.js'
+      },
+      '*.yml': {
+        loaders: ['yaml-loader'],
+        as: '*.js'
+      }
+    }
+  }
 }
 
 module.exports =

@@ -75,7 +75,7 @@ export default function SubcategoryChartBlock({
     <Link
       title={`${titleFormatted}, ${formattedValue} ${unit}, voir la documentation`}
       href={`/documentation/${subcategory.replaceAll(' . ', '/')}`}
-      className={`relative flex items-center py-2 !text-white !no-underline! hover:!underline ${isSmall ? 'flex-row justify-center gap-1' : 'flex-col flex-wrap'
+      className={`relative flex items-center py-2 text-white! no-underline! hover:!underline ${isSmall ? 'flex-row justify-center gap-1' : 'flex-col flex-wrap'
         } ${getBackgroundColor(category)}`}
       style={{
         height: `${heightPercentage}%`,

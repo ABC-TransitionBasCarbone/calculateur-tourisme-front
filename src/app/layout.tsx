@@ -1,22 +1,15 @@
-'use client'
-
 import '@/locales/initClient'
 import '@/locales/initServer'
-import i18nConfig from '@/i18nConfig'
 import { dir } from 'i18next'
-import { useCurrentLocale } from 'next-i18n-router/client'
 import dynamic from 'next/dynamic'
+import { getServerLocale } from '@/helpers/getServerLocale'
 import localFont from 'next/font/local'
 import Script from 'next/script'
 import { PropsWithChildren } from 'react'
 import MainLayoutProviders from './_components/MainLayoutProviders'
 import './globals.css'
 import Footer from '@/components/layout/Footer'
-
-const ClientErrorContent = dynamic(
-  () => import('@/components/error/ErrorContent'),
-  { ssr: false }
-)
+import ErrorModal from '@/components/error/ErrorModal'
 
 export const marianne = localFont({
   src: [
@@ -54,9 +47,9 @@ export const marianne = localFont({
   variable: '--font-marianne',
 })
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default async function RootLayout({ children }: PropsWithChildren) {
   try {
-    const lang = useCurrentLocale(i18nConfig) ?? i18nConfig.defaultLocale
+    const lang = await getServerLocale()
 
     const initialRegion = { "name": "France", "code": "FR" }
 
@@ -98,7 +91,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <html lang="fr">
         <body className={`${marianne.className} bg-white text-default`}>
           <div className="flex h-screen flex-col items-center justify-center">
-            <ClientErrorContent />
+            <ErrorModal />
           </div>
         </body>
       </html>

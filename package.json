@@ -33,7 +33,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@abc-transitionbascarbone/calculateur-tourisme": "^1.0.26",
+    "@abc-transitionbascarbone/calculateur-tourisme": "^1.0.27",
     "@babel/runtime": "^8.0.0",
     "@incubateur-ademe/legal-pages-react": "^0.6.0",
     "@mdx-js/loader": "^3.1.1",

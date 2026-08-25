@@ -1,6 +1,6 @@
 import { getLinkToSimulateur } from '@/helpers/navigation/simulateurPages'
 import { useUser } from '@/publicodes-state'
-import { DottedName } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 

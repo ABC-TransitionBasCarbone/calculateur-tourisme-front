@@ -1,7 +1,7 @@
 // Return tracking data in format
 // [ 'trackEvent', 'Category', 'Action', 'Name', 'Value' ]
 
-import { DottedName } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 // Figma comment #72
 export const profilClickCtaCommencer = [

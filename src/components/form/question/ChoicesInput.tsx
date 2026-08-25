@@ -1,4 +1,4 @@
-import { DottedName } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import Choice from './choicesInput/Choice'
 
 type Props = {

@@ -1,5 +1,5 @@
 import { Participant } from '@/types/groups'
-import { Metrics } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { Metrics } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export const getTopThreeAndRestMembers = (
   members: Participant[] = [],

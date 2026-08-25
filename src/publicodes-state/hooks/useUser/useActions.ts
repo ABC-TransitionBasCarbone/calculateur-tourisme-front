@@ -1,4 +1,4 @@
-import { DottedName } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { Simulation, UpdateCurrentSimulationProps } from '../../types'
 
 type Props = {

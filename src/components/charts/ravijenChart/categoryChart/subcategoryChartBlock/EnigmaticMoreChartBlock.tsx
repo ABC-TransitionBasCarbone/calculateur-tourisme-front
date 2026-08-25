@@ -1,7 +1,7 @@
 'use client'
 
 import { getBackgroundColor } from '@/helpers/getCategoryColorClass'
-import { DottedName } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 type Props = { category: DottedName; percentageSquashed: number }
 

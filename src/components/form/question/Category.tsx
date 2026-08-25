@@ -1,7 +1,7 @@
 import Emoji from '@/design-system/utils/Emoji'
 import { getTextDarkColor } from '@/helpers/getCategoryColorClass'
 import { useRule } from '@/publicodes-state'
-import { DottedName } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import { twMerge } from 'tailwind-merge'
 
 type Props = {

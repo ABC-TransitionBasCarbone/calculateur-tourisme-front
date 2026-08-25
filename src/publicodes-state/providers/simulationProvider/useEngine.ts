@@ -4,7 +4,7 @@ import {
   DottedName,
   NGCRuleNode,
   NGCRules,
-} from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import Engine, { PublicodesExpression } from 'publicodes'
 import { useCallback, useMemo } from 'react'
 import { safeEvaluateHelper } from '../../helpers/safeEvaluateHelper'

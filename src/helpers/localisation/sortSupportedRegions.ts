@@ -1,7 +1,7 @@
 import {
   SupportedRegion,
   SupportedRegions,
-} from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export const sortSupportedRegions = ({
   supportedRegions,

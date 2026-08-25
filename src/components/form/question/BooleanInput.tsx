@@ -1,6 +1,6 @@
 import ChoiceInput from '@/components/misc/ChoiceInput'
 import { useClientTranslation } from '@/hooks/useClientTranslation'
-import { NodeValue } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { NodeValue } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 type Props = {
   value: NodeValue

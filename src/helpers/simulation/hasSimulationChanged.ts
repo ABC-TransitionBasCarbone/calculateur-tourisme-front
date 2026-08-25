@@ -1,6 +1,6 @@
 import { defaultMetric } from '@/constants/metric'
 import { Simulation } from '@/publicodes-state/types'
-import { DottedName } from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 
 export function areComputedResultsDifferent(
   simulation1?: Simulation,

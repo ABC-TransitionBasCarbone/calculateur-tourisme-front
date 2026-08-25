@@ -5,7 +5,7 @@ import {
   DottedName,
   NGCRuleNode,
   NodeValue,
-} from '@abc-transitionbascarbone/mon-empreinte-festivalier-modele'
+} from '@abc-transitionbascarbone/calculateur-tourisme'
 import { EvaluatedNode, PublicodesExpression, utils } from 'publicodes'
 import { useCallback } from 'react'
 import getType from '../../helpers/getType'

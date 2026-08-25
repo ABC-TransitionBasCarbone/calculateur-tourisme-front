@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@abc-transitionbascarbone/mon-empreinte-festivalier-modele@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@abc-transitionbascarbone/mon-empreinte-festivalier-modele/-/mon-empreinte-festivalier-modele-1.0.0.tgz#afd830613bee8e38f93d5501754b7a636f06c800"
-  integrity sha512-KBPSUarRF7dr4W82IGbFMZVZTwklTeoPx8JSvK8V+pD6lrghq009SCZDfWjh+Pr+82Cs9EjkT2BiLKwFj/O2Jw==
+"@abc-transitionbascarbone/mon-empreinte-festivalier-modele@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@abc-transitionbascarbone/mon-empreinte-festivalier-modele/-/mon-empreinte-festivalier-modele-1.0.1.tgz#d73c4ecd8503ae145d14ebdcee9bee29e4fde941"
+  integrity sha512-ZLIWzG6f2o8qYIi7IsXkNKBmf7vs1GoMGDPg6gUwxniI0xPJHDE5vMsHo23xpgCDNPJZbbFdecKDUFMFMgkCYQ==
 
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"

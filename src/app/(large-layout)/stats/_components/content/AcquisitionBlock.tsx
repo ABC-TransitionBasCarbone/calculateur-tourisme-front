@@ -5,7 +5,6 @@ import { formatPercentage, formatValue } from '../utils/formatFigure'
 import Sources from './Sources'
 
 type Props = {
-  allSubscribers: any
   allSharedSimulationEventsData: any
   currentMonthWebsitesData: any
   currentMonthSocialsData: any
@@ -14,7 +13,6 @@ type Props = {
 }
 
 export default function AcquisitionBlock({
-  allSubscribers,
   allSharedSimulationEventsData,
   currentMonthWebsitesData,
   currentMonthSocialsData,
@@ -26,14 +24,6 @@ export default function AcquisitionBlock({
     <div>
       <div className="mt-4">
         <div className="flex flex-row gap-4">
-          <Card className="flex-1">
-            <strong className="text-3xl">
-              {formatValue(allSubscribers?.data, locale)}
-            </strong>{' '}
-            <p className="mb-0 text-sm">
-              <Trans>inscrits à l'infolettre</Trans>
-            </p>
-          </Card>
           <Card className="flex-1">
             <strong className="text-3xl">
               {formatValue(allSharedSimulationEventsData, locale)}

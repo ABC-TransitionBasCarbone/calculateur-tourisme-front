@@ -32,7 +32,7 @@ export default function ResendButton({
 
   const { user } = useUser()
 
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   async function handleResendVerificationCode() {
     if (isRetryButtonDisabled) {
@@ -79,7 +79,7 @@ export default function ResendButton({
         )}
 
         {shouldDisplayConfirmation && (
-          <span className="flex items-center text-green-500 no-underline">
+          <span className="flex items-center text-green-500 no-underline!">
             <CheckCircleIcon className="mr-2 h-4 w-4 fill-green-500" />
             <Trans>Code renvoyé</Trans>
           </span>
@@ -93,7 +93,7 @@ export default function ResendButton({
         )}
       </Button>
       {isRetryButtonDisabled && timeLeft > 0 && (
-        <span className="text-xs font-normal text-gray-500 !no-underline">
+        <span className="text-xs font-normal text-gray-500 no-underline!">
           <Trans>(Attendre</Trans> {timeLeft} <Trans>secondes)</Trans>
         </span>
       )}

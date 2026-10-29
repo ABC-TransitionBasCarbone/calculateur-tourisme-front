@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 export function useAutoFlick() {
   const [value, setValue] = useState(false)
 
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const flick = useCallback(() => {
     setValue(true)
@@ -18,7 +18,7 @@ export function useAutoFlick() {
 
   useEffect(() => {
     return () => {
-      clearTimeout(timeoutRef.current)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
   }, [])
 

@@ -6,7 +6,7 @@ import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getPost } from '@/helpers/markdown/getPost'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
 import { capitalizeString } from '@/utils/capitalizeString'
-import { currentLocale } from 'next-i18n-router'
+import { getServerLocale } from '@/helpers/getServerLocale'
 
 type Props = {
   params: { slug: string }
@@ -26,7 +26,7 @@ export async function generateMetadata({ params: { slug } }: Props) {
 }
 
 export default async function Release({ params: { slug } }: Props) {
-  const locale = currentLocale()
+  const locale = await getServerLocale()
   const nouveaute = await getPost(`src/locales/nouveautes/${locale}/`, slug)
 
   return (

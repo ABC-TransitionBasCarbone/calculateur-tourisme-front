@@ -38,7 +38,7 @@ export default async function DocumentationPage({
 
   const rules = await getRules({
     isOptim: false,
-    locale,
+    locale: locale ?? undefined,
     regionCode: 'FR',
   })
 

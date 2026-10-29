@@ -33,7 +33,7 @@ export default function PagesProches({
             <li key={item.dottedName} className="border-b border-gray-300 p-2">
               <Link
                 href={`/documentation/${utils.encodeRuleName(item.dottedName)}`}
-                className="no-underline hover:underline">
+                className="no-underline! hover:underline">
                 <small>
                   {item.espace
                     .slice(1)

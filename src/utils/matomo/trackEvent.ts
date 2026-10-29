@@ -23,25 +23,28 @@ export const trackPageView = (url: string) => {
     return
   }
 
-  window?._mtm?.push(['setCustomUrl', url])
-  window?._mtm?.push(['setDocumentTitle', document?.title])
-
-  // remove all previously assigned custom variables, requires Matomo (formerly Piwik) 3.0.2
-  // window?._mtm?.push(['deleteCustomVariables', 'page'])
-  // window?._mtm?.push(['setPagePerformanceTiming', 0])
-
-  window?._mtm?.push(['trackPageView'])
+  window._mtm.push({
+    event: 'mtm.PageView',
+    'page.url': url,
+    'page.title': document.title,
+  })
 }
 
 export const initMatomo = () => {
-  const _mtm = window._mtm = window._mtm || [];
-  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
-  const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return
+  }
+
+  const _mtm = (window._mtm = window._mtm || [])
+  _mtm.push({ 'mtm.startTime': Date.now(), event: 'mtm.Start' })
+  const d = document
+  const g = d.createElement('script')
+  const s = d.getElementsByTagName('script')[0]
   g.async = true;
-  g.src = process.env.NEXT_PUBLIC_MATOMO_URL ?? '';
+  g.src = process.env.NEXT_PUBLIC_MATOMO_URL ?? ''
 
   if (!s || !s.parentNode) {
-    return;
+    return
   }
-  s.parentNode.insertBefore(g,s);
+  s.parentNode.insertBefore(g, s)
 }

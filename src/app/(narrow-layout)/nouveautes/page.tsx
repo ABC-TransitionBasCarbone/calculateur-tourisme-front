@@ -7,7 +7,7 @@ import Title from '@/design-system/layout/Title'
 import { getServerTranslation } from '@/helpers/getServerTranslation'
 import { getPosts } from '@/helpers/markdown/getPosts'
 import { getMetadataObject } from '@/helpers/metadata/getMetadataObject'
-import { currentLocale } from 'next-i18n-router'
+import { getServerLocale } from '@/helpers/getServerLocale'
 import Image from 'next/image'
 
 export async function generateMetadata() {
@@ -25,7 +25,7 @@ export async function generateMetadata() {
 }
 
 export default async function Releases() {
-  const locale = currentLocale()
+  const locale = await getServerLocale()
 
   const releases = await getPosts(`src/locales/nouveautes/${locale}/`)
 

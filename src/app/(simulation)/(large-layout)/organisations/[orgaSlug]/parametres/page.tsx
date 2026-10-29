@@ -53,18 +53,18 @@ export default function ParametresPage() {
   } = useReactHookForm({
     defaultValues: organisation
       ? {
-          name: organisation?.name ?? '',
-          administratorName: organisation?.administrators?.[0]?.name ?? '',
-          hasOptedInForCommunications:
-            organisation?.administrators?.[0]?.hasOptedInForCommunications ??
-            false,
-          organisationType: organisation?.organisationType ?? '',
-          email: organisation?.administrators?.[0]?.email ?? '',
-          position: organisation?.administrators?.[0]?.position ?? '',
-          numberOfCollaborators: organisation?.numberOfCollaborators ?? 0,
-          administratorTelephone:
-            organisation?.administrators?.[0]?.telephone ?? '',
-        }
+        name: organisation?.name ?? '',
+        administratorName: organisation?.administrators?.[0]?.name ?? '',
+        hasOptedInForCommunications:
+          organisation?.administrators?.[0]?.hasOptedInForCommunications ??
+          false,
+        organisationType: organisation?.organisationType ?? '',
+        email: organisation?.administrators?.[0]?.email ?? '',
+        position: organisation?.administrators?.[0]?.position ?? '',
+        numberOfCollaborators: organisation?.numberOfCollaborators ?? 0,
+        administratorTelephone:
+          organisation?.administrators?.[0]?.telephone ?? '',
+      }
       : undefined,
   })
 
@@ -101,46 +101,46 @@ export default function ParametresPage() {
     administratorTelephone,
     hasOptedInForCommunications,
   }) => {
-    const formattedEmail = formatEmail(email)
-    // Switch to the update email user flow
-    if (formattedEmail !== user?.organisation?.administratorEmail) {
-      handleSaveDataForVerification({
-        email: formattedEmail,
-        name,
-        organisationType,
-        numberOfCollaborators,
-        position,
-        administratorName,
-        hasOptedInForCommunications,
-        administratorTelephone,
-      })
-      return
+      const formattedEmail = formatEmail(email)
+      // Switch to the update email user flow
+      if (formattedEmail !== user?.organisation?.administratorEmail) {
+        handleSaveDataForVerification({
+          email: formattedEmail,
+          name,
+          organisationType,
+          numberOfCollaborators,
+          position,
+          administratorName,
+          hasOptedInForCommunications,
+          administratorTelephone,
+        })
+        return
+      }
+
+      try {
+        trackEvent(organisationsParametersUpdateInformations)
+
+        await updateOrganisation({
+          name,
+          organisationType,
+          numberOfCollaborators,
+          position,
+          administratorName,
+          hasOptedInForCommunications,
+          administratorTelephone,
+        })
+
+        displaySuccessToast(t('Vos informations ont bien été mises à jour.'))
+      } catch (error) {
+        setError(t('Une erreur est survenue. Veuillez réessayer.'))
+      }
     }
-
-    try {
-      trackEvent(organisationsParametersUpdateInformations)
-
-      await updateOrganisation({
-        name,
-        organisationType,
-        numberOfCollaborators,
-        position,
-        administratorName,
-        hasOptedInForCommunications,
-        administratorTelephone,
-      })
-
-      displaySuccessToast(t('Vos informations ont bien été mises à jour.'))
-    } catch (error) {
-      setError(t('Une erreur est survenue. Veuillez réessayer.'))
-    }
-  }
 
   function closeModal() {
     setShouldDisplayModal(false)
   }
 
-  const timeoutRef = useRef<NodeJS.Timeout>()
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     return () => {

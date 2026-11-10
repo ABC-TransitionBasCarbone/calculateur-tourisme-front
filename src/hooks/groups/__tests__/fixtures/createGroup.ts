@@ -6,15 +6,16 @@ import { faker } from '@faker-js/faker'
 import { DottedName } from '@abc-transitionbascarbone/calculateur-tourisme'
 import rules from '@abc-transitionbascarbone/calculateur-tourisme/public/co2-model.FR-lang.fr.json'
 import personas from '@abc-transitionbascarbone/calculateur-tourisme/public/personas-fr.json'
-import Engine from 'publicodes'
+import Engine, { type Situation } from 'publicodes'
 
 const engine = new Engine(rules)
 
 function createSimulation({ persona }: { persona?: string }) {
-  // Get computed results from the engine
-  engine.setSituation(
+  const situation: Situation<string> =
     personas[`personas . ${persona}` as keyof typeof personas].situation
-  )
+
+  // Get computed results from the engine
+  engine.setSituation(situation)
 
   return {
     id: faker.string.uuid(),

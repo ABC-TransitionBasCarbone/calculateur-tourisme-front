@@ -31,8 +31,8 @@ export default function MainLayoutProviders({
   }, []);
 
   useEffect(() => {
-    const regionFromPath = pathName.match('/region/*') ? pathName.split('/')[2].toLowerCase() : null;
-    const territoryFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4].toLowerCase() : null;
+    const regionFromPath = pathName.match('/region/*') ? pathName.split('/')[2]?.toLowerCase() ?? null : null;
+    const territoryFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4]?.toLowerCase() ?? null : null;
 
     const regionFromLocalStorage = localStorage.getItem('region');
     const territoryFromLocalStorage = localStorage.getItem('territory');

@@ -64,14 +64,15 @@ export default function Buttons() {
 
       {progression ? (
         <Link
-          className={`absolute left-1/2 top-full -translate-x-1/2 translate-y-6 whitespace-nowrap transition-all delay-200 duration-300 md:text-lg text-white ${isClient ? 'opacity-100' : 'opacity-0'
+          className={`absolute left-1/2 top-full -translate-x-1/2 translate-y-6 whitespace-nowrap transition-all delay-200 duration-300 md:text-lg text-white! ${isClient ? 'opacity-100' : 'opacity-0'
             }`}
+
           onClick={() => {
             trackEvent(homeClickNewTest)
             goToSimulateurPage({ noNavigation: true, newSimulation: {} })
           }}
           href={getLinkToSimulateurPage({ newSimulation: true })}>
-          <Trans>Commencer un nouveau test</Trans>
+          <Trans >Commencer un nouveau test</Trans>
         </Link>
       ) : null}
     </div>

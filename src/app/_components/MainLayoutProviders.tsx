@@ -31,8 +31,8 @@ export default function MainLayoutProviders({
   }, []);
 
   useEffect(() => {
-    const regionFromPath = pathName.match('/region/*') ? pathName.split('/')[2] : null;
-    const territoryFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4] : null;
+    const regionFromPath = pathName.match('/region/*') ? pathName.split('/')[2]?.toLowerCase() ?? null : null;
+    const territoryFromPath = pathName.match('/territoire/*') ? pathName.split('/')[4]?.toLowerCase() ?? null : null;
 
     const regionFromLocalStorage = localStorage.getItem('region');
     const territoryFromLocalStorage = localStorage.getItem('territory');
@@ -43,14 +43,14 @@ export default function MainLayoutProviders({
     if (isTerritoryFromRegion(territory ?? '', region ?? '')) {
       if (region && isCorrectRegion(region)) {
         setRegion(region);
-        localStorage.setItem('region', region);
+        localStorage.setItem('region', region.toLowerCase());
       } else {
         setRegion(RegionType.HdF);
         localStorage.setItem('region', RegionType.HdF);
       }
       if (territory && isCorrectTerritory(territory) && territory !== 'general') {
         setTerritory(territory);
-        localStorage.setItem('territory', territory);
+        localStorage.setItem('territory', territory.toLowerCase());
       } else {
         setTerritory('general');
         localStorage.setItem('territory', 'general');

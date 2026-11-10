@@ -4,7 +4,7 @@ import { TerritoriesType } from "../../utils/territories";
 
 type HomePageText = {
   backgroundImage?: { src: string, width: number, height: number };
-  additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number; smallWidth?: boolean }[];
+  additionnalPartners?: { href: string; src: string; alt: string; width: number; height: number; overrideWidth?: string }[];
   overrideExplanations?: boolean;
   explanations?: {
     title: string | React.ReactElement;
@@ -77,7 +77,7 @@ export const homePageTexts: Record<TerritoriesType, HomePageText> & Record<'gene
         alt: 'Logo de la Thiérache',
         width: 600,
         height: 253,
-        smallWidth: true,
+        overrideWidth: 'w-24',
       }
     ],
     overrideExplanations: false,
@@ -115,9 +115,68 @@ export const homePageTexts: Record<TerritoriesType, HomePageText> & Record<'gene
   'creil-halatte': {},
   dunkerquois: {},
   'flandre-rurale': {},
-  'grand-Amiénois': {},
-  'grand-Beauvaisis': {},
-  'grand-Laonnois': {},
+  'grand-amiénois': {},
+  'grand-beauvaisis': {},
+  'grand-laonnois': {
+    backgroundImage: {
+      src: '/images/territoires/laonnois/fond.png',
+      width: 816,
+      height: 370,
+    },
+    additionnalPartners: [
+      {
+        href: 'https://www.tourisme-paysdelaon.com/',
+        src: '/images/territoires/laonnois/office-de-tourisme.png',
+        alt: 'Logo de l\'office de tourisme du pays de laon',
+        width: 600,
+        height: 253,
+        overrideWidth: 'w-20'
+      },
+      {
+        href: 'https://www.ca-paysdelaon.fr/',
+        src: '/images/territoires/laonnois/communaute-d-agglomeration.png',
+        alt: 'Logo de la communauté de l\'agglomération du pays de laon',
+        width: 600,
+        height: 253,
+        overrideWidth: 'w-18',
+      }
+    ],
+    overrideExplanations: false,
+    explanations: [
+      {
+        title: 'La destination du Grand Laonnois : un séjour touristique durable entre patrimoine, mémoire et nature',
+        description: <>
+          <p>
+            Le Grand Laonnois invite à vivre une expérience touristique authentique, alliant
+            découvertes culturelles, histoire et évasion au grand air, dans une démarche de
+            tourisme durable et écoresponsable.
+          </p>
+          <p>
+            Perchée sur sa butte,<b> Laon et sa cité médiévale </b>émerveillent par leurs 84
+            monuments historiques, dont la majestueuse cathédrale Notre-Dame, leurs 7 km
+            de remparts, les souterrains Secrets sous la ville et les espaces naturels de la
+            cuve Saint-Vincent.
+          </p>
+          <p>
+            Le <b>Chemin des Dames</b>, haut lieu de mémoire de la Première Guerre mondiale,
+            propose un voyage dans l’Histoire, prolongé par la découverte de la Caverne du
+            Dragon ou des ruines de l’abbaye de Vauclair, nichée en pleine forêt.
+          </p>
+          <p>
+            Églises remarquables, vendangeoirs, villages de caractère et panoramas
+            composent un patrimoine à explorer à son rythme. À pied ou à vélo, notamment
+            sur l’EuroVelo 3, partez à la découverte des forêts, marais, coteaux calcicoles et
+            espaces naturels protégés.
+          </p>
+          <p>
+            Le Grand Laonnois est une invitation à <b>prendre le temps, privilégier les mobilités
+              douces et préserver les richesses locales</b>, pour un séjour responsable au plus
+            près de son patrimoine et de ses paysages.
+          </p>
+        </>
+      },
+    ]
+  },
   hainaut: {},
   'lens-hénin': {},
   liancourtois: {},
